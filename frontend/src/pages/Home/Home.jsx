@@ -42,7 +42,7 @@ const Home = () => {
   };
   return (
     <div>
-      <div className="App">
+      <div className="App1">
         <h1>AI Article Generator</h1>
         <form>
           <label>Prompt:</label>
