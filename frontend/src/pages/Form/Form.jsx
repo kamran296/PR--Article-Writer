@@ -39,7 +39,7 @@ const Form = () => {
     console.log("Generating article");
     try {
       const response = await fetch(
-        "http://localhost:5000/api/v1/ArticelWriter/articleForm",
+        "https://pr-article-writer.onrender.com/api/v1/ArticelWriter/articleForm",
         {
           method: "POST",
           headers: {

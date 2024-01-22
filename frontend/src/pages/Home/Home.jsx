@@ -29,7 +29,7 @@ const Home = () => {
     console.log("Generating Article!!");
     try {
       const response = await fetch(
-        "http://localhost:5000/api/v1/ArticelWriter/articlePrompt",
+        "https://pr-article-writer.onrender.com/api/v1/ArticelWriter/articlePrompt",
         {
           method: "POST",
           headers: {
