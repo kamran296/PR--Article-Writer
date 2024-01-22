@@ -16,7 +16,7 @@ exports.articlePrompt = async (req, res) => {
     if (typeof prompt !== "string") {
       return res.status(400).json({ error: "Invalid input prompt" });
     }
-    console.log(prompt, 124);
+    // console.log(prompt, 124);
     const response = await openai.chat.completions.create({
       model: "ft:gpt-3.5-turbo-0613:cache-labs-llc:yt-tutorial:8hHNplz0", // You may need to adjust the engine version
       messages: [
@@ -51,24 +51,23 @@ exports.articlePrompt = async (req, res) => {
 exports.articleForm = async (req, res) => {
   try {
     const formData = req.body;
-    console.log(formData.attribute);
-    if (formData.attribute === "he") {
-      const prompt = `Write a PR article on ${formData.name} who is an ${formData.expertise} working at ${formData.company} and has ${formData.experience} years of experience in the industry. 
-      ${formData.name} graduated from ${formData.education}. Notable achievements include ${formData.awards}. ${formData.name} also contributed to a significant project: ${formData.project}. 
-      ${formData.name} had a significant impact on the industry, earning them awards. He has authored works, including ${formData.publications}.`;
-      const response = await openai.chat.completions.create({
-        model: "ft:gpt-3.5-turbo-0613:cache-labs-llc:article-writer:8fpwSCUY", // You may need to adjust the engine version
-        messages: [
-          { role: "system", content: "You are an AI article writer." },
-          { role: "user", content: prompt },
-        ],
-        max_tokens: 800,
-      });
-      console.log(response.choices[0]);
-      res.status(200).json(response);
-    } else {
-      res.json("attribute is not he");
-    }
+    // console.log(formData);
+    // const prompt = `Write a PR article on ${formData.name} who is an ${formData.expertise} working at ${formData.company} and has ${formData.experience} years of experience in the industry.
+    //   ${formData.name} graduated from ${formData.education}. Notable achievements include ${formData.awards}. ${formData.name} also contributed to a significant project: ${formData.projects}.
+    //   ${formData.name} had a significant impact on the industry, earning them awards. He has authored works, including ${formData.publishes}.`;
+
+    const prompt = `write a article on ${formData.Name}, who is a professional with expertise in ${formData.expertise}. Holding a ${formData.highestDegree} in ${formData.specialization} from ${formData.university}, ${formData.name} currently serves as ${formData.jobTitle} with ${formData.experience} years of rich experience in ${formData.industry}. Known for ${formData.achievements}, ${formData.name} has made significant contributions through ${formData.impact} and successfully led ${formData.projects}. With a track record of ${formData.quantifiedWorks}, ${formData.name} has overcome challenges like ${formData.challengesOvercome}. Additionally, ${formData.name} has published ${formData.publications} and offers valuable ${formData.industryInsight}.`;
+    const response = await openai.chat.completions.create({
+      model: "ft:gpt-3.5-turbo-0613:cache-labs-llc:article-writer:8fpwSCUY", // You may need to adjust the engine version
+      messages: [
+        { role: "system", content: "You are an AI article writer." },
+        { role: "user", content: prompt },
+      ],
+      temperature: 0.5,
+      max_tokens: 800,
+    });
+    console.log(response.choices[0]);
+    res.status(200).json(response);
   } catch (error) {
     console.log(error);
     res.status(500).json(error);

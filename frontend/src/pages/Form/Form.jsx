@@ -1,24 +1,29 @@
 import React, { useState } from "react";
 import "./Form.css";
-import gptLogo from './assets/chatgpt.svg';
-import addBtn from './assets/add-30.png';
-import msgIcon from './assets/message.svg';
-import gptImgLogo from './assets/chatgptLogo.svg';
-import { Link } from 'react-router-dom'
+import gptLogo from "./assets/chatgpt.svg";
+import addBtn from "./assets/add-30.png";
+import msgIcon from "./assets/message.svg";
+import gptImgLogo from "./assets/chatgptLogo.svg";
+import download from "./assets/download.png";
+import { Link } from "react-router-dom";
 
 const Form = () => {
   const [formData, setFormData] = useState({
-    attribute: "",
     name: "",
     expertise: "",
-    company: "",
-    notableWork: "",
-    contribution: "",
+    highestDegree: "",
+    specialization: "",
+    university: "",
+    jobTitle: "",
+    experience: "",
+    industry: "",
     achievements: "",
-    education: "",
+    impact: "",
     projects: "",
-    problemsSolved: "",
-    publishes: "",
+    quantifiedWorks: "",
+    challengesOvercome: "",
+    publications: "",
+    industryInsight: "",
   });
 
   const handleChange = (e) => {
@@ -59,164 +64,229 @@ const Form = () => {
   return (
     <>
       <div className="App">
-      <div className="sideBar">
-        <div className="upperSide">
-          <div className="upperSideTop">
-            <img src={gptLogo} alt="Logo" className="logo" />
-            <span className="brand">Article Writer</span>
+        <div className="sideBar">
+          <div className="upperSide">
+            <div className="upperSideTop">
+              <img src={download} alt="Logo" className="logo" />
+              <span className="brand">Article Writer</span>
+            </div>
+            <Link className="link" to="/">
+              <button className="midBtn" onClick={() => navigate("/")}>
+                <img src={addBtn} alt="new chat" className="addBtn" />
+                New Chat
+              </button>
+            </Link>
+            <div className="upperSideBottom">
+              <Link className="link" to="/">
+                <button className="query">
+                  <img src={msgIcon} alt="query" />
+                  Prompt model
+                </button>
+              </Link>
+              <Link className="link" to="/article-form/">
+                <button className="query">
+                  <img src={msgIcon} alt="query" />
+                  Form model
+                </button>
+              </Link>
+            </div>
           </div>
-          <Link className="link" to="/">
-          <button className="midBtn" onClick={() => navigate('/')}>
-            <img src={addBtn} alt="new chat" className="addBtn" />
-            New Chat
-          </button>
-          </Link>
-          <div className="upperSideBottom">
-          <Link className="link" to="/"><button className="query"><img src={msgIcon} alt="query"/>Prompt model</button></Link>
-          <Link className="link" to="/article-form/"><button className="query"><img src={msgIcon} alt="query" />Form model</button></Link>
-
-          </div>
+          <div className="lowerside"></div>
         </div>
-        <div className="lowerside"></div>
-      </div>
-      <div className="main">
-        <form onSubmit={handleSubmit}>
-          <div className="row">
-          <label>
-            Attribute:
-            <input
-              className="inp1"
-              type="text"
-              name="attribute"
-              value={formData.attribute}
-              onChange={handleChange}
-            />
-          </label>
+        <div className="main">
+          <form onSubmit={handleSubmit}>
+            <div className="row">
+              <label>
+                Name:
+                <input
+                  className="inp1"
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                />
+              </label>
 
-          <label>
-            Name:
-            <input
-              className="inp1"
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-            />
-          </label>
-          </div>
+              <label>
+                Expertise:
+                <input
+                  className="inp1"
+                  type="text"
+                  name="expertise"
+                  value={formData.expertise}
+                  onChange={handleChange}
+                />
+              </label>
+            </div>
 
-          <div className="row">
-          <label>
-            Expertise:
-            <input
-              className="inp1"
-              type="text"
-              name="expertise"
-              value={formData.expertise}
-              onChange={handleChange}
-            />
-          </label>
+            <div className="row">
+              <label>
+                Highest Degree:
+                <input
+                  className="inp1"
+                  type="text"
+                  name="highestDegree"
+                  value={formData.highestDegree}
+                  onChange={handleChange}
+                />
+              </label>
 
-          <label>
-            Company:
-            <input
-              className="inp1"
-              type="text"
-              name="company"
-              value={formData.company}
-              onChange={handleChange}
-            />
-          </label>
-          </div>
+              <label>
+                Specialization:
+                <input
+                  className="inp1"
+                  type="text"
+                  name="specialization"
+                  value={formData.specialization}
+                  onChange={handleChange}
+                />
+              </label>
+            </div>
 
-          <div className="row">
-          <label>
-            Notable Work:
-            <textarea
-              className="inp1"
-              name="notableWork"
-              value={formData.notableWork}
-              onChange={handleChange}
-            />
-          </label>
+            <div className="row">
+              <label>
+                University:
+                <input
+                  className="inp1"
+                  type="text"
+                  name="university"
+                  value={formData.university}
+                  onChange={handleChange}
+                />
+              </label>
 
-          <label>
-            Contribution:
-            <textarea
-              className="inp1"
-              name="contribution"
-              value={formData.contribution}
-              onChange={handleChange}
-            />
-          </label>
-          </div>
+              <label>
+                Job Title:
+                <input
+                  className="inp1"
+                  type="text"
+                  name="jobTitle"
+                  value={formData.jobTitle}
+                  onChange={handleChange}
+                />
+              </label>
+            </div>
 
-          <div className="row">
-          <label>
-            Achievements:
-            <textarea
-              className="inp1"
-              name="achievements"
-              value={formData.achievements}
-              onChange={handleChange}
-            />
-          </label>
+            <div className="row">
+              <label>
+                Total Years of Experience:
+                <input
+                  className="inp1"
+                  type="text"
+                  name="experience"
+                  value={formData.experience}
+                  onChange={handleChange}
+                />
+              </label>
 
-          <label>
-            Education:
-            <input
-              className="inp1"
-              type="text"
-              name="education"
-              value={formData.education}
-              onChange={handleChange}
-            />
-          </label>
-          </div>
+              <label>
+                Industry:
+                <input
+                  className="inp1"
+                  type="text"
+                  name="industry"
+                  value={formData.industry}
+                  onChange={handleChange}
+                />
+              </label>
+            </div>
 
-          <div className="row">
-          <label>
-            Projects:
-            <textarea
-              className="inp1"
-              name="projects"
-              value={formData.projects}
-              onChange={handleChange}
-            />
-          </label>
+            <div className="row">
+              <label>
+                Achievements:
+                <input
+                  className="inp1"
+                  type="text"
+                  name="achievements"
+                  value={formData.achievements}
+                  onChange={handleChange}
+                />
+              </label>
 
-          <label >
-            Problems Solved:
-            <textarea
-              className="inp1"
-              name="problemsSolved"
-              value={formData.problemsSolved}
-              onChange={handleChange}
-            />
-          </label>
-          </div>
+              <label>
+                Impactful Work at Workplace:
+                <input
+                  className="inp1"
+                  type="text"
+                  name="impact"
+                  value={formData.impact}
+                  onChange={handleChange}
+                />
+              </label>
+            </div>
 
-          <div className="row">
-          <label>
-            Publishes:
-            <textarea
-              className="inp1"
-              name="publishes"
-              value={formData.publishes}
-              onChange={handleChange}
-            />
-          </label>
-          </div>
-          <button className="midBtn" type="submit">Submit</button>
-        </form>
+            <div className="row">
+              <label>
+                Notable Project:
+                <input
+                  className="inp1"
+                  type="text"
+                  name="projects"
+                  value={formData.projects}
+                  onChange={handleChange}
+                />
+              </label>
 
-        {generatedArticle && (
-          <div className="chat bot">
-            {/* <h2>Generated Article:</h2> */}
-            <img src={gptImgLogo} alt="" className="chatImg" />
-            <p className="txt">{generatedArticle}</p>
-          </div>
-        )}
+              <label>
+                Quantified Work:
+                <input
+                  className="inp1"
+                  type="text"
+                  name="quantifiedWorks"
+                  value={formData.quantifiedWorks}
+                  onChange={handleChange}
+                />
+              </label>
+            </div>
+
+            <div className="row">
+              <label>
+                Challenges Overcome:
+                <input
+                  className="inp1"
+                  type="text"
+                  name="challengesOvercome"
+                  value={formData.challengesOvercome}
+                  onChange={handleChange}
+                />
+              </label>
+
+              <label>
+                Publications:
+                <input
+                  className="inp1"
+                  type="text"
+                  name="publications"
+                  value={formData.publications}
+                  onChange={handleChange}
+                />
+              </label>
+            </div>
+
+            <div className="row">
+              <label>
+                Industry Insights:
+                <input
+                  className="inp1"
+                  type="text"
+                  name="industryInsight"
+                  value={formData.industryInsight}
+                  onChange={handleChange}
+                />
+              </label>
+            </div>
+            <button className="midBtn" type="submit">
+              Submit
+            </button>
+          </form>
+
+          {generatedArticle && (
+            <div className="chat bot">
+              {/* <h2>Generated Article:</h2> */}
+              <img src={download} alt="" className="chatImg" />
+              <p className="txt">{generatedArticle}</p>
+            </div>
+          )}
         </div>
       </div>
     </>
