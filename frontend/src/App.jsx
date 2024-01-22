@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./App.css";
+// import "./App.css";
 import Home from "./pages/Home/Home";
 import Form from "./pages/Form/Form";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";

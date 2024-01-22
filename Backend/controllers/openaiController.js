@@ -6,6 +6,8 @@ const openai = new OpenAI({
   apiKey: process.env.API,
 });
 // const openai = new OpenAIApi(configuration);
+// ft:gpt-3.5-turbo-0613:cache-labs-llc:article-writer:8fpwSCUY
+// ft:gpt-3.5-turbo-0613:cache-labs-llc:yt-tutorial:8hHNplz0
 
 exports.articlePrompt = async (req, res) => {
   const prompt = req.body.prompt;
@@ -22,6 +24,7 @@ exports.articlePrompt = async (req, res) => {
         { role: "user", content: prompt },
       ],
       max_tokens: 800,
+      temperature: 0.2,
     });
     console.log(response.choices[0]);
     res.status(200).json(response);
@@ -30,7 +33,7 @@ exports.articlePrompt = async (req, res) => {
   }
 };
 // // Set the prompt for generating text
-// const prompt = `Write an article about {harsh}'s journey in the field of {artificial intelligence}. {harsh} has {10} years of experience and currently works at {cache labs}. {harsh} is known for {google award for beast ai developer} and holds a degree in {btech from somaiya}.`;
+// const prompt = `Write an article about {harsh singh}'s journey in the field of {artificial intelligence}. {harsh singh} has {10} years of experience and currently works at {cache labs}. {harsh singh} is known for {google award for beast ai developer} and holds a degree in {btech in computer science from somaiya}.`;
 // // Call the OpenAI API to generate text
 // const article = async () => {
 //   const response = await openai.chat.completions.create({
