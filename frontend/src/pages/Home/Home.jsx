@@ -69,8 +69,8 @@ const Home = () => {
           </button>
           </Link>
           <div className="upperSideBottom">
-            <button className="query"><img src={msgIcon} alt="query"/><Link className="link" to="/">Prompt model</Link></button>
-            <button className="query"><img src={msgIcon} alt="query" /><Link className="link" to="/">Chat model</Link></button>
+          <Link className="link" to="/"><button className="query"><img src={msgIcon} alt="query"/>Prompt model</button></Link>
+          <Link className="link" to="/article-form/"><button className="query"><img src={msgIcon} alt="query" />Form model</button></Link>
 
           </div>
         </div>

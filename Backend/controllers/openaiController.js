@@ -18,7 +18,7 @@ exports.articlePrompt = async (req, res) => {
     }
     console.log(prompt, 124);
     const response = await openai.chat.completions.create({
-      model: "ft:gpt-3.5-turbo-0613:cache-labs-llc:article-writer:8fpwSCUY", // You may need to adjust the engine version
+      model: "ft:gpt-3.5-turbo-0613:cache-labs-llc:yt-tutorial:8hHNplz0", // You may need to adjust the engine version
       messages: [
         { role: "system", content: "You are an AI article writer." },
         { role: "user", content: prompt },
