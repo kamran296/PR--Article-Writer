@@ -1,4 +1,10 @@
 import React, { useState } from "react";
+import "./Form.css";
+import gptLogo from './assets/chatgpt.svg';
+import addBtn from './assets/add-30.png';
+import msgIcon from './assets/message.svg';
+import gptImgLogo from './assets/chatgptLogo.svg';
+import { Link } from 'react-router-dom'
 
 const Form = () => {
   const [formData, setFormData] = useState({
@@ -52,11 +58,34 @@ const Form = () => {
 
   return (
     <>
-      <div>
+      <div className="App">
+      <div className="sideBar">
+        <div className="upperSide">
+          <div className="upperSideTop">
+            <img src={gptLogo} alt="Logo" className="logo" />
+            <span className="brand">Article Writer</span>
+          </div>
+          <Link className="link" to="/">
+          <button className="midBtn" onClick={() => navigate('/')}>
+            <img src={addBtn} alt="new chat" className="addBtn" />
+            New Chat
+          </button>
+          </Link>
+          <div className="upperSideBottom">
+          <Link className="link" to="/"><button className="query"><img src={msgIcon} alt="query"/>Prompt model</button></Link>
+          <Link className="link" to="/article-form/"><button className="query"><img src={msgIcon} alt="query" />Form model</button></Link>
+
+          </div>
+        </div>
+        <div className="lowerside"></div>
+      </div>
+      <div className="main">
         <form onSubmit={handleSubmit}>
+          <div className="row">
           <label>
             Attribute:
             <input
+              className="inp1"
               type="text"
               name="attribute"
               value={formData.attribute}
@@ -67,16 +96,20 @@ const Form = () => {
           <label>
             Name:
             <input
+              className="inp1"
               type="text"
               name="name"
               value={formData.name}
               onChange={handleChange}
             />
           </label>
+          </div>
 
+          <div className="row">
           <label>
             Expertise:
             <input
+              className="inp1"
               type="text"
               name="expertise"
               value={formData.expertise}
@@ -87,16 +120,20 @@ const Form = () => {
           <label>
             Company:
             <input
+              className="inp1"
               type="text"
               name="company"
               value={formData.company}
               onChange={handleChange}
             />
           </label>
+          </div>
 
+          <div className="row">
           <label>
             Notable Work:
             <textarea
+              className="inp1"
               name="notableWork"
               value={formData.notableWork}
               onChange={handleChange}
@@ -106,15 +143,19 @@ const Form = () => {
           <label>
             Contribution:
             <textarea
+              className="inp1"
               name="contribution"
               value={formData.contribution}
               onChange={handleChange}
             />
           </label>
+          </div>
 
+          <div className="row">
           <label>
             Achievements:
             <textarea
+              className="inp1"
               name="achievements"
               value={formData.achievements}
               onChange={handleChange}
@@ -124,47 +165,59 @@ const Form = () => {
           <label>
             Education:
             <input
+              className="inp1"
               type="text"
               name="education"
               value={formData.education}
               onChange={handleChange}
             />
           </label>
+          </div>
 
+          <div className="row">
           <label>
             Projects:
             <textarea
+              className="inp1"
               name="projects"
               value={formData.projects}
               onChange={handleChange}
             />
           </label>
 
-          <label>
+          <label >
             Problems Solved:
             <textarea
+              className="inp1"
               name="problemsSolved"
               value={formData.problemsSolved}
               onChange={handleChange}
             />
           </label>
+          </div>
 
+          <div className="row">
           <label>
             Publishes:
             <textarea
+              className="inp1"
               name="publishes"
               value={formData.publishes}
               onChange={handleChange}
             />
           </label>
-          <button type="submit">Submit</button>
+          </div>
+          <button className="midBtn" type="submit">Submit</button>
         </form>
+
         {generatedArticle && (
-          <div>
-            <h2>Generated Article:</h2>
-            <p>{generatedArticle}</p>
+          <div className="chat bot">
+            {/* <h2>Generated Article:</h2> */}
+            <img src={gptImgLogo} alt="" className="chatImg" />
+            <p className="txt">{generatedArticle}</p>
           </div>
         )}
+        </div>
       </div>
     </>
   );
