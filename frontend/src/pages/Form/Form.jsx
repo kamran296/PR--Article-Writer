@@ -174,7 +174,7 @@ const Form = () => {
                 <input
                   className="inp1"
                   type="text"
-                  name="jobTitle"
+                  name="currentEmployer"
                   value={formData.currentEmployer}
                   onChange={handleChange}
                 />
