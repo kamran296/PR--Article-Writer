@@ -166,6 +166,9 @@ const Form = () => {
                   onChange={handleChange}
                 />
               </label>
+            </div>
+
+            <div className="row">
               <label>
                 Current Employer:
                 <input
@@ -176,9 +179,6 @@ const Form = () => {
                   onChange={handleChange}
                 />
               </label>
-            </div>
-
-            <div className="row">
               <label>
                 Total Years of Experience:
                 <input
@@ -189,7 +189,9 @@ const Form = () => {
                   onChange={handleChange}
                 />
               </label>
+            </div>
 
+            <div className="row">
               <label>
                 Industry:
                 <input
@@ -200,9 +202,6 @@ const Form = () => {
                   onChange={handleChange}
                 />
               </label>
-            </div>
-
-            <div className="row">
               <label>
                 Achievements:
                 <input
@@ -213,7 +212,9 @@ const Form = () => {
                   onChange={handleChange}
                 />
               </label>
+            </div>
 
+            <div className="row">
               <label>
                 Impactful Work at Workplace:
                 <input
@@ -224,9 +225,6 @@ const Form = () => {
                   onChange={handleChange}
                 />
               </label>
-            </div>
-
-            <div className="row">
               <label>
                 Notable Project:
                 <input
@@ -237,7 +235,9 @@ const Form = () => {
                   onChange={handleChange}
                 />
               </label>
+            </div>
 
+            <div className="row">
               <label>
                 Quantified Work:
                 <input
@@ -248,9 +248,6 @@ const Form = () => {
                   onChange={handleChange}
                 />
               </label>
-            </div>
-
-            <div className="row">
               <label>
                 Challenges Overcome:
                 <input
@@ -261,7 +258,9 @@ const Form = () => {
                   onChange={handleChange}
                 />
               </label>
+            </div>
 
+            <div className="row">
               <label>
                 Publications:
                 <input
@@ -272,9 +271,6 @@ const Form = () => {
                   onChange={handleChange}
                 />
               </label>
-            </div>
-
-            <div className="row">
               <label>
                 Industry Insights:
                 <input
