@@ -15,6 +15,7 @@ const Form = () => {
     specialization: "",
     university: "",
     jobTitle: "",
+    currentEmployer: "",
     experience: "",
     industry: "",
     achievements: "",
@@ -162,6 +163,16 @@ const Form = () => {
                   type="text"
                   name="jobTitle"
                   value={formData.jobTitle}
+                  onChange={handleChange}
+                />
+              </label>
+              <label>
+                Current Employer:
+                <input
+                  className="inp1"
+                  type="text"
+                  name="jobTitle"
+                  value={formData.currentEmployer}
                   onChange={handleChange}
                 />
               </label>
