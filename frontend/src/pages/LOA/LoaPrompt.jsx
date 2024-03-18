@@ -1,5 +1,13 @@
+// import React from "react";
+
+// const LoaPrompt = () => {
+//   return <div>Loa Prompt</div>;
+// };
+
+// export default LoaPrompt;
+
 import React, { useState } from "react";
-import "./Home.css";
+import "./loaprompt.css";
 import gptLogo from "./assets/chatgpt.svg";
 import addBtn from "./assets/add-30.png";
 import msgIcon from "./assets/message.svg";
@@ -9,7 +17,7 @@ import gptImgLogo from "./assets/chatgptLogo.svg";
 import download from "./assets/download.png";
 import { Link } from "react-router-dom";
 import SideBar from "../../components/SideBar";
-const Home = () => {
+const LoaPrompt = () => {
   const [formData, setFormData] = useState({
     prompt: "",
   });
@@ -29,7 +37,8 @@ const Home = () => {
     console.log("Generating Article!!");
     try {
       const response = await fetch(
-        "http://15.206.166.198/api/v1/ArticelWriter/articlePrompt",
+        // "http://15.206.166.198/api/v1/ArticelWriter/articlePrompt",
+        "http://localhost:5000/api/v1/ArticelWriter/loaPrompt",
         {
           method: "POST",
           headers: {
@@ -93,4 +102,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default LoaPrompt;

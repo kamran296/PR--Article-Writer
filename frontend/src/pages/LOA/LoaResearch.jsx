@@ -1,30 +1,27 @@
 import React, { useState } from "react";
-import "./Form.css";
-import gptLogo from "./assets/chatgpt.svg";
-import addBtn from "./assets/add-30.png";
-import msgIcon from "./assets/message.svg";
-import gptImgLogo from "./assets/chatgptLogo.svg";
+import "./loaform.css";
 import download from "./assets/download.png";
-import { Link } from "react-router-dom";
 
-const Form = () => {
+const LoaResearch = ({ type }) => {
   const [formData, setFormData] = useState({
-    name: "",
-    expertise: "",
-    highestDegree: "",
-    specialization: "",
-    university: "",
-    jobTitle: "",
-    currentEmployer: "",
-    experience: "",
-    industry: "",
-    achievements: "",
-    impact: "",
-    projects: "",
-    quantifiedWorks: "",
-    challengesOvercome: "",
-    publications: "",
-    industryInsight: "",
+    typeOfLOA: type,
+    recipientName: "",
+    recipientOrganization: "",
+    senderName: "",
+    senderOrganization: "",
+    senderRelationship: "",
+    concernedFieldOfWork: "",
+    nicheDomain: "",
+    sourceOfKnowledge: "",
+    previousContributions: "",
+    recipientRoleDescription: "",
+    responsibilitiesUndertaken: "",
+    keySkills: "",
+    project: "",
+    challengesFaced: "",
+    outcomeAchievements: "",
+    tokenOfGratitude: "",
+    letterContentCode: "",
   });
 
   const handleChange = (e) => {
@@ -34,13 +31,13 @@ const Form = () => {
       [name]: value,
     });
   };
-  const [generatedArticle, setGeneratedArticle] = useState("");
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Generating article");
     try {
       const response = await fetch(
-        "http://15.206.166.198/api/v1/ArticelWriter/articleForm",
+        "http://localhost:5000/api/v1/ArticelWriter/loaForm",
         {
           method: "POST",
           headers: {
@@ -56,77 +53,39 @@ const Form = () => {
           ? data.choices[0].message.content
           : "";
 
+      // Handle setting generated article state
       setGeneratedArticle(generatedArticleText);
     } catch (error) {
       console.error("Error:", error);
     }
   };
 
+  // State for generated article
+  const [generatedArticle, setGeneratedArticle] = useState("");
+
   return (
     <>
       <div className="App">
-        <div className="sideBar">
-          <div className="upperSide">
-            <div className="upperSideTop">
-              <img src={download} alt="Logo" className="logo" />
-              <span className="brand">Article Writer</span>
-            </div>
-            <Link className="link" to="/">
-              <button className="midBtn" onClick={() => navigate("/")}>
-                <img src={addBtn} alt="new chat" className="addBtn" />
-                New Chat
-              </button>
-            </Link>
-            <div className="upperSideBottom">
-              <Link className="link" to="/">
-                <button className="query">
-                  <img src={msgIcon} alt="query" />
-                  Prompt model
-                </button>
-              </Link>
-              <Link className="link" to="/article-form/">
-                <button className="query">
-                  <img src={msgIcon} alt="query" />
-                  Form model
-                </button>
-              </Link>
-              <Link className="link" to="/loa-prompt/">
-                <button className="query">
-                  <img src={msgIcon} alt="query" />
-                  LOA Prompt
-                </button>
-              </Link>
-              <Link className="link" to="/loa-form/">
-                <button className="query">
-                  <img src={msgIcon} alt="query" />
-                  LOA Form
-                </button>
-              </Link>
-            </div>
-          </div>
-          <div className="lowerside"></div>
-        </div>
         <div className="main">
           <form onSubmit={handleSubmit}>
             <div className="row">
               <label>
-                Name:
+                Recipient's Name:
                 <input
                   className="inp1"
                   type="text"
-                  name="name"
-                  value={formData.name}
+                  name="recipientName"
+                  value={formData.recipientName}
                   onChange={handleChange}
                 />
               </label>
-
               <label>
-                Expertise:
+                Recipient's Organization/University:
                 <input
                   className="inp1"
                   type="text"
-                  name="expertise"
-                  value={formData.expertise}
+                  name="recipientOrganization"
+                  value={formData.recipientOrganization}
                   onChange={handleChange}
                 />
               </label>
@@ -134,23 +93,22 @@ const Form = () => {
 
             <div className="row">
               <label>
-                Highest Degree:
+                Sender's Name:
                 <input
                   className="inp1"
                   type="text"
-                  name="highestDegree"
-                  value={formData.highestDegree}
+                  name="senderName"
+                  value={formData.senderName}
                   onChange={handleChange}
                 />
               </label>
-
               <label>
-                Specialization:
+                Sender's Organization/Institution:
                 <input
                   className="inp1"
                   type="text"
-                  name="specialization"
-                  value={formData.specialization}
+                  name="senderOrganization"
+                  value={formData.senderOrganization}
                   onChange={handleChange}
                 />
               </label>
@@ -158,23 +116,22 @@ const Form = () => {
 
             <div className="row">
               <label>
-                University:
+                Sender's Relationship with the Recipient:
                 <input
                   className="inp1"
                   type="text"
-                  name="university"
-                  value={formData.university}
+                  name="senderRelationship"
+                  value={formData.senderRelationship}
                   onChange={handleChange}
                 />
               </label>
-
               <label>
-                Job Title:
+                Concerned Field of Work:
                 <input
                   className="inp1"
                   type="text"
-                  name="jobTitle"
-                  value={formData.jobTitle}
+                  name="concernedFieldOfWork"
+                  value={formData.concernedFieldOfWork}
                   onChange={handleChange}
                 />
               </label>
@@ -182,22 +139,22 @@ const Form = () => {
 
             <div className="row">
               <label>
-                Current Employer:
+                Niche Domain (if any):
                 <input
                   className="inp1"
                   type="text"
-                  name="currentEmployer"
-                  value={formData.currentEmployer}
+                  name="nicheDomain"
+                  value={formData.nicheDomain}
                   onChange={handleChange}
                 />
               </label>
               <label>
-                Total Years of Experience:
+                Source of Knowledge:
                 <input
                   className="inp1"
                   type="text"
-                  name="experience"
-                  value={formData.experience}
+                  name="sourceOfKnowledge"
+                  value={formData.sourceOfKnowledge}
                   onChange={handleChange}
                 />
               </label>
@@ -205,100 +162,94 @@ const Form = () => {
 
             <div className="row">
               <label>
-                Industry:
+                Previous Contributions:
                 <input
                   className="inp1"
                   type="text"
-                  name="industry"
-                  value={formData.industry}
+                  name="previousContributions"
+                  value={formData.previousContributions}
                   onChange={handleChange}
                 />
               </label>
               <label>
-                Achievements:
+                Reciepent Role Description
                 <input
                   className="inp1"
                   type="text"
-                  name="achievements"
-                  value={formData.achievements}
+                  name="recipientRoleDescription"
+                  value={formData.recipientRoleDescription}
                   onChange={handleChange}
                 />
               </label>
             </div>
-
             <div className="row">
               <label>
-                Impactful Work at Workplace:
+                Responsibilities Undertaken:
                 <input
                   className="inp1"
                   type="text"
-                  name="impact"
-                  value={formData.impact}
+                  name="responsibilitiesUndertaken"
+                  value={formData.responsibilitiesUndertaken}
                   onChange={handleChange}
                 />
               </label>
               <label>
-                Notable Project:
+                Reciepent Key Skills:
                 <input
                   className="inp1"
                   type="text"
-                  name="projects"
-                  value={formData.projects}
+                  name="keySkills"
+                  value={formData.keySkills}
                   onChange={handleChange}
                 />
               </label>
             </div>
-
             <div className="row">
               <label>
-                Quantified Work:
+                Projects:
                 <input
                   className="inp1"
                   type="text"
-                  name="quantifiedWorks"
-                  value={formData.quantifiedWorks}
+                  name="project"
+                  value={formData.project}
                   onChange={handleChange}
                 />
               </label>
               <label>
-                Challenges Overcome:
+                Challenges Faced:
                 <input
                   className="inp1"
                   type="text"
-                  name="challengesOvercome"
-                  value={formData.challengesOvercome}
+                  name="challengesFaced"
+                  value={formData.challengesFaced}
                   onChange={handleChange}
                 />
               </label>
             </div>
-
             <div className="row">
               <label>
-                Publications:
+                Outcome /Achievements:
                 <input
                   className="inp1"
                   type="text"
-                  name="publications"
-                  value={formData.publications}
+                  name="outcomeAchievements"
+                  value={formData.outcomeAchievements}
                   onChange={handleChange}
                 />
               </label>
               <label>
-                Industry Insights:
+                Token Of Gratitude:
                 <input
                   className="inp1"
                   type="text"
-                  name="industryInsight"
-                  value={formData.industryInsight}
+                  name="tokenOfGratitude"
+                  value={formData.tokenOfGratitude}
                   onChange={handleChange}
                 />
               </label>
             </div>
-            <button className="midBtn" type="submit">
-              Submit
-            </button>
+            <button type="Submit">Generate LOA</button>
           </form>
-
           {generatedArticle && (
             <div className="chat bot">
               {/* <h2>Generated Article:</h2> */}
@@ -312,4 +263,4 @@ const Form = () => {
   );
 };
 
-export default Form;
+export default LoaResearch;
