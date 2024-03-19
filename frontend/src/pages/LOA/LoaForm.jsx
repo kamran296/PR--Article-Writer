@@ -108,7 +108,9 @@ const LoaForm = () => {
               <TabPanel value="2">
                 <LoaResearch type={"Research Paper"} />
               </TabPanel>
-              <TabPanel value="3">Item Three</TabPanel>
+              <TabPanel value="3">
+                <LoaCritical type={"Original Contribution"} />
+              </TabPanel>
             </TabContext>
           </Box>
 

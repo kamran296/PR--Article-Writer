@@ -14,13 +14,14 @@ const LoaResearch = ({ type }) => {
     nicheDomain: "",
     sourceOfKnowledge: "",
     previousContributions: "",
-    recipientRoleDescription: "",
-    responsibilitiesUndertaken: "",
-    keySkills: "",
-    project: "",
-    challengesFaced: "",
-    outcomeAchievements: "",
-    tokenOfGratitude: "",
+    recognitionOrAwards: "",
+    titleOfPaper: "",
+    AspectOfPaper: "",
+    noveltyOfWork: "",
+    significanceForFutureWork: "",
+    takeawayFromPaper: "",
+    detailedDescription: "",
+    Publication: "",
     letterContentCode: "",
   });
 
@@ -172,78 +173,78 @@ const LoaResearch = ({ type }) => {
                 />
               </label>
               <label>
-                Reciepent Role Description
+                Title of paper
                 <input
                   className="inp1"
                   type="text"
-                  name="recipientRoleDescription"
-                  value={formData.recipientRoleDescription}
+                  name="titleOfPaper"
+                  value={formData.titleOfPaper}
                   onChange={handleChange}
                 />
               </label>
             </div>
             <div className="row">
               <label>
-                Responsibilities Undertaken:
+                Aspect Of Paper
                 <input
                   className="inp1"
                   type="text"
-                  name="responsibilitiesUndertaken"
-                  value={formData.responsibilitiesUndertaken}
+                  name="AspectOfPaper"
+                  value={formData.AspectOfPaper}
                   onChange={handleChange}
                 />
               </label>
               <label>
-                Reciepent Key Skills:
+                Novelty Of Work
                 <input
                   className="inp1"
                   type="text"
-                  name="keySkills"
-                  value={formData.keySkills}
-                  onChange={handleChange}
-                />
-              </label>
-            </div>
-            <div className="row">
-              <label>
-                Projects:
-                <input
-                  className="inp1"
-                  type="text"
-                  name="project"
-                  value={formData.project}
-                  onChange={handleChange}
-                />
-              </label>
-              <label>
-                Challenges Faced:
-                <input
-                  className="inp1"
-                  type="text"
-                  name="challengesFaced"
-                  value={formData.challengesFaced}
+                  name="noveltyOfWork"
+                  value={formData.noveltyOfWork}
                   onChange={handleChange}
                 />
               </label>
             </div>
             <div className="row">
               <label>
-                Outcome /Achievements:
+                Significance For Future Works:
                 <input
                   className="inp1"
                   type="text"
-                  name="outcomeAchievements"
-                  value={formData.outcomeAchievements}
+                  name="significanceForFutureWork"
+                  value={formData.significanceForFutureWork}
                   onChange={handleChange}
                 />
               </label>
               <label>
-                Token Of Gratitude:
+                Takeaway From Paper
                 <input
                   className="inp1"
                   type="text"
-                  name="tokenOfGratitude"
-                  value={formData.tokenOfGratitude}
+                  name="takeawayFromPaper"
+                  value={formData.takeawayFromPaper}
+                  onChange={handleChange}
+                />
+              </label>
+            </div>
+            <div className="row">
+              <label>
+                Detailed Description
+                <input
+                  className="inp1"
+                  type="text"
+                  name="detailedDescription"
+                  value={formData.detailedDescription}
+                  onChange={handleChange}
+                />
+              </label>
+              <label>
+                Publication
+                <input
+                  className="inp1"
+                  type="text"
+                  name="Publication"
+                  value={formData.Publication}
                   onChange={handleChange}
                 />
               </label>

@@ -104,10 +104,46 @@ exports.loaForm = async (req, res) => {
         `Outcome/Achievements: ${formData.outcomeAchievements}\n` +
         `Token of Gratitude: ${formData.tokenOfGratitude}\n` +
         `Letter content code: ${formData.letterContentCode}`;
+    } else if (role === "Research Paper") {
+      prompt =
+        `Recipient's Name: ${formData.recipientName}\n` +
+        `Recipient's Organization/University: ${formData.recipientOrganization}\n` +
+        `Sender's Name: ${formData.senderName}\n` +
+        `Sender's Organization/Institution: ${formData.senderOrganization}\n` +
+        `Sender's Relationship with the Recipient: ${formData.senderRelationship}\n` +
+        `Concerned Field of Work: ${formData.concernedFieldOfWork}\n` +
+        `Niche Domain (if any): ${formData.nicheDomain}\n` +
+        `Source of Knowledge: ${formData.sourceOfKnowledge}\n` +
+        `Previous Contributions: ${formData.previousContributions}\n` +
+        `Recipient's Critical Role Description: ${formData.recipientRoleDescription}\n` +
+        `Responsibilities Undertaken: ${formData.responsibilitiesUndertaken}\n` +
+        `Key Skills: ${formData.keySkills}\n` +
+        `Project: ${formData.project}\n` +
+        `Outcome/Achievements: ${formData.outcomeAchievements}\n` +
+        `Token of Gratitude: ${formData.tokenOfGratitude}\n` +
+        `Letter content code: ${formData.letterContentCode}`;
+    } else if (role === "Original Contribution") {
+      prompt =
+        `Recipient's Name: ${formData.recipientName}\n` +
+        `Recipient's Organization/University: ${formData.recipientOrganization}\n` +
+        `Sender's Name: ${formData.senderName}\n` +
+        `Sender's Organization/Institution: ${formData.senderOrganization}\n` +
+        `Sender's Relationship with the Recipient: ${formData.senderRelationship}\n` +
+        `Concerned Field of Work: ${formData.concernedFieldOfWork}\n` +
+        `Niche Domain (if any): ${formData.nicheDomain}\n` +
+        `Source of Knowledge: ${formData.sourceOfKnowledge}\n` +
+        `Previous Contributions: ${formData.previousContributions}\n` +
+        `Recipient's recognition Or Awards: ${formData.recognitionOrAwards}\n` +
+        `Title of Paper: ${formData.titleOfPaper}\n` +
+        `Aspect Of Paper: ${formData.AspectOfPaper}\n` +
+        `Novelty Of Work: ${formData.noveltyOfWork}\n` +
+        `Significance For Future Work: ${formData.significanceForFutureWork}\n` +
+        `Detailed Description: ${formData.detailedDescription}\n` +
+        `Letter content code: ${formData.Publication}`;
     }
-
     const response = await openai.chat.completions.create({
       model: "ft:gpt-3.5-turbo-0125:cache-labs-llc:article-writer:8zrkDK1q", // You may need to adjust the engine version
+      // model: "ft:gpt-3.5-turbo-0125:cache-labs-llc:article-writer:9460S2UQ",
       messages: [
         {
           role: "system",
@@ -115,10 +151,11 @@ exports.loaForm = async (req, res) => {
         },
         { role: "user", content: prompt },
       ],
-      temperature: 0.5,
+      temperature: 0.4,
       max_tokens: 800,
     });
-    console.log(response.choices[0].message.content);
+    // console.log(response.choices[0].message.content, 123);
+    console.log(response);
     res.status(200).json(response);
   } catch (error) {
     console.log(error);
