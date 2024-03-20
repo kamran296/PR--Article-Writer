@@ -78,14 +78,6 @@ const LoaForm = () => {
               </TabPanel>
             </TabContext>
           </Box>
-
-          {generatedArticle && (
-            <div className="chat bot">
-              {/* <h2>Generated Article:</h2> */}
-              <img src={download} alt="" className="chatImg" />
-              <p className="txt">{generatedArticle}</p>
-            </div>
-          )}
         </div>
       </div>
     </>
