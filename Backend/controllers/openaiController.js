@@ -37,24 +37,9 @@ exports.articleForm = async (req, res) => {
   try {
     const formData = req.body;
 
-    const prompt = `
-      Name: ${formData.name}
-      Expertise: ${formData.expertise}
-      Highest Degree: ${formData.highestDegree}
-      Specialization: ${formData.specialization}
-      University: ${formData.university}
-      Job Title: ${formData.jobTitle}
-      Current Employer: ${formData.currentEmployer}
-      Experience: ${formData.experience}
-      Industry: ${formData.industry}
-      Achievements: ${formData.achievements}
-      Impact: ${formData.impact}
-      Projects: ${formData.projects}
-      Quantified Works: ${formData.quantifiedWorks}
-      Challenges Overcome: ${formData.challengesOvercome}
-      Publications: ${formData.publications}
-      Industry Insight: ${formData.industryInsight}
-    `;
+    const prompt = `Write a PR article on ${formData.name} who is an ${formData.expertise} working at ${formData.company} and has ${formData.experience} years of experience in the industry. 
+    ${formData.name} graduated from ${formData.education}. Notable achievements include ${formData.awards}. ${formData.name} also contributed to a significant project: ${formData.project}. 
+    ${formData.name} had a significant impact on the industry, earning them awards. He has authored works, including ${formData.publications}.`;
 
     const response = await openai.chat.completions.create({
       model: "ft:gpt-3.5-turbo-0613:cache-labs-llc:yt-tutorial:8hHNplz0", // You may need to adjust the engine version
@@ -98,72 +83,119 @@ exports.loaPrompt = async (req, res) => {
   }
 };
 
-exports.loaForm = async (req, res) => {
+exports.loaFormCritical = async (req, res) => {
   try {
     const formData = req.body;
-    console.log(formData);
+    console.log(formData, 1234);
     const role = formData.typeOfLOA;
     let prompt = "";
-    if (role === "Critical Role") {
-      prompt =
-        `Recipient's Name: ${formData.recipientName}\n` +
-        `Recipient's Organization/University: ${formData.recipientOrganization}\n` +
-        `Sender's Name: ${formData.senderName}\n` +
-        `Sender's Organization/Institution: ${formData.senderOrganization}\n` +
-        `Sender's Relationship with the Recipient: ${formData.senderRelationship}\n` +
-        `Concerned Field of Work: ${formData.concernedFieldOfWork}\n` +
-        `Niche Domain (if any): ${formData.nicheDomain}\n` +
-        `Source of Knowledge: ${formData.sourceOfKnowledge}\n` +
-        `Previous Contributions: ${formData.previousContributions}\n` +
-        `Recipient's Critical Role Description: ${formData.recipientRoleDescription}\n` +
-        `Responsibilities Undertaken: ${formData.responsibilitiesUndertaken}\n` +
-        `Key Skills: ${formData.keySkills}\n` +
-        `Project: ${formData.project}\n` +
-        `Outcome/Achievements: ${formData.outcomeAchievements}\n` +
-        `Token of Gratitude: ${formData.tokenOfGratitude}\n`;
-    } else if (role === "Original Contribution") {
-      prompt =
-        `Recipient's Name: ${formData.recipientName}\n` +
-        `Recipient's Organization/University: ${formData.recipientOrganization}\n` +
-        `Sender's Name: ${formData.senderName}\n` +
-        `Sender's Organization/Institution: ${formData.senderOrganization}\n` +
-        `Sender's Relationship with the Recipient: ${formData.senderRelationship}\n` +
-        `Concerned Field of Work: ${formData.concernedFieldOfWork}\n` +
-        `Niche Domain (if any): ${formData.nicheDomain}\n` +
-        `Source of Knowledge: ${formData.sourceOfKnowledge}\n` +
-        `Previous Contributions: ${formData.previousContributions}\n` +
-        `Recipient's Critical Role Description: ${formData.recipientRoleDescription}\n` +
-        `Responsibilities Undertaken: ${formData.responsibilitiesUndertaken}\n` +
-        `Key Skills: ${formData.keySkills}\n` +
-        `Project: ${formData.project}\n` +
-        `Outcome/Achievements: ${formData.outcomeAchievements}\n` +
-        `Token of Gratitude: ${formData.tokenOfGratitude}\n`;
-    } else if ((role = "Research Paper publication")) {
-      prompt =
-        `Recipient's Name: ${formData.recipientName}\n` +
-        `Recipient's Organization/University: ${formData.recipientOrganization}\n` +
-        `Sender's Name: ${formData.senderName}\n` +
-        `Sender's Organization/Institution: ${formData.senderOrganization}\n` +
-        `Sender's Relationship with the Recipient: ${formData.senderRelationship}\n` +
-        `Concerned Field of Work: ${formData.concernedFieldOfWork}\n` +
-        `Niche Domain (if any): ${formData.nicheDomain}\n` +
-        `Source of Knowledge: ${formData.sourceOfKnowledge}\n` +
-        `Previous Contributions: ${formData.previousContributions}\n` +
-        `Recipient's recognition Or Awards: ${formData.recognitionOrAwards}\n` +
-        `Title of Paper: ${formData.titleOfPaper}\n` +
-        `Aspect Of Paper: ${formData.AspectOfPaper}\n` +
-        `Novelty Of Work: ${formData.noveltyOfWork}\n` +
-        `Significance For Future Work: ${formData.significanceForFutureWork}\n` +
-        `Detailed Description: ${formData.detailedDescription}\n` +
-        `Publication: ${formData.Publication}`;
-    }
+
+    prompt = `Generate a Letter of Appreciation for ${formData.recipientName} from ${formData.recipientOrganization} received from ${formData.senderName}. 
+    The sender's relationship with the recipient is ${formData.senderRelationship}. 
+    The concerned field of work is ${formData.concernedFieldOfWork}, with a focus on ${formData.nicheDomain}. 
+    The source of knowledge regarding the recipient's contributions is ${formData.sourceOfKnowledge}. 
+    Previous contributions by the recipient include ${formData.previousContributions}. 
+    The LOA setting is ${formData.loaSetting}, and the type of LOA is ${formData.typeOfLOA}. 
+    Recipient's critical role description involves ${formData.recipientRoleDescription}. 
+    Responsibilities undertaken by the recipient include ${formData.responsibilitiesUndertaken}. 
+    Key skills possessed by the recipient include ${formData.keySkills}. 
+    Project details the recipient has worked on include ${formData.project}. 
+    Outcomes/achievements include ${formData.outcomeAchievements}. 
+    The sender expresses gratitude through ${formData.tokenOfGratitude}. 
+    Please generate a letter of appreciation based on the provided information.`;
+
     const response = await openai.chat.completions.create({
       // model: "ft:gpt-3.5-turbo-0125:cache-labs-llc:article-writer:8zrkDK1q", // You may need to adjust the engine version
       model: "ft:gpt-3.5-turbo-0125:cache-labs-llc:article-writer:9460S2UQ",
       messages: [
         {
           role: "system",
-          content: `AI Letter of Appreciation writer for ${role} LOA `,
+          content: `AI Letter of Appreciation writer for Critical Role LOA `,
+        },
+        { role: "user", content: prompt },
+      ],
+      temperature: 0.5,
+      max_tokens: 1200,
+    });
+    // console.log(response.choices[0].message.content, 123);
+    console.log(response);
+    res.status(200).json(response);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json(error);
+  }
+};
+
+exports.loaFormResearch = async (req, res) => {
+  try {
+    const formData = req.body;
+    console.log(formData, 1234);
+    const role = formData.typeOfLOA;
+    let prompt = "";
+    prompt = `Generate a Letter of Appreciation for ${formData.recipientName} from ${formData.recipientOrganization} received from ${formData.senderName}. 
+    The sender's relationship with the recipient is ${formData.senderRelationship}. 
+    The concerned field of work is ${formData.fieldOfWork}, with a focus on ${formData.nicheDomain}. 
+    The source of knowledge regarding the recipient's contributions is ${formData.sourceOfKnowledge}. 
+    Recognition or awards conferred to the addressee include ${formData.recognitionOrAwards}. 
+    The LOA setting is ${formData.loaSetting}, and the type of LOA is ${formData.typeOfLOA}. 
+    Title of the paper authored by the recipient is ${formData.titleOfPaper}. 
+    The aspect addressed by the paper is ${formData.aspectAddressed}. 
+    The novelty of work and significance for future work are ${formData.noveltySignificance}. 
+    A notable takeaway from the paper is ${formData.takeaway}. 
+    Detailed description of the paper's impact includes ${formData.paperImpact}. 
+    The publication where the paper was published is ${formData.publication}. 
+    Please generate a letter of appreciation based on the provided information.`;
+
+    const response = await openai.chat.completions.create({
+      // model: "ft:gpt-3.5-turbo-0125:cache-labs-llc:article-writer:8zrkDK1q", // You may need to adjust the engine version
+      model: "ft:gpt-3.5-turbo-0125:cache-labs-llc:article-writer:9460S2UQ",
+      messages: [
+        {
+          role: "system",
+          content: `AI Letter of Appreciation writer for Research Paper publication LOA`,
+        },
+        { role: "user", content: prompt },
+      ],
+      temperature: 0.5,
+      max_tokens: 1200,
+    });
+    // console.log(response.choices[0].message.content, 123);
+    console.log(response);
+    res.status(200).json(response);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json(error);
+  }
+};
+
+exports.loaFormOriginal = async (req, res) => {
+  try {
+    const formData = req.body;
+    console.log(formData, 1234);
+    const role = formData.typeOfLOA;
+    let prompt = "";
+
+    prompt = `Generate a Letter of Appreciation for ${formData.recipientName} from ${formData.recipientOrganization} received from ${formData.senderName}. 
+    The sender's relationship with the recipient is ${formData.senderRelationship}. 
+    The concerned field of work is ${formData.concernedFieldOfWork}, with a focus on ${formData.nicheDomain}. 
+    The source of knowledge regarding the recipient's contributions is ${formData.sourceOfKnowledge}. 
+    Previous contributions by the recipient include ${formData.previousContributions}. 
+    The LOA setting is ${formData.loaSetting}, and the type of LOA is ${formData.typeOfLOA}. 
+    Recipient's critical role description involves ${formData.recipientRoleDescription}. 
+    Responsibilities undertaken by the recipient include ${formData.responsibilitiesUndertaken}. 
+    Key skills possessed by the recipient include ${formData.keySkills}. 
+    Project details the recipient has worked on include ${formData.project}. 
+    Outcomes/achievements include ${formData.outcomeAchievements}. 
+    The sender expresses gratitude through ${formData.tokenOfGratitude}. 
+    Please generate a letter of appreciation based on the provided information.`;
+
+    const response = await openai.chat.completions.create({
+      // model: "ft:gpt-3.5-turbo-0125:cache-labs-llc:article-writer:8zrkDK1q", // You may need to adjust the engine version
+      model: "ft:gpt-3.5-turbo-0125:cache-labs-llc:article-writer:9460S2UQ",
+      messages: [
+        {
+          role: "system",
+          content: `AI Letter of Appreciation writer for Original Contribution LOA`,
         },
         { role: "user", content: prompt },
       ],

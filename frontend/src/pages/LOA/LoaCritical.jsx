@@ -21,7 +21,6 @@ const LoaCritical = ({ type }) => {
     challengesFaced: "",
     outcomeAchievements: "",
     tokenOfGratitude: "",
-    letterContentCode: "",
   });
 
   const handleChange = (e) => {
@@ -37,8 +36,8 @@ const LoaCritical = ({ type }) => {
     console.log("Generating article");
     try {
       const response = await fetch(
-        "http://15.206.166.198/api/v1/ArticelWriter/loaForm",
-        // "http://localhost:5000/api/v1/ArticelWriter/loaForm",
+        "http://15.206.166.198/api/v1/ArticelWriter/loa-critical",
+        // "http://localhost:5000/api/v1/ArticelWriter/loa-critical",
         {
           method: "POST",
           headers: {

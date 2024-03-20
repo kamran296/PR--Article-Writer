@@ -17,6 +17,7 @@ import TabPanel from "@mui/lab/TabPanel";
 import SideBar from "../../components/SideBar";
 import LoaCritical from "./LoaCritical";
 import LoaResearch from "./LoaResearch";
+import LoaOriginal from "./LoaOriginal";
 const LoaForm = () => {
   const [value, setValue] = React.useState("1");
 
@@ -71,10 +72,10 @@ const LoaForm = () => {
                 <LoaCritical type={"Critical Role"} />
               </TabPanel>
               <TabPanel value="2">
-                <LoaResearch type={"Research Paper publication "} />
+                <LoaResearch type={"Research Paper publication"} />
               </TabPanel>
               <TabPanel value="3">
-                <LoaCritical type={"Original Contribution"} />
+                <LoaOriginal type={"Original Contribution"} />
               </TabPanel>
             </TabContext>
           </Box>

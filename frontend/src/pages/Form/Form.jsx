@@ -41,6 +41,7 @@ const Form = () => {
     try {
       const response = await fetch(
         "http://15.206.166.198/api/v1/ArticelWriter/articleForm",
+        // "http://localhost:5000/api/v1/ArticelWriter/articleForm",
         {
           method: "POST",
           headers: {
