@@ -37,8 +37,8 @@ const LoaPrompt = () => {
     console.log("Generating Article!!");
     try {
       const response = await fetch(
-        "http://15.206.166.198/api/v1/ArticelWriter/loaPrompt",
-        // "http://localhost:5000/api/v1/ArticelWriter/loaPrompt",
+        // "http://15.206.166.198/api/v1/ArticelWriter/loaPrompt",
+        "http://localhost:5000/api/v1/ArticelWriter/loaPrompt",
         {
           method: "POST",
           headers: {
