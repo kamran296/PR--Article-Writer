@@ -37,7 +37,25 @@ exports.articleForm = async (req, res) => {
   try {
     const formData = req.body;
 
-    const prompt = `write a article on ${formData.Name}, who is a professional with expertise in ${formData.expertise}. Holding a ${formData.highestDegree} in ${formData.specialization} from ${formData.university}, ${formData.name} currently serves as ${formData.jobTitle} at ${formData.currentEmployer} with ${formData.experience} years of rich experience in ${formData.industry}. Known for ${formData.achievements}, ${formData.name} has made significant contributions through ${formData.impact} and successfully led ${formData.projects}. With a track record of ${formData.quantifiedWorks}, ${formData.name} has overcome challenges like ${formData.challengesOvercome}. Additionally, ${formData.name} has published ${formData.publications} and offers valuable ${formData.industryInsight}.`;
+    const prompt = `
+      Name: ${formData.name}
+      Expertise: ${formData.expertise}
+      Highest Degree: ${formData.highestDegree}
+      Specialization: ${formData.specialization}
+      University: ${formData.university}
+      Job Title: ${formData.jobTitle}
+      Current Employer: ${formData.currentEmployer}
+      Experience: ${formData.experience}
+      Industry: ${formData.industry}
+      Achievements: ${formData.achievements}
+      Impact: ${formData.impact}
+      Projects: ${formData.projects}
+      Quantified Works: ${formData.quantifiedWorks}
+      Challenges Overcome: ${formData.challengesOvercome}
+      Publications: ${formData.publications}
+      Industry Insight: ${formData.industryInsight}
+    `;
+
     const response = await openai.chat.completions.create({
       model: "ft:gpt-3.5-turbo-0613:cache-labs-llc:yt-tutorial:8hHNplz0", // You may need to adjust the engine version
       messages: [
@@ -120,7 +138,7 @@ exports.loaForm = async (req, res) => {
         `Project: ${formData.project}\n` +
         `Outcome/Achievements: ${formData.outcomeAchievements}\n` +
         `Token of Gratitude: ${formData.tokenOfGratitude}\n`;
-    } else if ((role = "Research Paper")) {
+    } else if ((role = "Research Paper publication")) {
       prompt =
         `Recipient's Name: ${formData.recipientName}\n` +
         `Recipient's Organization/University: ${formData.recipientOrganization}\n` +
@@ -143,10 +161,6 @@ exports.loaForm = async (req, res) => {
       // model: "ft:gpt-3.5-turbo-0125:cache-labs-llc:article-writer:8zrkDK1q", // You may need to adjust the engine version
       model: "ft:gpt-3.5-turbo-0125:cache-labs-llc:article-writer:9460S2UQ",
       messages: [
-        // {
-        //   role: "system",
-        //   content: `AI Letter of Appreciation Generator for ${role}`,
-        // },
         {
           role: "system",
           content: `AI Letter of Appreciation writer for ${role} LOA `,

@@ -71,7 +71,7 @@ const LoaForm = () => {
                 <LoaCritical type={"Critical Role"} />
               </TabPanel>
               <TabPanel value="2">
-                <LoaResearch type={"Research Paper"} />
+                <LoaResearch type={"Research Paper publication "} />
               </TabPanel>
               <TabPanel value="3">
                 <LoaCritical type={"Original Contribution"} />
