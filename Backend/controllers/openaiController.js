@@ -70,7 +70,7 @@ exports.loaPrompt = async (req, res) => {
         { role: "user", content: prompt },
       ],
       temperature: 0.5,
-      max_tokens: 300,
+      max_tokens: 800,
     });
     console.log(response.choices[0].message.content);
     res.status(200).json(response);
@@ -102,9 +102,8 @@ exports.loaForm = async (req, res) => {
         `Key Skills: ${formData.keySkills}\n` +
         `Project: ${formData.project}\n` +
         `Outcome/Achievements: ${formData.outcomeAchievements}\n` +
-        `Token of Gratitude: ${formData.tokenOfGratitude}\n` +
-        `Letter content code: ${formData.letterContentCode}`;
-    } else if (role === "Research Paper") {
+        `Token of Gratitude: ${formData.tokenOfGratitude}\n`;
+    } else if (role === "Original Contribution") {
       prompt =
         `Recipient's Name: ${formData.recipientName}\n` +
         `Recipient's Organization/University: ${formData.recipientOrganization}\n` +
@@ -120,9 +119,8 @@ exports.loaForm = async (req, res) => {
         `Key Skills: ${formData.keySkills}\n` +
         `Project: ${formData.project}\n` +
         `Outcome/Achievements: ${formData.outcomeAchievements}\n` +
-        `Token of Gratitude: ${formData.tokenOfGratitude}\n` +
-        `Letter content code: ${formData.letterContentCode}`;
-    } else if (role === "Original Contribution") {
+        `Token of Gratitude: ${formData.tokenOfGratitude}\n`;
+    } else if ((role = "Research Paper")) {
       prompt =
         `Recipient's Name: ${formData.recipientName}\n` +
         `Recipient's Organization/University: ${formData.recipientOrganization}\n` +
@@ -139,20 +137,24 @@ exports.loaForm = async (req, res) => {
         `Novelty Of Work: ${formData.noveltyOfWork}\n` +
         `Significance For Future Work: ${formData.significanceForFutureWork}\n` +
         `Detailed Description: ${formData.detailedDescription}\n` +
-        `Letter content code: ${formData.Publication}`;
+        `Publication: ${formData.Publication}`;
     }
     const response = await openai.chat.completions.create({
-      model: "ft:gpt-3.5-turbo-0125:cache-labs-llc:article-writer:8zrkDK1q", // You may need to adjust the engine version
-      // model: "ft:gpt-3.5-turbo-0125:cache-labs-llc:article-writer:9460S2UQ",
+      // model: "ft:gpt-3.5-turbo-0125:cache-labs-llc:article-writer:8zrkDK1q", // You may need to adjust the engine version
+      model: "ft:gpt-3.5-turbo-0125:cache-labs-llc:article-writer:9460S2UQ",
       messages: [
+        // {
+        //   role: "system",
+        //   content: `AI Letter of Appreciation Generator for ${role}`,
+        // },
         {
           role: "system",
-          content: `AI Letter of Appreciation Generator for ${role}`,
+          content: `AI Letter of Appreciation writer for ${role} LOA `,
         },
         { role: "user", content: prompt },
       ],
       temperature: 0.4,
-      max_tokens: 800,
+      max_tokens: 1200,
     });
     // console.log(response.choices[0].message.content, 123);
     console.log(response);
