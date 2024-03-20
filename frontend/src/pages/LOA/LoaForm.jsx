@@ -42,41 +42,6 @@ const LoaForm = () => {
     industryInsight: "",
   });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
-  const [generatedArticle, setGeneratedArticle] = useState("");
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    console.log("Generating article");
-    try {
-      const response = await fetch(
-        "http://15.206.166.198/api/v1/ArticelWriter/articleForm",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        }
-      );
-      const data = await response.json();
-      console.log(data);
-      const generatedArticleText =
-        data.choices && data.choices[0] && data.choices[0].message
-          ? data.choices[0].message.content
-          : "";
-
-      setGeneratedArticle(generatedArticleText);
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  };
-
   return (
     <>
       <div className="App">
