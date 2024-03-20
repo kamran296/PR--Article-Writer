@@ -24,15 +24,6 @@ app.get("/*", function (req, res) {
   );
 });
 
-// const db = process.env.DBURL;
-// mongoose
-//   .connect(db, {
-//     useUnifiedTopology: true,
-//   })
-//   .then(() => {
-//     console.log("Database Connected Successfully!!");
-//   });
-
 const openaiRouter = require("./router/openaiRouter");
 
 app.use("/api/v1/ArticelWriter", openaiRouter);
