@@ -90,7 +90,7 @@ exports.loaFormCritical = async (req, res) => {
     const role = formData.typeOfLOA;
     let prompt = "";
 
-    prompt = `Generate a Letter of Appreciation for ${formData.recipientName} from ${formData.recipientOrganization} received from ${formData.senderName}. 
+    prompt = `Generate a Letter of Appreciation in 500 words for ${formData.recipientName} from ${formData.recipientOrganization} received from ${formData.senderName}. 
     The sender's relationship with the recipient is ${formData.senderRelationship}. 
     The concerned field of work is ${formData.concernedFieldOfWork}, with a focus on ${formData.nicheDomain}. 
     The source of knowledge regarding the recipient's contributions is ${formData.sourceOfKnowledge}. 
@@ -132,7 +132,7 @@ exports.loaFormResearch = async (req, res) => {
     console.log(formData, 1234);
     const role = formData.typeOfLOA;
     let prompt = "";
-    prompt = `Generate a Letter of Appreciation for ${formData.recipientName} from ${formData.recipientOrganization} received from ${formData.senderName}. 
+    prompt = `Generate a Letter of Appreciation in 500 words for ${formData.recipientName} from ${formData.recipientOrganization} received from ${formData.senderName}. 
     The sender's relationship with the recipient is ${formData.senderRelationship}. 
     The concerned field of work is ${formData.fieldOfWork}, with a focus on ${formData.nicheDomain}. 
     The source of knowledge regarding the recipient's contributions is ${formData.sourceOfKnowledge}. 
@@ -175,7 +175,7 @@ exports.loaFormOriginal = async (req, res) => {
     const role = formData.typeOfLOA;
     let prompt = "";
 
-    prompt = `Generate a Letter of Appreciation for ${formData.recipientName} from ${formData.recipientOrganization} received from ${formData.senderName}. 
+    prompt = `Generate a Letter of Appreciation in 500 words for ${formData.recipientName} from ${formData.recipientOrganization} received from ${formData.senderName}. 
     The sender's relationship with the recipient is ${formData.senderRelationship}. 
     The concerned field of work is ${formData.concernedFieldOfWork}, with a focus on ${formData.nicheDomain}. 
     The source of knowledge regarding the recipient's contributions is ${formData.sourceOfKnowledge}. 
