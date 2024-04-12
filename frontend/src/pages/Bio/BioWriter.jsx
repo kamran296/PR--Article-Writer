@@ -32,8 +32,8 @@ const BioWriter = () => {
     console.log("Generating article");
     try {
       const response = await fetch(
-        "http://localhost:5000/api/v1/ArticelWriter/bio-writer",
-        // "http://15.206.166.198/api/v1/ArticelWriter/loa-research",
+        // "http://localhost:5000/api/v1/ArticelWriter/bio-writer",
+        "http://15.206.166.198/api/v1/ArticelWriter/bio-writer",
         {
           method: "POST",
           headers: {
