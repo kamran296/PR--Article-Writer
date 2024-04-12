@@ -6,6 +6,7 @@ import msgIcon from "./assets/message.svg";
 import gptImgLogo from "./assets/chatgptLogo.svg";
 import download from "./assets/download.png";
 import { Link } from "react-router-dom";
+import SideBar from "../../components/SideBar";
 
 const Form = () => {
   const [formData, setFormData] = useState({
@@ -66,7 +67,7 @@ const Form = () => {
   return (
     <>
       <div className="App">
-        <div className="sideBar">
+        {/* <div className="sideBar">
           <div className="upperSide">
             <div className="upperSideTop">
               <img src={download} alt="Logo" className="logo" />
@@ -106,7 +107,8 @@ const Form = () => {
             </div>
           </div>
           <div className="lowerside"></div>
-        </div>
+        </div> */}
+        <SideBar />
         <div className="main">
           <form onSubmit={handleSubmit}>
             <div className="row">

@@ -7,7 +7,8 @@ import ResponsiveDrawer from "./components/ResponsiveDrawer";
 import LoaPrompt from "./pages/LOA/LoaPrompt";
 import LoaForm from "./pages/LOA/LoaForm";
 import LoaCritical from "./pages/LOA/LoaCritical";
-
+import BioWriter from "./pages/Bio/BioWriter";
+import BioWriterPrompt from "./pages/Bio/BioWriterPrompt";
 function App() {
   return (
     <div>
@@ -18,6 +19,12 @@ function App() {
           <Route exact path="/loa-prompt" element={<LoaPrompt />}></Route>
           <Route exact path="/loa-form" element={<LoaForm />}></Route>
           <Route exact path="/critical-role" element={<LoaCritical />}></Route>
+          <Route exact path="/bio-writer" element={<BioWriter />}></Route>
+          <Route
+            exact
+            path="/bio-writer-prompt"
+            element={<BioWriterPrompt />}
+          ></Route>
           <Route exact path="/drawer" element={<ResponsiveDrawer />}></Route>
           critical-role
         </Routes>
