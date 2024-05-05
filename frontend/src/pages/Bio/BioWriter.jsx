@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./biowriter.css";
 import download from "./assets/download.png";
 import SideBar from "../../components/SideBar";
+import SidebarTail from "../../components/SidebarTail";
 const BioWriter = () => {
   const [formData, setFormData] = useState({
     bioName: "",
@@ -63,8 +64,8 @@ const BioWriter = () => {
 
   return (
     <>
+      <SidebarTail />
       <div className="App">
-        <SideBar />
         <div className="main">
           <form onSubmit={handleSubmit}>
             <div className="row">
