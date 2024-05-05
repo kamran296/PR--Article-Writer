@@ -9,6 +9,7 @@ import LoaForm from "./pages/LOA/LoaForm";
 import LoaCritical from "./pages/LOA/LoaCritical";
 import BioWriter from "./pages/Bio/BioWriter";
 import BioWriterPrompt from "./pages/Bio/BioWriterPrompt";
+import SidebarTail from "./components/SidebarTail";
 function App() {
   return (
     <div>
@@ -25,8 +26,7 @@ function App() {
             path="/bio-writer-prompt"
             element={<BioWriterPrompt />}
           ></Route>
-          <Route exact path="/drawer" element={<ResponsiveDrawer />}></Route>
-          critical-role
+          <Route exact path="/sidebar" element={<SidebarTail />}></Route>
         </Routes>
       </Router>
     </div>

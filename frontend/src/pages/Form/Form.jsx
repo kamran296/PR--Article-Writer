@@ -7,6 +7,7 @@ import gptImgLogo from "./assets/chatgptLogo.svg";
 import download from "./assets/download.png";
 import { Link } from "react-router-dom";
 import SideBar from "../../components/SideBar";
+import SidebarTail from "../../components/SidebarTail";
 
 const Form = () => {
   const [formData, setFormData] = useState({
@@ -66,49 +67,8 @@ const Form = () => {
 
   return (
     <>
+      <SidebarTail />
       <div className="App">
-        {/* <div className="sideBar">
-          <div className="upperSide">
-            <div className="upperSideTop">
-              <img src={download} alt="Logo" className="logo" />
-              <span className="brand">Article Writer</span>
-            </div>
-            <Link className="link" to="/">
-              <button className="midBtn" onClick={() => navigate("/")}>
-                <img src={addBtn} alt="new chat" className="addBtn" />
-                New Chat
-              </button>
-            </Link>
-            <div className="upperSideBottom">
-              <Link className="link" to="/">
-                <button className="query">
-                  <img src={msgIcon} alt="query" />
-                  Prompt model
-                </button>
-              </Link>
-              <Link className="link" to="/article-form/">
-                <button className="query">
-                  <img src={msgIcon} alt="query" />
-                  Form model
-                </button>
-              </Link>
-              <Link className="link" to="/loa-prompt/">
-                <button className="query">
-                  <img src={msgIcon} alt="query" />
-                  LOA Prompt
-                </button>
-              </Link>
-              <Link className="link" to="/loa-form/">
-                <button className="query">
-                  <img src={msgIcon} alt="query" />
-                  LOA Form
-                </button>
-              </Link>
-            </div>
-          </div>
-          <div className="lowerside"></div>
-        </div> */}
-        <SideBar />
         <div className="main">
           <form onSubmit={handleSubmit}>
             <div className="row">

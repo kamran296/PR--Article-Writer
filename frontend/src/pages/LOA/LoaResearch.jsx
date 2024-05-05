@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./loaform.css";
 import download from "./assets/download.png";
+import SidebarTail from "../../components/SidebarTail";
 
 const LoaResearch = ({ type }) => {
   const [formData, setFormData] = useState({

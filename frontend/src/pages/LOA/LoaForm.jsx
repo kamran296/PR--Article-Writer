@@ -18,6 +18,7 @@ import SideBar from "../../components/SideBar";
 import LoaCritical from "./LoaCritical";
 import LoaResearch from "./LoaResearch";
 import LoaOriginal from "./LoaOriginal";
+import SidebarTail from "../../components/SidebarTail";
 const LoaForm = () => {
   const [value, setValue] = React.useState("1");
 
@@ -45,9 +46,8 @@ const LoaForm = () => {
 
   return (
     <>
+      <SidebarTail />
       <div className="App">
-        <SideBar />
-
         <div className="main">
           <Box sx={{ width: "100%", typography: "body1" }}>
             <TabContext value={value}>
