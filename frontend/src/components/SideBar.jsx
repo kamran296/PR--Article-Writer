@@ -47,6 +47,18 @@ const SideBar = () => {
               LOA form
             </button>
           </Link>
+          <Link className="link" to="/bio-writer-prompt/">
+            <button className="query">
+              <img src={msgIcon} alt="query" />
+              Bio Writer Prompt
+            </button>
+          </Link>
+          <Link className="link" to="/bio-writer/">
+            <button className="query">
+              <img src={msgIcon} alt="query" />
+              Bio Writer Form
+            </button>
+          </Link>
         </div>
       </div>
       <div className="lowerside"></div>

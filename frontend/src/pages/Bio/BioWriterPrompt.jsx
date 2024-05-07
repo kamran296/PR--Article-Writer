@@ -1,13 +1,5 @@
-// import React from "react";
-
-// const LoaPrompt = () => {
-//   return <div>Loa Prompt</div>;
-// };
-
-// export default LoaPrompt;
-
 import React, { useState } from "react";
-import "./loaprompt.css";
+import "./biowriter.css";
 import gptLogo from "./assets/chatgpt.svg";
 import addBtn from "./assets/add-30.png";
 import msgIcon from "./assets/message.svg";
@@ -38,8 +30,8 @@ const LoaPrompt = () => {
     console.log("Generating Article!!");
     try {
       const response = await fetch(
-        "http://15.206.166.198/api/v1/ArticelWriter/loaPrompt",
-        // "http://localhost:5000/api/v1/ArticelWriter/loaPrompt",
+        // "http://localhost:5000/api/v1/ArticelWriter/bio-writer-prompt",
+        "http://15.206.166.198/api/v1/ArticelWriter/bio-writer-prompt",
         {
           method: "POST",
           headers: {

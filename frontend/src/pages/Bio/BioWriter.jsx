@@ -1,32 +1,22 @@
 import React, { useState } from "react";
-import "./Form.css";
-import gptLogo from "./assets/chatgpt.svg";
-import addBtn from "./assets/add-30.png";
-import msgIcon from "./assets/message.svg";
-import gptImgLogo from "./assets/chatgptLogo.svg";
+import "./biowriter.css";
 import download from "./assets/download.png";
-import { Link } from "react-router-dom";
 import SideBar from "../../components/SideBar";
 import SidebarTail from "../../components/SidebarTail";
-
-const Form = () => {
+const BioWriter = () => {
   const [formData, setFormData] = useState({
-    name: "",
-    expertise: "",
-    highestDegree: "",
-    specialization: "",
-    university: "",
-    jobTitle: "",
-    currentEmployer: "",
-    experience: "",
-    industry: "",
-    achievements: "",
-    impact: "",
-    projects: "",
-    quantifiedWorks: "",
-    challengesOvercome: "",
-    publications: "",
-    industryInsight: "",
+    bioName: "",
+    professionalExperience: "",
+    skills: "",
+    background: "",
+    careerHighlight: "",
+    commitments: "",
+    proficiency: "",
+    academicExcellence: "",
+    judgingOpportunity: "",
+    recognitionOrAwards: "",
+    pressOrMedia: "",
+    vision: "",
   });
 
   const handleChange = (e) => {
@@ -36,14 +26,15 @@ const Form = () => {
       [name]: value,
     });
   };
-  const [generatedArticle, setGeneratedArticle] = useState("");
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(formData);
     console.log("Generating article");
     try {
       const response = await fetch(
-        "http://15.206.166.198/api/v1/ArticelWriter/articleForm",
-        // "http://localhost:5000/api/v1/ArticelWriter/articleForm",
+        // "http://localhost:5000/api/v1/ArticelWriter/bio-writer",
+        "http://15.206.166.198/api/v1/ArticelWriter/bio-writer",
         {
           method: "POST",
           headers: {
@@ -59,11 +50,17 @@ const Form = () => {
           ? data.choices[0].message.content
           : "";
 
+      // Set the generated article text to the state
+      console.log(generatedArticleText, 321);
       setGeneratedArticle(generatedArticleText);
+      console.log(generatedArticle, 123);
     } catch (error) {
       console.error("Error:", error);
     }
   };
+
+  // State for generated article
+  const [generatedArticle, setGeneratedArticle] = useState("");
 
   return (
     <>
@@ -77,19 +74,18 @@ const Form = () => {
                 <input
                   className="inp1"
                   type="text"
-                  name="name"
-                  value={formData.name}
+                  name="bioName"
+                  value={formData.bioName}
                   onChange={handleChange}
                 />
               </label>
-
               <label>
-                Expertise:
+                Professional Experience
                 <input
                   className="inp1"
                   type="text"
-                  name="expertise"
-                  value={formData.expertise}
+                  name="professionalExperience"
+                  value={formData.professionalExperience}
                   onChange={handleChange}
                 />
               </label>
@@ -97,23 +93,22 @@ const Form = () => {
 
             <div className="row">
               <label>
-                Highest Degree:
+                What skills, value do you bring to the table:
                 <input
                   className="inp1"
                   type="text"
-                  name="highestDegree"
-                  value={formData.highestDegree}
+                  name="skills"
+                  value={formData.skills}
                   onChange={handleChange}
                 />
               </label>
-
               <label>
-                Specialization:
+                Something about your background:
                 <input
                   className="inp1"
                   type="text"
-                  name="specialization"
-                  value={formData.specialization}
+                  name="background"
+                  value={formData.background}
                   onChange={handleChange}
                 />
               </label>
@@ -121,23 +116,23 @@ const Form = () => {
 
             <div className="row">
               <label>
-                University:
+                A Highlight from your career:
                 <input
                   className="inp1"
                   type="text"
-                  name="university"
-                  value={formData.university}
+                  name="careerHighlight"
+                  value={formData.careerHighlight}
                   onChange={handleChange}
                 />
               </label>
-
               <label>
-                Job Title:
+                What you commit to as a professional in your respective field of
+                work:
                 <input
                   className="inp1"
                   type="text"
-                  name="jobTitle"
-                  value={formData.jobTitle}
+                  name="commitments"
+                  value={formData.commitments}
                   onChange={handleChange}
                 />
               </label>
@@ -145,22 +140,22 @@ const Form = () => {
 
             <div className="row">
               <label>
-                Current Employer:
+                Proficiency:
                 <input
                   className="inp1"
                   type="text"
-                  name="currentEmployer"
-                  value={formData.currentEmployer}
+                  name="proficiency"
+                  value={formData.proficiency}
                   onChange={handleChange}
                 />
               </label>
               <label>
-                Total Years of Experience:
+                Academic Excellence:
                 <input
                   className="inp1"
                   type="text"
-                  name="experience"
-                  value={formData.experience}
+                  name="academicExcellence"
+                  value={formData.academicExcellence}
                   onChange={handleChange}
                 />
               </label>
@@ -168,98 +163,50 @@ const Form = () => {
 
             <div className="row">
               <label>
-                Industry:
+                Judging/Reviewing Opportunities Served:
                 <input
                   className="inp1"
                   type="text"
-                  name="industry"
-                  value={formData.industry}
+                  name="judgingOpportunity"
+                  value={formData.judgingOpportunity}
                   onChange={handleChange}
                 />
               </label>
               <label>
-                Achievements:
+                Press/Media Coverage
                 <input
                   className="inp1"
                   type="text"
-                  name="achievements"
-                  value={formData.achievements}
+                  name="pressOrMedia"
+                  value={formData.pressOrMedia}
+                  onChange={handleChange}
+                />
+              </label>
+            </div>
+            <div className="row">
+              <label>
+                Vision:
+                <input
+                  className="inp1"
+                  type="text"
+                  name="vision"
+                  value={formData.vision}
+                  onChange={handleChange}
+                />
+              </label>
+              <label>
+                Awards & Recognitions Conferred
+                <input
+                  className="inp1"
+                  type="text"
+                  name="recognitionOrAwards"
+                  value={formData.recognitionOrAwards}
                   onChange={handleChange}
                 />
               </label>
             </div>
 
-            <div className="row">
-              <label>
-                Impactful Work at Workplace:
-                <input
-                  className="inp1"
-                  type="text"
-                  name="impact"
-                  value={formData.impact}
-                  onChange={handleChange}
-                />
-              </label>
-              <label>
-                Notable Project:
-                <input
-                  className="inp1"
-                  type="text"
-                  name="projects"
-                  value={formData.projects}
-                  onChange={handleChange}
-                />
-              </label>
-            </div>
-
-            <div className="row">
-              <label>
-                Quantified Work:
-                <input
-                  className="inp1"
-                  type="text"
-                  name="quantifiedWorks"
-                  value={formData.quantifiedWorks}
-                  onChange={handleChange}
-                />
-              </label>
-              <label>
-                Challenges Overcome:
-                <input
-                  className="inp1"
-                  type="text"
-                  name="challengesOvercome"
-                  value={formData.challengesOvercome}
-                  onChange={handleChange}
-                />
-              </label>
-            </div>
-
-            <div className="row">
-              <label>
-                Publications:
-                <input
-                  className="inp1"
-                  type="text"
-                  name="publications"
-                  value={formData.publications}
-                  onChange={handleChange}
-                />
-              </label>
-              <label>
-                Industry Insights:
-                <input
-                  className="inp1"
-                  type="text"
-                  name="industryInsight"
-                  value={formData.industryInsight}
-                  onChange={handleChange}
-                />
-              </label>
-            </div>
-            <button className="midBtn" type="submit">
-              Submit
-            </button>
+            <button type="Submit">Generate LOA</button>
           </form>
 
           {generatedArticle && (
@@ -275,4 +222,4 @@ const Form = () => {
   );
 };
 
-export default Form;
+export default BioWriter;
