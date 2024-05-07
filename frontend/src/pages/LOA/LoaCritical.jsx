@@ -248,7 +248,7 @@ const LoaCritical = ({ type }) => {
                 />
               </label>
             </div>
-            <button type="Submit">Generate LOA</button>
+            <button className = "midBtn" type="Submit">Generate LOA</button>
           </form>
           {generatedArticle && (
             <div className="chat bot">
