@@ -68,14 +68,15 @@ const LoaResearch = ({ type }) => {
 
   return (
     <>
-      <div className="App">
+      <div className="App ml-[-12rem]">
         <div className="main">
           <form onSubmit={handleSubmit}>
             <div className="row">
               <label>
-                Recipient's Name:
+                
                 <input
-                  className="inp1"
+                  className="inp1 bg-[#FFFFFF] shadow-md "
+                  placeholder="Recipient's Name"
                   type="text"
                   name="recipientName"
                   value={formData.recipientName}
@@ -83,9 +84,10 @@ const LoaResearch = ({ type }) => {
                 />
               </label>
               <label>
-                Recipient's Organization/University:
+                
                 <input
-                  className="inp1"
+                  className="inp1 bg-[#FFFFFF] shadow-md "
+                  placeholder="Recipient's Organization/University"
                   type="text"
                   name="recipientOrganization"
                   value={formData.recipientOrganization}
@@ -96,9 +98,10 @@ const LoaResearch = ({ type }) => {
 
             <div className="row">
               <label>
-                Sender's Name:
+                
                 <input
-                  className="inp1"
+                  className="inp1 bg-[#FFFFFF] shadow-md "
+                  placeholder="Sender's Name"
                   type="text"
                   name="senderName"
                   value={formData.senderName}
@@ -106,9 +109,10 @@ const LoaResearch = ({ type }) => {
                 />
               </label>
               <label>
-                Sender's Organization/Institution:
+                
                 <input
-                  className="inp1"
+                  className="inp1 bg-[#FFFFFF] shadow-md "
+                  placeholder="Sender's Organization/Institution"
                   type="text"
                   name="senderOrganization"
                   value={formData.senderOrganization}
@@ -119,9 +123,10 @@ const LoaResearch = ({ type }) => {
 
             <div className="row">
               <label>
-                Sender's Relationship with the Recipient:
+                
                 <input
-                  className="inp1"
+                  className="inp1 bg-[#FFFFFF] shadow-md "
+                  placeholder="Sender's Relationship with the Recipient"
                   type="text"
                   name="senderRelationship"
                   value={formData.senderRelationship}
@@ -129,9 +134,10 @@ const LoaResearch = ({ type }) => {
                 />
               </label>
               <label>
-                Concerned Field of Work:
+                
                 <input
-                  className="inp1"
+                  className="inp1 bg-[#FFFFFF] shadow-md "
+                  placeholder="Concerned Field of Work"
                   type="text"
                   name="concernedFieldOfWork"
                   value={formData.concernedFieldOfWork}
@@ -142,9 +148,10 @@ const LoaResearch = ({ type }) => {
 
             <div className="row">
               <label>
-                Niche Domain (if any):
+                
                 <input
-                  className="inp1"
+                  className="inp1 bg-[#FFFFFF] shadow-md "
+                  placeholder="Niche Domain (if any)"
                   type="text"
                   name="nicheDomain"
                   value={formData.nicheDomain}
@@ -152,9 +159,10 @@ const LoaResearch = ({ type }) => {
                 />
               </label>
               <label>
-                Source of Knowledge:
+                
                 <input
-                  className="inp1"
+                  className="inp1 bg-[#FFFFFF] shadow-md "
+                  placeholder="Source of Knowledge"
                   type="text"
                   name="sourceOfKnowledge"
                   value={formData.sourceOfKnowledge}
@@ -165,9 +173,10 @@ const LoaResearch = ({ type }) => {
 
             <div className="row">
               <label>
-                Previous Contributions:
+                
                 <input
-                  className="inp1"
+                  className="inp1 bg-[#FFFFFF] shadow-md "
+                  placeholder="Previous Contributions"
                   type="text"
                   name="previousContributions"
                   value={formData.previousContributions}
@@ -175,9 +184,10 @@ const LoaResearch = ({ type }) => {
                 />
               </label>
               <label>
-                Title of paper
+                
                 <input
-                  className="inp1"
+                  className="inp1 bg-[#FFFFFF] shadow-md "
+                  placeholder="Title of paper"
                   type="text"
                   name="titleOfPaper"
                   value={formData.titleOfPaper}
@@ -187,9 +197,10 @@ const LoaResearch = ({ type }) => {
             </div>
             <div className="row">
               <label>
-                Aspect Of Paper
+                
                 <input
-                  className="inp1"
+                  className="inp1 bg-[#FFFFFF] shadow-md "
+                  placeholder="Aspect Of Paper"
                   type="text"
                   name="AspectOfPaper"
                   value={formData.AspectOfPaper}
@@ -197,9 +208,10 @@ const LoaResearch = ({ type }) => {
                 />
               </label>
               <label>
-                Novelty Of Work
+                
                 <input
-                  className="inp1"
+                  className="inp1 bg-[#FFFFFF] shadow-md "
+                  placeholder="Novelty Of Work"
                   type="text"
                   name="noveltyOfWork"
                   value={formData.noveltyOfWork}
@@ -209,9 +221,10 @@ const LoaResearch = ({ type }) => {
             </div>
             <div className="row">
               <label>
-                Significance For Future Works:
+                
                 <input
-                  className="inp1"
+                  className="inp1 bg-[#FFFFFF] shadow-md "
+                  placeholder="Significance For Future Works"
                   type="text"
                   name="significanceForFutureWork"
                   value={formData.significanceForFutureWork}
@@ -219,9 +232,10 @@ const LoaResearch = ({ type }) => {
                 />
               </label>
               <label>
-                Takeaway From Paper
+                
                 <input
-                  className="inp1"
+                  className="inp1 bg-[#FFFFFF] shadow-md "
+                  placeholder="Takeaway From Paper"
                   type="text"
                   name="takeawayFromPaper"
                   value={formData.takeawayFromPaper}
@@ -231,9 +245,10 @@ const LoaResearch = ({ type }) => {
             </div>
             <div className="row">
               <label>
-                Detailed Description
+                
                 <input
-                  className="inp1"
+                  className="inp1 bg-[#FFFFFF] shadow-md "
+                  placeholder="Detailed Description"
                   type="text"
                   name="detailedDescription"
                   value={formData.detailedDescription}
@@ -241,9 +256,10 @@ const LoaResearch = ({ type }) => {
                 />
               </label>
               <label>
-                Publication
+                
                 <input
-                  className="inp1"
+                  className="inp1 bg-[#FFFFFF] shadow-md "
+                  placeholder="Publication"
                   type="text"
                   name="Publication"
                   value={formData.Publication}
@@ -251,10 +267,10 @@ const LoaResearch = ({ type }) => {
                 />
               </label>
             </div>
-            <button type="Submit">Generate LOA</button>
+            <button className = "midBtn bg-gradient-to-r from-[#AA22FF] via-[#D989FF] to-[#51FFE0] mt-[3rem]" type="Submit">Generate LOA</button>
           </form>
           {generatedArticle && (
-            <div className="chat bot">
+            <div className="chat bot bg-white max-w-[85rem] shadow-md ">
               {/* <h2>Generated Article:</h2> */}
               <img src={download} alt="" className="chatImg" />
               <p className="txt">{generatedArticle}</p>

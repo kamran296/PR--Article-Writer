@@ -23,37 +23,37 @@ const SideBar = () => {
           </button>
         </Link>
         <div className="upperSideBottom">
-          <Link className="link" to="/">
+          <Link className="link pt-[2rem] pb-[1rem]" to="/">
             <button className="query">
               <img src={msgIcon} alt="query" />
               Prompt model
             </button>
           </Link>
-          <Link className="link" to="/article-form/">
+          <Link className="link mt-[2rem] mb-[1rem]" to="/article-form/">
             <button className="query">
               <img src={msgIcon} alt="query" />
               Form model
             </button>
           </Link>
-          <Link className="link" to="/loa-prompt/">
+          <Link className="link mt-[2rem] mb-[1rem]" to="/loa-prompt/">
             <button className="query">
               <img src={msgIcon} alt="query" />
               LOA Prompt
             </button>
           </Link>
-          <Link className="link" to="/loa-form/">
+          <Link className="link mt-[2rem] mb-[1rem]" to="/loa-form/">
             <button className="query">
               <img src={msgIcon} alt="query" />
               LOA form
             </button>
           </Link>
-          <Link className="link" to="/bio-writer-prompt/">
+          <Link className="link mt-[2rem] mb-[1rem]" to="/bio-writer-prompt/">
             <button className="query">
               <img src={msgIcon} alt="query" />
               Bio Writer Prompt
             </button>
           </Link>
-          <Link className="link" to="/bio-writer/">
+          <Link className="link mt-[2rem] mb-[1rem]" to="/bio-writer/">
             <button className="query">
               <img src={msgIcon} alt="query" />
               Bio Writer Form

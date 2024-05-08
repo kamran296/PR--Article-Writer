@@ -66,13 +66,17 @@ const BioWriter = () => {
     <>
       <SidebarTail />
       <div className="App">
-        <div className="main">
+        <div className="main ml-[24rem]">
+        <div className="text-black text-4xl font-poppins pb-[4rem]">
+          <p>Fill the areas to generate</p>
+        </div>
           <form onSubmit={handleSubmit}>
             <div className="row">
               <label>
-                Name:
+               
                 <input
-                  className="inp1"
+                  className="inp1 bg-[#FFFFFF] shadow-md "
+                  placeholder="Name"
                   type="text"
                   name="bioName"
                   value={formData.bioName}
@@ -80,9 +84,10 @@ const BioWriter = () => {
                 />
               </label>
               <label>
-                Professional Experience
+                
                 <input
-                  className="inp1"
+                  className="inp1 bg-[#FFFFFF] shadow-md "
+                  placeholder="Professional Experience"
                   type="text"
                   name="professionalExperience"
                   value={formData.professionalExperience}
@@ -93,9 +98,10 @@ const BioWriter = () => {
 
             <div className="row">
               <label>
-                What skills, value do you bring to the table:
+               
                 <input
-                  className="inp1"
+                  className="inp1 bg-[#FFFFFF] shadow-md "
+                  placeholder="What skills, value do you bring to the table:"
                   type="text"
                   name="skills"
                   value={formData.skills}
@@ -103,9 +109,10 @@ const BioWriter = () => {
                 />
               </label>
               <label>
-                Something about your background:
+                
                 <input
-                  className="inp1"
+                  className="inp1 bg-[#FFFFFF] shadow-md "
+                  placeholder="Something about your background:"
                   type="text"
                   name="background"
                   value={formData.background}
@@ -116,9 +123,10 @@ const BioWriter = () => {
 
             <div className="row">
               <label>
-                A Highlight from your career:
+                
                 <input
-                  className="inp1"
+                  className="inp1 bg-[#FFFFFF] shadow-md"
+                  placeholder="A Highlight from your career:"
                   type="text"
                   name="careerHighlight"
                   value={formData.careerHighlight}
@@ -126,10 +134,11 @@ const BioWriter = () => {
                 />
               </label>
               <label>
-                What you commit to as a professional in your respective field of
-                work:
+                
                 <input
-                  className="inp1"
+                  className="inp1 bg-[#FFFFFF] shadow-md "
+                  placeholder="What you commit to as a professional in your respective field of
+                  work:"
                   type="text"
                   name="commitments"
                   value={formData.commitments}
@@ -140,9 +149,10 @@ const BioWriter = () => {
 
             <div className="row">
               <label>
-                Proficiency:
+                
                 <input
-                  className="inp1"
+                  className="inp1 bg-[#FFFFFF] shadow-md "
+                  placeholder="Proficiency:"
                   type="text"
                   name="proficiency"
                   value={formData.proficiency}
@@ -150,9 +160,10 @@ const BioWriter = () => {
                 />
               </label>
               <label>
-                Academic Excellence:
+                
                 <input
-                  className="inp1"
+                  className="inp1 bg-[#FFFFFF] shadow-md "
+                  placeholder="Academic Excellence:"
                   type="text"
                   name="academicExcellence"
                   value={formData.academicExcellence}
@@ -163,9 +174,10 @@ const BioWriter = () => {
 
             <div className="row">
               <label>
-                Judging/Reviewing Opportunities Served:
+                
                 <input
-                  className="inp1"
+                  className="inp1 bg-[#FFFFFF] shadow-md "
+                  placeholder="Judging/Reviewing Opportunities Served:"
                   type="text"
                   name="judgingOpportunity"
                   value={formData.judgingOpportunity}
@@ -173,9 +185,10 @@ const BioWriter = () => {
                 />
               </label>
               <label>
-                Press/Media Coverage
+                
                 <input
-                  className="inp1"
+                  className="inp1 bg-[#FFFFFF] shadow-md "
+                  placeholder="Press/Media Coverage"
                   type="text"
                   name="pressOrMedia"
                   value={formData.pressOrMedia}
@@ -185,9 +198,10 @@ const BioWriter = () => {
             </div>
             <div className="row">
               <label>
-                Vision:
+                
                 <input
-                  className="inp1"
+                  className="inp1 bg-[#FFFFFF] shadow-md "
+                  placeholder="Vision:"
                   type="text"
                   name="vision"
                   value={formData.vision}
@@ -195,9 +209,10 @@ const BioWriter = () => {
                 />
               </label>
               <label>
-                Awards & Recognitions Conferred
+                
                 <input
-                  className="inp1"
+                  className="inp1 bg-[#FFFFFF] shadow-md "
+                  placeholder="Awards & Recognitions Conferred"
                   type="text"
                   name="recognitionOrAwards"
                   value={formData.recognitionOrAwards}
@@ -206,11 +221,11 @@ const BioWriter = () => {
               </label>
             </div>
 
-            <button type="Submit">Generate LOA</button>
+            <button className="midBtn bg-gradient-to-r from-[#AA22FF] via-[#D989FF] to-[#51FFE0] mt-[3rem]" type="Submit">Generate BIO</button>
           </form>
 
           {generatedArticle && (
-            <div className="chat bot">
+            <div className="chat bot bg-white max-w-[85rem] shadow-md">
               {/* <h2>Generated Article:</h2> */}
               <img src={download} alt="" className="chatImg" />
               <p className="txt">{generatedArticle}</p>

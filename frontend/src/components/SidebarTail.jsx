@@ -17,7 +17,7 @@ const SidebarTail = () => {
       <div
         className={`${
           open ? "w-80" : "w-24"
-        } duration-300 bg-light-white text-white font-bold fixed h-full px-4 py-2`}
+        } duration-300 bg-[#F5F7FF] text-white font-bold fixed h-full px-4 py-2`}
       >
         <div className="flex">
           <BsArrowLeftShort
@@ -52,10 +52,11 @@ const SidebarTail = () => {
         </div>
         <hr className="border-black" />
         <ul className=" mt-2">
+        <Link to="/">
           <li
             className={`ml-2 mb-2 rounded hover:shadow hover:bg-white hover:text-primary py-2 pt-2 text-black duration-300`}
           >
-            <Link to="/">
+            
               <img
                 className="h-12 w-12 inline-block p-2"
                 src={prompt}
@@ -68,10 +69,12 @@ const SidebarTail = () => {
               >
                 Article-Prompt
               </span>
-            </Link>
+            
           </li>
+          </Link>
+          <Link to="/article-form/">
           <li className="ml-2 mb-2 rounded hover:shadow hover:bg-white hover:text-primary py-2 pt-2 text-black">
-            <Link to="/article-form/">
+            
               <img
                 className="h-12 w-12 inline-block p-2"
                 src={prompt}
@@ -84,10 +87,12 @@ const SidebarTail = () => {
               >
                 Article-Form
               </span>
-            </Link>
+            
           </li>
+          </Link>
+          <Link to="/loa-prompt/">
           <li className="ml-2 mb-2 rounded hover:shadow hover:bg-white hover:text-primary py-2 pt-2 text-black">
-            <Link to="/loa-prompt/">
+            
               <img
                 className="h-12 w-12 inline-block p-2"
                 src={prompt}
@@ -100,10 +105,12 @@ const SidebarTail = () => {
               >
                 LOA-Prompt
               </span>
-            </Link>
+            
           </li>
+          </Link>
+          <Link to="/loa-form/">
           <li className="ml-2 mb-2 rounded hover:shadow hover:bg-white hover:text-primary py-2 pt-2 text-black">
-            <Link to="/loa-form/">
+            
               <img
                 className="h-12 w-12 inline-block p-2"
                 src={prompt}
@@ -116,10 +123,12 @@ const SidebarTail = () => {
               >
                 LOA-Form
               </span>
-            </Link>
+            
           </li>
+          </Link>
+          <Link to="">
           <li className="ml-2 mb-2 rounded hover:shadow hover:bg-white hover:text-primary py-2 pt-2 text-black">
-            <Link to="">
+            
               <img
                 className="h-12 w-12 inline-block p-2"
                 src={prompt}
@@ -132,10 +141,12 @@ const SidebarTail = () => {
               >
                 LOR-Prompt
               </span>
-            </Link>
+            
           </li>
+          </Link>
+          <Link to="">
           <li className="ml-2 mb-2 rounded hover:shadow hover:bg-white hover:text-primary py-2 pt-2 text-black">
-            <Link to="">
+            
               <img
                 className="h-12 w-12 inline-block p-2"
                 src={prompt}
@@ -148,10 +159,12 @@ const SidebarTail = () => {
               >
                 LOR-Form
               </span>
-            </Link>
+            
           </li>
+          </Link>
+          <Link to="/bio-writer-prompt/">
           <li className="ml-2 mb-2 rounded hover:shadow hover:bg-white hover:text-primary py-2 pt-2 text-black">
-            <Link to="/bio-writer-prompt/">
+            
               <img
                 className="h-12 w-12 inline-block p-2"
                 src={prompt}
@@ -164,10 +177,12 @@ const SidebarTail = () => {
               >
                 BioWriter-Prompt
               </span>
-            </Link>
+            
           </li>
+          </Link>
+          <Link to="/bio-writer/">
           <li className="ml-2 mb-2 rounded hover:shadow hover:bg-white hover:text-primary py-2 pt-2 text-black">
-            <Link to="/bio-writer/">
+            
               <img
                 className="h-12 w-12 inline-block p-2"
                 src={prompt}
@@ -180,8 +195,9 @@ const SidebarTail = () => {
               >
                 BioWriter-Form
               </span>
-            </Link>
+            
           </li>
+          </Link>
           <li className=" mb-2 rounded   py-2 pt-2 text-black">
             <div className="ml-2 mb-2 py-2 px-2 rounded-xl bg-secondary mt-2 text-white text-xl">
               <CiCirclePlus

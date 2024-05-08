@@ -48,24 +48,25 @@ const LoaForm = () => {
     <>
       <SidebarTail />
       <div className="App">
-        <div className="main">
-          <Box sx={{ width: "100%", typography: "body1" }}>
+        <div className="main ml-[25rem]">
+          <Box sx={{ width: "75%", typography: "body1" }}>
             <TabContext value={value}>
               <Box
                 sx={{
                   borderBottom: 1,
                   borderColor: "divider",
                   background: "white",
+                  borderRadius : "15px",
                 }}
               >
                 <TabList
                   onChange={handleChangeTabs}
                   aria-label="lab API tabs example"
-                  style={{ fontSize: "100px" }}
+                  sx={{ fontSize: "16px" }}
                 >
-                  <Tab label="Critical Role" value="1" />
-                  <Tab label="Research paper" value="2" />
-                  <Tab label="Original Contribution" value="3" />
+                  <Tab sx={{ fontSize: "16px" }} label="Critical Role" value="1" />
+                  <Tab sx={{ fontSize: "16px" }} label="Research paper" value="2" />
+                  <Tab sx={{ fontSize: "16px" }} label="Original Contribution" value="3" />
                 </TabList>
               </Box>
               <TabPanel value="1">

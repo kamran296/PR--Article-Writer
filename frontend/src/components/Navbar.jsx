@@ -4,8 +4,8 @@ import profile from "./assets/profile.png";
 
 const Navbar = () => {
   return (
-    <nav className=" w-full  h-24  bg-light-blue flex justify-between relative  ">
-      <div classname="flex items-center text-xl px-2 py-2  ">
+    <nav className=" w-full  h-24  bg-[#FFFFFF] flex justify-between relative  ">
+      <div className="flex items-center text-xl px-2 py-2  ">
         <img
           className="  h-24 w-32 cursor-pointer inline-block"
           src={navbar}

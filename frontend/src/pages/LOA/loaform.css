@@ -9,7 +9,7 @@
   }
   
   body{
-    background: rgb(3,0,31);
+    background: linear-gradient(to bottom, white, #f0e6ff);
     color: white;
     font-family: 'Poppins', sans-serif;
   }

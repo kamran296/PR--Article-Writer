@@ -66,14 +66,15 @@ const LoaCritical = ({ type }) => {
 
   return (
     <>
-      <div className="App">
+      <div className="App ml-[-12rem]">
         <div className="main">
           <form onSubmit={handleSubmit}>
             <div className="row">
               <label>
-                Recipient's Name:
+                
                 <input
-                  className="inp1"
+                  className="inp1 bg-[#FFFFFF] shadow-md "
+                  placeholder="Recipient's Name"
                   type="text"
                   name="recipientName"
                   value={formData.recipientName}
@@ -81,9 +82,10 @@ const LoaCritical = ({ type }) => {
                 />
               </label>
               <label>
-                Recipient's Organization/University:
+                
                 <input
-                  className="inp1"
+                  className="inp1 bg-[#FFFFFF] shadow-md "
+                  placeholder="Recipient's Organization/University"
                   type="text"
                   name="recipientOrganization"
                   value={formData.recipientOrganization}
@@ -94,9 +96,10 @@ const LoaCritical = ({ type }) => {
 
             <div className="row">
               <label>
-                Sender's Name:
+                
                 <input
-                  className="inp1"
+                  className="inp1 bg-[#FFFFFF] shadow-md "
+                  placeholder="Sender's Name"
                   type="text"
                   name="senderName"
                   value={formData.senderName}
@@ -104,9 +107,10 @@ const LoaCritical = ({ type }) => {
                 />
               </label>
               <label>
-                Sender's Organization/Institution:
+                
                 <input
-                  className="inp1"
+                  className="inp1 bg-[#FFFFFF] shadow-md "
+                  placeholder="Sender's Organization/Institution"
                   type="text"
                   name="senderOrganization"
                   value={formData.senderOrganization}
@@ -117,9 +121,10 @@ const LoaCritical = ({ type }) => {
 
             <div className="row">
               <label>
-                Sender's Relationship with the Recipient:
+                
                 <input
-                  className="inp1"
+                  className="inp1 bg-[#FFFFFF] shadow-md " 
+                  placeholder="Sender's Relationship with the Recipient"
                   type="text"
                   name="senderRelationship"
                   value={formData.senderRelationship}
@@ -127,9 +132,10 @@ const LoaCritical = ({ type }) => {
                 />
               </label>
               <label>
-                Concerned Field of Work:
+                
                 <input
-                  className="inp1"
+                  className="inp1 bg-[#FFFFFF] shadow-md "
+                  placeholder="Concerned Field of Work"
                   type="text"
                   name="concernedFieldOfWork"
                   value={formData.concernedFieldOfWork}
@@ -140,9 +146,10 @@ const LoaCritical = ({ type }) => {
 
             <div className="row">
               <label>
-                Niche Domain (if any):
+                
                 <input
-                  className="inp1"
+                  className="inp1 bg-[#FFFFFF] shadow-md "
+                  placeholder="Niche Domain (if any)"
                   type="text"
                   name="nicheDomain"
                   value={formData.nicheDomain}
@@ -150,9 +157,10 @@ const LoaCritical = ({ type }) => {
                 />
               </label>
               <label>
-                Source of Knowledge:
+                
                 <input
-                  className="inp1"
+                  className="inp1 bg-[#FFFFFF] shadow-md "
+                  placeholder="Source of Knowledge"
                   type="text"
                   name="sourceOfKnowledge"
                   value={formData.sourceOfKnowledge}
@@ -163,9 +171,10 @@ const LoaCritical = ({ type }) => {
 
             <div className="row">
               <label>
-                Previous Contributions:
+                
                 <input
-                  className="inp1"
+                  className="inp1 bg-[#FFFFFF] shadow-md "
+                  placeholder="Previous Contributions"
                   type="text"
                   name="previousContributions"
                   value={formData.previousContributions}
@@ -173,9 +182,10 @@ const LoaCritical = ({ type }) => {
                 />
               </label>
               <label>
-                Reciepent Role Description
+                
                 <input
-                  className="inp1"
+                  className="inp1 bg-[#FFFFFF] shadow-md "
+                  placeholder="Reciepent Role Description"
                   type="text"
                   name="recipientRoleDescription"
                   value={formData.recipientRoleDescription}
@@ -185,9 +195,10 @@ const LoaCritical = ({ type }) => {
             </div>
             <div className="row">
               <label>
-                Responsibilities Undertaken:
+                
                 <input
-                  className="inp1"
+                  className="inp1 bg-[#FFFFFF] shadow-md "
+                  placeholder="Responsibilities Undertaken"
                   type="text"
                   name="responsibilitiesUndertaken"
                   value={formData.responsibilitiesUndertaken}
@@ -195,9 +206,10 @@ const LoaCritical = ({ type }) => {
                 />
               </label>
               <label>
-                Reciepent Key Skills:
+                
                 <input
-                  className="inp1"
+                  className="inp1 bg-[#FFFFFF] shadow-md "
+                  placeholder="Reciepent Key Skills"
                   type="text"
                   name="keySkills"
                   value={formData.keySkills}
@@ -207,9 +219,10 @@ const LoaCritical = ({ type }) => {
             </div>
             <div className="row">
               <label>
-                Projects:
+                
                 <input
-                  className="inp1"
+                  className="inp1 bg-[#FFFFFF] shadow-md "
+                  placeholder="Projects"
                   type="text"
                   name="project"
                   value={formData.project}
@@ -217,9 +230,10 @@ const LoaCritical = ({ type }) => {
                 />
               </label>
               <label>
-                Challenges Faced:
+                
                 <input
-                  className="inp1"
+                  className="inp1 bg-[#FFFFFF] shadow-md "
+                  placeholder="Challenges Faced"
                   type="text"
                   name="challengesFaced"
                   value={formData.challengesFaced}
@@ -229,9 +243,10 @@ const LoaCritical = ({ type }) => {
             </div>
             <div className="row">
               <label>
-                Outcome /Achievements:
+                
                 <input
-                  className="inp1"
+                  className="inp1 bg-[#FFFFFF] shadow-md "
+                  placeholder="Outcome /Achievements"
                   type="text"
                   name="outcomeAchievements"
                   value={formData.outcomeAchievements}
@@ -239,9 +254,10 @@ const LoaCritical = ({ type }) => {
                 />
               </label>
               <label>
-                Token Of Gratitude:
+                
                 <input
-                  className="inp1"
+                  className="inp1 bg-[#FFFFFF] shadow-md "
+                  placeholder="Token Of Gratitude"
                   type="text"
                   name="tokenOfGratitude"
                   value={formData.tokenOfGratitude}
@@ -249,10 +265,10 @@ const LoaCritical = ({ type }) => {
                 />
               </label>
             </div>
-            <button className = "midBtn" type="Submit">Generate LOA</button>
+            <button className = "midBtn bg-gradient-to-r from-[#AA22FF] via-[#D989FF] to-[#51FFE0] mt-[3rem]" type="Submit">Generate LOA</button>
           </form>
           {generatedArticle && (
-            <div className="chat bot">
+            <div className="chat bot bg-white max-w-[85rem] shadow-md ">
               {/* <h2>Generated Article:</h2> */}
               <img src={download} alt="" className="chatImg" />
               <p className="txt">{generatedArticle}</p>

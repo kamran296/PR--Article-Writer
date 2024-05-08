@@ -9,7 +9,7 @@
   }
   
   body{
-    background: rgb(3,0,31);
+    background: linear-gradient(to bottom, white, #f0e6ff);
     color: white;
     font-family: 'Poppins', sans-serif;
   }
@@ -115,7 +115,7 @@
 
   .inp1{
     padding : 0.5rem;
-    background: rgba(28,30,58,1);
+    background: #F4F4F4;
     display:flex;
     align-items:center;
     border-radius: 0.5rem;
@@ -127,6 +127,8 @@
     margin-right: 2rem;
     margin-bottom: 2rem;
   }
+
+  
 
   .row{
      display:flex;
@@ -154,4 +156,8 @@
    width: fit-content;
    border-radius: 0.5rem;
    margin-bottom: 1.5rem;
+ }
+
+ .txt-Poppins{
+   font-family: Poppins;
  }
