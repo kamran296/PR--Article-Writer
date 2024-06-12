@@ -259,7 +259,6 @@ const LoaCritical = ({ type }) => {
           {generatedArticle && (
             <div className="chat bot bg-white max-w-[85rem] shadow-md ">
               {/* <h2>Generated Article:</h2> */}
-
               <img src={download} alt="" className="chatImg" />
               <p className="txt">{generatedArticle}</p>
             </div>
