@@ -9,7 +9,7 @@
   }
   
   body{
-    background: rgb(3,0,31);
+    background: linear-gradient(to bottom, white, #f0e6ff);
     color: white;
     font-family: 'Poppins', sans-serif;
   }
@@ -178,22 +178,3 @@
   
   }
 
-  /* width */
-::-webkit-scrollbar {
-    width: 10px;
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background: rgb(3,0,31);
-  }
-  
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: rgba(28, 30, 58, 1);
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: rgba(48, 40, 68, 1);
-  }

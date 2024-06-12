@@ -6,6 +6,8 @@ import msgIcon from "./assets/message.svg";
 import gptImgLogo from "./assets/chatgptLogo.svg";
 import download from "./assets/download.png";
 import { Link } from "react-router-dom";
+import SideBar from "../../components/SideBar";
+import SidebarTail from "../../components/SidebarTail";
 
 const Form = () => {
   const [formData, setFormData] = useState({
@@ -41,6 +43,7 @@ const Form = () => {
     try {
       const response = await fetch(
         "http://15.206.166.198/api/v1/ArticelWriter/articleForm",
+        // "http://localhost:5000/api/v1/ArticelWriter/articleForm",
         {
           method: "POST",
           headers: {
@@ -64,43 +67,19 @@ const Form = () => {
 
   return (
     <>
+      <SidebarTail />
       <div className="App">
-        <div className="sideBar">
-          <div className="upperSide">
-            <div className="upperSideTop">
-              <img src={download} alt="Logo" className="logo" />
-              <span className="brand">Article Writer</span>
-            </div>
-            <Link className="link" to="/">
-              <button className="midBtn" onClick={() => navigate("/")}>
-                <img src={addBtn} alt="new chat" className="addBtn" />
-                New Chat
-              </button>
-            </Link>
-            <div className="upperSideBottom">
-              <Link className="link" to="/">
-                <button className="query">
-                  <img src={msgIcon} alt="query" />
-                  Prompt model
-                </button>
-              </Link>
-              <Link className="link" to="/article-form/">
-                <button className="query">
-                  <img src={msgIcon} alt="query" />
-                  Form model
-                </button>
-              </Link>
-            </div>
-          </div>
-          <div className="lowerside"></div>
+        <div className="main ml-[24rem]">
+        <div className="text-black text-4xl font-poppins pb-[4rem]">
+          <p>Fill the areas to generate</p>
         </div>
-        <div className="main">
           <form onSubmit={handleSubmit}>
             <div className="row">
               <label>
-                Name:
+                
                 <input
-                  className="inp1"
+                  className="inp1 text-black shadow-md  bg-[#FFFFFF]"
+                  placeholder="Name"
                   type="text"
                   name="name"
                   value={formData.name}
@@ -109,9 +88,10 @@ const Form = () => {
               </label>
 
               <label>
-                Expertise:
+                
                 <input
-                  className="inp1"
+                  className="inp1 text-black bg-[#FFFFFF] shadow-md "
+                  placeholder="Expertise"
                   type="text"
                   name="expertise"
                   value={formData.expertise}
@@ -122,9 +102,10 @@ const Form = () => {
 
             <div className="row">
               <label>
-                Highest Degree:
+                
                 <input
-                  className="inp1"
+                  className="inp1 text-black bg-[#FFFFFF] shadow-md "
+                  placeholder="Highest Degree"
                   type="text"
                   name="highestDegree"
                   value={formData.highestDegree}
@@ -133,9 +114,10 @@ const Form = () => {
               </label>
 
               <label>
-                Specialization:
+                
                 <input
-                  className="inp1"
+                  className="inp1 text-black bg-[#FFFFFF] shadow-md "
+                  placeholder="Specialization"
                   type="text"
                   name="specialization"
                   value={formData.specialization}
@@ -146,9 +128,10 @@ const Form = () => {
 
             <div className="row">
               <label>
-                University:
+                
                 <input
-                  className="inp1"
+                  className="inp1 text-black bg-[#FFFFFF] shadow-md "
+                  placeholder="University"
                   type="text"
                   name="university"
                   value={formData.university}
@@ -157,9 +140,10 @@ const Form = () => {
               </label>
 
               <label>
-                Job Title:
+                
                 <input
-                  className="inp1"
+                  className="inp1 text-black bg-[#FFFFFF] shadow-md "
+                  placeholder="Job Title"
                   type="text"
                   name="jobTitle"
                   value={formData.jobTitle}
@@ -170,9 +154,10 @@ const Form = () => {
 
             <div className="row">
               <label>
-                Current Employer:
+                
                 <input
-                  className="inp1"
+                  className="inp1 text-black bg-[#FFFFFF] shadow-md "
+                  placeholder="Current Employer"
                   type="text"
                   name="currentEmployer"
                   value={formData.currentEmployer}
@@ -180,9 +165,10 @@ const Form = () => {
                 />
               </label>
               <label>
-                Total Years of Experience:
+                
                 <input
-                  className="inp1"
+                  className="inp1 text-black bg-[#FFFFFF] shadow-md "
+                  placeholder="Total Years of Experience"
                   type="text"
                   name="experience"
                   value={formData.experience}
@@ -193,9 +179,10 @@ const Form = () => {
 
             <div className="row">
               <label>
-                Industry:
+                
                 <input
-                  className="inp1"
+                  className="inp1 text-black bg-[#FFFFFF] shadow-md "
+                  placeholder="Industry"
                   type="text"
                   name="industry"
                   value={formData.industry}
@@ -203,9 +190,10 @@ const Form = () => {
                 />
               </label>
               <label>
-                Achievements:
+                
                 <input
-                  className="inp1"
+                  className="inp1 text-black bg-[#FFFFFF] shadow-md "
+                  placeholder="Achievements"
                   type="text"
                   name="achievements"
                   value={formData.achievements}
@@ -216,9 +204,10 @@ const Form = () => {
 
             <div className="row">
               <label>
-                Impactful Work at Workplace:
+                
                 <input
-                  className="inp1"
+                  className="inp1 text-black bg-[#FFFFFF] shadow-md "
+                  placeholder="Impactful Work at Workplace"
                   type="text"
                   name="impact"
                   value={formData.impact}
@@ -226,9 +215,10 @@ const Form = () => {
                 />
               </label>
               <label>
-                Notable Project:
+                
                 <input
-                  className="inp1"
+                  className="inp1 text-black bg-[#FFFFFF]  shadow-md "
+                  placeholder="Notable Project"
                   type="text"
                   name="projects"
                   value={formData.projects}
@@ -239,9 +229,10 @@ const Form = () => {
 
             <div className="row">
               <label>
-                Quantified Work:
+                
                 <input
-                  className="inp1"
+                  className="inp1 text-black bg-[#FFFFFF] shadow-md "
+                  placeholder="Quantified Work"
                   type="text"
                   name="quantifiedWorks"
                   value={formData.quantifiedWorks}
@@ -249,9 +240,10 @@ const Form = () => {
                 />
               </label>
               <label>
-                Challenges Overcome:
+                
                 <input
-                  className="inp1"
+                  className="inp1 text-black bg-[#FFFFFF] shadow-md "
+                  placeholder="Challenges Overcome"
                   type="text"
                   name="challengesOvercome"
                   value={formData.challengesOvercome}
@@ -262,9 +254,10 @@ const Form = () => {
 
             <div className="row">
               <label>
-                Publications:
+                
                 <input
-                  className="inp1"
+                  className="inp1 text-black bg-[#FFFFFF] shadow-md "
+                  placeholder="Publications"
                   type="text"
                   name="publications"
                   value={formData.publications}
@@ -272,9 +265,10 @@ const Form = () => {
                 />
               </label>
               <label>
-                Industry Insights:
+                
                 <input
-                  className="inp1"
+                  className="inp1 text-black bg-[#FFFFFF] shadow-md "
+                  placeholder="Industry Insights"
                   type="text"
                   name="industryInsight"
                   value={formData.industryInsight}
@@ -282,13 +276,13 @@ const Form = () => {
                 />
               </label>
             </div>
-            <button className="midBtn" type="submit">
-              Submit
+            <button className="midBtn bg-gradient-to-r from-[#AA22FF] via-[#D989FF] to-[#51FFE0] mt-[3rem]" type="submit">
+              Start Working with AI
             </button>
           </form>
 
           {generatedArticle && (
-            <div className="chat bot">
+            <div className="chat bot bg-white max-w-[85rem] shadow-md ">
               {/* <h2>Generated Article:</h2> */}
               <img src={download} alt="" className="chatImg" />
               <p className="txt">{generatedArticle}</p>
