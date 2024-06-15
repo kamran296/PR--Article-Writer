@@ -14,7 +14,7 @@ const Chatbot = () => {
     e.preventDefault();
     try {
       const response = await fetch(
-        "http://localhost:5000/api/v1/chatbot/chat",
+        "http://15.206.166.198/api/v1/chatbot/chat",
         {
           method: "POST",
           headers: {
@@ -49,7 +49,7 @@ const Chatbot = () => {
     try {
       console.log(input, 3232);
       const response = await fetch(
-        "http://localhost:5000/api/v1/chatbot/add-chat",
+        "http://15.206.166.198/api/v1/chatbot/add-chat",
         {
           method: "POST",
           headers: {
@@ -97,7 +97,7 @@ const Chatbot = () => {
       <SidebarTail />
       <div className="App">
         <div className="flex justify-between">
-          <div className="main ml-[24rem]">
+          <div className="main mt-[10rem] mr-[4rem] ml-[24rem]">
             <form
               onSubmit={handleSubmit}
               className="flex items-center justify-between"
@@ -110,7 +110,7 @@ const Chatbot = () => {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
               />
-              <button type="submit" className="ml-2 h-12 w-20">
+              <button type="submit" className="ml-2 mb-[2rem] h-12 w-20">
                 <BsSend className="text-3xl rotate-45 flex text-gray-500" />
               </button>
             </form>
@@ -125,7 +125,7 @@ const Chatbot = () => {
             </div>
           </div>
 
-          <div className="flex flex-col chat-history mt-24 h-[500px] w-[700px] overflow-y-auto bg-white max-w-[85rem] shadow-md p-4 rounded-lg border border-gray-200">
+          <div className="flex flex-col chat-history mt-[10rem] h-[500px] w-[700px] overflow-y-auto bg-white max-w-[85rem] shadow-md p-4 rounded-lg border border-gray-200">
             {chatHistory.length === 0 ? (
               <p className="flex justify-center items-center w-full text-2xl font-bold text-gray-500">
                 Welcome! Ask me anything.
