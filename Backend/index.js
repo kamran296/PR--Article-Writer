@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 const app = express();
 const cors = require("cors");
 const path = require("path");
-const db = process.env.DATABASE;
+const db = process.env.dbproduction;
 console.log(db);
 mongoose
   .connect(db)
