@@ -14,7 +14,7 @@ const Chatbot = () => {
     e.preventDefault();
     try {
       const response = await fetch(
-        "http://localhost:5000/api/v1/chatbot/chat",
+        "http://15.206.166.198/api/v1/chatbot/chat",
         {
           method: "POST",
           headers: {
@@ -49,7 +49,7 @@ const Chatbot = () => {
     try {
       console.log(input, 3232);
       const response = await fetch(
-        "http://localhost:5000/api/v1/chatbot/add-chat",
+        "http://15.206.166.198/api/v1/chatbot/add-chat",
         {
           method: "POST",
           headers: {
