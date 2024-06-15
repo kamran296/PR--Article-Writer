@@ -1,0 +1,6 @@
+# Ignore frontend and backend folders
+/python/
+
+
+# Ignore Python files
+*.python
