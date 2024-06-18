@@ -12,6 +12,7 @@ import BioWriterPrompt from "./pages/Bio/BioWriterPrompt";
 import SidebarTail from "./components/SidebarTail";
 import Chatbot from "./pages/Chatbot/Chatbot";
 import Login from "./pages/Login/Login";
+import GoogleCallback from "./pages/Login/GoogleCallback";
 function App() {
   return (
     <div>
@@ -24,6 +25,7 @@ function App() {
           <Route exact path="/critical-role" element={<LoaCritical />}></Route>
           <Route exact path="/bio-writer" element={<BioWriter />}></Route>
           <Route exact path="/login" element={<Login />}></Route>
+          <Route exact path="/auth/google/callback" element={<GoogleCallback />}></Route>
           <Route
             exact
             path="/bio-writer-prompt"

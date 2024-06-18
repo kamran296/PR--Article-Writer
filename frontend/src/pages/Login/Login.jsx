@@ -9,10 +9,13 @@ import { Navigate, useNavigate } from "react-router-dom";
 
 const Login = () => {
         const navigate = useNavigate();
+        const handleLogin = () => {
+            window.location.href = 'http://localhost:3000/auth/google';
+        };
   return (
     
     <>
-      <Navbar />
+      {/* <Navbar /> */}
 
       <section className="h-screen">
         <div className="container h-full px-6 py-24">
@@ -21,7 +24,7 @@ const Login = () => {
             <div className="w-[50%] mb-12 md:mb-0 md:w-8/12 lg:w-6/12">
               <img
                 src={Graphic}
-                className="ml-[12rem] w-[68%] mt-[5rem]"
+                className="ml-[12rem] mb-[7rem] w-[58%] mt-[5rem]"
                 alt="Graphic image"
               />
             </div>
@@ -31,14 +34,14 @@ const Login = () => {
               <form>
                 {/* <!-- Email input --> */}
                 <input
-                  className="inp1 shadow-md"
+                  className="w-[40rem] h-[4rem] text-2xl pl-[1rem] mb-[2rem] rounded-lg outline-none shadow-md"
                   placeholder="Email Address"
                   type="text"
                 />
 
                 {/* <!--Password input--> */}
                 <input
-                  className="inp1 shadow-md"
+                  className="w-[40rem] h-[4rem] text-2xl pl-[1rem] mb-[2rem] rounded-lg outline-none shadow-md"
                   placeholder="Password"
                   type="Password"
                 />
@@ -80,6 +83,7 @@ const Login = () => {
                     Sign in
                   </button>
                 </div>
+                </form>
 
                 {/* <!-- Divider --> */}
                 <div className="my-4 w-[40rem] flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-neutral-300 after:mt-0.5 after:flex-1 after:border-t after:border-neutral-300">
@@ -90,21 +94,20 @@ const Login = () => {
 
                 {/* <!-- Social login buttons --> */}
 
-                {/* <button
-                  className="midBtn text-black ml-[0rem] mb-5 font-medium flex items-center justify-center rounded bg-primary "
-                  style={{ backgroundColor: "#ffffff " }}
-                  href="#!"
+                <button
+                  className="midBtn bg-[#ffffff] text-black ml-[0rem] mb-5 font-medium flex items-center justify-center rounded bg-primary"
                   role="button"
-                > */}
+                  onClick={handleLogin}
+                >
                   {/* <!-- Google --> */}
-                  {/* <img
+                  <img
                     src={GoogleIcon}
                     className="mr-[1rem] w-[2rem]"
                     alt="Google Icon"
                   />
                   Continue with Google
-                </button> */}
-                <div className="mb-[2rem] ml-[10rem]">
+                </button>
+                {/* <div className="mb-[2rem] ml-[10rem]">
                   <GoogleLogin
                     onSuccess={(credentialResponse) => {
                       console.log(credentialResponse);
@@ -115,7 +118,7 @@ const Login = () => {
                     }}
                   />
                   
-                </div>
+                </div> */}
 
                 <a
                   className="midBtn ml-[0rem] mb-3 flex items-center justify-center rounded bg-primary"
@@ -134,7 +137,7 @@ const Login = () => {
                   </svg>
                   Continue with Twitter
                 </a>
-              </form>
+              
             </div>
           </div>
         </div>
