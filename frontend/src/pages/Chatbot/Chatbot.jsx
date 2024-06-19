@@ -74,6 +74,23 @@ const Chatbot = () => {
       }
     } catch (error) {}
   };
+  const handleDownload = async (req, res) => {
+    try {
+      const response = await fetch(
+        "http://localhost:5000/api/v1/chatbot/downloadDatabase",
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <>
@@ -97,6 +114,15 @@ const Chatbot = () => {
                 <BsSend className="text-3xl rotate-45 flex text-gray-500" />
               </button>
             </form>
+            <div>
+              {/* <button
+                type="submit"
+                onClick={handleDownload}
+                className="bg-black text-white text-2xl"
+              >
+                Updata
+              </button> */}
+            </div>
           </div>
 
           <div className="flex flex-col chat-history mt-[10rem] h-[500px] w-[700px] overflow-y-auto bg-white max-w-[85rem] shadow-md p-4 rounded-lg border border-gray-200">
