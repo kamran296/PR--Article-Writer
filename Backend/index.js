@@ -6,7 +6,10 @@ const mongoose = require("mongoose");
 const app = express();
 const cors = require("cors");
 const path = require("path");
-const db = process.env.dbproduction;
+const db = process.env.DATABASE;
+const login = require("./app");
+app.use(login);
+// login();
 console.log(db);
 mongoose
   .connect(db)
@@ -20,14 +23,11 @@ mongoose
 app.use(cors());
 app.use(express.json());
 
-<<<<<<< HEAD
-=======
 const openaiRouter = require("./router/openaiRouter");
 const chatbotRouter = require("./router/chatbotRouter");
 app.use("/api/v1/ArticelWriter", openaiRouter);
 app.use("/api/v1/chatbot", chatbotRouter);
 
->>>>>>> 21dfcf1bc8261b394ccfe1ecac47e4e31e5c2da1
 const _dirname = path.dirname("");
 const buildPath = path.join(_dirname, "../frontend/dist");
 
@@ -44,14 +44,6 @@ app.get("/*", function (req, res) {
   );
 });
 
-<<<<<<< HEAD
-const openaiRouter = require("./router/openaiRouter");
-const chatbotRouter = require("./router/chatbotRouter");
-app.use("/api/v1/ArticelWriter", openaiRouter);
-app.use("/api/v1/chatbot", chatbotRouter);
-
-=======
->>>>>>> 21dfcf1bc8261b394ccfe1ecac47e4e31e5c2da1
 const PORT = process.env.PORT;
 app.listen(PORT || 8000, () => {
   console.log(`Port running on ${PORT}`);
