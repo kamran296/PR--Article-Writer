@@ -1,0 +1,59 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+  }
+  
+  html{
+    font-size: 62.5%;
+  }
+  
+  body{
+    background: rgb(3,0,31);
+    color: white;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  button{
+     cursor: pointer;
+  }
+  
+  .App{
+     min-height :  100vh;
+     display: flex;
+  }
+  
+  .sideBar{
+    flex:3;
+    border-right: 1px solid rgb(100, 100, 100);
+  }
+  
+  .main{
+    flex-grow: 9;
+  }
+  
+  .logo{
+    margin-right: 1rem;
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+  }
+  
+  .brand{
+    font-size: 2rem;
+  }
+  
+  .upperSide{
+      padding: 2.5rem;
+      /* border-bottom: 1px; */
+      height: 70%;
+  }
+  
+  .upperSideTop{
+    display: flex;
+    align-items: center;
+    margin: 2.5rem;
+  }
+  .link{
+    color:black
+  }
