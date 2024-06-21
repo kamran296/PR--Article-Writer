@@ -1,8 +1,7 @@
-import React from "react";
-// import "./App.css";
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Form from "./pages/Form/Form";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import ResponsiveDrawer from "./components/ResponsiveDrawer";
 import LoaPrompt from "./pages/LOA/LoaPrompt";
 import LoaForm from "./pages/LOA/LoaForm";
@@ -11,9 +10,34 @@ import BioWriter from "./pages/Bio/BioWriter";
 import BioWriterPrompt from "./pages/Bio/BioWriterPrompt";
 import SidebarTail from "./components/SidebarTail";
 import Chatbot from "./pages/Chatbot/Chatbot";
-import Login from "./pages/Login/Login";
-import GoogleCallback from "./pages/Login/GoogleCallback";
+import Login from "./components/Login";
+import axios from "axios";
 function App() {
+  const [user, setUser] = useState(null);
+
+  const getUser = async () => {
+    try {
+      // const response = await axios.get("http://localhost:5000/oauth/profile", {
+      //   withCredentials: true,
+      // });
+      const response = await fetch("http://localhost:5000/oauth/profile", {
+        method: "GET",
+        credentials: "include", // This ensures cookies are sent with the request
+      });
+      const data = await response.json();
+      console.log("response", data);
+      setUser(data);
+    } catch (error) {
+      // navigate("*");
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getUser();
+  }, []);
+  console.log(user, 3434);
+
   return (
     <div>
       <Router>
@@ -24,8 +48,6 @@ function App() {
           <Route exact path="/loa-form" element={<LoaForm />}></Route>
           <Route exact path="/critical-role" element={<LoaCritical />}></Route>
           <Route exact path="/bio-writer" element={<BioWriter />}></Route>
-          <Route exact path="/login" element={<Login />}></Route>
-          <Route exact path="/auth/google/callback" element={<GoogleCallback />}></Route>
           <Route
             exact
             path="/bio-writer-prompt"
@@ -33,6 +55,7 @@ function App() {
           ></Route>
           <Route exact path="/sidebar" element={<SidebarTail />}></Route>
           <Route exact path="/chatbot" element={<Chatbot />}></Route>
+          <Route exact path="/login" element={<Login />}></Route>
         </Routes>
       </Router>
     </div>

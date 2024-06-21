@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Home.css";
 import gptLogo from "./assets/chatgpt.svg";
 import addBtn from "./assets/add-30.png";
@@ -7,12 +7,15 @@ import sendBtn from "./assets/send.svg";
 import userIcon from "./assets/user-icon.png";
 import gptImgLogo from "./assets/chatgptLogo.svg";
 import download from "./assets/download.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SideBar from "../../components/SideBar";
 import SidebarTail from "../../components/SidebarTail";
 import Navbar from "../../components/Navbar";
 import { BsSend } from "react-icons/bs";
+
 const Home = () => {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     prompt: "",
   });
@@ -63,7 +66,7 @@ const Home = () => {
       <div>
         <div className="App">
           <div className="main ml-[25rem] mt-[8rem]">
-          <div className="bg-[#FFFFFF] shadow-md  w-[90rem] h-[5rem] rounded-lg inline-block">
+            <div className="bg-[#FFFFFF] shadow-md  w-[90rem] h-[5rem] rounded-lg inline-block">
               <input
                 className="outline-none w-[84rem] h-[5rem] rounded-lg text-2xl pl-[1.5rem]"
                 type="text"
@@ -78,7 +81,7 @@ const Home = () => {
               >
                 <BsSend className=" text-secondary w-[2rem] h-[2rem] rotate-45 text-3xl inline-block" />
               </button>
-              </div>
+            </div>
 
             {generatedArticle && (
               <div className="chats max-w-[90rem] ">
@@ -94,8 +97,6 @@ const Home = () => {
                 </div>
               </div>
             )}
-            
-            
           </div>
         </div>
       </div>

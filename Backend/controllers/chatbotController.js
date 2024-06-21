@@ -4,6 +4,7 @@ const Chat = require("../model/chatbotData");
 const { Configuration, OpenAI } = require("openai");
 const fs = require("fs");
 const path = require("path");
+const { exec } = require("child_process");
 const openai = new OpenAI({
   apiKey: process.env.API,
 });
@@ -75,45 +76,117 @@ module.exports.getData = async (req, res) => {
   }
 };
 
+const download = async (req, res) => {
+  //  Fetch all chat data from the database, converting to plain JavaScript objects
+  const chatData = await Chat.find().lean();
+
+  // Remove the _id field from each document
+  const chatDataWithoutId = chatData.map(({ _id, ...rest }) => rest);
+
+  // Check if there's any data
+  if (!chatDataWithoutId || chatDataWithoutId.length === 0) {
+    return res.status(404).json({ message: "No chat data found" });
+  }
+
+  // Convert the data to a JSON string
+  const jsonData = JSON.stringify(chatDataWithoutId, null, 2);
+
+  // Ensure the data directory exists
+  const dataDir = path.join(__dirname, "../data");
+  if (!fs.existsSync(dataDir)) {
+    fs.mkdirSync(dataDir);
+  }
+
+  // Define the file path and name
+  const filePath = path.join(dataDir, "chatData6.json");
+
+  // Write the JSON data to a file
+  fs.writeFileSync(filePath, jsonData, "utf-8");
+};
+// module.exports.downloadDatabase = async (req, res) => {
+//   try {
+//     setTimeout(() => {
+//       download();
+//     }, 6000);
+//     exec("python training.py", (error, stdout, stderr) => {
+//       if (error) {
+//         console.error(`exec error: ${error}`);
+//         return res.status(500).send(`Error: ${error.message}`);
+//       }
+//       if (stderr) {
+//         console.error(`stderr: ${stderr}`);
+//         return res.status(500).send(`Stderr: ${stderr}`);
+//       }
+//       console.log(`stdout: ${stdout}`);
+//       res.send(`Output: ${stdout}`);
+//     });
+//   } catch (error) {
+//     console.log(error);
+//     res.status(500).json({ error: "Internal Server Error", error });
+//   }
+// };
+
 module.exports.downloadDatabase = async (req, res) => {
   try {
-    // Fetch all chat data from the database, converting to plain JavaScript objects
-    const chatData = await Chat.find().lean();
+    setTimeout(() => {
+      download();
+    }, 6000);
 
-    // Remove the _id field from each document
-    const chatDataWithoutId = chatData.map(({ _id, ...rest }) => rest);
+    const fineTuneModel = async () => {
+      try {
+        // Upload training file
+        const jsonFilePath = path.join(__dirname, "../data/chatData6.json");
+        const fileStream = fs.createReadStream(jsonFilePath);
+        const trainingFile = await openai.files.create({
+          file: fileStream,
+          purpose: "fine-tune",
+        });
 
-    // Check if there's any data
-    if (!chatDataWithoutId || chatDataWithoutId.length === 0) {
-      return res.status(404).json({ message: "No chat data found" });
-    }
+        console.log(`Training file ID: ${trainingFile.id}`);
 
-    // Convert the data to a JSON string
-    const jsonData = JSON.stringify(chatDataWithoutId, null, 2);
+        // Create fine-tuning job
+        const response = await openai.fineTuning.jobs.create({
+          training_file: trainingFile.id,
+          model: "gpt-3.5-turbo",
+          suffix: "ChatBotFaq20190624",
+        });
 
-    // Ensure the data directory exists
-    const dataDir = path.join(__dirname, "../data");
-    if (!fs.existsSync(dataDir)) {
-      fs.mkdirSync(dataDir);
-    }
+        const jobId = response.id;
+        console.log(`Fine-tuning job ID: ${jobId}`);
 
-    // Define the file path and name
-    const filePath = path.join(dataDir, "chatData1.json");
+        // Polling function to check the job status
+        const checkJobStatus = async () => {
+          try {
+            const responseStatus = await openai.fineTuning.jobs.retrieve(jobId);
+            console.log(`Current job status: ${responseStatus.status}`);
 
-    // Write the JSON data to a file
-    fs.writeFileSync(filePath, jsonData, "utf-8");
+            if (
+              responseStatus.status === "succeeded" ||
+              responseStatus.status === "failed"
+            ) {
+              clearInterval(polling);
+              res.status(200).json(responseStatus);
+            }
+          } catch (error) {
+            console.error("Error retrieving job status:", error.message);
+          }
+        };
 
-    // Send the file as a response for download
-    res.download(filePath, "chatData1.json", (err) => {
-      if (err) {
-        console.log(err);
-        res.status(500).json({ error: "Failed to download the file" });
-      } else {
-        console.log("File sent successfully");
+        // Poll the job status every 60 seconds
+        const polling = setInterval(checkJobStatus(), 60000);
+      } catch (error) {
+        console.error("Error during fine-tuning process:", error.message);
+        res
+          .status(500)
+          .json({ error: "Internal Server Error", details: error.message });
       }
-    });
+    };
+
+    fineTuneModel();
   } catch (error) {
     console.log(error);
-    res.status(500).json({ error: "Internal Server Error" });
+    res
+      .status(500)
+      .json({ error: "Internal Server Error", details: error.message });
   }
 };

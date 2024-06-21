@@ -10,6 +10,13 @@ const Chatbot = () => {
   const [currentChatIndex, setCurrentChatIndex] = useState(null);
   const [correctAnswer, setCorrectAnswer] = useState("");
 
+  useEffect(() => {
+    if (!localStorage.getItem("authToken")) {
+      navigate("/login");
+    }
+    fetchData();
+  }, []);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {

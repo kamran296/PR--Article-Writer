@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import logo from "./assets/logo.png";
 import prompt from "./assets/prompt.png";
 import Navbar from "./Navbar";
@@ -9,8 +9,6 @@ import { CiCirclePlus } from "react-icons/ci";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 const SidebarTail = () => {
-  const [open, setOpen] = useState(true);
-
   return (
     <>
       {/* <div className="relative"> */}
@@ -217,7 +215,7 @@ const SidebarTail = () => {
               open && "duration-300"
             }`}
           >
-            Settings
+            Profile
           </span>
         </div>
       </div>
