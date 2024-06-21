@@ -8,12 +8,6 @@ const Navbar = () => {
 
   const [user, setUser] = useState(null);
 
-    // useEffect(() => {
-    //     fetch('http://localhost:3000/user', { credentials: 'include' })
-    //         .then(response => response.json())
-    //         .then(data => setUser(data))
-    //         .catch(error => console.error('Error fetching user data:', error));
-    // }, []);
 
   return (
     <nav className=" w-full  h-24  bg-[#FFFFFF] flex justify-between fixed  z-50">
