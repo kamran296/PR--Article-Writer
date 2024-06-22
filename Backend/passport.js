@@ -113,6 +113,7 @@ passport.use(
           });
           await user.save();
         }
+        // console.log(profile, "profile");
         return done(null, user);
       } catch (error) {
         return done(error, null);
@@ -122,15 +123,15 @@ passport.use(
 );
 
 passport.serializeUser((user, done) => {
-  console.log("Serialize User:", user.id); // Logging for debugging
+  // console.log("Serialize User:", user.id); // Logging for debugging
   done(null, user.id); // Save only the user ID in the session
 });
 
 passport.deserializeUser(async (id, done) => {
-  console.log("Deserialize User ID:", id); // Logging for debugging
+  // console.log("Deserialize User ID:", id); // Logging for debugging
   try {
     const user = await userdb.findById(id);
-    console.log("User Found:", user); // Logging for debugging
+    // console.log("User Found:", user); // Logging for debugging
     done(null, user); // Fetch the full user object using the ID
   } catch (error) {
     done(error, null);
