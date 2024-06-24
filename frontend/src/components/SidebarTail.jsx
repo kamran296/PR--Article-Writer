@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import logo from "./assets/logo.png";
 import prompt from "./assets/prompt.png";
 import Navbar from "./Navbar";
@@ -7,8 +7,41 @@ import { CiSettings } from "react-icons/ci";
 import { BsPersonFillCheck } from "react-icons/bs";
 import { CiCirclePlus } from "react-icons/ci";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { logoutUser } from "./../redux/userSlice";
 const SidebarTail = () => {
+  const navigate = useNavigate();
+  // const handleLogout = async () => {
+  //   try {
+  //     const response = await fetch("http://localhost:5000/oauth/logout", {
+  //       method: "GET",
+  //     });
+
+  //     if (response.ok) {
+  //       console.log("Logout successful");
+  //       // Handle successful logout, e.g., navigate to login page or clear user state
+  //       navigate("/login");
+  //     } else {
+  //       console.error("Logout failed");
+  //     }
+  //   } catch (error) {
+  //     console.error("Logout error:", error);
+  //   }
+  // };
+
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user.user);
+
+  const handleLogout = async () => {
+    try {
+      await dispatch(logoutUser()).unwrap();
+      console.log("Logout successful");
+      navigate("/login");
+    } catch (error) {
+      console.error("Logout failed:", error);
+    }
+  };
   return (
     <>
       {/* <div className="relative"> */}
@@ -206,7 +239,10 @@ const SidebarTail = () => {
             Settings
           </span>
         </div>
-        <div className=" ml-2  px-4 py-2 rounded-xl bg-secondary  text-white text-xl">
+        <button
+          className=" ml-2  px-6 py-2 rounded-xl bg-secondary  text-white text-xl"
+          onClick={handleLogout}
+        >
           <BsPersonFillCheck
             className={`h-10 w-10 inline-block ${!open && "pr-2"}`}
           />
@@ -215,9 +251,9 @@ const SidebarTail = () => {
               open && "duration-300"
             }`}
           >
-            Profile
+            Logout
           </span>
-        </div>
+        </button>
       </div>
     </>
   );

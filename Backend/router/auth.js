@@ -67,20 +67,24 @@ router.get("/login/success", async (req, res) => {
   }
 });
 
-router.get("/logout", (req, res, next) => {
-  req.logout(function (err) {
+router.get("/logout", (req, res) => {
+  console.log("logout");
+  req.logout((err) => {
     if (err) {
-      return next(err);
+      console.log(err);
+      return res.status(500).json({ success: false, message: "Logout failed" });
     }
-    res.redirect("http://localhost:5173/login");
+    req.session = null; // Clear the session
+
+    res.redirect(clientURL);
   });
 });
 
 router.get("/profile", (req, res) => {
-  console.log(req.cookies, 123);
-  console.log(req.session, "session");
-  console.log(req.isAuthenticated(), 123);
-  console.log("user", req.user);
+  // console.log(req.cookies, 123);
+  // console.log(req.session, "session");
+  // console.log(req.isAuthenticated(), 123);
+  // console.log("user", req.user);
   if (req.isAuthenticated()) {
     res.status(200).json({
       success: true,
