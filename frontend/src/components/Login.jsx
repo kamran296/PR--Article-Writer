@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Graphic from "./assets/Illustration.svg";
 import GoogleIcon from "./assets/search.png";
-// import "./Login.css";
+import "./Login.css";
 // import Navbar from "../../components/Navbar";
 // import { GoogleLogin } from "@react-oauth/google";
 import { Navigate, useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const navigate = useNavigate();
+  const Navigate = useNavigate();
 
   const handleLogin = () => {
     window.open("http://localhost:5000/oauth/google/callback", "_self");
