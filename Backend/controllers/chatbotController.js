@@ -125,7 +125,7 @@ const download = async (req, res) => {
 //     res.status(500).json({ error: "Internal Server Error", error });
 //   }
 // };
-
+// 
 module.exports.downloadDatabase = async (req, res) => {
   try {
     setTimeout(() => {
@@ -135,7 +135,7 @@ module.exports.downloadDatabase = async (req, res) => {
     const fineTuneModel = async () => {
       try {
         // Upload training file
-        const jsonFilePath = path.join(__dirname, "../data/chatData6.json");
+        const jsonFilePath = path.join(__dirname, "../data/chatData7.jsonl");
         const fileStream = fs.createReadStream(jsonFilePath);
         const trainingFile = await openai.files.create({
           file: fileStream,
@@ -173,7 +173,27 @@ module.exports.downloadDatabase = async (req, res) => {
         };
 
         // Poll the job status every 60 seconds
-        const polling = setInterval(checkJobStatus(), 60000);
+        const polling = setInterval(() => checkJobStatus(), 60000);
+        
+        // const checkJobStatus = async () => {
+        //   try {
+        //     const responseStatus = await openai.fineTuning.jobs.retrieve(jobId);
+        //     console.log(`Current job status: ${responseStatus.status}`);
+        
+        //     if (responseStatus.status === "succeeded") {
+        //       clearInterval(polling);
+        //       res.status(200).json(responseStatus);
+        //     }
+        //     // If status is "failed", the function does nothing and continues to check every 60 seconds
+        //   } catch (error) {
+        //     console.error("Error retrieving job status:", error.message);
+        //   }
+        // };
+        
+        // // Poll the job status every 60 seconds
+        // const polling = setInterval(() => checkJobStatus(), 60000);
+        
+
       } catch (error) {
         console.error("Error during fine-tuning process:", error.message);
         res
@@ -189,4 +209,4 @@ module.exports.downloadDatabase = async (req, res) => {
       .status(500)
       .json({ error: "Internal Server Error", details: error.message });
   }
-};
+}

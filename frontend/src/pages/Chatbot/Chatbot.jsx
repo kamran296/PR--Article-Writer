@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SidebarTail from "./../../components/SidebarTail";
 import { BsSend } from "react-icons/bs";
 import { BiLike, BiDislike } from "react-icons/bi";
+import { Navigate, useNavigate } from "react-router-dom";
+import { fetchUser } from "../../redux/userSlice";
 
 const Chatbot = () => {
   const [input, setInput] = useState("");
@@ -9,12 +11,13 @@ const Chatbot = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentChatIndex, setCurrentChatIndex] = useState(null);
   const [correctAnswer, setCorrectAnswer] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!localStorage.getItem("authToken")) {
-      navigate("/login");
+      navigate("/chatbot");
     }
-    fetchData();
+    fetchUser();
   }, []);
 
   const handleSubmit = async (e) => {

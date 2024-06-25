@@ -7,7 +7,7 @@ import "./Login.css";
 import { Navigate, useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const Navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleLogin = () => {
     window.open("http://localhost:5000/oauth/google/callback", "_self");
