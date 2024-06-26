@@ -98,7 +98,8 @@ passport.use(
     {
       clientID: process.env.CLIENT_ID,
       clientSecret: process.env.CLIENT_SECRET,
-      callbackURL: "http://localhost:5000/oauth/google/callback",
+      // callbackURL: "http://localhost:5000/oauth/google/callback",
+      callbackURL: "https://www.internal.cachelabs.io/oauth/google/callback",
       scope: ["profile", "email"],
     },
     async (accessToken, refreshToken, profile, done) => {

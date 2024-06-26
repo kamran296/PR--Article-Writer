@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const passport = require("passport");
-const clientURL = "http://localhost:5173/";
+const clientURL = "https://www.internal.cachelabs.io/";
 
 // router.get("/login/success", (req, res) => {
 //   console.log(req.session, "Session details");
@@ -53,8 +53,8 @@ router.get(
 router.get(
   "/google/callback",
   passport.authenticate("google", {
-    successRedirect: "http://localhost:5173",
-    failureRedirect: "http://localhost:5173/login",
+    successRedirect: "https://www.internal.cachelabs.io/",
+    failureRedirect: "https://www.internal.cachelabs.io/login",
   })
 );
 

@@ -5,6 +5,7 @@ const { Configuration, OpenAI } = require("openai");
 const fs = require("fs");
 const path = require("path");
 const { exec } = require("child_process");
+const ChatModel = require("../model/chatbotModels");
 const openai = new OpenAI({
   apiKey: process.env.API,
 });
@@ -17,8 +18,14 @@ module.exports.chatbot = async (req, res) => {
         .status(200)
         .json("I'm here to help you so feel free to ask me anything!!");
     }
+
+    const latestModel = await ChatModel.findOne().sort({ createdAt: -1 });
+    const model = latestModel
+      ? latestModel.model
+      : "ft:gpt-3.5-turbo-0125:cache-labs-llc:chatbotfaq20:9XWiosPi";
+    console.log(model, 123);
     const response = await openai.chat.completions.create({
-      model: "ft:gpt-3.5-turbo-0125:cache-labs-llc:chatbotfaq20:9XWiosPi",
+      model: model,
       messages: [
         {
           role: "system",
@@ -103,29 +110,7 @@ const download = async (req, res) => {
   // Write the JSON data to a file
   fs.writeFileSync(filePath, jsonData, "utf-8");
 };
-// module.exports.downloadDatabase = async (req, res) => {
-//   try {
-//     setTimeout(() => {
-//       download();
-//     }, 6000);
-//     exec("python training.py", (error, stdout, stderr) => {
-//       if (error) {
-//         console.error(`exec error: ${error}`);
-//         return res.status(500).send(`Error: ${error.message}`);
-//       }
-//       if (stderr) {
-//         console.error(`stderr: ${stderr}`);
-//         return res.status(500).send(`Stderr: ${stderr}`);
-//       }
-//       console.log(`stdout: ${stdout}`);
-//       res.send(`Output: ${stdout}`);
-//     });
-//   } catch (error) {
-//     console.log(error);
-//     res.status(500).json({ error: "Internal Server Error", error });
-//   }
-// };
-// 
+
 module.exports.downloadDatabase = async (req, res) => {
   try {
     setTimeout(() => {
@@ -165,7 +150,17 @@ module.exports.downloadDatabase = async (req, res) => {
               responseStatus.status === "failed"
             ) {
               clearInterval(polling);
-              res.status(200).json(responseStatus);
+              if (responseStatus.status === "succeeded") {
+                const fineTunedModel = responseStatus.fine_tuned_model;
+
+                // Save the fine_tuned_model to the database
+                const newModel = new ChatModel({ model: fineTunedModel });
+                await newModel.save();
+
+                return res.status(200).json(responseStatus);
+              } else {
+                return res.status(500).json({ message: "Fine-tuning failed" });
+              }
             }
           } catch (error) {
             console.error("Error retrieving job status:", error.message);
@@ -174,12 +169,12 @@ module.exports.downloadDatabase = async (req, res) => {
 
         // Poll the job status every 60 seconds
         const polling = setInterval(() => checkJobStatus(), 60000);
-        
+
         // const checkJobStatus = async () => {
         //   try {
         //     const responseStatus = await openai.fineTuning.jobs.retrieve(jobId);
         //     console.log(`Current job status: ${responseStatus.status}`);
-        
+
         //     if (responseStatus.status === "succeeded") {
         //       clearInterval(polling);
         //       res.status(200).json(responseStatus);
@@ -189,11 +184,9 @@ module.exports.downloadDatabase = async (req, res) => {
         //     console.error("Error retrieving job status:", error.message);
         //   }
         // };
-        
+
         // // Poll the job status every 60 seconds
         // const polling = setInterval(() => checkJobStatus(), 60000);
-        
-
       } catch (error) {
         console.error("Error during fine-tuning process:", error.message);
         res
@@ -209,4 +202,4 @@ module.exports.downloadDatabase = async (req, res) => {
       .status(500)
       .json({ error: "Internal Server Error", details: error.message });
   }
-}
+};

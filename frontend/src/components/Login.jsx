@@ -10,7 +10,10 @@ const Login = () => {
   const navigate = useNavigate();
 
   const handleLogin = () => {
-    window.open("http://localhost:5000/oauth/google/callback", "_self");
+    window.open(
+      "https://www.internal.cachelabs.io/oauth/google/callback",
+      "_self"
+    );
   };
 
   return (
