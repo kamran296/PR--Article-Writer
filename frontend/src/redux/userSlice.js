@@ -1,19 +1,25 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const fetchUser = createAsyncThunk("user/fetchUser", async () => {
-  const response = await fetch("http://localhost:5000/oauth/profile", {
-    method: "GET",
-    credentials: "include",
-  });
+  const response = await fetch(
+    "https://www.internal.cachelabs.io/oauth/profile",
+    {
+      method: "GET",
+      credentials: "include",
+    }
+  );
   const data = await response.json();
   return data;
 });
 
 // Create an async thunk for logout
 export const logoutUser = createAsyncThunk("user/logout", async () => {
-  const response = await fetch("http://localhost:5000/oauth/logout", {
-    method: "GET",
-  });
+  const response = await fetch(
+    "https://www.internal.cachelabs.io/oauth/logout",
+    {
+      method: "GET",
+    }
+  );
 
   if (response.ok) {
     console.log("Logout failed", response);
