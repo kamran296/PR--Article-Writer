@@ -40,7 +40,7 @@ const LoaResearch = ({ type }) => {
     try {
       const response = await fetch(
         // "http://localhost:5000/api/v1/ArticelWriter/loa-research",
-        "http://15.206.166.198/api/v1/ArticelWriter/loa-research",
+        "https://www.internal.cachelabs.io/api/v1/ArticelWriter/loa-research",
         {
           method: "POST",
           headers: {
@@ -73,7 +73,6 @@ const LoaResearch = ({ type }) => {
           <form onSubmit={handleSubmit}>
             <div className="row">
               <label>
-                
                 <input
                   className="inp1 bg-[#FFFFFF] shadow-md "
                   placeholder="Recipient's Name"
@@ -84,7 +83,6 @@ const LoaResearch = ({ type }) => {
                 />
               </label>
               <label>
-                
                 <input
                   className="inp1 bg-[#FFFFFF] shadow-md "
                   placeholder="Recipient's Organization/University"
@@ -98,7 +96,6 @@ const LoaResearch = ({ type }) => {
 
             <div className="row">
               <label>
-                
                 <input
                   className="inp1 bg-[#FFFFFF] shadow-md "
                   placeholder="Sender's Name"
@@ -109,7 +106,6 @@ const LoaResearch = ({ type }) => {
                 />
               </label>
               <label>
-                
                 <input
                   className="inp1 bg-[#FFFFFF] shadow-md "
                   placeholder="Sender's Organization/Institution"
@@ -123,7 +119,6 @@ const LoaResearch = ({ type }) => {
 
             <div className="row">
               <label>
-                
                 <input
                   className="inp1 bg-[#FFFFFF] shadow-md "
                   placeholder="Sender's Relationship with the Recipient"
@@ -134,7 +129,6 @@ const LoaResearch = ({ type }) => {
                 />
               </label>
               <label>
-                
                 <input
                   className="inp1 bg-[#FFFFFF] shadow-md "
                   placeholder="Concerned Field of Work"
@@ -148,7 +142,6 @@ const LoaResearch = ({ type }) => {
 
             <div className="row">
               <label>
-                
                 <input
                   className="inp1 bg-[#FFFFFF] shadow-md "
                   placeholder="Niche Domain (if any)"
@@ -159,7 +152,6 @@ const LoaResearch = ({ type }) => {
                 />
               </label>
               <label>
-                
                 <input
                   className="inp1 bg-[#FFFFFF] shadow-md "
                   placeholder="Source of Knowledge"
@@ -173,7 +165,6 @@ const LoaResearch = ({ type }) => {
 
             <div className="row">
               <label>
-                
                 <input
                   className="inp1 bg-[#FFFFFF] shadow-md "
                   placeholder="Previous Contributions"
@@ -184,7 +175,6 @@ const LoaResearch = ({ type }) => {
                 />
               </label>
               <label>
-                
                 <input
                   className="inp1 bg-[#FFFFFF] shadow-md "
                   placeholder="Title of paper"
@@ -197,7 +187,6 @@ const LoaResearch = ({ type }) => {
             </div>
             <div className="row">
               <label>
-                
                 <input
                   className="inp1 bg-[#FFFFFF] shadow-md "
                   placeholder="Aspect Of Paper"
@@ -208,7 +197,6 @@ const LoaResearch = ({ type }) => {
                 />
               </label>
               <label>
-                
                 <input
                   className="inp1 bg-[#FFFFFF] shadow-md "
                   placeholder="Novelty Of Work"
@@ -221,7 +209,6 @@ const LoaResearch = ({ type }) => {
             </div>
             <div className="row">
               <label>
-                
                 <input
                   className="inp1 bg-[#FFFFFF] shadow-md "
                   placeholder="Significance For Future Works"
@@ -232,7 +219,6 @@ const LoaResearch = ({ type }) => {
                 />
               </label>
               <label>
-                
                 <input
                   className="inp1 bg-[#FFFFFF] shadow-md "
                   placeholder="Takeaway From Paper"
@@ -245,7 +231,6 @@ const LoaResearch = ({ type }) => {
             </div>
             <div className="row">
               <label>
-                
                 <input
                   className="inp1 bg-[#FFFFFF] shadow-md "
                   placeholder="Detailed Description"
@@ -256,7 +241,6 @@ const LoaResearch = ({ type }) => {
                 />
               </label>
               <label>
-                
                 <input
                   className="inp1 bg-[#FFFFFF] shadow-md "
                   placeholder="Publication"
@@ -267,7 +251,12 @@ const LoaResearch = ({ type }) => {
                 />
               </label>
             </div>
-            <button className = "midBtn bg-gradient-to-r from-[#AA22FF] via-[#D989FF] to-[#51FFE0] mt-[3rem]" type="Submit">Generate LOA</button>
+            <button
+              className="midBtn bg-gradient-to-r from-[#AA22FF] via-[#D989FF] to-[#51FFE0] mt-[3rem]"
+              type="Submit"
+            >
+              Generate LOA
+            </button>
           </form>
           {generatedArticle && (
             <div className="chat bot bg-white max-w-[85rem] shadow-md ">

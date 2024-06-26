@@ -32,7 +32,7 @@ const LoaPrompt = () => {
     try {
       const response = await fetch(
         // "http://localhost:5000/api/v1/ArticelWriter/bio-writer-prompt",
-        "http://15.206.166.198/api/v1/ArticelWriter/bio-writer-prompt",
+        "https://www.internal.cachelabs.io/api/v1/ArticelWriter/bio-writer-prompt",
         {
           method: "POST",
           headers: {
@@ -62,7 +62,7 @@ const LoaPrompt = () => {
       <div>
         <div className="App">
           <div className="main ml-[25rem] mt-[10rem]">
-          <div className="">
+            <div className="">
               <div className="inp shadow-md  bg-[#FFFFFF] w-[90rem] h-[5rem] rounded-lg">
                 <input
                   className="inpt bg-[#FFFFFF]"
@@ -73,7 +73,7 @@ const LoaPrompt = () => {
                   onChange={handleInputChange}
                 />
                 <button className="send" onClick={generateArticle}>
-                <BsSend className=" text-secondary w-[2rem] h-[2rem] rotate-45 text-3xl inline-block" />
+                  <BsSend className=" text-secondary w-[2rem] h-[2rem] rotate-45 text-3xl inline-block" />
                 </button>
               </div>
             </div>
@@ -92,7 +92,6 @@ const LoaPrompt = () => {
                 </div>
               </div>
             )}
-            
           </div>
         </div>
       </div>

@@ -24,7 +24,7 @@ const Chatbot = () => {
     e.preventDefault();
     try {
       const response = await fetch(
-        "http://15.206.166.198/api/v1/chatbot/chat",
+        "https://www.internal.cachelabs.io/api/v1/chatbot/chat",
         {
           method: "POST",
           headers: {

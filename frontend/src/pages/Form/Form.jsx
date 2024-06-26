@@ -42,7 +42,7 @@ const Form = () => {
     console.log("Generating article");
     try {
       const response = await fetch(
-        "http://15.206.166.198/api/v1/ArticelWriter/articleForm",
+        "https://www.internal.cachelabs.io/api/v1/ArticelWriter/articleForm",
         // "http://localhost:5000/api/v1/ArticelWriter/articleForm",
         {
           method: "POST",
@@ -70,13 +70,12 @@ const Form = () => {
       <SidebarTail />
       <div className="App">
         <div className="main ml-[24rem]">
-        <div className="text-black text-4xl font-poppins pb-[4rem]">
-          <p>Fill the areas to generate</p>
-        </div>
+          <div className="text-black text-4xl font-poppins pb-[4rem]">
+            <p>Fill the areas to generate</p>
+          </div>
           <form onSubmit={handleSubmit}>
             <div className="row">
               <label>
-                
                 <input
                   className="inp1 text-black shadow-md  bg-[#FFFFFF]"
                   placeholder="Name"
@@ -88,7 +87,6 @@ const Form = () => {
               </label>
 
               <label>
-                
                 <input
                   className="inp1 text-black bg-[#FFFFFF] shadow-md "
                   placeholder="Expertise"
@@ -102,7 +100,6 @@ const Form = () => {
 
             <div className="row">
               <label>
-                
                 <input
                   className="inp1 text-black bg-[#FFFFFF] shadow-md "
                   placeholder="Highest Degree"
@@ -114,7 +111,6 @@ const Form = () => {
               </label>
 
               <label>
-                
                 <input
                   className="inp1 text-black bg-[#FFFFFF] shadow-md "
                   placeholder="Specialization"
@@ -128,7 +124,6 @@ const Form = () => {
 
             <div className="row">
               <label>
-                
                 <input
                   className="inp1 text-black bg-[#FFFFFF] shadow-md "
                   placeholder="University"
@@ -140,7 +135,6 @@ const Form = () => {
               </label>
 
               <label>
-                
                 <input
                   className="inp1 text-black bg-[#FFFFFF] shadow-md "
                   placeholder="Job Title"
@@ -154,7 +148,6 @@ const Form = () => {
 
             <div className="row">
               <label>
-                
                 <input
                   className="inp1 text-black bg-[#FFFFFF] shadow-md "
                   placeholder="Current Employer"
@@ -165,7 +158,6 @@ const Form = () => {
                 />
               </label>
               <label>
-                
                 <input
                   className="inp1 text-black bg-[#FFFFFF] shadow-md "
                   placeholder="Total Years of Experience"
@@ -179,7 +171,6 @@ const Form = () => {
 
             <div className="row">
               <label>
-                
                 <input
                   className="inp1 text-black bg-[#FFFFFF] shadow-md "
                   placeholder="Industry"
@@ -190,7 +181,6 @@ const Form = () => {
                 />
               </label>
               <label>
-                
                 <input
                   className="inp1 text-black bg-[#FFFFFF] shadow-md "
                   placeholder="Achievements"
@@ -204,7 +194,6 @@ const Form = () => {
 
             <div className="row">
               <label>
-                
                 <input
                   className="inp1 text-black bg-[#FFFFFF] shadow-md "
                   placeholder="Impactful Work at Workplace"
@@ -215,7 +204,6 @@ const Form = () => {
                 />
               </label>
               <label>
-                
                 <input
                   className="inp1 text-black bg-[#FFFFFF]  shadow-md "
                   placeholder="Notable Project"
@@ -229,7 +217,6 @@ const Form = () => {
 
             <div className="row">
               <label>
-                
                 <input
                   className="inp1 text-black bg-[#FFFFFF] shadow-md "
                   placeholder="Quantified Work"
@@ -240,7 +227,6 @@ const Form = () => {
                 />
               </label>
               <label>
-                
                 <input
                   className="inp1 text-black bg-[#FFFFFF] shadow-md "
                   placeholder="Challenges Overcome"
@@ -254,7 +240,6 @@ const Form = () => {
 
             <div className="row">
               <label>
-                
                 <input
                   className="inp1 text-black bg-[#FFFFFF] shadow-md "
                   placeholder="Publications"
@@ -265,7 +250,6 @@ const Form = () => {
                 />
               </label>
               <label>
-                
                 <input
                   className="inp1 text-black bg-[#FFFFFF] shadow-md "
                   placeholder="Industry Insights"
@@ -276,7 +260,10 @@ const Form = () => {
                 />
               </label>
             </div>
-            <button className="midBtn bg-gradient-to-r from-[#AA22FF] via-[#D989FF] to-[#51FFE0] mt-[3rem]" type="submit">
+            <button
+              className="midBtn bg-gradient-to-r from-[#AA22FF] via-[#D989FF] to-[#51FFE0] mt-[3rem]"
+              type="submit"
+            >
               Start Working with AI
             </button>
           </form>

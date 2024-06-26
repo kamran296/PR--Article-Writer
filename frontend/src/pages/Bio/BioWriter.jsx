@@ -34,7 +34,7 @@ const BioWriter = () => {
     try {
       const response = await fetch(
         // "http://localhost:5000/api/v1/ArticelWriter/bio-writer",
-        "http://15.206.166.198/api/v1/ArticelWriter/bio-writer",
+        "https://www.internal.cachelabs.io/api/v1/ArticelWriter/bio-writer",
         {
           method: "POST",
           headers: {
@@ -67,13 +67,12 @@ const BioWriter = () => {
       <SidebarTail />
       <div className="App">
         <div className="main ml-[24rem]">
-        <div className="text-black text-4xl font-poppins pb-[4rem]">
-          <p>Fill the areas to generate</p>
-        </div>
+          <div className="text-black text-4xl font-poppins pb-[4rem]">
+            <p>Fill the areas to generate</p>
+          </div>
           <form onSubmit={handleSubmit}>
             <div className="row">
               <label>
-               
                 <input
                   className="inp1 bg-[#FFFFFF] shadow-md "
                   placeholder="Name"
@@ -84,7 +83,6 @@ const BioWriter = () => {
                 />
               </label>
               <label>
-                
                 <input
                   className="inp1 bg-[#FFFFFF] shadow-md "
                   placeholder="Professional Experience"
@@ -98,7 +96,6 @@ const BioWriter = () => {
 
             <div className="row">
               <label>
-               
                 <input
                   className="inp1 bg-[#FFFFFF] shadow-md "
                   placeholder="What skills, value do you bring to the table:"
@@ -109,7 +106,6 @@ const BioWriter = () => {
                 />
               </label>
               <label>
-                
                 <input
                   className="inp1 bg-[#FFFFFF] shadow-md "
                   placeholder="Something about your background:"
@@ -123,7 +119,6 @@ const BioWriter = () => {
 
             <div className="row">
               <label>
-                
                 <input
                   className="inp1 bg-[#FFFFFF] shadow-md"
                   placeholder="A Highlight from your career:"
@@ -134,7 +129,6 @@ const BioWriter = () => {
                 />
               </label>
               <label>
-                
                 <input
                   className="inp1 bg-[#FFFFFF] shadow-md "
                   placeholder="What you commit to as a professional in your respective field of
@@ -149,7 +143,6 @@ const BioWriter = () => {
 
             <div className="row">
               <label>
-                
                 <input
                   className="inp1 bg-[#FFFFFF] shadow-md "
                   placeholder="Proficiency:"
@@ -160,7 +153,6 @@ const BioWriter = () => {
                 />
               </label>
               <label>
-                
                 <input
                   className="inp1 bg-[#FFFFFF] shadow-md "
                   placeholder="Academic Excellence:"
@@ -174,7 +166,6 @@ const BioWriter = () => {
 
             <div className="row">
               <label>
-                
                 <input
                   className="inp1 bg-[#FFFFFF] shadow-md "
                   placeholder="Judging/Reviewing Opportunities Served:"
@@ -185,7 +176,6 @@ const BioWriter = () => {
                 />
               </label>
               <label>
-                
                 <input
                   className="inp1 bg-[#FFFFFF] shadow-md "
                   placeholder="Press/Media Coverage"
@@ -198,7 +188,6 @@ const BioWriter = () => {
             </div>
             <div className="row">
               <label>
-                
                 <input
                   className="inp1 bg-[#FFFFFF] shadow-md "
                   placeholder="Vision:"
@@ -209,7 +198,6 @@ const BioWriter = () => {
                 />
               </label>
               <label>
-                
                 <input
                   className="inp1 bg-[#FFFFFF] shadow-md "
                   placeholder="Awards & Recognitions Conferred"
@@ -221,7 +209,12 @@ const BioWriter = () => {
               </label>
             </div>
 
-            <button className="midBtn bg-gradient-to-r from-[#AA22FF] via-[#D989FF] to-[#51FFE0] mt-[3rem]" type="Submit">Generate BIO</button>
+            <button
+              className="midBtn bg-gradient-to-r from-[#AA22FF] via-[#D989FF] to-[#51FFE0] mt-[3rem]"
+              type="Submit"
+            >
+              Generate BIO
+            </button>
           </form>
 
           {generatedArticle && (

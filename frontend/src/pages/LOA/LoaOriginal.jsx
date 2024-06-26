@@ -38,7 +38,7 @@ const LoaOriginal = ({ type }) => {
     console.log("Generating article");
     try {
       const response = await fetch(
-        "http://15.206.166.198/api/v1/ArticelWriter/loa-original",
+        "https://www.internal.cachelabs.io/api/v1/ArticelWriter/loa-original",
         // "http://localhost:5000/api/v1/ArticelWriter/loa-original",
         {
           method: "POST",
