@@ -33,8 +33,8 @@ const BioWriter = () => {
     console.log("Generating article");
     try {
       const response = await fetch(
-        // "http://localhost:5000/api/v1/ArticelWriter/bio-writer",
-        "https://www.internal.cachelabs.io/api/v1/ArticelWriter/bio-writer",
+        // "http://localhost:5000/api/v1/bio/bio-writer",
+        "https://www.internal.cachelabs.io/api/v1/bio/bio-writer",
         {
           method: "POST",
           headers: {

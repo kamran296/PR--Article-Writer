@@ -39,8 +39,8 @@ const LoaPrompt = () => {
     console.log("Generating Article!!");
     try {
       const response = await fetch(
-        "https://www.internal.cachelabs.io/api/v1/ArticelWriter/loaPrompt",
-        // "http://localhost:5000/api/v1/ArticelWriter/loaPrompt",
+        "https://www.internal.cachelabs.io/api/v1/loa/loa-prompt",
+        // "http://localhost:5000/api/v1/loa/loa-prompt",
         {
           method: "POST",
           headers: {

@@ -37,7 +37,7 @@ const LoaCritical = ({ type }) => {
     console.log("Generating article");
     try {
       const response = await fetch(
-        "https://www.internal.cachelabs.io/api/v1/ArticelWriter/loa-critical",
+        "https://www.internal.cachelabs.io/api/v1/loa/loa-critical",
         // "http://localhost:5000/api/v1/ArticelWriter/loa-critical",
         {
           method: "POST",

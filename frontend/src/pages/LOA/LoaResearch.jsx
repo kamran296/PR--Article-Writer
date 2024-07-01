@@ -39,8 +39,8 @@ const LoaResearch = ({ type }) => {
     console.log("Generating article");
     try {
       const response = await fetch(
-        // "http://localhost:5000/api/v1/ArticelWriter/loa-research",
-        "https://www.internal.cachelabs.io/api/v1/ArticelWriter/loa-research",
+        // "http://localhost:5000/api/v1/loa/loa-research",
+        "https://www.internal.cachelabs.io/api/v1/loa/loa-research",
         {
           method: "POST",
           headers: {

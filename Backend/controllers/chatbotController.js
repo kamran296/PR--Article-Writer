@@ -169,24 +169,6 @@ module.exports.downloadDatabase = async (req, res) => {
 
         // Poll the job status every 60 seconds
         const polling = setInterval(() => checkJobStatus(), 60000);
-
-        // const checkJobStatus = async () => {
-        //   try {
-        //     const responseStatus = await openai.fineTuning.jobs.retrieve(jobId);
-        //     console.log(`Current job status: ${responseStatus.status}`);
-
-        //     if (responseStatus.status === "succeeded") {
-        //       clearInterval(polling);
-        //       res.status(200).json(responseStatus);
-        //     }
-        //     // If status is "failed", the function does nothing and continues to check every 60 seconds
-        //   } catch (error) {
-        //     console.error("Error retrieving job status:", error.message);
-        //   }
-        // };
-
-        // // Poll the job status every 60 seconds
-        // const polling = setInterval(() => checkJobStatus(), 60000);
       } catch (error) {
         console.error("Error during fine-tuning process:", error.message);
         res

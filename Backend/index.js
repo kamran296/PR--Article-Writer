@@ -11,6 +11,8 @@ const cookieParser = require("cookie-parser");
 const authRouter = require("./router/auth");
 const openaiRouter = require("./router/openaiRouter");
 const chatbotRouter = require("./router/chatbotRouter");
+const loaRouter = require("./router/loaRouter");
+const bioRouter = require("./router/bioRouter");
 
 const app = express();
 
@@ -58,7 +60,8 @@ require("./passport");
 app.use("/oauth", authRouter);
 app.use("/api/v1/ArticleWriter", openaiRouter);
 app.use("/api/v1/chatbot", chatbotRouter);
-
+app.use("/api/v1/loa", loaRouter);
+app.use("/api/v1/bio", bioRouter);
 // Static files
 const _dirname = path.dirname("");
 const buildPath = path.join(_dirname, "../frontend/dist");
