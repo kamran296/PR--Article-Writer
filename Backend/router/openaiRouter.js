@@ -4,6 +4,7 @@ const openaiController = require("../controllers/openaiController");
 
 router.route("/articlePrompt").post(openaiController.articlePrompt);
 router.route("/articleForm").post(openaiController.articleForm);
+router.route("/add-article").post(openaiController.addData);
 // router.route("/loaPrompt").post(openaiController.loaPrompt);
 // router.route("/loa-research").post(openaiController.loaFormResearch);
 // router.route("/loa-original").post(openaiController.loaFormOriginal);

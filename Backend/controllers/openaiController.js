@@ -1,7 +1,7 @@
 const dotenv = require("dotenv");
 dotenv.config({ path: "./config.env" });
 const { Configuration, OpenAI } = require("openai");
-
+const Article = require("../model/articleData");
 const openai = new OpenAI({
   apiKey: process.env.API,
 });
@@ -55,5 +55,24 @@ exports.articleForm = async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(500).json(error);
+  }
+};
+
+module.exports.addData = async (req, res) => {
+  try {
+    const { question, answer } = req.body;
+    console.log(question, answer);
+    const article = new Article({
+      messages: [
+        { role: "system" },
+        { role: "user", content: question },
+        { role: "assistant", content: answer },
+      ],
+    });
+    await article.save();
+    res.status(201).json({ message: "Data added successfully!" });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 };
