@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./loaform.css";
 import download from "./assets/download.png";
 import SidebarTail from "../../components/SidebarTail";
+import { BiLike, BiDislike ,BiSolidLike} from "react-icons/bi";
 
 const LoaResearch = ({ type }) => {
   const [formData, setFormData] = useState({
@@ -34,13 +35,51 @@ const LoaResearch = ({ type }) => {
     });
   };
 
+  const [liked, setLiked] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [correctAnswer, setCorrectAnswer] = useState("");
+
+  const handleDislikeClick = () => {
+    setIsModalOpen(true);
+  };
+
+  const handlelikeClick = () => {
+    setLiked(!liked);
+  };
+
+  const handleModalSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch(
+        "http://localhost:5000/api/v1/ArticleWriter/add-article",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            question: formData.prompt,
+            answer: correctAnswer,
+          }),
+        }
+      );
+      const data = await response.json();
+      console.log(data);
+
+      setIsModalOpen(false);
+      setCorrectAnswer("");
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Generating article");
     try {
       const response = await fetch(
-        // "http://localhost:5000/api/v1/loa/loa-research",
-        "https://www.internal.cachelabs.io/api/v1/loa/loa-research",
+        "http://localhost:5000/api/v1/loa/loa-research",
+        // "https://www.internal.cachelabs.io/api/v1/loa/loa-research",
         {
           method: "POST",
           headers: {
@@ -74,7 +113,7 @@ const LoaResearch = ({ type }) => {
             <div className="row">
               <label>
                 <input
-                  className="inp1 bg-[#FFFFFF] shadow-md "
+                  className="inp1 text-black bg-[#FFFFFF] shadow-md "
                   placeholder="Recipient's Name"
                   type="text"
                   name="recipientName"
@@ -84,7 +123,7 @@ const LoaResearch = ({ type }) => {
               </label>
               <label>
                 <input
-                  className="inp1 bg-[#FFFFFF] shadow-md "
+                  className="inp1 text-black bg-[#FFFFFF] shadow-md "
                   placeholder="Recipient's Organization/University"
                   type="text"
                   name="recipientOrganization"
@@ -97,7 +136,7 @@ const LoaResearch = ({ type }) => {
             <div className="row">
               <label>
                 <input
-                  className="inp1 bg-[#FFFFFF] shadow-md "
+                  className="inp1 text-black bg-[#FFFFFF] shadow-md "
                   placeholder="Sender's Name"
                   type="text"
                   name="senderName"
@@ -107,7 +146,7 @@ const LoaResearch = ({ type }) => {
               </label>
               <label>
                 <input
-                  className="inp1 bg-[#FFFFFF] shadow-md "
+                  className="inp1 text-black bg-[#FFFFFF] shadow-md "
                   placeholder="Sender's Organization/Institution"
                   type="text"
                   name="senderOrganization"
@@ -120,7 +159,7 @@ const LoaResearch = ({ type }) => {
             <div className="row">
               <label>
                 <input
-                  className="inp1 bg-[#FFFFFF] shadow-md "
+                  className="inp1 text-black bg-[#FFFFFF] shadow-md "
                   placeholder="Sender's Relationship with the Recipient"
                   type="text"
                   name="senderRelationship"
@@ -130,7 +169,7 @@ const LoaResearch = ({ type }) => {
               </label>
               <label>
                 <input
-                  className="inp1 bg-[#FFFFFF] shadow-md "
+                  className="inp1 text-black bg-[#FFFFFF] shadow-md "
                   placeholder="Concerned Field of Work"
                   type="text"
                   name="concernedFieldOfWork"
@@ -143,7 +182,7 @@ const LoaResearch = ({ type }) => {
             <div className="row">
               <label>
                 <input
-                  className="inp1 bg-[#FFFFFF] shadow-md "
+                  className="inp1 text-black bg-[#FFFFFF] shadow-md "
                   placeholder="Niche Domain (if any)"
                   type="text"
                   name="nicheDomain"
@@ -153,7 +192,7 @@ const LoaResearch = ({ type }) => {
               </label>
               <label>
                 <input
-                  className="inp1 bg-[#FFFFFF] shadow-md "
+                  className="inp1 text-black bg-[#FFFFFF] shadow-md "
                   placeholder="Source of Knowledge"
                   type="text"
                   name="sourceOfKnowledge"
@@ -166,7 +205,7 @@ const LoaResearch = ({ type }) => {
             <div className="row">
               <label>
                 <input
-                  className="inp1 bg-[#FFFFFF] shadow-md "
+                  className="inp1 text-black bg-[#FFFFFF] shadow-md "
                   placeholder="Previous Contributions"
                   type="text"
                   name="previousContributions"
@@ -176,7 +215,7 @@ const LoaResearch = ({ type }) => {
               </label>
               <label>
                 <input
-                  className="inp1 bg-[#FFFFFF] shadow-md "
+                  className="inp1 text-black bg-[#FFFFFF] shadow-md "
                   placeholder="Title of paper"
                   type="text"
                   name="titleOfPaper"
@@ -188,7 +227,7 @@ const LoaResearch = ({ type }) => {
             <div className="row">
               <label>
                 <input
-                  className="inp1 bg-[#FFFFFF] shadow-md "
+                  className="inp1 text-black bg-[#FFFFFF] shadow-md "
                   placeholder="Aspect Of Paper"
                   type="text"
                   name="AspectOfPaper"
@@ -198,7 +237,7 @@ const LoaResearch = ({ type }) => {
               </label>
               <label>
                 <input
-                  className="inp1 bg-[#FFFFFF] shadow-md "
+                  className="inp1 text-black bg-[#FFFFFF] shadow-md "
                   placeholder="Novelty Of Work"
                   type="text"
                   name="noveltyOfWork"
@@ -210,7 +249,7 @@ const LoaResearch = ({ type }) => {
             <div className="row">
               <label>
                 <input
-                  className="inp1 bg-[#FFFFFF] shadow-md "
+                  className="inp1 text-black bg-[#FFFFFF] shadow-md "
                   placeholder="Significance For Future Works"
                   type="text"
                   name="significanceForFutureWork"
@@ -220,7 +259,7 @@ const LoaResearch = ({ type }) => {
               </label>
               <label>
                 <input
-                  className="inp1 bg-[#FFFFFF] shadow-md "
+                  className="inp1 text-black bg-[#FFFFFF] shadow-md "
                   placeholder="Takeaway From Paper"
                   type="text"
                   name="takeawayFromPaper"
@@ -232,7 +271,7 @@ const LoaResearch = ({ type }) => {
             <div className="row">
               <label>
                 <input
-                  className="inp1 bg-[#FFFFFF] shadow-md "
+                  className="inp1 text-black bg-[#FFFFFF] shadow-md "
                   placeholder="Detailed Description"
                   type="text"
                   name="detailedDescription"
@@ -242,7 +281,7 @@ const LoaResearch = ({ type }) => {
               </label>
               <label>
                 <input
-                  className="inp1 bg-[#FFFFFF] shadow-md "
+                  className="inp1 text-black bg-[#FFFFFF] shadow-md "
                   placeholder="Publication"
                   type="text"
                   name="Publication"
@@ -260,13 +299,61 @@ const LoaResearch = ({ type }) => {
           </form>
           {generatedArticle && (
             <div className="chat bot bg-white max-w-[85rem] shadow-md ">
+              <div className="flex">
               {/* <h2>Generated Article:</h2> */}
-              <img src={download} alt="" className="chatImg" />
+              <img src={download} alt="" className="chatImg h-[3.3rem] w-[3.5rem]" />
               <p className="txt">{generatedArticle}</p>
+              </div>
+              <div className="mt-[1rem]">
+              <span className="flex ml-[5rem]">
+                  <div onClick={handlelikeClick}>
+                    {liked ? (
+                      <BiSolidLike className="text-green-500 inline-block h-[2.5rem] w-[2.5rem] cursor-pointer text-3xl" />
+                    ) : (
+                      <BiLike className="text-green-500 inline-block h-[2.5rem] w-[2.5rem] cursor-pointer text-3xl" />
+                    )}
+                  </div>
+                  <BiDislike
+                    className="inline-block h-[2.5rem] w-[2.5rem] text-red-500 cursor-pointer ml-2 text-3xl"
+                    onClick={() => handleDislikeClick()}
+                  />
+                </span>
+              </div>
             </div>
           )}
         </div>
       </div>
+      {isModalOpen && (
+        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center">
+          <div className="bg-white p-8 rounded-xl shadow-md w-[72rem]">
+            <h2 className="text-3xl font-bold mb-4">
+              Provide the correct answer
+            </h2>
+            <form onSubmit={handleModalSubmit}>
+              <textarea
+                className="w-full h-[35rem] text-xl p-2 mb-4 border rounded"
+                rows="4"
+                value={correctAnswer}
+                onChange={(e) => setCorrectAnswer(e.target.value)}
+                placeholder="Enter the correct answer here"
+              />
+              <button
+                type="submit"
+                className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+              >
+                Submit
+              </button>
+              <button
+                type="button"
+                className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 ml-2"
+                onClick={() => setIsModalOpen(false)}
+              >
+                Cancel
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
     </>
   );
 };

@@ -55,7 +55,7 @@ function App() {
       <Routes>
         <Route exact path="/login" element={<Login />} />
 
-        {user && user.success ? (
+        {/* {user && user.success ? ( */}
           <>
             <Route exact path="/" element={<Home />} />
             <Route exact path="/article-form" element={<Form />} />
@@ -71,9 +71,9 @@ function App() {
             <Route exact path="/sidebar" element={<SidebarTail />} />
             <Route exact path="/chatbot" element={<Chatbot />} />
           </>
-        ) : (
+        {/* ) : (
           <Route path="*" element={<Login />} />
-        )}
+        )} */}
       </Routes>
     </Router>
   );

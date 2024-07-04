@@ -3,8 +3,8 @@ import navbar from "./assets/navbar.png";
 import profile from "./assets/profile.png";
 import { useSelector } from "react-redux";
 const Navbar = () => {
-  const data = useSelector((state) => state.user.user);
-  console.log("navbar", data);
+  // const data = useSelector((state) => state.user.user);
+  // console.log("navbar", data);
   return (
     <nav className=" w-full  h-24  bg-[#FFFFFF] flex justify-between fixed  z-50">
       <div className="flex items-center text-xl px-2 py-2  ">
@@ -19,12 +19,13 @@ const Navbar = () => {
       </div>
       <div className="flex items-center gap-x-5 px-2">
         <div className="font-bold text-xl text-gray-400">
-          Welcome, {data.user.displayName}
+          {/* Welcome, {data.user.displayName} */}
         </div>
         <button className=" group">
           <img
             className=" mr-4 h-12 w-12 rounded-full"
-            src={data.user.image}
+            // src={data.user.image}
+            src={profile}
             alt="profile-icon"
           />
           <div className="z-10 bg-white hidden absolute rounded-lg shadow w-32 group-focus:block right-0">
