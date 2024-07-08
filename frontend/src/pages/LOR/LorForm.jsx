@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// import "./Form.css";
+import "./Form.css";
 import gptLogo from "./assets/chatgpt.svg";
 import addBtn from "./assets/add-30.png";
 import msgIcon from "./assets/message.svg";
@@ -117,7 +117,7 @@ const LorForm = () => {
               <label>
                 <input
                   className="inp1 text-black shadow-md  bg-[#FFFFFF]"
-                  placeholder="Name"
+                  placeholder="Recipient's Name"
                   type="text"
                   name="name"
                   value={formData.name}
@@ -128,7 +128,7 @@ const LorForm = () => {
               <label>
                 <input
                   className="inp1 text-black bg-[#FFFFFF] shadow-md "
-                  placeholder="Expertise"
+                  placeholder="Recipient's Organization/University"
                   type="text"
                   name="expertise"
                   value={formData.expertise}
@@ -141,7 +141,7 @@ const LorForm = () => {
               <label>
                 <input
                   className="inp1 text-black bg-[#FFFFFF] shadow-md "
-                  placeholder="Highest Degree"
+                  placeholder="Recommender's Name"
                   type="text"
                   name="highestDegree"
                   value={formData.highestDegree}
@@ -152,7 +152,7 @@ const LorForm = () => {
               <label>
                 <input
                   className="inp1 text-black bg-[#FFFFFF] shadow-md "
-                  placeholder="Specialization"
+                  placeholder="Recommender's Organization/Institution"
                   type="text"
                   name="specialization"
                   value={formData.specialization}
@@ -165,7 +165,7 @@ const LorForm = () => {
               <label>
                 <input
                   className="inp1 text-black bg-[#FFFFFF] shadow-md "
-                  placeholder="University"
+                  placeholder="Domain and niche of work"
                   type="text"
                   name="university"
                   value={formData.university}
@@ -176,7 +176,7 @@ const LorForm = () => {
               <label>
                 <input
                   className="inp1 text-black bg-[#FFFFFF] shadow-md "
-                  placeholder="Job Title"
+                  placeholder="Duration of Relationship with recommender"
                   type="text"
                   name="jobTitle"
                   value={formData.jobTitle}
@@ -189,7 +189,7 @@ const LorForm = () => {
               <label>
                 <input
                   className="inp1 text-black bg-[#FFFFFF] shadow-md "
-                  placeholder="Current Employer"
+                  placeholder="Awards and Recognitions"
                   type="text"
                   name="currentEmployer"
                   value={formData.currentEmployer}
@@ -199,7 +199,7 @@ const LorForm = () => {
               <label>
                 <input
                   className="inp1 text-black bg-[#FFFFFF] shadow-md "
-                  placeholder="Total Years of Experience"
+                  placeholder="Work Published in media, journals"
                   type="text"
                   name="experience"
                   value={formData.experience}
@@ -212,7 +212,7 @@ const LorForm = () => {
               <label>
                 <input
                   className="inp1 text-black bg-[#FFFFFF] shadow-md "
-                  placeholder="Industry"
+                  placeholder="Significant and impactful work"
                   type="text"
                   name="industry"
                   value={formData.industry}
@@ -222,7 +222,7 @@ const LorForm = () => {
               <label>
                 <input
                   className="inp1 text-black bg-[#FFFFFF] shadow-md "
-                  placeholder="Achievements"
+                  placeholder="Specialized skills"
                   type="text"
                   name="achievements"
                   value={formData.achievements}
@@ -235,7 +235,7 @@ const LorForm = () => {
               <label>
                 <input
                   className="inp1 text-black bg-[#FFFFFF] shadow-md "
-                  placeholder="Impactful Work at Workplace"
+                  placeholder="Critical role"
                   type="text"
                   name="impact"
                   value={formData.impact}
@@ -245,7 +245,7 @@ const LorForm = () => {
               <label>
                 <input
                   className="inp1 text-black bg-[#FFFFFF]  shadow-md "
-                  placeholder="Notable Project"
+                  placeholder="Recommender's contact information"
                   type="text"
                   name="projects"
                   value={formData.projects}
@@ -254,51 +254,7 @@ const LorForm = () => {
               </label>
             </div>
 
-            <div className="row">
-              <label>
-                <input
-                  className="inp1 text-black bg-[#FFFFFF] shadow-md "
-                  placeholder="Quantified Work"
-                  type="text"
-                  name="quantifiedWorks"
-                  value={formData.quantifiedWorks}
-                  onChange={handleChange}
-                />
-              </label>
-              <label>
-                <input
-                  className="inp1 text-black bg-[#FFFFFF] shadow-md "
-                  placeholder="Challenges Overcome"
-                  type="text"
-                  name="challengesOvercome"
-                  value={formData.challengesOvercome}
-                  onChange={handleChange}
-                />
-              </label>
-            </div>
-
-            <div className="row">
-              <label>
-                <input
-                  className="inp1 text-black bg-[#FFFFFF] shadow-md "
-                  placeholder="Publications"
-                  type="text"
-                  name="publications"
-                  value={formData.publications}
-                  onChange={handleChange}
-                />
-              </label>
-              <label>
-                <input
-                  className="inp1 text-black bg-[#FFFFFF] shadow-md "
-                  placeholder="Industry Insights"
-                  type="text"
-                  name="industryInsight"
-                  value={formData.industryInsight}
-                  onChange={handleChange}
-                />
-              </label>
-            </div>
+            
             <button
               className="midBtn bg-gradient-to-r from-[#AA22FF] via-[#D989FF] to-[#51FFE0] mt-[3rem]"
               type="submit"
