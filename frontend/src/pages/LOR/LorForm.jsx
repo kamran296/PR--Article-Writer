@@ -12,22 +12,18 @@ import { BiLike, BiDislike, BiSolidLike } from "react-icons/bi";
 
 const LorForm = () => {
   const [formData, setFormData] = useState({
-    name: "",
-    expertise: "",
-    highestDegree: "",
-    specialization: "",
-    university: "",
-    jobTitle: "",
-    currentEmployer: "",
-    experience: "",
-    industry: "",
-    achievements: "",
-    impact: "",
-    projects: "",
-    quantifiedWorks: "",
-    challengesOvercome: "",
-    publications: "",
-    industryInsight: "",
+    RecipientName: "",
+    RecipientUniversity: "",
+    RecommenderName: "",
+    RecommenderOrganization: "",
+    Domain: "",
+    DurationOfRelationship: "",
+    Awards: "",
+    WorkPublished: "",
+    SignificantWork: "",
+    skills: "",
+    CriticalRole: "",
+    RecommenderInformation: "",
   });
 
   const [liked, setLiked] = useState(false);
@@ -119,8 +115,8 @@ const LorForm = () => {
                   className="inp1 text-black shadow-md  bg-[#FFFFFF]"
                   placeholder="Recipient's Name"
                   type="text"
-                  name="Recipient's Name"
-                  value={formData.name}
+                  name="RecipientName"
+                  value={formData.RecipientName}
                   onChange={handleChange}
                 />
               </label>
@@ -130,8 +126,8 @@ const LorForm = () => {
                   className="inp1 text-black bg-[#FFFFFF] shadow-md "
                   placeholder="Recipient's Organization/University"
                   type="text"
-                  name="Recipient's Organization/University"
-                  value={formData.expertise}
+                  name="RecipientUniversity"
+                  value={formData.RecipientUniversity}
                   onChange={handleChange}
                 />
               </label>
@@ -143,8 +139,8 @@ const LorForm = () => {
                   className="inp1 text-black bg-[#FFFFFF] shadow-md "
                   placeholder="Recommender's Name"
                   type="text"
-                  name="Recommender's Name"
-                  value={formData.highestDegree}
+                  name="RecommenderName"
+                  value={formData.RecommenderName}
                   onChange={handleChange}
                 />
               </label>
@@ -154,8 +150,8 @@ const LorForm = () => {
                   className="inp1 text-black bg-[#FFFFFF] shadow-md "
                   placeholder="Recommender's Organization/Institution"
                   type="text"
-                  name="Recommender's Organization/Institution"
-                  value={formData.specialization}
+                  name="RecommenderOrganization"
+                  value={formData.RecommenderOrganization}
                   onChange={handleChange}
                 />
               </label>
@@ -167,8 +163,8 @@ const LorForm = () => {
                   className="inp1 text-black bg-[#FFFFFF] shadow-md "
                   placeholder="Domain and niche of work"
                   type="text"
-                  name="Domain and niche of work"
-                  value={formData.university}
+                  name="Domain"
+                  value={formData.Domain}
                   onChange={handleChange}
                 />
               </label>
@@ -178,8 +174,8 @@ const LorForm = () => {
                   className="inp1 text-black bg-[#FFFFFF] shadow-md "
                   placeholder="Duration of Relationship with recommender"
                   type="text"
-                  name="Duration of Relationship with recommender"
-                  value={formData.jobTitle}
+                  name="DurationOfRelationship"
+                  value={formData.DurationOfRelationship}
                   onChange={handleChange}
                 />
               </label>
@@ -191,8 +187,8 @@ const LorForm = () => {
                   className="inp1 text-black bg-[#FFFFFF] shadow-md "
                   placeholder="Awards and Recognitions"
                   type="text"
-                  name="Awards and Recognitions"
-                  value={formData.currentEmployer}
+                  name="Awards"
+                  value={formData.Awards}
                   onChange={handleChange}
                 />
               </label>
@@ -201,8 +197,8 @@ const LorForm = () => {
                   className="inp1 text-black bg-[#FFFFFF] shadow-md "
                   placeholder="Work Published in media, journals"
                   type="text"
-                  name="Work Published in media, journals"
-                  value={formData.experience}
+                  name="WorkPublished"
+                  value={formData.WorkPublished}
                   onChange={handleChange}
                 />
               </label>
@@ -214,8 +210,8 @@ const LorForm = () => {
                   className="inp1 text-black bg-[#FFFFFF] shadow-md "
                   placeholder="Significant and impactful work"
                   type="text"
-                  name="Significant and impactful work"
-                  value={formData.industry}
+                  name="SignificantWork"
+                  value={formData.SignificantWork}
                   onChange={handleChange}
                 />
               </label>
@@ -224,8 +220,8 @@ const LorForm = () => {
                   className="inp1 text-black bg-[#FFFFFF] shadow-md "
                   placeholder="Specialized skills"
                   type="text"
-                  name="Specialized skills"
-                  value={formData.achievements}
+                  name="skills"
+                  value={formData.skills}
                   onChange={handleChange}
                 />
               </label>
@@ -237,8 +233,8 @@ const LorForm = () => {
                   className="inp1 text-black bg-[#FFFFFF] shadow-md "
                   placeholder="Critical role"
                   type="text"
-                  name="Critical role"
-                  value={formData.impact}
+                  name="CriticalRole"
+                  value={formData.CriticalRole}
                   onChange={handleChange}
                 />
               </label>
@@ -247,8 +243,8 @@ const LorForm = () => {
                   className="inp1 text-black bg-[#FFFFFF]  shadow-md "
                   placeholder="Recommender's contact information"
                   type="text"
-                  name="Recommender's contact information"
-                  value={formData.projects}
+                  name="RecommenderInformation"
+                  value={formData.RecommenderInformation}
                   onChange={handleChange}
                 />
               </label>
