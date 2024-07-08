@@ -1,39 +1,34 @@
 import React, { useState } from "react";
-import "./loaform.css";
+// import "./Form.css";
+import gptLogo from "./assets/chatgpt.svg";
+import addBtn from "./assets/add-30.png";
+import msgIcon from "./assets/message.svg";
+import gptImgLogo from "./assets/chatgptLogo.svg";
 import download from "./assets/download.png";
+import { Link } from "react-router-dom";
+import SideBar from "../../components/SideBar";
 import SidebarTail from "../../components/SidebarTail";
 import { BiLike, BiDislike, BiSolidLike } from "react-icons/bi";
 
-const LoaResearch = ({ type }) => {
+const LorForm = () => {
   const [formData, setFormData] = useState({
-    typeOfLOA: type,
-    recipientName: "",
-    recipientOrganization: "",
-    senderName: "",
-    senderOrganization: "",
-    senderRelationship: "",
-    concernedFieldOfWork: "",
-    nicheDomain: "",
-    sourceOfKnowledge: "",
-    previousContributions: "",
-    recognitionOrAwards: "",
-    titleOfPaper: "",
-    AspectOfPaper: "",
-    noveltyOfWork: "",
-    significanceForFutureWork: "",
-    takeawayFromPaper: "",
-    detailedDescription: "",
-    Publication: "",
-    letterContentCode: "",
+    name: "",
+    expertise: "",
+    highestDegree: "",
+    specialization: "",
+    university: "",
+    jobTitle: "",
+    currentEmployer: "",
+    experience: "",
+    industry: "",
+    achievements: "",
+    impact: "",
+    projects: "",
+    quantifiedWorks: "",
+    challengesOvercome: "",
+    publications: "",
+    industryInsight: "",
   });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
 
   const [liked, setLiked] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -51,7 +46,7 @@ const LoaResearch = ({ type }) => {
     e.preventDefault();
     try {
       const response = await fetch(
-        "http://localhost:5000/api/v1/loa/research-data",
+        "http://localhost:5000/api/v1/lor/add-data",
         {
           method: "POST",
           headers: {
@@ -73,13 +68,21 @@ const LoaResearch = ({ type }) => {
     }
   };
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+  const [generatedArticle, setGeneratedArticle] = useState("");
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Generating article");
     try {
       const response = await fetch(
-        "http://localhost:5000/api/v1/loa/loa-research",
-        // "https://www.internal.cachelabs.io/api/v1/loa/loa-research",
+        // "https://www.internal.cachelabs.io/api/v1/ArticelWriter/articleForm",
+        "http://localhost:5000/api/v1/lor/lor-form",
         {
           method: "POST",
           headers: {
@@ -95,39 +98,40 @@ const LoaResearch = ({ type }) => {
           ? data.choices[0].message.content
           : "";
 
-      // Handle setting generated article state
       setGeneratedArticle(generatedArticleText);
     } catch (error) {
       console.error("Error:", error);
     }
   };
 
-  // State for generated article
-  const [generatedArticle, setGeneratedArticle] = useState("");
-
   return (
     <>
-      <div className="App ml-[-12rem]">
-        <div className="main">
+      <SidebarTail />
+      <div className="App">
+        <div className="main ml-[24rem]">
+          <div className="text-black text-4xl font-poppins pb-[4rem]">
+            <p>Fill the areas to generate</p>
+          </div>
           <form onSubmit={handleSubmit}>
             <div className="row">
               <label>
                 <input
-                  className="inp1 text-black bg-[#FFFFFF] shadow-md "
-                  placeholder="Recipient's Name"
+                  className="inp1 text-black shadow-md  bg-[#FFFFFF]"
+                  placeholder="Name"
                   type="text"
-                  name="recipientName"
-                  value={formData.recipientName}
+                  name="name"
+                  value={formData.name}
                   onChange={handleChange}
                 />
               </label>
+
               <label>
                 <input
                   className="inp1 text-black bg-[#FFFFFF] shadow-md "
-                  placeholder="Recipient's Organization/University"
+                  placeholder="Expertise"
                   type="text"
-                  name="recipientOrganization"
-                  value={formData.recipientOrganization}
+                  name="expertise"
+                  value={formData.expertise}
                   onChange={handleChange}
                 />
               </label>
@@ -137,20 +141,21 @@ const LoaResearch = ({ type }) => {
               <label>
                 <input
                   className="inp1 text-black bg-[#FFFFFF] shadow-md "
-                  placeholder="Sender's Name"
+                  placeholder="Highest Degree"
                   type="text"
-                  name="senderName"
-                  value={formData.senderName}
+                  name="highestDegree"
+                  value={formData.highestDegree}
                   onChange={handleChange}
                 />
               </label>
+
               <label>
                 <input
                   className="inp1 text-black bg-[#FFFFFF] shadow-md "
-                  placeholder="Sender's Organization/Institution"
+                  placeholder="Specialization"
                   type="text"
-                  name="senderOrganization"
-                  value={formData.senderOrganization}
+                  name="specialization"
+                  value={formData.specialization}
                   onChange={handleChange}
                 />
               </label>
@@ -160,20 +165,21 @@ const LoaResearch = ({ type }) => {
               <label>
                 <input
                   className="inp1 text-black bg-[#FFFFFF] shadow-md "
-                  placeholder="Sender's Relationship with the Recipient"
+                  placeholder="University"
                   type="text"
-                  name="senderRelationship"
-                  value={formData.senderRelationship}
+                  name="university"
+                  value={formData.university}
                   onChange={handleChange}
                 />
               </label>
+
               <label>
                 <input
                   className="inp1 text-black bg-[#FFFFFF] shadow-md "
-                  placeholder="Concerned Field of Work"
+                  placeholder="Job Title"
                   type="text"
-                  name="concernedFieldOfWork"
-                  value={formData.concernedFieldOfWork}
+                  name="jobTitle"
+                  value={formData.jobTitle}
                   onChange={handleChange}
                 />
               </label>
@@ -183,20 +189,20 @@ const LoaResearch = ({ type }) => {
               <label>
                 <input
                   className="inp1 text-black bg-[#FFFFFF] shadow-md "
-                  placeholder="Niche Domain (if any)"
+                  placeholder="Current Employer"
                   type="text"
-                  name="nicheDomain"
-                  value={formData.nicheDomain}
+                  name="currentEmployer"
+                  value={formData.currentEmployer}
                   onChange={handleChange}
                 />
               </label>
               <label>
                 <input
                   className="inp1 text-black bg-[#FFFFFF] shadow-md "
-                  placeholder="Source of Knowledge"
+                  placeholder="Total Years of Experience"
                   type="text"
-                  name="sourceOfKnowledge"
-                  value={formData.sourceOfKnowledge}
+                  name="experience"
+                  value={formData.experience}
                   onChange={handleChange}
                 />
               </label>
@@ -206,101 +212,105 @@ const LoaResearch = ({ type }) => {
               <label>
                 <input
                   className="inp1 text-black bg-[#FFFFFF] shadow-md "
-                  placeholder="Previous Contributions"
+                  placeholder="Industry"
                   type="text"
-                  name="previousContributions"
-                  value={formData.previousContributions}
+                  name="industry"
+                  value={formData.industry}
                   onChange={handleChange}
                 />
               </label>
               <label>
                 <input
                   className="inp1 text-black bg-[#FFFFFF] shadow-md "
-                  placeholder="Title of paper"
+                  placeholder="Achievements"
                   type="text"
-                  name="titleOfPaper"
-                  value={formData.titleOfPaper}
-                  onChange={handleChange}
-                />
-              </label>
-            </div>
-            <div className="row">
-              <label>
-                <input
-                  className="inp1 text-black bg-[#FFFFFF] shadow-md "
-                  placeholder="Aspect Of Paper"
-                  type="text"
-                  name="AspectOfPaper"
-                  value={formData.AspectOfPaper}
-                  onChange={handleChange}
-                />
-              </label>
-              <label>
-                <input
-                  className="inp1 text-black bg-[#FFFFFF] shadow-md "
-                  placeholder="Novelty Of Work"
-                  type="text"
-                  name="noveltyOfWork"
-                  value={formData.noveltyOfWork}
+                  name="achievements"
+                  value={formData.achievements}
                   onChange={handleChange}
                 />
               </label>
             </div>
+
             <div className="row">
               <label>
                 <input
                   className="inp1 text-black bg-[#FFFFFF] shadow-md "
-                  placeholder="Significance For Future Works"
+                  placeholder="Impactful Work at Workplace"
                   type="text"
-                  name="significanceForFutureWork"
-                  value={formData.significanceForFutureWork}
+                  name="impact"
+                  value={formData.impact}
                   onChange={handleChange}
                 />
               </label>
               <label>
                 <input
-                  className="inp1 text-black bg-[#FFFFFF] shadow-md "
-                  placeholder="Takeaway From Paper"
+                  className="inp1 text-black bg-[#FFFFFF]  shadow-md "
+                  placeholder="Notable Project"
                   type="text"
-                  name="takeawayFromPaper"
-                  value={formData.takeawayFromPaper}
+                  name="projects"
+                  value={formData.projects}
                   onChange={handleChange}
                 />
               </label>
             </div>
+
             <div className="row">
               <label>
                 <input
                   className="inp1 text-black bg-[#FFFFFF] shadow-md "
-                  placeholder="Detailed Description"
+                  placeholder="Quantified Work"
                   type="text"
-                  name="detailedDescription"
-                  value={formData.detailedDescription}
+                  name="quantifiedWorks"
+                  value={formData.quantifiedWorks}
                   onChange={handleChange}
                 />
               </label>
               <label>
                 <input
                   className="inp1 text-black bg-[#FFFFFF] shadow-md "
-                  placeholder="Publication"
+                  placeholder="Challenges Overcome"
                   type="text"
-                  name="Publication"
-                  value={formData.Publication}
+                  name="challengesOvercome"
+                  value={formData.challengesOvercome}
+                  onChange={handleChange}
+                />
+              </label>
+            </div>
+
+            <div className="row">
+              <label>
+                <input
+                  className="inp1 text-black bg-[#FFFFFF] shadow-md "
+                  placeholder="Publications"
+                  type="text"
+                  name="publications"
+                  value={formData.publications}
+                  onChange={handleChange}
+                />
+              </label>
+              <label>
+                <input
+                  className="inp1 text-black bg-[#FFFFFF] shadow-md "
+                  placeholder="Industry Insights"
+                  type="text"
+                  name="industryInsight"
+                  value={formData.industryInsight}
                   onChange={handleChange}
                 />
               </label>
             </div>
             <button
               className="midBtn bg-gradient-to-r from-[#AA22FF] via-[#D989FF] to-[#51FFE0] mt-[3rem]"
-              type="Submit"
+              type="submit"
             >
-              Generate LOA
+              Start Working with AI
             </button>
           </form>
+
           {generatedArticle && (
             <div className="chat bot bg-white max-w-[85rem] shadow-md ">
+              {/* <h2>Generated Article:</h2> */}
               <div className="flex">
-                {/* <h2>Generated Article:</h2> */}
                 <img
                   src={download}
                   alt=""
@@ -362,4 +372,4 @@ const LoaResearch = ({ type }) => {
   );
 };
 
-export default LoaResearch;
+export default LorForm;

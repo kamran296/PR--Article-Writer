@@ -14,31 +14,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchUser } from "./redux/userSlice";
 
 import axios from "axios";
+import LorPrompt from "./pages/LOR/LorPrompt";
+import LorForm from "./pages/LOR/LorForm";
 
 function App() {
-  // const [user, setUser] = useState(null);
-
-  // const getUser = async () => {
-  //   try {
-  //     const response = await fetch("http://localhost:5000/oauth/profile", {
-  //       method: "GET",
-  //       credentials: "include",
-  //     });
-  //     const data = await response.json();
-  //     setUser(data);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
-  // if (!user) {
-  //   getUser();
-  // }
-  // useEffect(() => {
-  //   getUser();
-  // }, []);
-  // const memoizedUser = useMemo(() => user, [user]);
-
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.user);
   const userStatus = useSelector((state) => state.user.status);
@@ -56,21 +35,24 @@ function App() {
         <Route exact path="/login" element={<Login />} />
 
         {/* {user && user.success ? ( */}
-          <>
-            <Route exact path="/" element={<Home />} />
-            <Route exact path="/article-form" element={<Form />} />
-            <Route exact path="/loa-prompt" element={<LoaPrompt />} />
-            <Route exact path="/loa-form" element={<LoaForm />} />
-            <Route exact path="/critical-role" element={<LoaCritical />} />
-            <Route exact path="/bio-writer" element={<BioWriter />} />
-            <Route
-              exact
-              path="/bio-writer-prompt"
-              element={<BioWriterPrompt />}
-            />
-            <Route exact path="/sidebar" element={<SidebarTail />} />
-            <Route exact path="/chatbot" element={<Chatbot />} />
-          </>
+        <>
+          <Route exact path="/" element={<Home />} />
+          <Route exact path="/article-form" element={<Form />} />
+          <Route exact path="/loa-prompt" element={<LoaPrompt />} />
+          <Route exact path="/loa-form" element={<LoaForm />} />
+          <Route exact path="/critical-role" element={<LoaCritical />} />
+          <Route exact path="/lor" element={<LorPrompt />} />
+          <Route exact path="/lor-form" element={<LorForm />} />
+          <Route exact path="/bio-writer" element={<BioWriter />} />
+
+          <Route
+            exact
+            path="/bio-writer-prompt"
+            element={<BioWriterPrompt />}
+          />
+          <Route exact path="/sidebar" element={<SidebarTail />} />
+          <Route exact path="/chatbot" element={<Chatbot />} />
+        </>
         {/* ) : (
           <Route path="*" element={<Login />} />
         )} */}

@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 import SideBar from "../../components/SideBar";
 import SidebarTail from "../../components/SidebarTail";
 import { BsSend } from "react-icons/bs";
-import { BiLike, BiDislike ,BiSolidLike} from "react-icons/bi";
+import { BiLike, BiDislike, BiSolidLike } from "react-icons/bi";
 
 const LoaPrompt = () => {
   const [formData, setFormData] = useState({
@@ -35,7 +35,8 @@ const LoaPrompt = () => {
     e.preventDefault();
     try {
       const response = await fetch(
-        "http://localhost:5000/api/v1/ArticleWriter/add-article",
+        // "http://localhost:5000/api/v1/bio/add-data",
+        "https://www.internal.cachelabs.io/api/v1/bio/add-data",
         {
           method: "POST",
           headers: {
@@ -56,7 +57,6 @@ const LoaPrompt = () => {
       console.error("Error:", error);
     }
   };
-
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -128,23 +128,27 @@ const LoaPrompt = () => {
                 </div>
                 <div className="chat bot shadow-md bg-white">
                   <div className="flex">
-                  <img className="chatImg h-[3.3rem] w-[3.5rem]" src={download} alt="" />
-                  <p className="txt">{generatedArticle}</p>
+                    <img
+                      className="chatImg h-[3.3rem] w-[3.5rem]"
+                      src={download}
+                      alt=""
+                    />
+                    <p className="txt">{generatedArticle}</p>
                   </div>
                   <div className="mt-[1rem]">
-                  <span className="flex ml-[5rem]">
-                  <div onClick={handlelikeClick}>
-                    {liked ? (
-                      <BiSolidLike className="text-green-500 inline-block h-[2.5rem] w-[2.5rem] cursor-pointer text-3xl" />
-                    ) : (
-                      <BiLike className="text-green-500 inline-block h-[2.5rem] w-[2.5rem] cursor-pointer text-3xl" />
-                    )}
-                  </div>
-                  <BiDislike
-                    className="inline-block h-[2.5rem] w-[2.5rem] text-red-500 cursor-pointer ml-2 text-3xl"
-                    onClick={() => handleDislikeClick()}
-                  />
-                </span>
+                    <span className="flex ml-[5rem]">
+                      <div onClick={handlelikeClick}>
+                        {liked ? (
+                          <BiSolidLike className="text-green-500 inline-block h-[2.5rem] w-[2.5rem] cursor-pointer text-3xl" />
+                        ) : (
+                          <BiLike className="text-green-500 inline-block h-[2.5rem] w-[2.5rem] cursor-pointer text-3xl" />
+                        )}
+                      </div>
+                      <BiDislike
+                        className="inline-block h-[2.5rem] w-[2.5rem] text-red-500 cursor-pointer ml-2 text-3xl"
+                        onClick={() => handleDislikeClick()}
+                      />
+                    </span>
                   </div>
                 </div>
               </div>

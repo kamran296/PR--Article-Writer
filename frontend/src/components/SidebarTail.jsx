@@ -152,7 +152,7 @@ const SidebarTail = () => {
               </span>
             </li>
           </Link>
-          <Link to="">
+          <Link to="/lor">
             <li className="ml-2 mb-2 rounded hover:shadow hover:bg-white hover:text-primary py-2 pt-2 text-black">
               <img
                 className="h-12 w-12 inline-block p-2"
@@ -168,7 +168,7 @@ const SidebarTail = () => {
               </span>
             </li>
           </Link>
-          <Link to="">
+          <Link to="/lor-form">
             <li className="ml-2 mb-2 rounded hover:shadow hover:bg-white hover:text-primary py-2 pt-2 text-black">
               <img
                 className="h-12 w-12 inline-block p-2"

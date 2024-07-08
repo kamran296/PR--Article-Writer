@@ -13,7 +13,7 @@ const openaiRouter = require("./router/openaiRouter");
 const chatbotRouter = require("./router/chatbotRouter");
 const loaRouter = require("./router/loaRouter");
 const bioRouter = require("./router/bioRouter");
-
+const lorRouter = require("./router/lorRouter");
 const app = express();
 
 const db = process.env.DB_PRODUCTION;
@@ -62,6 +62,7 @@ app.use("/api/v1/ArticleWriter", openaiRouter);
 app.use("/api/v1/chatbot", chatbotRouter);
 app.use("/api/v1/loa", loaRouter);
 app.use("/api/v1/bio", bioRouter);
+app.use("/api/v1/lor", lorRouter);
 // Static files
 const _dirname = path.dirname("");
 const buildPath = path.join(_dirname, "../frontend/dist");

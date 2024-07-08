@@ -3,7 +3,7 @@ import "./biowriter.css";
 import download from "./assets/download.png";
 import SideBar from "../../components/SideBar";
 import SidebarTail from "../../components/SidebarTail";
-import { BiLike, BiDislike ,BiSolidLike} from "react-icons/bi";
+import { BiLike, BiDislike, BiSolidLike } from "react-icons/bi";
 
 const BioWriter = () => {
   const [formData, setFormData] = useState({
@@ -37,7 +37,8 @@ const BioWriter = () => {
     e.preventDefault();
     try {
       const response = await fetch(
-        "http://localhost:5000/api/v1/ArticleWriter/add-article",
+        // "http://localhost:5000/api/v1/bio/add-data",
+        "https://www.internal.cachelabs.io/api/v1/bio/add-data",
         {
           method: "POST",
           headers: {
@@ -260,12 +261,16 @@ const BioWriter = () => {
           {generatedArticle && (
             <div className="chat bot bg-white max-w-[85rem] shadow-md">
               <div className="flex">
-              {/* <h2>Generated Article:</h2> */}
-              <img src={download} alt="" className="chatImg h-[3.3rem] w-[3.5rem]" />
-              <p className="txt">{generatedArticle}</p>
+                {/* <h2>Generated Article:</h2> */}
+                <img
+                  src={download}
+                  alt=""
+                  className="chatImg h-[3.3rem] w-[3.5rem]"
+                />
+                <p className="txt">{generatedArticle}</p>
               </div>
               <div className="mt-[1rem]">
-              <span className="flex ml-[5rem]">
+                <span className="flex ml-[5rem]">
                   <div onClick={handlelikeClick}>
                     {liked ? (
                       <BiSolidLike className="text-green-500 inline-block h-[2.5rem] w-[2.5rem] cursor-pointer text-3xl" />

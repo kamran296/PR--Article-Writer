@@ -3,47 +3,6 @@ const router = express.Router();
 const passport = require("passport");
 const clientURL = "https://www.internal.cachelabs.io/";
 
-// router.get("/login/success", (req, res) => {
-//   console.log(req.session, "Session details");
-//   console.log(req.user, "User details");
-//   if (req.user) {
-//     res.status(200).json({
-//       success: true,
-//       message: "successful",
-//       user: req.user,
-//       cookies: req.cookies,
-//     });
-//   } else {
-//     res.status(401).json({
-//       success: false,
-//       message: "No user authenticated",
-//     });
-//   }
-// });
-
-// router.get("/login/failed", (req, res) => {
-//   res.status(401).json({ success: false, message: "failure" });
-// });
-
-// router.get("/logout", (req, res) => {
-//   req.logout();
-//   req.session = null; // Clear the session
-//   res.redirect(clientURL);
-// });
-
-// router.get(
-//   "/google",
-//   passport.authenticate("google", { scope: ["profile", "email"] })
-// );
-
-// router.get(
-//   "/google/callback",
-//   passport.authenticate("google", {
-//     successRedirect: clientURL,
-//     failureRedirect: "/oauth/login/failed",
-//   })
-// );
-
 // initial google ouath login
 router.get(
   "/google",
