@@ -119,7 +119,7 @@ const LorForm = () => {
                   className="inp1 text-black shadow-md  bg-[#FFFFFF]"
                   placeholder="Recipient's Name"
                   type="text"
-                  name="name"
+                  name="Recipient's Name"
                   value={formData.name}
                   onChange={handleChange}
                 />
@@ -130,7 +130,7 @@ const LorForm = () => {
                   className="inp1 text-black bg-[#FFFFFF] shadow-md "
                   placeholder="Recipient's Organization/University"
                   type="text"
-                  name="expertise"
+                  name="Recipient's Organization/University"
                   value={formData.expertise}
                   onChange={handleChange}
                 />
@@ -143,7 +143,7 @@ const LorForm = () => {
                   className="inp1 text-black bg-[#FFFFFF] shadow-md "
                   placeholder="Recommender's Name"
                   type="text"
-                  name="highestDegree"
+                  name="Recommender's Name"
                   value={formData.highestDegree}
                   onChange={handleChange}
                 />
@@ -154,7 +154,7 @@ const LorForm = () => {
                   className="inp1 text-black bg-[#FFFFFF] shadow-md "
                   placeholder="Recommender's Organization/Institution"
                   type="text"
-                  name="specialization"
+                  name="Recommender's Organization/Institution"
                   value={formData.specialization}
                   onChange={handleChange}
                 />
@@ -167,7 +167,7 @@ const LorForm = () => {
                   className="inp1 text-black bg-[#FFFFFF] shadow-md "
                   placeholder="Domain and niche of work"
                   type="text"
-                  name="university"
+                  name="Domain and niche of work"
                   value={formData.university}
                   onChange={handleChange}
                 />
@@ -178,7 +178,7 @@ const LorForm = () => {
                   className="inp1 text-black bg-[#FFFFFF] shadow-md "
                   placeholder="Duration of Relationship with recommender"
                   type="text"
-                  name="jobTitle"
+                  name="Duration of Relationship with recommender"
                   value={formData.jobTitle}
                   onChange={handleChange}
                 />
@@ -191,7 +191,7 @@ const LorForm = () => {
                   className="inp1 text-black bg-[#FFFFFF] shadow-md "
                   placeholder="Awards and Recognitions"
                   type="text"
-                  name="currentEmployer"
+                  name="Awards and Recognitions"
                   value={formData.currentEmployer}
                   onChange={handleChange}
                 />
@@ -201,7 +201,7 @@ const LorForm = () => {
                   className="inp1 text-black bg-[#FFFFFF] shadow-md "
                   placeholder="Work Published in media, journals"
                   type="text"
-                  name="experience"
+                  name="Work Published in media, journals"
                   value={formData.experience}
                   onChange={handleChange}
                 />
@@ -214,7 +214,7 @@ const LorForm = () => {
                   className="inp1 text-black bg-[#FFFFFF] shadow-md "
                   placeholder="Significant and impactful work"
                   type="text"
-                  name="industry"
+                  name="Significant and impactful work"
                   value={formData.industry}
                   onChange={handleChange}
                 />
@@ -224,7 +224,7 @@ const LorForm = () => {
                   className="inp1 text-black bg-[#FFFFFF] shadow-md "
                   placeholder="Specialized skills"
                   type="text"
-                  name="achievements"
+                  name="Specialized skills"
                   value={formData.achievements}
                   onChange={handleChange}
                 />
@@ -237,7 +237,7 @@ const LorForm = () => {
                   className="inp1 text-black bg-[#FFFFFF] shadow-md "
                   placeholder="Critical role"
                   type="text"
-                  name="impact"
+                  name="Critical role"
                   value={formData.impact}
                   onChange={handleChange}
                 />
@@ -247,7 +247,7 @@ const LorForm = () => {
                   className="inp1 text-black bg-[#FFFFFF]  shadow-md "
                   placeholder="Recommender's contact information"
                   type="text"
-                  name="projects"
+                  name="Recommender's contact information"
                   value={formData.projects}
                   onChange={handleChange}
                 />
