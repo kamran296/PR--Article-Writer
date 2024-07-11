@@ -14,7 +14,7 @@ const Navbar = () => {
           src={logo}
           alt=""
         />
-        <span className="ml-[1rem] text-gradient-to-r from-[#AA22FF] via-[#D989FF] to-[#51FFE0] text-2xl font-semibold">
+        <span className="ml-[1rem] text-purple-500 text-4xl font-bold ">
           AI
         </span>
       </div>
