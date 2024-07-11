@@ -6,6 +6,7 @@ const users = new mongoose.Schema(
     displayName: String,
     email: String,
     image: String,
+    isAdmin: { type: String, default: "member" },
   },
   { timestamps: true }
 );

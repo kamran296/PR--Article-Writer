@@ -1,8 +1,28 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
 import SidebarTail from "./../../components/SidebarTail";
-import './Dashboard.css';
+import "./Dashboard.css";
 
 const Dashboard = () => {
+  const [data, setData] = useState([]);
+  const hostDevelopment = "http://localhost:5000/api/v1/allInfo/get-all";
+
+  const loadData = async () => {
+    try {
+      const response = await fetch(hostDevelopment, {
+        method: "GET",
+      });
+      const val = await response.json();
+      console.log(val, "val");
+      setData(val);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  useEffect(() => {
+    loadData();
+  }, []);
+
   return (
     <>
       <SidebarTail />
@@ -10,198 +30,75 @@ const Dashboard = () => {
         <div>
           <div className="flex items-center w-screen justify-center min-h-screen">
             <div className="col-span-12">
-              <div className="overflow-auto lg:overflow-visible ">
+              <div className="overflow-auto lg:overflow-visible">
                 <table className="table text-black border-separate ml-[4rem] space-y-6 text-2xl">
                   <thead className="bg-[#ffffff] shadow-md text-black">
-                    <tr className='h-[6rem] bg-purple-100 text-black'>
+                    <tr className="h-[6rem] bg-purple-100 text-black">
                       <th className="p-3 ml-2">AI tools</th>
                       <th className="p-3 ml-2 w-[11rem] text-left">
-                        <div className="flex justify-center">Total data</div>
+                        <div className="flex justify-center">
+                          Previously Trained Data
+                        </div>
                       </th>
                       <th className="p-3 ml-2 w-[16rem] text-left">
                         <div className="flex justify-center">Updated Data</div>
                       </th>
-                      <th className="p-3 ml-2 text-left">Last training data</th>
+                      <th className="p-3 ml-2 text-left">New Data</th>
                       <th className="p-3 text-left">
                         <div className="flex justify-center">Action</div>
                       </th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr className="bg-[#ffffff] shadow-md h-[6rem]">
-                      <td className="p-3">
-                        <div className="flex align-items-center">
-                          <div className="ml-[3rem]">
-                            <div className="font-bold">Article Writer</div>
-                          </div>
-                        </div>
-                      </td>
-                      <td className="p-3">
-                        <div className="flex justify-center mt-[1rem]">100</div>
-                      </td>
-                      <td className="p-3 ">
-                        <div className="flex font-medium justify-center mt-[1rem]">
-                          20
-                        </div>
-                      </td>
-                      <td className="p-3">
-                        <div className="flex font-medium justify-center mt-[1rem]">
-                          100
-                        </div>
-                      </td>
-                      <td className="p-3 ">
-                        <div className="flex justify-center items-center">
-                          <button
-                            className="midBtn bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-full"
-                            type="submit"
-                          >
-                            Train Now
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr className="bg-[#ffffff] shadow-md h-[6rem]">
-                      <td className="p-3">
-                        <div className="flex align-items-center">
-                          <div className="ml-[3rem]">
-                            <div className="font-bold">LOA Critical Role</div>
-                          </div>
-                        </div>
-                      </td>
-                      <td className="p-3">
-                        <div className="flex justify-center mt-[1rem]">100</div>
-                      </td>
-                      <td className="p-3 ">
-                        <div className="flex justify-center mt-[1rem]">20</div>
-                      </td>
-                      <td className="p-3">
-                        <div className="flex justify-center mt-[1rem]">100</div>
-                      </td>
-                      <td className="p-3 ">
-                        <div className="flex justify-center items-center">
-                          <button
-                            className="midBtn bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-full"
-                            type="submit"
-                          >
-                            Train Now
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr className="bg-[#ffffff] shadow-md h-[6rem]">
-                      <td className="p-3">
-                        <div className="flex align-items-center">
-                          <div className="ml-[3rem]">
-                            <div className="font-bold">
-                              LOA Orignal Contribution
+                    {data.length > 0 ? (
+                      data.map((entry, index) => (
+                        <tr
+                          key={index}
+                          className="bg-[#ffffff] shadow-md h-[6rem]"
+                        >
+                          <td className="p-3">
+                            <div className="flex align-items-center">
+                              <div className="ml-[3rem]">
+                                <div className="font-bold">
+                                  {entry.modelName}
+                                </div>
+                              </div>
                             </div>
-                          </div>
-                        </div>
-                      </td>
-                      <td className="p-3">
-                        <div className="flex justify-center mt-[1rem]">100</div>
-                      </td>
-                      <td className="p-3 ">
-                        <div className="flex justify-center mt-[1rem]">20</div>
-                      </td>
-                      <td className="p-3">
-                        <div className="flex justify-center mt-[1rem]">100</div>
-                      </td>
-                      <td className="p-3 ">
-                        <div className="flex justify-center items-center">
-                          <button
-                            className="midBtn bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-full"
-                            type="submit"
-                          >
-                            Train Now
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr className="bg-[#ffffff] shadow-md h-[6rem]">
-                      <td className="p-3">
-                        <div className="flex align-items-center">
-                          <div className="ml-[3rem]">
-                            <div className="font-bold">LOA Research Paper</div>
-                          </div>
-                        </div>
-                      </td>
-                      <td className="p-3">
-                        <div className="flex justify-center mt-[1rem]">100</div>
-                      </td>
-                      <td className="p-3 ">
-                        <div className="flex justify-center mt-[1rem]">20</div>
-                      </td>
-                      <td className="p-3">
-                        <div className="flex justify-center mt-[1rem]">100</div>
-                      </td>
-                      <td className="p-3 ">
-                        <div className="flex justify-center items-center">
-                          <button
-                            className="midBtn bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-full"
-                            type="submit"
-                          >
-                            Train Now
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr className="bg-[#ffffff] shadow-md h-[6rem]">
-                      <td className="p-3">
-                        <div className="flex align-items-center">
-                          <div className="ml-[3rem]">
-                            <div className="font-bold">LOR Writer</div>
-                          </div>
-                        </div>
-                      </td>
-                      <td className="p-3">
-                        <div className="flex justify-center mt-[1rem]">100</div>
-                      </td>
-                      <td className="p-3 ">
-                        <div className="flex justify-center mt-[1rem]">20</div>
-                      </td>
-                      <td className="p-3">
-                        <div className="flex justify-center mt-[1rem]">100</div>
-                      </td>
-                      <td className="p-3 ">
-                        <div className="flex justify-center items-center">
-                          <button
-                            className="midBtn bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-full"
-                            type="submit"
-                          >
-                            Train Now
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr className="bg-[#ffffff] shadow-md h-[6rem]">
-                      <td className="p-3">
-                        <div className="flex align-items-center">
-                          <div className="ml-[3rem]">
-                            <div className="font-bold">BIO Writer</div>
-                          </div>
-                        </div>
-                      </td>
-                      <td className="p-3">
-                        <div className="flex justify-center mt-[1rem]">100</div>
-                      </td>
-                      <td className="p-3 ">
-                        <div className="flex justify-center mt-[1rem]">20</div>
-                      </td>
-                      <td className="p-3">
-                        <div className="flex justify-center mt-[1rem]">100</div>
-                      </td>
-                      <td className="p-3 ">
-                        <div className="flex justify-center items-center">
-                          <button
-                            className="midBtn bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-full"
-                            type="submit"
-                          >
-                            Train Now
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
+                          </td>
+                          <td className="p-3">
+                            <div className="flex justify-center mt-[1rem]">
+                              {entry.previousLength}
+                            </div>
+                          </td>
+                          <td className="p-3 ">
+                            <div className="flex font-medium justify-center mt-[1rem]">
+                              {entry.currentLength}
+                            </div>
+                          </td>
+                          <td className="p-3">
+                            <div className="flex font-medium justify-center mt-[1rem]">
+                              {entry.currentLength - entry.previousLength}
+                            </div>
+                          </td>
+                          <td className="p-3">
+                            <div className="flex justify-center items-center">
+                              <button
+                                className="midBtn bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-full"
+                                type="submit"
+                              >
+                                Train Now
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                      ))
+                    ) : (
+                      <tr>
+                        <td colSpan="5" className="text-center">
+                          Loading data...
+                        </td>
+                      </tr>
+                    )}
                   </tbody>
                 </table>
               </div>
@@ -217,6 +114,6 @@ const Dashboard = () => {
       </div>
     </>
   );
-}
+};
 
-export default Dashboard
+export default Dashboard;

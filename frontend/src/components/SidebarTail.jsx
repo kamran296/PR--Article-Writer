@@ -13,6 +13,7 @@ import { logoutUser } from "./../redux/userSlice";
 import { RxDashboard } from "react-icons/rx";
 const SidebarTail = () => {
   const navigate = useNavigate();
+  const [open, setOpen] = useState(true);
   // const handleLogout = async () => {
   //   try {
   //     const response = await fetch("http://localhost:5000/oauth/logout", {
@@ -50,230 +51,236 @@ const SidebarTail = () => {
       {/* </div> */}
 
       <div
-        className={`${
+        className={`h-screen ${
           open ? "w-80" : "w-24"
         } duration-300 bg-[#F5F7FF] text-white font-bold fixed  px-4 py-2 mt-24 flex flex-col`}
       >
         <div className="">
-        <div className="flex">
-          <BsArrowLeftShort
-            className={`h-10 w-10 bg-white text-secondary text-3xl rounded-full absolute -right-3 top-9 border border-light-grey cursor-pointer ${
-              !open && "rotate-180"
-            }`}
-            onClick={() => setOpen(!open)}
-          />
-          <h1 className={`text-2xl text-white font-bold px-2 `}>
-            <Link to=".">
-              <div
-                className={`h-15 w-15 rounded-full bg-secondary inline-block mr-2 mt-2 mb-2 duration-500 ${
-                  open && "rotate-[360deg]"
-                } `}
+          <div className="flex">
+            <BsArrowLeftShort
+              className={`h-10 w-10 bg-white text-secondary text-3xl rounded-full absolute -right-3 top-9 border border-light-grey cursor-pointer ${
+                !open && "rotate-180"
+              }`}
+              onClick={() => setOpen(!open)}
+            />
+            <h1 className={`text-2xl text-white font-bold px-2 `}>
+              <Link to=".">
+                <div
+                  className={`h-15 w-15 rounded-full bg-secondary inline-block mr-2 mt-2 mb-2 duration-500 ${
+                    open && "rotate-[360deg]"
+                  } `}
+                >
+                  <img
+                    className="h-12 w-12 inline-block p-2"
+                    src={logo}
+                    alt="logo"
+                  />
+                </div>
+
+                <span
+                  className={`ml-2 text-black duration-300 ${
+                    !open && "hidden"
+                  } ${!open && "duration-300"} `}
+                >
+                  Article Writer
+                </span>
+              </Link>
+            </h1>
+          </div>
+          <hr className="border-black" />
+          <ul className=" mt-2">
+            <Link to="/">
+              <li
+                className={`ml-2 mb-2 rounded hover:shadow hover:bg-white hover:text-primary py-2 pt-2 text-black duration-300`}
               >
                 <img
                   className="h-12 w-12 inline-block p-2"
-                  src={logo}
+                  src={prompt}
                   alt="logo"
                 />
-              </div>
-
-              <span
-                className={`ml-2 text-black duration-300 ${!open && "hidden"} ${
-                  !open && "duration-300"
-                } `}
-              >
-                Article Writer
-              </span>
+                <span
+                  className={`ml-2 text-2xl duration -300 ${
+                    !open && "hidden"
+                  } ${!open && "duration-300"}`}
+                >
+                  Article-Prompt
+                </span>
+              </li>
             </Link>
-          </h1>
-        </div>
-        <hr className="border-black" />
-        <ul className=" mt-2">
-          <Link to="/">
-            <li
-              className={`ml-2 mb-2 rounded hover:shadow hover:bg-white hover:text-primary py-2 pt-2 text-black duration-300`}
-            >
-              <img
-                className="h-12 w-12 inline-block p-2"
-                src={prompt}
-                alt="logo"
-              />
-              <span
-                className={`ml-2 text-2xl duration -300 ${!open && "hidden"} ${
-                  !open && "duration-300"
-                }`}
-              >
-                Article-Prompt
-              </span>
-            </li>
-          </Link>
-          <Link to="/article-form/">
-            <li className="ml-2 mb-2 rounded hover:shadow hover:bg-white hover:text-primary py-2 pt-2 text-black">
-              <img
-                className="h-12 w-12 inline-block p-2"
-                src={prompt}
-                alt="logo"
-              />
-              <span
-                className={`ml-2 text-2xl duration -300 ${!open && "hidden"} ${
-                  !open && "duration-300"
-                }`}
-              >
-                Article-Form
-              </span>
-            </li>
-          </Link>
-          <Link to="/loa-prompt/">
-            <li className="ml-2 mb-2 rounded hover:shadow hover:bg-white hover:text-primary py-2 pt-2 text-black">
-              <img
-                className="h-12 w-12 inline-block p-2"
-                src={prompt}
-                alt="logo"
-              />
-              <span
-                className={`ml-2 text-2xl duration-300 ${!open && "hidden"} ${
-                  !open && "duration-300"
-                }`}
-              >
-                LOA-Prompt
-              </span>
-            </li>
-          </Link>
-          <Link to="/loa-form/">
-            <li className="ml-2 mb-2 rounded hover:shadow hover:bg-white hover:text-primary py-2 pt-2 text-black">
-              <img
-                className="h-12 w-12 inline-block p-2"
-                src={prompt}
-                alt="logo"
-              />
-              <span
-                className={`ml-2 text-2xl duration-300 ${
-                  !open && "hidden"
-                } transition-opacity `}
-              >
-                LOA-Form
-              </span>
-            </li>
-          </Link>
-          <Link to="/lor">
-            <li className="ml-2 mb-2 rounded hover:shadow hover:bg-white hover:text-primary py-2 pt-2 text-black">
-              <img
-                className="h-12 w-12 inline-block p-2"
-                src={prompt}
-                alt="logo"
-              />
-              <span
-                className={`ml-2 text-2xl duration-300 ${!open && "hidden"} ${
-                  open && "duration-300"
-                }`}
-              >
-                LOR-Prompt
-              </span>
-            </li>
-          </Link>
-          <Link to="/lor-form">
-            <li className="ml-2 mb-2 rounded hover:shadow hover:bg-white hover:text-primary py-2 pt-2 text-black">
-              <img
-                className="h-12 w-12 inline-block p-2"
-                src={prompt}
-                alt="logo"
-              />
-              <span
-                className={`ml-2 text-2xl duration-300 ${!open && "hidden"} ${
-                  open && "duration-300"
-                }`}
-              >
-                LOR-Form
-              </span>
-            </li>
-          </Link>
-          <Link to="/bio-writer-prompt/">
-            <li className="ml-2 mb-2 rounded hover:shadow hover:bg-white hover:text-primary py-2 pt-2 text-black">
-              <img
-                className="h-12 w-12 inline-block p-2"
-                src={prompt}
-                alt="logo"
-              />
-              <span
-                className={`ml-2 text-2xl duration-300 ${!open && "hidden"} ${
-                  open && "duration-300"
-                }`}
-              >
-                BioWriter-Prompt
-              </span>
-            </li>
-          </Link>
-          <Link to="/bio-writer/">
-            <li className="ml-2 mb-2 rounded hover:shadow hover:bg-white hover:text-primary py-2 pt-2 text-black">
-              <img
-                className="h-12 w-12 inline-block p-2"
-                src={prompt}
-                alt="logo"
-              />
-              <span
-                className={`ml-2 text-2xl duration-300 ${!open && "hidden"} ${
-                  open && "duration-300"
-                }`}
-              >
-                BioWriter-Form
-              </span>
-            </li>
-          </Link>
-          <li className="rounded py-2 pt-2 text-black">
-            <Link to="/chatbot/">
-              <button className="ml-2 mb-2 py-2 px-2 h-[3.5rem] w-[15rem] rounded-xl bg-secondary text-white text-xl">
-                <CiCirclePlus
-                  className={`h-11 w-11 inline-block ${!open && "pr-2"}`}
+            <Link to="/article-form/">
+              <li className="ml-2 mb-2 rounded hover:shadow hover:bg-white hover:text-primary py-2 pt-2 text-black">
+                <img
+                  className="h-12 w-12 inline-block p-2"
+                  src={prompt}
+                  alt="logo"
                 />
                 <span
-                  className={`ml-1 text-2xl duration-300 px-2 ${
+                  className={`ml-2 text-2xl duration -300 ${
                     !open && "hidden"
-                  } ${open && "duration-300"}`}
+                  } ${!open && "duration-300"}`}
                 >
-                  ChatBot
+                  Article-Form
                 </span>
-              </button>
+              </li>
             </Link>
-          </li>
-          <li className="rounded py-2 pt-2 text-black">
-            <Link to="/Dashboard">
-              <button className="ml-2 mb-2 py-2 px-2 w-[15rem] h-[3.5rem] rounded-xl bg-secondary text-white text-xl">
-              <RxDashboard 
-                className={`h-10 w-10 inline-block ${!open && "pr-2"}`}
-              />
+            <Link to="/loa-prompt/">
+              <li className="ml-2 mb-2 rounded hover:shadow hover:bg-white hover:text-primary py-2 pt-2 text-black">
+                <img
+                  className="h-12 w-12 inline-block p-2"
+                  src={prompt}
+                  alt="logo"
+                />
                 <span
-                  className={`ml-1 text-2xl pt-4 duration-300 px-4 ${
-                    !open && "hidden"
-                  } ${open && "duration-300"}`}
+                  className={`ml-2 text-2xl duration-300 ${!open && "hidden"} ${
+                    !open && "duration-300"
+                  }`}
                 >
-                  Dashboard
+                  LOA-Prompt
                 </span>
-              </button>
+              </li>
             </Link>
-          </li>
-        </ul>
+            <Link to="/loa-form/">
+              <li className="ml-2 mb-2 rounded hover:shadow hover:bg-white hover:text-primary py-2 pt-2 text-black">
+                <img
+                  className="h-12 w-12 inline-block p-2"
+                  src={prompt}
+                  alt="logo"
+                />
+                <span
+                  className={`ml-2 text-2xl duration-300 ${
+                    !open && "hidden"
+                  } transition-opacity `}
+                >
+                  LOA-Form
+                </span>
+              </li>
+            </Link>
+            <Link to="/lor">
+              <li className="ml-2 mb-2 rounded hover:shadow hover:bg-white hover:text-primary py-2 pt-2 text-black">
+                <img
+                  className="h-12 w-12 inline-block p-2"
+                  src={prompt}
+                  alt="logo"
+                />
+                <span
+                  className={`ml-2 text-2xl duration-300 ${!open && "hidden"} ${
+                    open && "duration-300"
+                  }`}
+                >
+                  LOR-Prompt
+                </span>
+              </li>
+            </Link>
+            <Link to="/lor-form">
+              <li className="ml-2 mb-2 rounded hover:shadow hover:bg-white hover:text-primary py-2 pt-2 text-black">
+                <img
+                  className="h-12 w-12 inline-block p-2"
+                  src={prompt}
+                  alt="logo"
+                />
+                <span
+                  className={`ml-2 text-2xl duration-300 ${!open && "hidden"} ${
+                    open && "duration-300"
+                  }`}
+                >
+                  LOR-Form
+                </span>
+              </li>
+            </Link>
+            <Link to="/bio-writer-prompt/">
+              <li className="ml-2 mb-2 rounded hover:shadow hover:bg-white hover:text-primary py-2 pt-2 text-black">
+                <img
+                  className="h-12 w-12 inline-block p-2"
+                  src={prompt}
+                  alt="logo"
+                />
+                <span
+                  className={`ml-2 text-2xl duration-300 ${!open && "hidden"} ${
+                    open && "duration-300"
+                  }`}
+                >
+                  BioWriter-Prompt
+                </span>
+              </li>
+            </Link>
+            <Link to="/bio-writer/">
+              <li className="ml-2 mb-2 rounded hover:shadow hover:bg-white hover:text-primary py-2 pt-2 text-black">
+                <img
+                  className="h-12 w-12 inline-block p-2"
+                  src={prompt}
+                  alt="logo"
+                />
+                <span
+                  className={`ml-2 text-2xl duration-300 ${!open && "hidden"} ${
+                    open && "duration-300"
+                  }`}
+                >
+                  BioWriter-Form
+                </span>
+              </li>
+            </Link>
+            <li className="rounded py-2 pt-2 text-black">
+              <Link to="/chatbot/">
+                <button className="ml-2 mb-2  rounded-xl bg-secondary text-white text-xl">
+                  <CiCirclePlus
+                    className={`h-11 w-11 inline-block ${!open && "pr-2"}`}
+                  />
+                  <span
+                    className={`ml-1 text-2xl duration-300 px-2 ${
+                      !open && "hidden"
+                    } ${open && "duration-300"}`}
+                  >
+                    ChatBot
+                  </span>
+                </button>
+              </Link>
+            </li>
+            <li className="rounded py-2 pt-2 text-black">
+              {/* <Link to="/Dashboard">
+                <button className="ml-2 mb-2 py-2 px-2 w-[15rem] h-[3.5rem] rounded-xl bg-secondary text-white text-xl">
+                  <RxDashboard
+                    className={`h-10 w-10 inline-block ${!open && "pr-2"}`}
+                  />
+                  <span
+                    className={`ml-1 text-2xl pt-4 duration-300 px-4 ${
+                      !open && "hidden"
+                    } ${open && "duration-300"}`}
+                  >
+                    Dashboard
+                  </span>
+                </button>
+              </Link> */}
+            </li>
+          </ul>
         </div>
         <div className="mt-[5.5rem]">
-        <div className="flex justify-center ml-2 mb-2 px-4 py-2 w-[15rem] h-[3.5rem] rounded-xl bg-secondary mt-4 text-white text-xl">
-          <CiSettings className={`h-10 w-10 inline-block ${!open && "pr-2"}`} />
-          <span className={`ml-1 px-2 text-2xl duration-300 ${!open && "hidden"} `}>
-            Settings
-          </span>
-        </div>
-        <button
-          className=" ml-2 px-6 py-2 rounded-xl w-[15rem] h-[3.5rem] bg-secondary  text-white text-xl"
-          onClick={handleLogout}
-        >
-          <BsPersonFillCheck
-            className={`h-10 w-10 inline-block ${!open && "pr-2"}`}
-          />
-          <span
-            className={`ml-1 text-2xl px-2 duration-300 ${!open && "hidden"} ${
-              open && "duration-300"
-            }`}
+          <div className="flex justify-center ml-2 mb-2  rounded-xl bg-secondary mt-4 text-white text-xl">
+            <CiSettings
+              className={`h-10 w-10 inline-block ${!open && "pr-2"}`}
+            />
+            <span
+              className={`ml-1 px-2 text-2xl duration-300 ${
+                !open && "hidden"
+              } `}
+            >
+              Settings
+            </span>
+          </div>
+          <button
+            className=" ml-2  rounded-xl  bg-secondary  text-white text-xl"
+            onClick={handleLogout}
           >
-            Logout
-          </span>
-        </button>
+            <BsPersonFillCheck
+              className={`h-10 w-10 inline-block ${!open && "pr-2"}`}
+            />
+            <span
+              className={`ml-1 text-2xl px-2 duration-300 ${
+                !open && "hidden"
+              } ${open && "duration-300"}`}
+            >
+              Logout
+            </span>
+          </button>
         </div>
       </div>
     </>

@@ -10,6 +10,7 @@
   "author": "Kamran",
   "license": "ISC",
   "dependencies": {
+    "axios": "^1.7.2",
     "bull": "^4.13.1",
     "connect-mongodb-session": "^5.0.0",
     "cookie-parser": "^1.4.6",

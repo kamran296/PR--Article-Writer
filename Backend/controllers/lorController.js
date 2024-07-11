@@ -32,7 +32,7 @@ exports.lorPrompt = async (req, res) => {
     const response = await openai.chat.completions.create({
       model: model, // "ft:gpt-3.5-turbo-0613:cache-labs-llc:yt-tutorial:8hHNplz0"You may need to adjust the engine version
       messages: [
-        { role: "system", content: "You are an AI article writer." },
+        { role: "system", content: "AI Letter of Recommendation writer" },
         { role: "user", content: prompt },
       ],
       max_tokens: 800,
@@ -48,10 +48,12 @@ exports.lorPrompt = async (req, res) => {
 exports.lorForm = async (req, res) => {
   try {
     const formData = req.body;
-
-    const prompt = `Write a PR article on ${formData.name} who is an ${formData.expertise} working at ${formData.company} and has ${formData.experience} years of experience in the industry. 
-    ${formData.name} graduated from ${formData.education}. Notable achievements include ${formData.awards}. ${formData.name} also contributed to a significant project: ${formData.project}. 
-    ${formData.name} had a significant impact on the industry, earning them awards. He has authored works, including ${formData.publications}.`;
+    console.log(formData);
+    const prompt = `Generate a Letter of Recommendation for ${formData.RecipientName}, who is in ${formData.RecipientUniversity}. 
+    The recommendation should be written by ${formData.RecommenderName}, ${formData.RecommenderName}, with a relationship duration of ${formData.DurationOfRelationship}. 
+    The domain of work is ${formData.Domain}. Highlight the significant and impactful work such as ${formData.SignificantWork}, specialized skills like ${formData.skills}, and any critical roles such as ${formData.CriticalRole}. 
+    Include any awards and recognition like ${formData.Awards}, and published material on the recipient's work in the media or journals such as ${formData.WorkPublished}. 
+    Include the recommender's contact information and any other relevant details about the recommender's background and qualifications, such as ${formData.RecommenderInformation}.`;
 
     const latestModel = await ModelList.findOne({
       name: "LOR",
@@ -63,7 +65,7 @@ exports.lorForm = async (req, res) => {
     const response = await openai.chat.completions.create({
       model: model,
       messages: [
-        { role: "system", content: "You are an AI article writer." },
+        { role: "system", content: "AI Letter of Recommendation writer" },
         { role: "user", content: prompt },
       ],
       temperature: 0.5,
