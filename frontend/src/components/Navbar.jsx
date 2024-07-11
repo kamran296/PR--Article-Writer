@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import navbar from "./assets/navbar.png";
+import logo from "./assets/logoSGC.jpeg";
 import profile from "./assets/profile.png";
 import { useSelector } from "react-redux";
 const Navbar = () => {
@@ -9,11 +10,11 @@ const Navbar = () => {
     <nav className=" w-full  h-24  bg-[#FFFFFF] flex justify-between fixed  z-50">
       <div className="flex items-center text-xl px-2 py-2  ">
         <img
-          className="  h-24 w-32 cursor-pointer inline-block"
-          src={navbar}
+          className=" ml-[2rem] h-[3.75rem] w-[8.5rem] cursor-pointer inline-block"
+          src={logo}
           alt=""
         />
-        <span className=" text-gradient-to-r from-[#AA22FF] via-[#D989FF] to-[#51FFE0] text-2xl font-semibold">
+        <span className="ml-[1rem] text-gradient-to-r from-[#AA22FF] via-[#D989FF] to-[#51FFE0] text-2xl font-semibold">
           AI
         </span>
       </div>

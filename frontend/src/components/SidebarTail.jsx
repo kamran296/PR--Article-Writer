@@ -10,6 +10,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutUser } from "./../redux/userSlice";
+import { RxDashboard } from "react-icons/rx";
 const SidebarTail = () => {
   const navigate = useNavigate();
   // const handleLogout = async () => {
@@ -51,8 +52,9 @@ const SidebarTail = () => {
       <div
         className={`${
           open ? "w-80" : "w-24"
-        } duration-300 bg-[#F5F7FF] text-white font-bold fixed h-full px-4 py-2 mt-24`}
+        } duration-300 bg-[#F5F7FF] text-white font-bold fixed  px-4 py-2 mt-24 flex flex-col`}
       >
+        <div className="">
         <div className="flex">
           <BsArrowLeftShort
             className={`h-10 w-10 bg-white text-secondary text-3xl rounded-full absolute -right-3 top-9 border border-light-grey cursor-pointer ${
@@ -216,14 +218,14 @@ const SidebarTail = () => {
               </span>
             </li>
           </Link>
-          <li className=" mb-2 rounded   py-2 pt-2 text-black">
+          <li className="rounded py-2 pt-2 text-black">
             <Link to="/chatbot/">
-              <button className="ml-2 mb-2 py-2 px-2  rounded-xl bg-secondary mt-2 text-white text-xl">
+              <button className="ml-2 mb-2 py-2 px-2 h-[3.5rem] w-[15rem] rounded-xl bg-secondary text-white text-xl">
                 <CiCirclePlus
-                  className={`h-10 w-10 inline-block ${!open && "pr-2"}`}
+                  className={`h-11 w-11 inline-block ${!open && "pr-2"}`}
                 />
                 <span
-                  className={`ml-1 text-2xl duration-300 px-4 ${
+                  className={`ml-1 text-2xl duration-300 px-2 ${
                     !open && "hidden"
                   } ${open && "duration-300"}`}
                 >
@@ -232,28 +234,47 @@ const SidebarTail = () => {
               </button>
             </Link>
           </li>
+          <li className="rounded py-2 pt-2 text-black">
+            <Link to="/Dashboard">
+              <button className="ml-2 mb-2 py-2 px-2 w-[15rem] h-[3.5rem] rounded-xl bg-secondary text-white text-xl">
+              <RxDashboard 
+                className={`h-10 w-10 inline-block ${!open && "pr-2"}`}
+              />
+                <span
+                  className={`ml-1 text-2xl pt-4 duration-300 px-4 ${
+                    !open && "hidden"
+                  } ${open && "duration-300"}`}
+                >
+                  Dashboard
+                </span>
+              </button>
+            </Link>
+          </li>
         </ul>
-        <div className=" ml-2 mb-2 px-4 py-2 rounded-xl bg-secondary mt-48 text-white text-xl">
+        </div>
+        <div className="mt-[5.5rem]">
+        <div className="flex justify-center ml-2 mb-2 px-4 py-2 w-[15rem] h-[3.5rem] rounded-xl bg-secondary mt-4 text-white text-xl">
           <CiSettings className={`h-10 w-10 inline-block ${!open && "pr-2"}`} />
-          <span className={`ml-1 text-2xl duration-300 ${!open && "hidden"} `}>
+          <span className={`ml-1 px-2 text-2xl duration-300 ${!open && "hidden"} `}>
             Settings
           </span>
         </div>
         <button
-          className=" ml-2  px-6 py-2 rounded-xl bg-secondary  text-white text-xl"
+          className=" ml-2 px-6 py-2 rounded-xl w-[15rem] h-[3.5rem] bg-secondary  text-white text-xl"
           onClick={handleLogout}
         >
           <BsPersonFillCheck
             className={`h-10 w-10 inline-block ${!open && "pr-2"}`}
           />
           <span
-            className={`ml-1 text-2xl duration-300 ${!open && "hidden"} ${
+            className={`ml-1 text-2xl px-2 duration-300 ${!open && "hidden"} ${
               open && "duration-300"
             }`}
           >
             Logout
           </span>
         </button>
+        </div>
       </div>
     </>
   );

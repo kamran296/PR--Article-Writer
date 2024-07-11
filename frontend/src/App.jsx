@@ -16,6 +16,7 @@ import { fetchUser } from "./redux/userSlice";
 import axios from "axios";
 import LorPrompt from "./pages/LOR/LorPrompt";
 import LorForm from "./pages/LOR/LorForm";
+import Dashboard from "./pages/Dashboard/Dashboard";
 
 function App() {
   const dispatch = useDispatch();
@@ -52,6 +53,8 @@ function App() {
           />
           <Route exact path="/sidebar" element={<SidebarTail />} />
           <Route exact path="/chatbot" element={<Chatbot />} />
+          <Route exact path="/Dashboard" element={<Dashboard />} />
+
         </>
         {/* ) : (
           <Route path="*" element={<Login />} />
