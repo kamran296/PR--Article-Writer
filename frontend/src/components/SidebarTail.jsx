@@ -236,7 +236,7 @@ const SidebarTail = () => {
               </Link>
             </li>
             <li className="rounded py-2 pt-2 text-black">
-              {user.isAdmin === "Admin" && (
+              {user.user.isAdmin === "Admin" && (
                 <Link to="/dashboard">
                   <button className="ml-2 mb-2 py-2 px-2  rounded-xl bg-secondary text-white text-xl">
                     <RxDashboard
