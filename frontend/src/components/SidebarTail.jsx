@@ -236,20 +236,22 @@ const SidebarTail = () => {
               </Link>
             </li>
             <li className="rounded py-2 pt-2 text-black">
-              <Link to="/Dashboard">
-                <button className="ml-2 mb-2 py-2 px-2  rounded-xl bg-secondary text-white text-xl">
-                  <RxDashboard
-                    className={`h-8 w-8 inline-block ${!open && "pr-2"}`}
-                  />
-                  <span
-                    className={`ml-1 text-2xl pt-4 duration-300 px-4 ${
-                      !open && "hidden"
-                    } ${open && "w-64 duration-300"}`}
-                  >
-                    Dashboard
-                  </span>
-                </button>
-              </Link>
+              {user.isAdmin === "Admin" && (
+                <Link to="/dashboard">
+                  <button className="ml-2 mb-2 py-2 px-2  rounded-xl bg-secondary text-white text-xl">
+                    <RxDashboard
+                      className={`h-8 w-8 inline-block ${!open && "pr-2"}`}
+                    />
+                    <span
+                      className={`ml-1 text-2xl pt-4 duration-300 px-4 ${
+                        !open && "hidden"
+                      } ${open && "w-64 duration-300"}`}
+                    >
+                      Dashboard
+                    </span>
+                  </button>
+                </Link>
+              )}
             </li>
           </ul>
         </div>

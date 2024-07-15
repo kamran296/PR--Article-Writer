@@ -136,7 +136,7 @@ app.use(cookieParser());
 app.use(express.json());
 
 const corsOptions = {
-  origin: "http://localhost:5173", // Adjust this to match your frontend URL
+  origin: "https://www.internal.cachelabs.io", // Adjust this to match your frontend URL
   methods: ["GET", "POST", "DELETE"],
   credentials: true,
 };
