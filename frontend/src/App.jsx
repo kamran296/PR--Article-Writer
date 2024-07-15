@@ -53,7 +53,7 @@ function App() {
             />
             <Route exact path="/sidebar" element={<SidebarTail />} />
             <Route exact path="/chatbot" element={<Chatbot />} />
-            {user.isAdmin === "Admin" && (
+            {user.user.isAdmin === "Admin" && (
               <Route exact path="/dashboard" element={<Dashboard />} />
             )}
           </>
