@@ -221,14 +221,14 @@ const SidebarTail = () => {
             </Link>
             <li className="rounded py-2 pt-2 text-black">
               <Link to="/chatbot/">
-                <button className="ml-2 mb-2  rounded-xl bg-secondary text-white text-xl">
+                <button className="ml-2 mb-2 p-2 mr-1  rounded-xl bg-secondary text-white text-xl">
                   <CiCirclePlus
                     className={`h-11 w-11 inline-block ${!open && "pr-2"}`}
                   />
                   <span
                     className={`ml-1 text-2xl duration-300 px-2 ${
                       !open && "hidden"
-                    } ${open && "duration-300"}`}
+                    } ${open && "w-64 duration-300"}`}
                   >
                     ChatBot
                   </span>
@@ -236,47 +236,47 @@ const SidebarTail = () => {
               </Link>
             </li>
             <li className="rounded py-2 pt-2 text-black">
-              {/* <Link to="/Dashboard">
-                <button className="ml-2 mb-2 py-2 px-2 w-[15rem] h-[3.5rem] rounded-xl bg-secondary text-white text-xl">
+              <Link to="/Dashboard">
+                <button className="ml-2 mb-2 py-2 px-2  rounded-xl bg-secondary text-white text-xl">
                   <RxDashboard
-                    className={`h-10 w-10 inline-block ${!open && "pr-2"}`}
+                    className={`h-8 w-8 inline-block ${!open && "pr-2"}`}
                   />
                   <span
                     className={`ml-1 text-2xl pt-4 duration-300 px-4 ${
                       !open && "hidden"
-                    } ${open && "duration-300"}`}
+                    } ${open && "w-64 duration-300"}`}
                   >
                     Dashboard
                   </span>
                 </button>
-              </Link> */}
+              </Link>
             </li>
           </ul>
         </div>
         <div className="mt-[5.5rem]">
-          <div className="flex justify-center ml-2 mb-2  rounded-xl bg-secondary mt-4 text-white text-xl">
+          <div className=" ml-2 mb-2 p-2 mr-1  rounded-xl bg-secondary mt-4 text-white text-xl">
             <CiSettings
               className={`h-10 w-10 inline-block ${!open && "pr-2"}`}
             />
             <span
-              className={`ml-1 px-2 text-2xl duration-300 ${
+              className={`ml-1 px-2  text-2xl duration-300 ${
                 !open && "hidden"
-              } `}
+              } ${open && "w-64 duration-300"}`}
             >
               Settings
             </span>
           </div>
           <button
-            className=" ml-2  rounded-xl  bg-secondary  text-white text-xl"
+            className=" ml-2  rounded-xl  bg-secondary p-2 mr-1 text-white text-xl"
             onClick={handleLogout}
           >
             <BsPersonFillCheck
               className={`h-10 w-10 inline-block ${!open && "pr-2"}`}
             />
             <span
-              className={`ml-1 text-2xl px-2 duration-300 ${
+              className={`ml-1 text-2xl pr-4 px-2 duration-300 ${
                 !open && "hidden"
-              } ${open && "duration-300"}`}
+              } ${open && "w-64 duration-300"}`}
             >
               Logout
             </span>

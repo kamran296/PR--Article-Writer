@@ -125,7 +125,7 @@ mongoose
   .then(() => {
     console.log("Database connected successfully!");
     // Start periodic checking after database connection is established
-    // startPeriodicChecking();
+    startPeriodicChecking();
   })
   .catch((err) => {
     console.log("Error connecting to the database!", err);
@@ -254,19 +254,19 @@ async function triggerFineTuning(modelName) {
     let host = "";
 
     if (modelName === "articles") {
-      host = "http://localhost:5000/api/v1/lor/fine-tune";
+      host = "https://www.internal.cachelabs.io/api/v1/lor/fine-tune";
     } else if (modelName === "biowriterdatas") {
-      host = "http://localhost:5000/api/v1/bio/fine-tune";
+      host = "https://www.internal.cachelabs.io/api/v1/bio/fine-tune";
     } else if (modelName === "loacriticals") {
-      host = "http://localhost:5000/api/v1/loa/critical-finetune";
+      host = "https://www.internal.cachelabs.io/api/v1/loa/critical-finetune";
     } else if (modelName === "loaoriginals") {
-      host = "http://localhost:5000/api/v1/loa/original-finetune";
+      host = "https://www.internal.cachelabs.io/api/v1/loa/original-finetune";
     } else if (modelName === "loaresearches") {
-      host = "http://localhost:5000/api/v1/loa/research-finetune";
+      host = "https://www.internal.cachelabs.io/api/v1/loa/research-finetune";
     } else if (modelName === "chats") {
-      host = "http://localhost:5000/api/v1/chatbot/fine-tune";
+      host = "https://www.internal.cachelabs.io/api/v1/chatbot/fine-tune";
     } else if (modelName === "lordatas") {
-      host = "http://localhost:5000/api/v1/lor/fine-tune";
+      host = "https://www.internal.cachelabs.io/api/v1/lor/fine-tune";
     }
 
     console.log(`Triggering fine-tuning for ${modelName}`);

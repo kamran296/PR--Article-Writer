@@ -35,30 +35,31 @@ function App() {
       <Routes>
         <Route exact path="/login" element={<Login />} />
 
-        {/* {user && user.success ? ( */}
-        <>
-          <Route exact path="/" element={<Home />} />
-          <Route exact path="/article-form" element={<Form />} />
-          <Route exact path="/loa-prompt" element={<LoaPrompt />} />
-          <Route exact path="/loa-form" element={<LoaForm />} />
-          <Route exact path="/critical-role" element={<LoaCritical />} />
-          <Route exact path="/lor" element={<LorPrompt />} />
-          <Route exact path="/lor-form" element={<LorForm />} />
-          <Route exact path="/bio-writer" element={<BioWriter />} />
+        {user && user.success ? (
+          <>
+            <Route exact path="/" element={<Home />} />
+            <Route exact path="/article-form" element={<Form />} />
+            <Route exact path="/loa-prompt" element={<LoaPrompt />} />
+            <Route exact path="/loa-form" element={<LoaForm />} />
+            <Route exact path="/critical-role" element={<LoaCritical />} />
+            <Route exact path="/lor" element={<LorPrompt />} />
+            <Route exact path="/lor-form" element={<LorForm />} />
+            <Route exact path="/bio-writer" element={<BioWriter />} />
 
-          <Route
-            exact
-            path="/bio-writer-prompt"
-            element={<BioWriterPrompt />}
-          />
-          <Route exact path="/sidebar" element={<SidebarTail />} />
-          <Route exact path="/chatbot" element={<Chatbot />} />
-          <Route exact path="/Dashboard" element={<Dashboard />} />
-
-        </>
-        {/* ) : (
+            <Route
+              exact
+              path="/bio-writer-prompt"
+              element={<BioWriterPrompt />}
+            />
+            <Route exact path="/sidebar" element={<SidebarTail />} />
+            <Route exact path="/chatbot" element={<Chatbot />} />
+            {user.isAdmin === "Admin" && (
+              <Route exact path="/dashboard" element={<Dashboard />} />
+            )}
+          </>
+        ) : (
           <Route path="*" element={<Login />} />
-        )} */}
+        )}
       </Routes>
     </Router>
   );

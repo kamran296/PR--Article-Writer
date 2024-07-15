@@ -4,14 +4,36 @@ import "./Dashboard.css";
 
 const Dashboard = () => {
   const [data, setData] = useState([]);
-  const hostDevelopment = "http://localhost:5000/api/v1/allInfo/get-all";
+  const hostDevelopment =
+    "https://www.internal.cachelabs.io/api/v1/allInfo/get-all";
+
+  useEffect(() => {
+    loadData();
+  }, []);
 
   const loadData = async () => {
     try {
+      console.log("Loading data...");
       const response = await fetch(hostDevelopment, {
         method: "GET",
       });
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
       const val = await response.json();
+      const mappedData = val.map((item) => {
+        if (item.modelName === "chats") item.modelName = "ChatBot";
+        if (item.modelName === "articles") item.modelName = "Article Writer";
+        if (item.modelName === "biowriterdatas") item.modelName = "Bio Writer";
+        if (item.modelName === "loaoriginals") item.modelName = "LOA Original";
+        if (item.modelName === "loacriticals") item.modelName = "LOA Critical";
+        if (item.modelName === "loaresearches") item.modelName = "LOA Research";
+        if (item.modelName === "lordatas") item.modelName = "LOR";
+
+        return item;
+      });
+      console.log(mappedData, "mappedData");
+      setData(mappedData);
       console.log(val, "val");
       setData(val);
     } catch (error) {
@@ -19,9 +41,42 @@ const Dashboard = () => {
     }
   };
 
-  useEffect(() => {
-    loadData();
-  }, []);
+  const handleClick = async (modelName) => {
+    try {
+      let host = "";
+      if (modelName === "ChatBot") {
+        host = "https://www.internal.cachelabs.io/api/v1/chatbot/fine-tune";
+      }
+      if (modelName === "Article Writer") {
+        host =
+          "https://www.internal.cachelabs.io/api/v1/ArticleWriter/fine-tune";
+      }
+      if (modelName === "LOA Original") {
+        host =
+          "https://www.internal.cachelabs.io/api/v1/chatbot/original-finetune";
+      }
+      if (modelName === "LOA Critical") {
+        host =
+          "https://www.internal.cachelabs.io/api/v1/chatbot/critical-finetune";
+      }
+      if (modelName === "LOA Research") {
+        host = "https://www.internal.cachelabs.io/api/v1/loa/research-finetune";
+      }
+      if (modelName === "LOR") {
+        host = "https://www.internal.cachelabs.io/api/v1/lor/fine-tune";
+      }
+      if (modelName === "Bio Writer") {
+        host = "https://www.internal.cachelabs.io/api/v1/bio/fine-tune";
+      }
+
+      const response = await fetch(host, {
+        method: "GET",
+      });
+      console.log("Model is fine-tuning");
+    } catch (err) {
+      console.log("Error in training:", err);
+    }
+  };
 
   return (
     <>
@@ -30,7 +85,7 @@ const Dashboard = () => {
         <div>
           <div className="flex items-center w-screen justify-center min-h-screen">
             <div className="col-span-12">
-              <div className="overflow-auto lg:overflow-visible">
+              <div className="overflow-auto lg:overflow-visible ">
                 <table className="table text-black border-separate ml-[4rem] space-y-6 text-2xl">
                   <thead className="bg-[#ffffff] shadow-md text-black">
                     <tr className="h-[6rem] bg-purple-100 text-black">
@@ -50,8 +105,8 @@ const Dashboard = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {data.length > 0 ? (
-                      data.map((entry, index) => (
+                    {data.length > 0 &&
+                      data.map((item, index) => (
                         <tr
                           key={index}
                           className="bg-[#ffffff] shadow-md h-[6rem]"
@@ -60,45 +115,39 @@ const Dashboard = () => {
                             <div className="flex align-items-center">
                               <div className="ml-[3rem]">
                                 <div className="font-bold">
-                                  {entry.modelName}
+                                  {item.modelName}
                                 </div>
                               </div>
                             </div>
                           </td>
                           <td className="p-3">
                             <div className="flex justify-center mt-[1rem]">
-                              {entry.previousLength}
+                              {item.previousLength}
                             </div>
                           </td>
                           <td className="p-3 ">
-                            <div className="flex font-medium justify-center mt-[1rem]">
-                              {entry.currentLength}
+                            <div className="flex justify-center mt-[1rem]">
+                              {item.currentLength}
                             </div>
                           </td>
                           <td className="p-3">
-                            <div className="flex font-medium justify-center mt-[1rem]">
-                              {entry.currentLength - entry.previousLength}
+                            <div className="flex justify-center mt-[1rem]">
+                              {item.currentLength - item.previousLength}
                             </div>
                           </td>
-                          <td className="p-3">
+                          <td className="p-3 ">
                             <div className="flex justify-center items-center">
                               <button
                                 className="midBtn bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-full"
                                 type="submit"
+                                onClick={() => handleClick(item.modelName)}
                               >
                                 Train Now
                               </button>
                             </div>
                           </td>
                         </tr>
-                      ))
-                    ) : (
-                      <tr>
-                        <td colSpan="5" className="text-center">
-                          Loading data...
-                        </td>
-                      </tr>
-                    )}
+                      ))}
                   </tbody>
                 </table>
               </div>

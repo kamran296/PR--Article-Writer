@@ -4,7 +4,7 @@ const Article = require("../model/articleData");
 const Chatbot = require("../model/chatbotData");
 const LoaOriginal = require("../model/loaOrgData");
 const LoaCritical = require("../model/loaCriticalData");
-const LoaResearch = require("../model/articleData");
+const LoaResearch = require("../model/loaPaperData");
 const Lor = require("../model/lorData");
 const BioData = require("../model/bioData");
 
