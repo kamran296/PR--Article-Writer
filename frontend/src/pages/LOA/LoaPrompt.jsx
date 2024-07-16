@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 import SideBar from "../../components/SideBar";
 import SidebarTail from "../../components/SidebarTail";
 import { BsSend } from "react-icons/bs";
-import { BiLike, BiDislike ,BiSolidLike} from "react-icons/bi";
+import { BiLike, BiDislike, BiSolidLike } from "react-icons/bi";
 const LoaPrompt = () => {
   const [formData, setFormData] = useState({
     prompt: "",
@@ -34,7 +34,8 @@ const LoaPrompt = () => {
     e.preventDefault();
     try {
       const response = await fetch(
-        "http://localhost:5000/api/v1/loa/add-article",//add api
+        // "http://localhost:5000/api/v1/loa/add-article",//add api
+        "https://www.internal.cachelabs.io/api/v1/loa/add-article",
         {
           method: "POST",
           headers: {
@@ -69,8 +70,8 @@ const LoaPrompt = () => {
     console.log("Generating Article!!");
     try {
       const response = await fetch(
-        // "https://www.internal.cachelabs.io/api/v1/loa/loa-prompt",
-        "http://localhost:5000/api/v1/loa/loa-prompt",
+        "https://www.internal.cachelabs.io/api/v1/loa/loa-prompt",
+        // "http://localhost:5000/api/v1/loa/loa-prompt",
         {
           method: "POST",
           headers: {

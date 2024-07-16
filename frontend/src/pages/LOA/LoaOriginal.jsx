@@ -42,7 +42,8 @@ const LoaOriginal = ({ type }) => {
     e.preventDefault();
     try {
       const response = await fetch(
-        "http://localhost:5000/api/v1/loa/original-data",
+        // "http://localhost:5000/api/v1/loa/original-data",
+        "https://www.internal.cachelabs.io/api/v1/loa/original-data",
         {
           method: "POST",
           headers: {
@@ -77,8 +78,8 @@ const LoaOriginal = ({ type }) => {
     console.log("Generating article");
     try {
       const response = await fetch(
-        // "https://www.internal.cachelabs.io/api/v1/loa/loa-original",
-        "http://localhost:5000/api/v1/loa/loa-original",
+        "https://www.internal.cachelabs.io/api/v1/loa/loa-original",
+        // "http://localhost:5000/api/v1/loa/loa-original",
         {
           method: "POST",
           headers: {

@@ -51,7 +51,8 @@ const LoaResearch = ({ type }) => {
     e.preventDefault();
     try {
       const response = await fetch(
-        "http://localhost:5000/api/v1/loa/research-data",
+        // "http://localhost:5000/api/v1/loa/research-data",
+        "https://www.internal.cachelabs.io/api/v1/loa/research-data",
         {
           method: "POST",
           headers: {
@@ -78,8 +79,8 @@ const LoaResearch = ({ type }) => {
     console.log("Generating article");
     try {
       const response = await fetch(
-        "http://localhost:5000/api/v1/loa/loa-research",
-        // "https://www.internal.cachelabs.io/api/v1/loa/loa-research",
+        // "http://localhost:5000/api/v1/loa/loa-research",
+        "https://www.internal.cachelabs.io/api/v1/loa/loa-research",
         {
           method: "POST",
           headers: {
