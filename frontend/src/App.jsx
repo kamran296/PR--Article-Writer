@@ -17,6 +17,7 @@ import axios from "axios";
 import LorPrompt from "./pages/LOR/LorPrompt";
 import LorForm from "./pages/LOR/LorForm";
 import Dashboard from "./pages/Dashboard/Dashboard";
+import AddData from "./pages/AddData/AddData";
 
 function App() {
   const dispatch = useDispatch();
@@ -53,6 +54,7 @@ function App() {
             />
             <Route exact path="/sidebar" element={<SidebarTail />} />
             <Route exact path="/chatbot" element={<Chatbot />} />
+            <Route exact path="/add-data" element={<AddData />} />
             {user.user.isAdmin === "Admin" && (
               <Route exact path="/dashboard" element={<Dashboard />} />
             )}
