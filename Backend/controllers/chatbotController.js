@@ -33,7 +33,7 @@ module.exports.chatbot = async (req, res) => {
         },
         { role: "user", content: chat },
       ],
-      temperature: 0.4,
+      temperature: 0.1,
       max_tokens: 200,
     });
     console.log(response.choices[0].message.content, 123);
