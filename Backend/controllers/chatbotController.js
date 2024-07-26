@@ -83,45 +83,77 @@ module.exports.getData = async (req, res) => {
   }
 };
 
-const download = async (req, res) => {
-  //  Fetch all chat data from the database, converting to plain JavaScript objects
+const download = async () => {
   const chatData = await Chat.find().lean();
 
   // Remove the _id field from each document
-  const chatDataWithoutId = chatData.map(({ _id, ...rest }) => rest);
+  // const chatDataWithoutId = chatData.map(({ _id, ...rest }) => rest);
+  const chatDataWithoutId = chatData.map((doc) => {
+    const { _id, __v, ...rest } = doc;
+    const messagesWithoutId = rest.messages.map(
+      ({ _id, ...messageRest }) => messageRest
+    );
+    return { ...rest, messages: messagesWithoutId };
+  });
 
   // Check if there's any data
   if (!chatDataWithoutId || chatDataWithoutId.length === 0) {
-    return res.status(404).json({ message: "No chat data found" });
+    throw new Error("No chat data found");
   }
 
   // Convert the data to a JSON string
   const jsonData = JSON.stringify(chatDataWithoutId, null, 2);
 
-  // Ensure the data directory exists
   const dataDir = path.join(__dirname, "../data");
   if (!fs.existsSync(dataDir)) {
     fs.mkdirSync(dataDir);
   }
 
-  // Define the file path and name
-  const filePath = path.join(dataDir, "chatData6.json");
+  const filePath = path.join(dataDir, "chatData.json");
 
-  // Write the JSON data to a file
+  // Write JSON data to a file
   fs.writeFileSync(filePath, jsonData, "utf-8");
+  console.log(filePath, "filePath");
+  return filePath; // Return the path of the saved JSON file
 };
 
-module.exports.downloadDatabase = async (req, res) => {
+const convertToJSONL = (filePath) => {
+  // Read the JSON file
+  const data = fs.readFileSync(filePath, "utf8");
+
+  // Parse the JSON data
+  const jsonData = JSON.parse(data);
+
+  // Transform the data to JSONL format
+  const jsonlData = jsonData
+    .map((item) => {
+      // Create a new object excluding the __v field
+      const { __v, ...rest } = item;
+      return JSON.stringify(rest);
+    })
+    .join("\n");
+
+  // Get the output file path
+  const outputFilePath = path.join(path.dirname(filePath), "chatData.jsonl");
+
+  // Write the JSONL data to a new file
+  fs.writeFileSync(outputFilePath, jsonlData, "utf8");
+
+  console.log(`JSONL file has been created successfully at ${outputFilePath}`);
+
+  return outputFilePath; // Return the path of the saved JSONL file
+};
+
+module.exports.fineTune = async (req, res) => {
   try {
-    setTimeout(() => {
-      download();
-    }, 6000);
+    const filePath = await download();
+    const Path = path.join(__dirname, "../data/chatData.json");
+    const jsonlFilePath = convertToJSONL(Path);
 
     const fineTuneModel = async () => {
       try {
         // Upload training file
-        const jsonFilePath = path.join(__dirname, "../data/chatData7.jsonl");
-        const fileStream = fs.createReadStream(jsonFilePath);
+        const fileStream = fs.createReadStream(jsonlFilePath);
         const trainingFile = await openai.files.create({
           file: fileStream,
           purpose: "fine-tune",
@@ -133,7 +165,7 @@ module.exports.downloadDatabase = async (req, res) => {
         const response = await openai.fineTuning.jobs.create({
           training_file: trainingFile.id,
           model: "gpt-3.5-turbo",
-          suffix: "ChatBotFaq20190624",
+          suffix: "chatModel",
         });
 
         const jobId = response.id;
@@ -154,9 +186,12 @@ module.exports.downloadDatabase = async (req, res) => {
                 const fineTunedModel = responseStatus.fine_tuned_model;
 
                 // Save the fine_tuned_model to the database
-                const newModel = new ChatModel({ model: fineTunedModel });
+                const newModel = new ChatModel({
+                  model: fineTunedModel,
+                });
                 await newModel.save();
-
+                fs.unlinkSync(filePath);
+                fs.unlinkSync(jsonlFilePath);
                 return res.status(200).json(responseStatus);
               } else {
                 return res.status(500).json({ message: "Fine-tuning failed" });

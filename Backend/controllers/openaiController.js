@@ -172,7 +172,7 @@ module.exports.fineTune = async (req, res) => {
         const response = await openai.fineTuning.jobs.create({
           training_file: trainingFile.id,
           model: "gpt-3.5-turbo",
-          suffix: "FeedbackTesting",
+          suffix: "articleModel",
         });
 
         const jobId = response.id;
@@ -198,7 +198,9 @@ module.exports.fineTune = async (req, res) => {
                   model: fineTunedModel,
                 });
                 await newModel.save();
-
+                // / Delete the downloaded files
+                fs.unlinkSync(filePath);
+                fs.unlinkSync(jsonlFilePath);
                 return res.status(200).json(responseStatus);
               } else {
                 return res.status(500).json({ message: "Fine-tuning failed" });
