@@ -59,7 +59,7 @@ const Chatbot = () => {
     try {
       console.log(input, 3232);
       const response = await fetch(
-        "http://www.internal.cachelabs.io/api/v1/chatbot/add-chat",
+        "https://www.internal.cachelabs.io/api/v1/chatbot/add-chat",
         {
           method: "POST",
           headers: {
