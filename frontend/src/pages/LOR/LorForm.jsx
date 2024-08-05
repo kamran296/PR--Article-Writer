@@ -42,7 +42,7 @@ const LorForm = () => {
     e.preventDefault();
     try {
       const response = await fetch(
-        "http://localhost:5000/api/v1/lor/add-data",
+        "https://www.internal.cachelabs.io/api/v1/lor/add-data",
         {
           method: "POST",
           headers: {
@@ -250,7 +250,6 @@ const LorForm = () => {
               </label>
             </div>
 
-            
             <button
               className="midBtn bg-gradient-to-r from-[#AA22FF] via-[#D989FF] to-[#51FFE0] mt-[3rem]"
               type="submit"

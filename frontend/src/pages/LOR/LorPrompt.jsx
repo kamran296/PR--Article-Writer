@@ -38,7 +38,7 @@ const LoaPrompt = () => {
     e.preventDefault();
     try {
       const response = await fetch(
-        "http://localhost:5000/api/v1/lor/add-data",
+        "https://www.internal.cachelabs.io/api/v1/lor/add-data",
         {
           method: "POST",
           headers: {
