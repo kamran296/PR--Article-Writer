@@ -73,7 +73,7 @@ const LoaPrompt = () => {
     console.log("Generating Article!!");
     try {
       const response = await fetch(
-        "http://localhost:5000/api/v1/lor/lor-prompt",
+        "https://www.internal.cachelabs.io/api/v1/lor/lor-prompt",
         {
           method: "POST",
           headers: {
