@@ -2,6 +2,7 @@ const dotenv = require("dotenv");
 dotenv.config({ path: "./config.env" });
 const { Configuration, OpenAI } = require("openai");
 const ModelList = require("../model/modelList");
+const AllInformation = require("../model/allInformation");
 const path = require("path");
 const fs = require("fs");
 const loaResearch = require("../model/loaPaperData");
@@ -136,6 +137,7 @@ const convertToJSONL = (filePath) => {
 };
 
 module.exports.fineTune = async (req, res) => {
+  const { currentLength } = re.body;
   try {
     const filePath = await download();
     const Path = path.join(__dirname, "../data/researchData.json");
@@ -182,7 +184,12 @@ module.exports.fineTune = async (req, res) => {
                   model: fineTunedModel,
                 });
                 await newModel.save();
-
+                await AllInformation.updateOne(
+                  { modelName: "loaresearches" },
+                  { previousLength: currentLength }
+                );
+                fs.unlinkSync(filePath);
+                fs.unlinkSync(jsonlFilePath);
                 return res.status(200).json(responseStatus);
               } else {
                 return res.status(500).json({ message: "Fine-tuning failed" });

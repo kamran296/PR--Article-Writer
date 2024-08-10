@@ -6,7 +6,7 @@ import msgIcon from "./assets/message.svg";
 import gptImgLogo from "./assets/chatgptLogo.svg";
 import download from "./assets/download.png";
 import { Link } from "react-router-dom";
-import SideBar from "../../components/SideBar";
+// import SideBar from "../../components/SideBar";
 import LoaCritical from "./LoaCritical";
 import LoaResearch from "./LoaResearch";
 import LoaOriginal from "./LoaOriginal";

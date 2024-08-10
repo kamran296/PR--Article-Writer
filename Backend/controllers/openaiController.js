@@ -3,6 +3,7 @@ dotenv.config({ path: "./config.env" });
 const { Configuration, OpenAI } = require("openai");
 const Article = require("../model/articleData");
 const ArticleModel = require("../model/modelList");
+const AllInformation = require("../model/allInformation");
 const fs = require("fs");
 const path = require("path");
 
@@ -152,6 +153,7 @@ const convertToJSONL = (filePath) => {
 };
 
 module.exports.fineTune = async (req, res) => {
+  const { currentLength } = req.body;
   try {
     const filePath = await download();
     const Path = path.join(__dirname, "../data/articleData.json");
@@ -198,6 +200,11 @@ module.exports.fineTune = async (req, res) => {
                   model: fineTunedModel,
                 });
                 await newModel.save();
+
+                await AllInformation.updateOne(
+                  { modelName: "articles" },
+                  { previousLength: currentLength }
+                );
                 // / Delete the downloaded files
                 fs.unlinkSync(filePath);
                 fs.unlinkSync(jsonlFilePath);

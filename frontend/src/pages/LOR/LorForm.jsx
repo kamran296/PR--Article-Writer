@@ -6,7 +6,7 @@ import msgIcon from "./assets/message.svg";
 import gptImgLogo from "./assets/chatgptLogo.svg";
 import download from "./assets/download.png";
 import { Link } from "react-router-dom";
-import SideBar from "../../components/SideBar";
+// import SideBar from "../../components/SideBar";
 import SidebarTail from "../../components/SidebarTail";
 import { BiLike, BiDislike, BiSolidLike } from "react-icons/bi";
 

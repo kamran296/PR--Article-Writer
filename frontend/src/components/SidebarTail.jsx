@@ -202,6 +202,22 @@ const SidebarTail = () => {
                 </span>
               </li>
             </Link>
+            <Link to="/niche/">
+              <li className="ml-2 mb-2 rounded hover:shadow hover:bg-white hover:text-primary py-2 pt-2 text-black">
+                <img
+                  className="h-12 w-12 inline-block p-2"
+                  src={prompt}
+                  alt="logo"
+                />
+                <span
+                  className={`ml-2 text-2xl duration-300 ${!open && "hidden"} ${
+                    open && "duration-300"
+                  }`}
+                >
+                  Niche Writer
+                </span>
+              </li>
+            </Link>
             <li className="rounded py-2 pt-2 text-black">
               <Link to="/chatbot/">
                 <button className="ml-2 mb-2 p-2 mr-1  rounded-xl bg-secondary text-white text-xl">

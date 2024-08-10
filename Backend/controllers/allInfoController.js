@@ -7,7 +7,7 @@ const LoaCritical = require("../model/loaCriticalData");
 const LoaResearch = require("../model/loaPaperData");
 const Lor = require("../model/lorData");
 const BioData = require("../model/bioData");
-
+const NicheData = require("../model/niche");
 // Create a new entry
 module.exports.createEntry = async (req, res) => {
   try {
@@ -44,6 +44,7 @@ module.exports.getAll = async (req, res) => {
     let currLoaResearch = await LoaResearch.countDocuments();
     let currLoaCritical = await LoaCritical.countDocuments();
     let currChatbot = await Chatbot.countDocuments();
+    let currNiche = await NicheData.countDocuments();
 
     const modelCounts = {
       articles: currArticle,
@@ -53,6 +54,7 @@ module.exports.getAll = async (req, res) => {
       loaresearches: currLoaResearch,
       loacriticals: currLoaCritical,
       chats: currChatbot,
+      niche: currNiche,
     };
 
     for (let entry of data) {

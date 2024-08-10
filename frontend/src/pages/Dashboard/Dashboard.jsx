@@ -29,6 +29,7 @@ const Dashboard = () => {
         if (item.modelName === "loacriticals") item.modelName = "LOA Critical";
         if (item.modelName === "loaresearches") item.modelName = "LOA Research";
         if (item.modelName === "lordatas") item.modelName = "LOR";
+        if (item.modelName === "nichedatas") item.modelName = "Niche Writer";
 
         return item;
       });
@@ -41,40 +42,89 @@ const Dashboard = () => {
     }
   };
 
-  const handleClick = async (modelName) => {
+  // const handleClick = async (modelName,currentLength) => {
+  //   try {
+  //     let host = "";
+  //     if (modelName === "ChatBot") {
+  //       host = "https://www.internal.cachelabs.io/api/v1/chatbot/fine-tune";
+  //     }
+  //     if (modelName === "Article Writer") {
+  //       host =
+  //         "https://www.internal.cachelabs.io/api/v1/ArticleWriter/fine-tune";
+  //     }
+  //     if (modelName === "LOA Original") {
+  //       host =
+  //         "https://www.internal.cachelabs.io/api/v1/chatbot/original-finetune";
+  //     }
+  //     if (modelName === "LOA Critical") {
+  //       host =
+  //         "https://www.internal.cachelabs.io/api/v1/chatbot/critical-finetune";
+  //     }
+  //     if (modelName === "LOA Research") {
+  //       host = "https://www.internal.cachelabs.io/api/v1/loa/research-finetune";
+  //     }
+  //     if (modelName === "LOR") {
+  //       host = "https://www.internal.cachelabs.io/api/v1/lor/fine-tune";
+  //     }
+  //     if (modelName === "Bio Writer") {
+  //       host = "https://www.internal.cachelabs.io/api/v1/bio/fine-tune";
+  //     }
+
+  //     const response = await fetch(host, {
+  //       method: "GET",
+  //     });
+  //     console.log("Model is fine-tuning");
+  //   } catch (err) {
+  //     console.log("Error in training:", err);
+  //   }
+  // };
+
+  const handleClick = async (modelName, previousLength, currentLength) => {
     try {
+      // Disable handleClick if the difference between previousLength and currentLength is less than 10
+      if (currentLength - previousLength < 10) {
+        console.log(
+          "The difference between the previous and current length is less than 10. Operation disabled."
+        );
+        return; // Exit the function early to disable the click
+      }
+
       let host = "";
       if (modelName === "ChatBot") {
         host = "https://www.internal.cachelabs.io/api/v1/chatbot/fine-tune";
-      }
-      if (modelName === "Article Writer") {
+      } else if (modelName === "Article Writer") {
         host =
           "https://www.internal.cachelabs.io/api/v1/ArticleWriter/fine-tune";
-      }
-      if (modelName === "LOA Original") {
-        host =
-          "https://www.internal.cachelabs.io/api/v1/chatbot/original-finetune";
-      }
-      if (modelName === "LOA Critical") {
-        host =
-          "https://www.internal.cachelabs.io/api/v1/chatbot/critical-finetune";
-      }
-      if (modelName === "LOA Research") {
+      } else if (modelName === "LOA Original") {
+        host = "https://www.internal.cachelabs.io/api/v1/loa/original-finetune";
+      } else if (modelName === "LOA Critical") {
+        host = "https://www.internal.cachelabs.io/api/v1/loa/critical-finetune";
+      } else if (modelName === "LOA Research") {
         host = "https://www.internal.cachelabs.io/api/v1/loa/research-finetune";
-      }
-      if (modelName === "LOR") {
+      } else if (modelName === "LOR") {
         host = "https://www.internal.cachelabs.io/api/v1/lor/fine-tune";
-      }
-      if (modelName === "Bio Writer") {
+      } else if (modelName === "Bio Writer") {
         host = "https://www.internal.cachelabs.io/api/v1/bio/fine-tune";
+      } else if (modelName === "Niche Writer") {
+        host = "https://www.internal.cachelabs.io/api/v1/niche/fine-tune";
       }
 
       const response = await fetch(host, {
-        method: "GET",
+        method: "POST", // Change to POST request
+        headers: {
+          "Content-Type": "application/json", // Set the content type to JSON
+        },
+        body: JSON.stringify({ currentLength }), // Pass currentLength as a parameter
       });
-      console.log("Model is fine-tuning");
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      console.log("Model is fine-tuning", data);
     } catch (err) {
-      console.log("Error in training:", err);
+      console.log("Error in fine-tuning:", err);
     }
   };
 
@@ -140,7 +190,16 @@ const Dashboard = () => {
                               <button
                                 className="midBtn bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-full"
                                 type="submit"
-                                onClick={() => handleClick(item.modelName)}
+                                onClick={() =>
+                                  handleClick(
+                                    item.modelName,
+                                    item.previousLength,
+                                    item.currentLength
+                                  )
+                                }
+                                disabled={
+                                  item.currentLength - item.previousLength < 10
+                                } // Disable button if difference is less than 10
                               >
                                 Train Now
                               </button>

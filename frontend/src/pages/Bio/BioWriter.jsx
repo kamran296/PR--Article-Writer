@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./biowriter.css";
 import download from "./assets/download.png";
-import SideBar from "../../components/SideBar";
+
 import SidebarTail from "../../components/SidebarTail";
 import { BiLike, BiDislike, BiSolidLike } from "react-icons/bi";
 

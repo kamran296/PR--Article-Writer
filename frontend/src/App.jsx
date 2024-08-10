@@ -9,6 +9,7 @@ import BioWriter from "./pages/Bio/BioWriter";
 import BioWriterPrompt from "./pages/Bio/BioWriterPrompt";
 import SidebarTail from "./components/SidebarTail";
 import Chatbot from "./pages/Chatbot/Chatbot";
+import Niche from "./pages/Niche/Niche";
 import Login from "./components/Login";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUser } from "./redux/userSlice";
@@ -52,8 +53,10 @@ function App() {
               path="/bio-writer-prompt"
               element={<BioWriterPrompt />}
             />
+
             <Route exact path="/sidebar" element={<SidebarTail />} />
             <Route exact path="/chatbot" element={<Chatbot />} />
+            <Route exact path="/niche" element={<Niche />} />
             <Route exact path="/add-data" element={<AddData />} />
             {user.user.isAdmin === "Admin" && (
               <Route exact path="/dashboard" element={<Dashboard />} />

@@ -8,7 +8,7 @@ import userIcon from "./assets/user-icon.png";
 import gptImgLogo from "./assets/chatgptLogo.svg";
 import download from "./assets/download.png";
 import { Link } from "react-router-dom";
-import SideBar from "../../components/SideBar";
+// import SideBar from "../../components/SideBar";
 import SidebarTail from "../../components/SidebarTail";
 import { BsSend } from "react-icons/bs";
 import { BiLike, BiDislike, BiSolidLike } from "react-icons/bi";

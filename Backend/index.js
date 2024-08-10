@@ -15,8 +15,9 @@ const chatbotRouter = require("./router/chatbotRouter");
 const loaRouter = require("./router/loaRouter");
 const bioRouter = require("./router/bioRouter");
 const lorRouter = require("./router/lorRouter");
-const allInfoRouter = require("./router/allinformation"); // Adjust the router path as per your project structure
-const AllInformation = require("./model/allInformation"); // Import your allInformation model
+const nicheRouter = require("./router/nicheRouter");
+const allInfoRouter = require("./router/allinformation");
+const AllInformation = require("./model/allInformation");
 
 // Import your data models
 const LorData = require("./model/lorData");
@@ -26,7 +27,7 @@ const BioData = require("./model/bioData");
 const LoaOrgData = require("./model/loaOrgData");
 const LoaPaperData = require("./model/loaPaperData");
 const ChatbotData = require("./model/chatbotData");
-
+const NicheData = require("./model/niche");
 const app = express();
 
 const db = process.env.DB_PRODUCTION;
@@ -79,6 +80,7 @@ app.use("/api/v1/loa", loaRouter);
 app.use("/api/v1/bio", bioRouter);
 app.use("/api/v1/lor", lorRouter);
 app.use("/api/v1/allInfo", allInfoRouter);
+app.use("/api/v1/niche", nicheRouter);
 
 // Static files
 const _dirname = path.dirname("");
@@ -136,6 +138,8 @@ async function checkModels() {
         currentLength = await LoaPaperData.countDocuments();
       } else if (modelName === "chats") {
         currentLength = await ChatbotData.countDocuments();
+      } else if (modelName === "nichedatas") {
+        currentLength = await NicheData.countDocuments();
       } else {
         console.warn(`Unknown model: ${modelName}`);
         continue;
@@ -145,12 +149,12 @@ async function checkModels() {
 
       if (currentLength > previousLength + 100) {
         // Trigger fine-tuning process
-        await triggerFineTuning(modelName);
+        await triggerFineTuning(modelName, currentLength);
         // Update previousLength in allInformation model
-        await AllInformation.updateOne(
-          { modelName: modelName },
-          { previousLength: currentLength }
-        );
+        // await AllInformation.updateOne(
+        //   { modelName: modelName },
+        //   { previousLength: currentLength }
+        // );
       }
     }
   } catch (error) {
@@ -159,7 +163,7 @@ async function checkModels() {
 }
 
 // Function to trigger fine-tuning API
-async function triggerFineTuning(modelName) {
+async function triggerFineTuning(modelName, currentLength) {
   try {
     let host = "";
 
@@ -177,10 +181,12 @@ async function triggerFineTuning(modelName) {
       host = "https://www.internal.cachelabs.io/api/v1/chatbot/fine-tune";
     } else if (modelName === "lordatas") {
       host = "https://www.internal.cachelabs.io/api/v1/lor/fine-tune";
+    } else if (modelName === "nichedatas") {
+      host = "https://www.internal.cachelabs.io/api/v1/niche/fine-tune";
     }
 
     console.log(`Triggering fine-tuning for ${modelName}`);
-    const response = await axios.get(`${host}`);
+    const response = await axios.post(`${host}`, { currentLength });
     console.log(`Fine-tuning started for ${modelName}:`, response.data);
   } catch (error) {
     console.error(`Error triggering fine-tuning for ${modelName}:`, error);

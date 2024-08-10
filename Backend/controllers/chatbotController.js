@@ -6,6 +6,7 @@ const fs = require("fs");
 const path = require("path");
 const { exec } = require("child_process");
 const ChatModel = require("../model/chatbotModels");
+const AllInformation = require("../model/allInformation");
 const openai = new OpenAI({
   apiKey: process.env.API,
 });
@@ -145,6 +146,7 @@ const convertToJSONL = (filePath) => {
 };
 
 module.exports.fineTune = async (req, res) => {
+  const { currentLength } = req.body;
   try {
     const filePath = await download();
     const Path = path.join(__dirname, "../data/chatData.json");
@@ -190,6 +192,10 @@ module.exports.fineTune = async (req, res) => {
                   model: fineTunedModel,
                 });
                 await newModel.save();
+                await AllInformation.updateOne(
+                  { modelName: "chats" },
+                  { previousLength: currentLength }
+                );
                 fs.unlinkSync(filePath);
                 fs.unlinkSync(jsonlFilePath);
                 return res.status(200).json(responseStatus);
