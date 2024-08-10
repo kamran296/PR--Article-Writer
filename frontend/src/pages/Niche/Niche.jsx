@@ -104,10 +104,10 @@ const LoaPrompt = () => {
           <div className="main ml-[25rem] mt-[10rem]">
             <div className="">
               <div className="inp shadow-md  bg-[#FFFFFF] w-[90rem] h-[5rem] rounded-lg">
-                <input
-                  className="inpt bg-[#FFFFFF]"
+                <textarea
+                  className="inpt bg-[#FFFFFF] text-black"
                   type="text"
-                  placeholder="Generate a BIO"
+                  placeholder="Generate a Niche"
                   name="prompt"
                   onKeyDown={handleEnter}
                   onChange={handleInputChange}
