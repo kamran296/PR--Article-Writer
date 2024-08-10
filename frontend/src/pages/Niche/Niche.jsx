@@ -105,7 +105,7 @@ const LoaPrompt = () => {
             <div className="">
               <div className=" shadow-md  bg-[#FFFFFF] text-black w-[90rem] h-[5rem] rounded-lg">
                 <input
-                  className=" bg-[#FFFFFF] text-black"
+                  className=" bg-[#FFFFFF] text-black outline-none w-[84rem] h-[5rem] rounded-lg text-2xl pl-[1.5rem]"
                   type="text"
                   placeholder="Generate a Niche"
                   name="prompt"
