@@ -54,7 +54,7 @@ module.exports.getAll = async (req, res) => {
       loaresearches: currLoaResearch,
       loacriticals: currLoaCritical,
       chats: currChatbot,
-      nicheDatas: currNiche,
+      nichedatas: currNiche,
     };
 
     for (let entry of data) {

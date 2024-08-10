@@ -104,7 +104,7 @@ const LoaPrompt = () => {
           <div className="main ml-[25rem] mt-[10rem]">
             <div className="">
               <div className="inp shadow-md  bg-[#FFFFFF] w-[90rem] h-[5rem] rounded-lg">
-                <textarea
+                <input
                   className="inpt bg-[#FFFFFF] text-black"
                   type="text"
                   placeholder="Generate a Niche"
