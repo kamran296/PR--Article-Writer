@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import SidebarTail from "./../../components/SidebarTail";
+import SidebarTail from "../../components/SidebarTail";
 import { BsSend } from "react-icons/bs";
 import { BiLike, BiDislike } from "react-icons/bi";
 import { Navigate, useNavigate } from "react-router-dom";

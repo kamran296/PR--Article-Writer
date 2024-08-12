@@ -19,7 +19,7 @@ import LorPrompt from "./pages/LOR/LorPrompt";
 import LorForm from "./pages/LOR/LorForm";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import AddData from "./pages/AddData/AddData";
-import ClientChatbot from "./pages/Client Chatbot/ClientChatbot";
+import ClientChatbot from "./pages/ClientChatbot/ClientChatbot";
 
 function App() {
   const dispatch = useDispatch();
