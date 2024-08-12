@@ -14,9 +14,9 @@ const ClientChatbot = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!localStorage.getItem("authToken")) {
-      navigate("/chatbot");
-    }
+    // if (!localStorage.getItem("authToken")) {
+    //   navigate("/client-chatbot");
+    // }
     fetchUser();
   }, []);
 
