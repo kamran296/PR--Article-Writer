@@ -218,7 +218,7 @@ const SidebarTail = () => {
                 </span>
               </li>
             </Link>
-            <Link to="/client-chatbot">
+            <Link to="/client/">
               <li className="ml-2 mb-2 rounded hover:shadow hover:bg-white hover:text-primary py-2 pt-2 text-black">
                 <img
                   className="h-12 w-12 inline-block p-2"
@@ -271,8 +271,8 @@ const SidebarTail = () => {
             </li>
           </ul>
         </div>
-        <div className="mt-[5.5rem]">
-          <div className=" ml-2 mb-2 p-1 mr-1  rounded-xl bg-secondary mt-4 text-white text-xl">
+        <div className="mt-2">
+          <div className=" ml-2 mb-2 p-1 mr-1  rounded-xl bg-secondary mt-3 text-white text-xl">
             <Link to="/add-data">
               <CiSettings
                 className={`h-10 w-10 inline-block ${!open && "pr-2"}`}

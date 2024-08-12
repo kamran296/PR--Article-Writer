@@ -48,7 +48,6 @@ function App() {
             <Route exact path="/lor" element={<LorPrompt />} />
             <Route exact path="/lor-form" element={<LorForm />} />
             <Route exact path="/bio-writer" element={<BioWriter />} />
-            <Route exact path="/client-chatbot" element={<ClientChatbot />} />
 
             <Route
               exact
@@ -59,6 +58,7 @@ function App() {
             <Route exact path="/sidebar" element={<SidebarTail />} />
             <Route exact path="/chatbot" element={<Chatbot />} />
             <Route exact path="/niche" element={<Niche />} />
+            <Route exact path="/client" element={<ClientChatbot />} />
             <Route exact path="/add-data" element={<AddData />} />
             {user.user.isAdmin === "Admin" && (
               <Route exact path="/dashboard" element={<Dashboard />} />
