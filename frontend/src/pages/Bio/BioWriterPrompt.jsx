@@ -105,7 +105,7 @@ const LoaPrompt = () => {
             <div className="">
               <div className="inp shadow-md  bg-[#FFFFFF] w-[90rem] h-[5rem] rounded-lg">
                 <input
-                  className=" bg-[#FFFFFF] text-black text-xl"
+                  className="  bg-[#FFFFFF] text-black  outline-none w-[84rem] h-[5rem] rounded-lg text-2xl pl-[1.5rem]"
                   type="text"
                   placeholder="Generate a BIO"
                   name="prompt"
