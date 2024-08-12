@@ -30,6 +30,8 @@ const Dashboard = () => {
         if (item.modelName === "loaresearches") item.modelName = "LOA Research";
         if (item.modelName === "lordatas") item.modelName = "LOR";
         if (item.modelName === "nichedatas") item.modelName = "Niche Writer";
+        if (item.modelName === "clientchatbots")
+          item.modelName = "Client Chatbot";
 
         return item;
       });
@@ -41,43 +43,6 @@ const Dashboard = () => {
       console.error("Error fetching data:", error);
     }
   };
-
-  // const handleClick = async (modelName,currentLength) => {
-  //   try {
-  //     let host = "";
-  //     if (modelName === "ChatBot") {
-  //       host = "https://www.internal.cachelabs.io/api/v1/chatbot/fine-tune";
-  //     }
-  //     if (modelName === "Article Writer") {
-  //       host =
-  //         "https://www.internal.cachelabs.io/api/v1/ArticleWriter/fine-tune";
-  //     }
-  //     if (modelName === "LOA Original") {
-  //       host =
-  //         "https://www.internal.cachelabs.io/api/v1/chatbot/original-finetune";
-  //     }
-  //     if (modelName === "LOA Critical") {
-  //       host =
-  //         "https://www.internal.cachelabs.io/api/v1/chatbot/critical-finetune";
-  //     }
-  //     if (modelName === "LOA Research") {
-  //       host = "https://www.internal.cachelabs.io/api/v1/loa/research-finetune";
-  //     }
-  //     if (modelName === "LOR") {
-  //       host = "https://www.internal.cachelabs.io/api/v1/lor/fine-tune";
-  //     }
-  //     if (modelName === "Bio Writer") {
-  //       host = "https://www.internal.cachelabs.io/api/v1/bio/fine-tune";
-  //     }
-
-  //     const response = await fetch(host, {
-  //       method: "GET",
-  //     });
-  //     console.log("Model is fine-tuning");
-  //   } catch (err) {
-  //     console.log("Error in training:", err);
-  //   }
-  // };
 
   const handleClick = async (modelName, previousLength, currentLength) => {
     try {
@@ -107,6 +72,9 @@ const Dashboard = () => {
         host = "https://www.internal.cachelabs.io/api/v1/bio/fine-tune";
       } else if (modelName === "Niche Writer") {
         host = "https://www.internal.cachelabs.io/api/v1/niche/fine-tune";
+      } else if (modelName === "Client Chatbot") {
+        host =
+          "https://www.internal.cachelabs.io/api/v1/client-chatbot/fine-tune";
       }
 
       const response = await fetch(host, {

@@ -1,7 +1,7 @@
 const dotenv = require("dotenv");
 dotenv.config({ path: "./config.env" });
 const { Configuration, OpenAI } = require("openai");
-const NicheData = require("../model/niche");
+const ClientChatbot = require("../model/clientChatbot");
 const ModelList = require("../model/modelList");
 const AllInformation = require("../model/allInformation");
 const fs = require("fs");
@@ -11,8 +11,8 @@ const openai = new OpenAI({
   apiKey: process.env.API,
 });
 
-exports.nichePrompt = async (req, res) => {
-  const prompt = req.body.prompt;
+exports.clientChat = async (req, res) => {
+  const prompt = req.body.chat;
   console.log(req.body, 432);
   try {
     if (typeof prompt !== "string") {
@@ -20,24 +20,29 @@ exports.nichePrompt = async (req, res) => {
     }
 
     const latestModel = await ModelList.findOne({
-      name: "Niche",
+      name: "ClientChatbot",
     }).sort({ createdAt: -1 });
     const model = latestModel
       ? latestModel.model
-      : "ft:gpt-3.5-turbo-0125:cache-labs-llc:nicheai2:9uHO9ZfB";
+      : "ft:gpt-3.5-turbo-0125:cache-labs-llc:vipsupportbot:9pA8cGEl";
     console.log(model, 123);
 
     const response = await openai.chat.completions.create({
-      model: model, // "ft:gpt-3.5-turbo-0613:cache-labs-llc:yt-tutorial:8hHNplz0"You may need to adjust the engine version
+      model: model,
       messages: [
-        { role: "system", content: "Niche Determination AI" },
+        {
+          role: "system",
+          content:
+            "You are a helpful assistant. Answer the user's questions accurately based on the provided data.",
+        },
         { role: "user", content: prompt },
       ],
       max_tokens: 800,
-      temperature: 0.2,
+      temperature: 0.1,
     });
     console.log(response.choices[0]);
-    res.status(200).json(response);
+    const answer = response.choices[0].message.content;
+    res.status(200).json(answer);
   } catch (error) {
     res.status(500).json(error);
   }
@@ -47,14 +52,14 @@ module.exports.addData = async (req, res) => {
   try {
     const { question, answer } = req.body;
     // console.log(question, answer);
-    const niche = new NicheData({
+    const chat = new ClientChatbot({
       messages: [
         { role: "system" },
         { role: "user", content: question },
         { role: "assistant", content: answer },
       ],
     });
-    await niche.save();
+    await chat.save();
     res.status(201).json({ message: "Data added successfully!" });
   } catch (error) {
     console.log(error);
@@ -64,11 +69,11 @@ module.exports.addData = async (req, res) => {
 
 // Model training for feedback system implementation
 const download = async () => {
-  const nicheData = await NicheData.find().lean();
+  const clientChatbotData = await ClientChatbot.find().lean();
 
   // Remove the _id field from each document
 
-  const nicheDataWithoutId = nicheData.map((doc) => {
+  const clientChatbotDataWithoutId = clientChatbotData.map((doc) => {
     const { _id, __v, ...rest } = doc;
     const messagesWithoutId = rest.messages.map(
       ({ _id, ...messageRest }) => messageRest
@@ -77,19 +82,19 @@ const download = async () => {
   });
 
   // Check if there's any data
-  if (!nicheDataWithoutId || nicheDataWithoutId.length === 0) {
+  if (!clientChatbotDataWithoutId || clientChatbotDataWithoutId.length === 0) {
     throw new Error("No chat data found");
   }
 
   // Convert the data to a JSON string
-  const jsonData = JSON.stringify(nicheDataWithoutId, null, 2);
+  const jsonData = JSON.stringify(clientChatbotDataWithoutId, null, 2);
 
   const dataDir = path.join(__dirname, "../data");
   if (!fs.existsSync(dataDir)) {
     fs.mkdirSync(dataDir);
   }
 
-  const filePath = path.join(dataDir, "nicheData.json");
+  const filePath = path.join(dataDir, "clientChatbotData.json");
 
   // Write JSON data to a file
   fs.writeFileSync(filePath, jsonData, "utf-8");
@@ -114,7 +119,10 @@ const convertToJSONL = (filePath) => {
     .join("\n");
 
   // Get the output file path
-  const outputFilePath = path.join(path.dirname(filePath), "nicheData.jsonl");
+  const outputFilePath = path.join(
+    path.dirname(filePath),
+    "clientChatbotData.jsonl"
+  );
 
   // Write the JSONL data to a new file
   fs.writeFileSync(outputFilePath, jsonlData, "utf8");
@@ -128,7 +136,7 @@ module.exports.fineTune = async (req, res) => {
   const { currentLength } = req.body;
   try {
     const filePath = await download();
-    const Path = path.join(__dirname, "../data/nicheData.json");
+    const Path = path.join(__dirname, "../data/clientChatbotData.json");
     const jsonlFilePath = convertToJSONL(Path);
 
     const fineTuneModel = async () => {
@@ -146,7 +154,7 @@ module.exports.fineTune = async (req, res) => {
         const response = await openai.fineTuning.jobs.create({
           training_file: trainingFile.id,
           model: "gpt-3.5-turbo",
-          suffix: "FeedbackNiche",
+          suffix: "NewClientChatbot",
         });
 
         const jobId = response.id;
@@ -168,12 +176,12 @@ module.exports.fineTune = async (req, res) => {
 
                 // Save the fine_tuned_model to the database
                 const newModel = new ModelList({
-                  name: "Niche",
+                  name: "ClientChatbot",
                   model: fineTunedModel,
                 });
                 await newModel.save();
                 await AllInformation.updateOne(
-                  { modelName: "niches" },
+                  { modelName: "clientchatbots" },
                   { previousLength: currentLength }
                 );
                 fs.unlinkSync(filePath);

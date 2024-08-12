@@ -17,6 +17,7 @@ const bioRouter = require("./router/bioRouter");
 const lorRouter = require("./router/lorRouter");
 const nicheRouter = require("./router/nicheRouter");
 const allInfoRouter = require("./router/allinformation");
+const clientChatbotRouter = require("./router/clientChatbot ");
 const AllInformation = require("./model/allInformation");
 
 // Import your data models
@@ -28,6 +29,7 @@ const LoaOrgData = require("./model/loaOrgData");
 const LoaPaperData = require("./model/loaPaperData");
 const ChatbotData = require("./model/chatbotData");
 const NicheData = require("./model/niche");
+const ClientChatbot = require("./model/clientChatbot");
 const app = express();
 
 const db = process.env.DB_PRODUCTION;
@@ -81,7 +83,7 @@ app.use("/api/v1/bio", bioRouter);
 app.use("/api/v1/lor", lorRouter);
 app.use("/api/v1/allInfo", allInfoRouter);
 app.use("/api/v1/niche", nicheRouter);
-
+app.use("/api/v1/client-chatbot", clientChatbotRouter);
 // Static files
 const _dirname = path.dirname("");
 const buildPath = path.join(_dirname, "../frontend/dist");
@@ -140,6 +142,8 @@ async function checkModels() {
         currentLength = await ChatbotData.countDocuments();
       } else if (modelName === "nichedatas") {
         currentLength = await NicheData.countDocuments();
+      } else if (modelName === "clientchatbots") {
+        currentLength = await ClientChatbot.countDocuments();
       } else {
         console.warn(`Unknown model: ${modelName}`);
         continue;
@@ -183,6 +187,9 @@ async function triggerFineTuning(modelName, currentLength) {
       host = "https://www.internal.cachelabs.io/api/v1/lor/fine-tune";
     } else if (modelName === "nichedatas") {
       host = "https://www.internal.cachelabs.io/api/v1/niche/fine-tune";
+    } else if (modelName === "clientchatbots") {
+      host =
+        "https://www.internal.cachelabs.io/api/v1/client-chatbot/fine-tune";
     }
 
     console.log(`Triggering fine-tuning for ${modelName}`);

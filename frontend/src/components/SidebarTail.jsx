@@ -235,6 +235,22 @@ const SidebarTail = () => {
               </Link>
             </li>
             <li className="rounded py-2 pt-2 text-black">
+              <Link to="/client-chatbot/">
+                <button className="ml-2 mb-2 p-2 mr-1  rounded-xl bg-secondary text-white text-xl">
+                  <CiCirclePlus
+                    className={`h-11 w-11 inline-block ${!open && "pr-2"}`}
+                  />
+                  <span
+                    className={`ml-1 text-2xl duration-300 px-2 ${
+                      !open && "hidden"
+                    } ${open && "w-64 duration-300"}`}
+                  >
+                    Client ChatBot
+                  </span>
+                </button>
+              </Link>
+            </li>
+            <li className="rounded py-2 pt-2 text-black">
               {/* {user.user.isAdmin === "Admin" && ( */}
               <Link to="/dashboard">
                 <button className="ml-2 mb-2 py-2 px-2  rounded-xl bg-secondary text-white text-xl">
