@@ -70,30 +70,34 @@ const LoaPrompt = () => {
 
   const generateArticle = async () => {
     console.log("Generating Article!!");
+
     try {
-      const response = await fetch(
-        // "http://localhost:5000/api/v1/bio/bio-writer-prompt",
-        "https://www.internal.cachelabs.io/api/v1/niche/prompt",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        }
-      );
+      if (formData.prompt === "") alert("please provide input!!");
+      else {
+        const response = await fetch(
+          // "http://localhost:5000/api/v1/bio/bio-writer-prompt",
+          "https://www.internal.cachelabs.io/api/v1/niche/prompt",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+          }
+        );
 
-      const data = await response.json();
-      console.log(data);
+        const data = await response.json();
+        console.log(data);
 
-      // Access the generated article from the response
-      const generatedArticleText =
-        data.choices && data.choices[0] && data.choices[0].message
-          ? data.choices[0].message.content
-          : "";
+        // Access the generated article from the response
+        const generatedArticleText =
+          data.choices && data.choices[0] && data.choices[0].message
+            ? data.choices[0].message.content
+            : "";
 
-      setGeneratedArticle(generatedArticleText);
-      setFormData({ prompt: "" });
+        setGeneratedArticle(generatedArticleText);
+        setFormData({ prompt: "" });
+      }
     } catch (error) {
       console.error("Error:", error);
     }
@@ -116,7 +120,7 @@ const LoaPrompt = () => {
                   value={formData.prompt}
                 />
                 <button className="send" onClick={generateArticle}>
-                  <BsSend className=" text-secondary w-[2rem] h-[2rem] rotate-45 text-3xl inline-block" />
+                  <BsSend className=" text-secondary w-[2rem] h-[2rem] ml-4 rotate-45 text-3xl inline-block" />
                 </button>
               </div>
             </div>
