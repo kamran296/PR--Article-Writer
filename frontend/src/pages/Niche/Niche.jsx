@@ -93,6 +93,7 @@ const LoaPrompt = () => {
           : "";
 
       setGeneratedArticle(generatedArticleText);
+      setFormData({ prompt: "" });
     } catch (error) {
       console.error("Error:", error);
     }
@@ -105,13 +106,14 @@ const LoaPrompt = () => {
           <div className="main ml-[25rem] mt-[10rem]">
             <div className="">
               <div className=" shadow-md  bg-[#FFFFFF] text-black w-[90rem] h-[5rem] rounded-lg">
-                <input
+                <textarea
                   className=" bg-[#FFFFFF] text-black outline-none w-[84rem] h-[5rem] rounded-lg text-2xl pl-[1.5rem]"
                   type="text"
                   placeholder="Generate a Niche"
                   name="prompt"
                   onKeyDown={handleEnter}
                   onChange={handleInputChange}
+                  value={formData.prompt}
                 />
                 <button className="send" onClick={generateArticle}>
                   <BsSend className=" text-secondary w-[2rem] h-[2rem] rotate-45 text-3xl inline-block" />
