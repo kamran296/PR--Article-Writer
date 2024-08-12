@@ -103,9 +103,9 @@ const LoaPrompt = () => {
         <div className="App">
           <div className="main ml-[25rem] mt-[10rem]">
             <div className="">
-              <div className="inp shadow-md  bg-[#FFFFFF] w-[90rem] h-[5rem] rounded-lg">
+              <div className=" shadow-md  bg-[#FFFFFF] w-[90rem] h-[5rem] rounded-lg">
                 <input
-                  className="  bg-[#FFFFFF] text-black  outline-none w-[84rem] h-[5rem] rounded-lg text-2xl pl-[1.5rem]"
+                  className="   text-black  outline-none w-[84rem] h-[5rem] rounded-lg text-2xl pl-[1.5rem]"
                   type="text"
                   placeholder="Generate a BIO"
                   name="prompt"
@@ -163,7 +163,7 @@ const LoaPrompt = () => {
               Provide the correct answer
             </h2>
             <form onSubmit={handleModalSubmit}>
-              <textarea
+              <input
                 className="w-full h-[35rem] text-xl p-2 mb-4 border rounded"
                 rows="4"
                 value={correctAnswer}

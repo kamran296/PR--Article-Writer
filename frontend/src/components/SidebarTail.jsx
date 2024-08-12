@@ -267,11 +267,26 @@ const SidebarTail = () => {
                 </span>
               </button>
             </Link>
+
+            <Link to="/add-data">
+              <button className="ml-2 mb-2 py-2 px-2  rounded-xl bg-secondary text-white text-xl">
+                <RxDashboard
+                  className={`h-8 w-8 inline-block ${!open && "pr-2"}`}
+                />
+                <span
+                  className={`ml-1 text-2xl pt-4 duration-300 px-4 ${
+                    !open && "hidden"
+                  } ${open && "w-64 duration-300"}`}
+                >
+                  Add-Data
+                </span>
+              </button>
+            </Link>
             {/* </li> */}
           </ul>
         </div>
         <div className="mt-2">
-          <div className=" ml-2 mb-2 p-1 mr-1  rounded-xl bg-secondary mt-3 text-white text-xl">
+          {/* <div className=" ml-2 mb-2 p-1 mr-1  rounded-xl bg-secondary mt-3 text-white text-xl">
             <Link to="/add-data">
               <CiSettings
                 className={`h-10 w-10 inline-block ${!open && "pr-2"}`}
@@ -284,7 +299,7 @@ const SidebarTail = () => {
                 Add Data
               </span>
             </Link>
-          </div>
+          </div> */}
           <button
             className=" ml-2  rounded-xl  bg-secondary p-2 mr-1 text-white text-xl"
             onClick={handleLogout}
