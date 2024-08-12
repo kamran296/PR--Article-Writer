@@ -175,7 +175,7 @@ const ClientChatbot = () => {
                           )}
                         </div>
                         <BiDislike
-                          className="inline-block text-red-500 cursor-pointer ml-2 text-3xl"
+                          className="inline-block h-[2.5rem] w-[2.5rem] text-red-500 cursor-pointer ml-2 text-3xl"
                           onClick={() => handleDislikeClick(index)}
                         />
                       </span>
