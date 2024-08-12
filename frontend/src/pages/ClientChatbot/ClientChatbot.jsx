@@ -24,27 +24,34 @@ const ClientChatbot = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(
-        "https://www.internal.cachelabs.io/api/v1/client-chatbot/chat",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ chat: input }),
-        }
-      );
-      const data = await response.json();
-      const generatedArticleText =
-        data.choices && data.choices[0] && data.choices[0].message
-          ? data.choices[0].message.content
-          : "";
+      if (input === "") {
+        setChatHistory((prevChatHistory) => [
+          ...prevChatHistory,
+          { question: "", answer: "please provide a question!" },
+        ]);
+      } else {
+        const response = await fetch(
+          "https://www.internal.cachelabs.io/api/v1/client-chatbot/chat",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ chat: input }),
+          }
+        );
+        const data = await response.json();
+        const generatedArticleText =
+          data.choices && data.choices[0] && data.choices[0].message
+            ? data.choices[0].message.content
+            : "";
 
-      setChatHistory((prevChatHistory) => [
-        ...prevChatHistory,
-        { question: input, answer: data },
-      ]);
-      setInput("");
+        setChatHistory((prevChatHistory) => [
+          ...prevChatHistory,
+          { question: input, answer: data },
+        ]);
+        setInput("");
+      }
     } catch (error) {
       console.error("Error:", error);
     }
@@ -159,7 +166,7 @@ const ClientChatbot = () => {
                     </p>
                     <p className="text-3xl">
                       {chat.correctAnswer ? chat.correctAnswer : chat.answer}
-                      <span className="ml-2">
+                      <span className="flex ml-[5rem]">
                         <div onClick={handlelikeClick}>
                           {liked ? (
                             <BiSolidLike className="text-green-500 inline-block h-[2.5rem] w-[2.5rem] cursor-pointer text-3xl" />
