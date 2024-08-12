@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import SidebarTail from "../../components/SidebarTail";
 import { BsSend } from "react-icons/bs";
-import { BiLike, BiDislike } from "react-icons/bi";
+import { BiLike, BiDislike, BiSolidLike } from "react-icons/bi";
 import { Navigate, useNavigate } from "react-router-dom";
 import { fetchUser } from "../../redux/userSlice";
 
@@ -11,6 +11,7 @@ const ClientChatbot = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentChatIndex, setCurrentChatIndex] = useState(null);
   const [correctAnswer, setCorrectAnswer] = useState("");
+  const [liked, setLiked] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -49,6 +50,9 @@ const ClientChatbot = () => {
     }
   };
 
+  const handlelikeClick = () => {
+    setLiked(!liked);
+  };
   const handleDislikeClick = (index) => {
     setCurrentChatIndex(index);
     setIsModalOpen(true);
@@ -59,7 +63,7 @@ const ClientChatbot = () => {
     try {
       console.log(input, 3232);
       const response = await fetch(
-        "https://www.internal.cachelabs.io/api/v1/client-chatbot/add-chat",
+        "https://www.internal.cachelabs.io/api/v1/client-chatbot/add-data",
         {
           method: "POST",
           headers: {
@@ -156,7 +160,13 @@ const ClientChatbot = () => {
                     <p className="text-3xl">
                       {chat.correctAnswer ? chat.correctAnswer : chat.answer}
                       <span className="ml-2">
-                        <BiLike className="inline-block text-green-500 cursor-pointer text-3xl" />
+                        <div onClick={handlelikeClick}>
+                          {liked ? (
+                            <BiSolidLike className="text-green-500 inline-block h-[2.5rem] w-[2.5rem] cursor-pointer text-3xl" />
+                          ) : (
+                            <BiLike className="text-green-500 inline-block h-[2.5rem] w-[2.5rem] cursor-pointer text-3xl" />
+                          )}
+                        </div>
                         <BiDislike
                           className="inline-block text-red-500 cursor-pointer ml-2 text-3xl"
                           onClick={() => handleDislikeClick(index)}

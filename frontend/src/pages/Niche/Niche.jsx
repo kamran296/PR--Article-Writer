@@ -29,6 +29,7 @@ const LoaPrompt = () => {
 
   const handlelikeClick = () => {
     setLiked(!liked);
+    setFormData({ prompt: "" });
   };
 
   const handleModalSubmit = async (e) => {
