@@ -42,12 +42,13 @@ const LoaPrompt = () => {
           },
           body: JSON.stringify({
             question: formData.prompt,
-            answer: correctAnswer,
+            answer: generatedArticle,
           }),
         }
       );
       const data = await response.json();
       console.log(data);
+      setFormData({ prompt: "" });
     } catch (error) {
       console.error("Error:", error);
     }
@@ -66,13 +67,14 @@ const LoaPrompt = () => {
           },
           body: JSON.stringify({
             question: formData.prompt,
-            answer: generatedArticle,
+            answer: correctAnswer,
           }),
         }
       );
       const data = await response.json();
       console.log(data);
 
+      setIsModalOpen(false);
       setCorrectAnswer("");
     } catch (error) {
       console.error("Error:", error);
@@ -116,7 +118,6 @@ const LoaPrompt = () => {
             : "";
 
         setGeneratedArticle(generatedArticleText);
-        setFormData({ prompt: "" });
       }
     } catch (error) {
       console.error("Error:", error);
