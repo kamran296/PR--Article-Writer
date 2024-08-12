@@ -29,7 +29,7 @@ const LoaPrompt = () => {
 
   const handlelikeClick = () => {
     setLiked(!liked);
-    setFormData({ prompt: "" });
+    setGeneratedArticle("");
   };
 
   const handleModalSubmit = async (e) => {
@@ -105,9 +105,9 @@ const LoaPrompt = () => {
         <div className="App">
           <div className="main ml-[25rem] mt-[10rem]">
             <div className="">
-              <div className=" shadow-md  bg-[#FFFFFF] text-black w-[90rem] h-[5rem] rounded-lg">
+              <div className=" h-full">
                 <textarea
-                  className=" bg-[#FFFFFF] text-black outline-none w-[84rem] h-[5rem] rounded-lg text-2xl pl-[1.5rem]"
+                  className=" bg-[#FFFFFF]  shadow-md text-black outline-none w-[84rem] h-[5rem] rounded-lg text-2xl pl-[1.5rem]"
                   type="text"
                   placeholder="Generate a Niche"
                   name="prompt"
