@@ -27,12 +27,9 @@ const LoaPrompt = () => {
     setIsModalOpen(true);
   };
 
-  const handlelikeClick = () => {
+  const handlelikeClick = async (e) => {
     setLiked(!liked);
     setGeneratedArticle("");
-  };
-
-  const handleModalSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await fetch(
@@ -51,8 +48,31 @@ const LoaPrompt = () => {
       );
       const data = await response.json();
       console.log(data);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
 
-      setIsModalOpen(false);
+  const handleModalSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch(
+        // "http://localhost:5000/api/v1/niche/add-data",
+        "https://www.internal.cachelabs.io/api/v1/niche/add-data",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            question: formData.prompt,
+            answer: generatedArticle,
+          }),
+        }
+      );
+      const data = await response.json();
+      console.log(data);
+
       setCorrectAnswer("");
     } catch (error) {
       console.error("Error:", error);
