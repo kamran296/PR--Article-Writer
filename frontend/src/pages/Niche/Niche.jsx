@@ -30,28 +30,7 @@ const LoaPrompt = () => {
   const handlelikeClick = async (e) => {
     setLiked(!liked);
     setGeneratedArticle("");
-    e.preventDefault();
-    try {
-      const response = await fetch(
-        // "http://localhost:5000/api/v1/niche/add-data",
-        "https://www.internal.cachelabs.io/api/v1/niche/add-data",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            question: formData.prompt,
-            answer: generatedArticle,
-          }),
-        }
-      );
-      const data = await response.json();
-      console.log(data);
-      setFormData({ prompt: "" });
-    } catch (error) {
-      console.error("Error:", error);
-    }
+    setFormData({ prompt: "" });
   };
 
   const handleModalSubmit = async (e) => {
