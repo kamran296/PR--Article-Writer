@@ -230,7 +230,7 @@ const SidebarTail = () => {
                     open && "duration-300"
                   }`}
                 >
-                  Client Chatbot
+                  Sales Chatbot
                 </span>
               </li>
             </Link>

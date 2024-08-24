@@ -31,7 +31,7 @@ const Dashboard = () => {
         if (item.modelName === "lordatas") item.modelName = "LOR";
         if (item.modelName === "nichedatas") item.modelName = "Niche Writer";
         if (item.modelName === "clientchatbots")
-          item.modelName = "Client Chatbot";
+          item.modelName = "Sales Chatbot";
 
         return item;
       });
@@ -72,7 +72,7 @@ const Dashboard = () => {
         host = "https://www.internal.cachelabs.io/api/v1/bio/fine-tune";
       } else if (modelName === "Niche Writer") {
         host = "https://www.internal.cachelabs.io/api/v1/niche/fine-tune";
-      } else if (modelName === "Client Chatbot") {
+      } else if (modelName === "Sales Chatbot") {
         host =
           "https://www.internal.cachelabs.io/api/v1/client-chatbot/fine-tune";
       }
