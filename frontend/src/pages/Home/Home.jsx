@@ -38,7 +38,7 @@ const Home = () => {
     e.preventDefault();
     try {
       const response = await fetch(
-        "http://localhost:5000/api/v1/ArticleWriter/add-article",
+        "https://www.internal.cachelabs.io/api/v1/ArticleWriter/add-article",
         {
           method: "POST",
           headers: {
@@ -73,7 +73,7 @@ const Home = () => {
     console.log("Generating Article!!");
     try {
       const response = await fetch(
-        "http://localhost:5000/api/v1/ArticleWriter/articlePrompt",
+        "https://www.internal.cachelabs.io/api/v1/ArticleWriter/articlePrompt",
         {
           method: "POST",
           headers: {

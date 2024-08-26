@@ -46,7 +46,7 @@ const Form = () => {
     e.preventDefault();
     try {
       const response = await fetch(
-        "http://localhost:5000/api/v1/ArticleWriter/add-article",
+        "https://www.internal.cachelabs.io/api/v1/ArticleWriter/add-article",
         {
           method: "POST",
           headers: {
@@ -81,8 +81,8 @@ const Form = () => {
     console.log("Generating article");
     try {
       const response = await fetch(
-        // "https://www.internal.cachelabs.io/api/v1/ArticelWriter/articleForm",
-        "http://localhost:5000/api/v1/ArticleWriter/articleForm",
+        "https://www.internal.cachelabs.io/api/v1/ArticelWriter/articleForm",
+        // "http://localhost:5000/api/v1/ArticleWriter/articleForm",
         {
           method: "POST",
           headers: {
