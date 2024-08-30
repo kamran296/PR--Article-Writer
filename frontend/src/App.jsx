@@ -20,6 +20,10 @@ import LorForm from "./pages/LOR/LorForm";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import AddData from "./pages/AddData/AddData";
 import ClientChatbot from "./pages/ClientChatbot/ClientChatbot";
+import ReaForm from "./pages/REA/loginPage";
+import ReportPage from "./pages/REA/output";
+import LoginForm from "./pages/REA/loginForm";
+import ResultPage from "./pages/REA/Result";
 
 function App() {
   const dispatch = useDispatch();
@@ -38,7 +42,7 @@ function App() {
       <Routes>
         <Route exact path="/login" element={<Login />} />
 
-        {user && user.success ? (
+        {/* {user && user.success ? ( */}
           <>
             <Route exact path="/" element={<Home />} />
             <Route exact path="/article-form" element={<Form />} />
@@ -60,13 +64,21 @@ function App() {
             <Route exact path="/niche" element={<Niche />} />
             <Route exact path="/client" element={<ClientChatbot />} />
             <Route exact path="/add-data" element={<AddData />} />
-            {user.user.isAdmin === "Admin" && (
+            <Route exact path="/analysis" element={<ReaForm />} />
+            <Route exact path="/report" element={<ReportPage />} />
+            <Route exact path="/rea-form" element={<LoginForm />} />
+            <Route exact path="/rea-result" element={<ResultPage />} />
+
+
+
+
+            {/* {user.user.isAdmin === "Admin" && (
               <Route exact path="/dashboard" element={<Dashboard />} />
-            )}
+            )} */}
           </>
-        ) : (
+        {/* ) : (
           <Route path="*" element={<Login />} />
-        )}
+        )} */}
       </Routes>
     </Router>
   );

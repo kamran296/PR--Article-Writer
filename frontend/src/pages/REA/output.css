@@ -1,0 +1,84 @@
+@media print {
+    #main-content {
+      margin-left: 0; /* Remove left margin */
+      width: 100%; /* Ensure the content takes up the full width */
+      box-shadow: 0 0 #0000;
+    }
+    #CompanyLogo{
+        width: 58rem;
+    }
+    #Cards-Section{
+        flex-direction: row;
+        width: 58rem;
+        margin-left: 2rem;
+    }
+    #Profile{
+        width: 28rem;
+        margin-right: 2rem;
+    }
+    #Navbar {
+        display: none;
+    }
+    #Print-btn{
+        display: none;
+    }
+    #Status-Summary{
+        margin-top: 12rem;
+    }
+    #Job-Title-2{
+        margin-top: 5rem;
+    }
+    #FAQ{
+        display: none;
+    }
+    #TableBG{
+        box-shadow: 0 0 #0000;
+    }
+    #Table{
+        height: 88rem;
+    }
+    #Next-Steps{
+        /* margin-top: 15rem; */
+        box-shadow: 0 0 #0000;
+        height: 19rem;
+    }
+    #Evidence{
+        margin-top: 8rem;
+        box-shadow: 0 0 #0000;
+    }
+    #Card-Partition{
+        margin-top: 5rem;
+    }
+
+    .bg-green-500 {
+        background-color: #4caf50 !important; /* Satisfied */
+    }
+    .bg-yellow-500 {
+        background-color: #ffeb3b !important; /* Doubtful */
+    }
+    .bg-red-500 {
+        background-color: #f44336 !important; /* Unsatisfied */
+    }
+
+    /* Ensure that text is visible on these backgrounds */
+    .bg-green-500,
+    .bg-yellow-500,
+    .bg-red-500 {
+        -webkit-print-color-adjust: exact; /* Chrome, Safari */
+        print-color-adjust: exact; /* Firefox */
+    }
+
+    .print-bg-color {
+        background-color: #38bdf8 !important; /* sky-500 */
+        -webkit-print-color-adjust: exact; /* For Safari/Chrome */
+        print-color-adjust: exact; /* For Firefox */
+      }
+    
+      .print-shadow {
+        box-shadow: 0px 4px 10px rgba(56, 189, 248, 0.4) !important; /* shadow-sky-400/40 */
+      }
+    
+      .print-svg-color {
+        fill: white !important;
+      }
+  }
