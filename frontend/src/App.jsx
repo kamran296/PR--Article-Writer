@@ -24,6 +24,7 @@ import ReaForm from "./pages/REA/loginPage";
 import ReportPage from "./pages/REA/output";
 import LoginForm from "./pages/REA/loginForm";
 import ResultPage from "./pages/REA/Result";
+import Landing from "./pages/Landing/Landing";
 
 function App() {
   const dispatch = useDispatch();
@@ -44,7 +45,7 @@ function App() {
 
         {/* {user && user.success ? ( */}
           <>
-            <Route exact path="/" element={<Home />} />
+            <Route exact path="/prd" element={<Home />} />
             <Route exact path="/article-form" element={<Form />} />
             <Route exact path="/loa-prompt" element={<LoaPrompt />} />
             <Route exact path="/loa-form" element={<LoaForm />} />
@@ -68,6 +69,8 @@ function App() {
             <Route exact path="/report" element={<ReportPage />} />
             <Route exact path="/rea-form" element={<LoginForm />} />
             <Route exact path="/rea-result" element={<ResultPage />} />
+            <Route exact path="/" element={<Landing />} />
+
 
 
 

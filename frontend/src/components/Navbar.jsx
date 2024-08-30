@@ -3,48 +3,89 @@ import navbar from "./assets/navbar.png";
 import logo from "./assets/logoSGC.jpeg";
 import profile from "./assets/profile.png";
 import { useSelector } from "react-redux";
+import {Link} from 'react-router-dom';
 const Navbar = () => {
   const data = useSelector((state) => state.user.user);
   // console.log("navbar", data);
   return (
-    <nav className=" w-full  h-24  bg-[#FFFFFF] flex justify-between fixed  z-50">
-      <div className="flex items-center text-xl px-2 py-2  ">
+    <>
+    {/* component */}
+    <header className="header sticky top-0 bg-white shadow-lg flex items-center justify-betwee px-[4rem] py-02 h-[8rem]">
+      {/* logo */}
+      <img
+      src={logo}
+      className='w-[7%] m-[1rem]'
+      />
+      {/* navigation */}
+      <div className='flex justify-center w-full'>
+      <nav className="flex nav font-semibold text-lg">
+        <ul className="flex items-center">
+        <Link to="/">
+          <li className="p-[1.75rem] border-b-2 text-[1.65rem]  border-blue-800 border-opacity-0 hover:border-opacity-100 hover:text-blue-800 duration-200 cursor-pointer active">
+            Home
+          </li>
+          </Link>
+          <Link to="/prd">
+          <li className="p-[1.75rem] border-b-2 text-[1.65rem]  border-blue-800 border-opacity-0 hover:border-opacity-100 hover:text-blue-800 duration-200 cursor-pointer">
+            PRD Tools
+          </li>
+          </Link>
+          <Link to="/rea-form">
+          <li className="p-[1.75rem] border-b-2 text-[1.65rem]  border-blue-800 border-opacity-0 hover:border-opacity-100 hover:text-blue-800 duration-200 cursor-pointer">
+            Remuneration
+          </li>
+          </Link>
+          <Link to="/niche">
+          <li className="p-[1.75rem] border-b-2 text-[1.65rem]  border-blue-800 border-opacity-0 hover:border-opacity-100 hover:text-blue-800 duration-200 cursor-pointer">
+            Niche
+          </li>
+          </Link>
+          <Link to="">
+          <li className="p-[1.75rem] border-b-2 text-[1.65rem]  border-blue-800 border-opacity-0 hover:border-opacity-100 hover:text-blue-800 duration-200 cursor-pointer">
+            Chatbot
+          </li>
+          </Link>
+          <Link to=''>
+          <li className="p-[1.75rem] border-b-2 text-[1.65rem]  border-blue-800 border-opacity-0 hover:border-opacity-100 hover:text-blue-800 duration-200 cursor-pointer">
+            Dashboard
+          </li>
+          </Link>
+        </ul>
+
+      </nav>
+      </div>
+      <div className="flex justify-end w-[30%] items-center gap-x-5 px-2">
+      <div className="font-semibold text-[1.65rem] text-gray-400">
+        {/* Hi, {data.user.displayName} */}
+        Hi Kamran Khot
+      </div>
+      <button className=" group">
         <img
-          className=" ml-[2rem] h-[3.75rem] w-[8.5rem] cursor-pointer inline-block"
-          src={logo}
-          alt=""
+          className=" mr-4 h-20 w-20 rounded-full"
+          // src={data.user.image}
+          src={profile}
+          alt="profile-icon"
         />
-        <span className="ml-[1rem] text-purple-500 text-4xl font-bold ">
-          AI
-        </span>
-      </div>
-      <div className="flex items-center gap-x-5 px-2">
-        <div className="font-bold text-xl text-gray-400">
-          {/* Welcome, {data.user.displayName} */}
+        {/* Image */}
+        <div className="z-10 bg-white hidden absolute rounded-lg shadow w-32 group-focus:block right-0">
+          <ul className=" text-xl text-black">
+            <li className="pt-2">
+              <Link to="">Profile</Link>
+            </li>
+            <li className="pt-2">
+              <Link to="">Setting</Link>
+            </li>
+            <li className="pt-2">
+              <Link to="">Signout</Link>
+            </li>
+          </ul>
         </div>
-        <button className=" group">
-          {/* <img
-            className=" mr-4 h-12 w-12 rounded-full"
-            src={data.user.image}
-            // src={profile}
-            alt="profile-icon"
-          /> */}
-          <div className="z-10 bg-white hidden absolute rounded-lg shadow w-32 group-focus:block right-0">
-            <ul className=" text-xl text-black">
-              <li className="pt-2">
-                <a href="">Profile</a>
-              </li>
-              <li className="pt-2">
-                <a href="">Setting</a>
-              </li>
-              <li className="pt-2">
-                <a href="">Signout</a>
-              </li>
-            </ul>
-          </div>
-        </button>
-      </div>
-    </nav>
+      </button>
+    </div>
+      {/* buttons -*/}
+      
+    </header>
+  </>
   );
 };
 
