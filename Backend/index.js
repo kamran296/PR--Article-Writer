@@ -19,10 +19,10 @@ const nicheRouter = require("./router/nicheRouter");
 const allInfoRouter = require("./router/allinformation");
 const clientChatbotRouter = require("./router/clientChatbot ");
 const AllInformation = require("./model/allInformation");
-const indeedRoutes = require('./router/REA/indeedRoutes');
-const salaryRoutes = require('./router/REA/salaryRoutes');
-const talentRoutes = require('./router/REA/talentRoutes');
-const aggregatorRoutes = require('./router/REA/aggregatorRoutes');
+const indeedRoutes = require("./router/REA/indeedRoutes");
+const salaryRoutes = require("./router/REA/salaryRoutes");
+const talentRoutes = require("./router/REA/talentRoutes");
+const aggregatorRoutes = require("./router/REA/aggregatorRoutes");
 
 // Import your data models
 const LorData = require("./model/lorData");
@@ -52,13 +52,11 @@ mongoose
 app.use(cookieParser());
 app.use(express.json());
 
-
 const corsOptions = {
   origin: "https://www.internal.cachelabs.io", // Adjust this to match your frontend URL
   methods: ["GET", "POST", "DELETE"],
   credentials: true,
 };
-
 
 app.use(cors(corsOptions));
 
@@ -90,10 +88,10 @@ app.use("/api/v1/lor", lorRouter);
 app.use("/api/v1/allInfo", allInfoRouter);
 app.use("/api/v1/niche", nicheRouter);
 app.use("/api/v1/client-chatbot", clientChatbotRouter);
-app.use('/api/indeed', indeedRoutes);
-app.use('/api/salary', salaryRoutes);
-app.use('/api/talent', talentRoutes);
-app.use('/api/aggregator', aggregatorRoutes);
+app.use("/api/indeed", indeedRoutes);
+app.use("/api/salary", salaryRoutes);
+app.use("/api/talent", talentRoutes);
+app.use("/api/aggregator", aggregatorRoutes);
 // Static files
 const _dirname = path.dirname("");
 const buildPath = path.join(_dirname, "../frontend/dist");
@@ -111,8 +109,8 @@ app.get("/*", function (req, res) {
 });
 
 const PORT = process.env.PORT || 8000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+app.listen(PORT, "127.0.0.1", () => {
+  console.log(`Server running at http://127.0.0.1:${PORT}/`);
 });
 
 // Function to start periodic checking
