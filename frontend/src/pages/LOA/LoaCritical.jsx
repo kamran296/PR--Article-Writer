@@ -3,7 +3,7 @@ import "./loaform.css";
 import download from "./assets/download.png";
 import SidebarTail from "../../components/SidebarTail";
 import { BiLike, BiDislike, BiSolidLike } from "react-icons/bi";
-
+import Navbar from "../../components/Navbar";
 const LoaCritical = ({ type }) => {
   const [formData, setFormData] = useState({
     typeOfLOA: type,
@@ -106,224 +106,226 @@ const LoaCritical = ({ type }) => {
 
   return (
     <>
-      <div className="App ml-[-12rem]">
-        <div className="main">
-          <form onSubmit={handleSubmit}>
-            <div className="row">
-              <label>
-                <input
-                  className="inp1 text-black bg-[#FFFFFF] shadow-md "
-                  placeholder="Recipient's Name"
-                  type="text"
-                  name="recipientName"
-                  value={formData.recipientName}
-                  onChange={handleChange}
-                />
-              </label>
-              <label>
-                <input
-                  className="inp1 text-black bg-[#FFFFFF] shadow-md "
-                  placeholder="Recipient's Organization/University"
-                  type="text"
-                  name="recipientOrganization"
-                  value={formData.recipientOrganization}
-                  onChange={handleChange}
-                />
-              </label>
-            </div>
-
-            <div className="row">
-              <label>
-                <input
-                  className="inp1 text-black bg-[#FFFFFF] shadow-md "
-                  placeholder="Sender's Name"
-                  type="text"
-                  name="senderName"
-                  value={formData.senderName}
-                  onChange={handleChange}
-                />
-              </label>
-              <label>
-                <input
-                  className="inp1 text-black bg-[#FFFFFF] shadow-md "
-                  placeholder="Sender's Organization/Institution"
-                  type="text"
-                  name="senderOrganization"
-                  value={formData.senderOrganization}
-                  onChange={handleChange}
-                />
-              </label>
-            </div>
-
-            <div className="row">
-              <label>
-                <input
-                  className="inp1 text-black bg-[#FFFFFF] shadow-md "
-                  placeholder="Sender's Relationship with the Recipient"
-                  type="text"
-                  name="senderRelationship"
-                  value={formData.senderRelationship}
-                  onChange={handleChange}
-                />
-              </label>
-              <label>
-                <input
-                  className="inp1 text-black bg-[#FFFFFF] shadow-md "
-                  placeholder="Concerned Field of Work"
-                  type="text"
-                  name="concernedFieldOfWork"
-                  value={formData.concernedFieldOfWork}
-                  onChange={handleChange}
-                />
-              </label>
-            </div>
-
-            <div className="row">
-              <label>
-                <input
-                  className="inp1 text-black bg-[#FFFFFF] shadow-md "
-                  placeholder="Niche Domain (if any)"
-                  type="text"
-                  name="nicheDomain"
-                  value={formData.nicheDomain}
-                  onChange={handleChange}
-                />
-              </label>
-              <label>
-                <input
-                  className="inp1 text-black bg-[#FFFFFF] shadow-md "
-                  placeholder="Source of Knowledge"
-                  type="text"
-                  name="sourceOfKnowledge"
-                  value={formData.sourceOfKnowledge}
-                  onChange={handleChange}
-                />
-              </label>
-            </div>
-
-            <div className="row">
-              <label>
-                <input
-                  className="inp1 text-black bg-[#FFFFFF] shadow-md "
-                  placeholder="Previous Contributions"
-                  type="text"
-                  name="previousContributions"
-                  value={formData.previousContributions}
-                  onChange={handleChange}
-                />
-              </label>
-              <label>
-                <input
-                  className="inp1 text-black bg-[#FFFFFF] shadow-md "
-                  placeholder="Reciepent Role Description"
-                  type="text"
-                  name="recipientRoleDescription"
-                  value={formData.recipientRoleDescription}
-                  onChange={handleChange}
-                />
-              </label>
-            </div>
-            <div className="row">
-              <label>
-                <input
-                  className="inp1 text-black bg-[#FFFFFF] shadow-md "
-                  placeholder="Responsibilities Undertaken"
-                  type="text"
-                  name="responsibilitiesUndertaken"
-                  value={formData.responsibilitiesUndertaken}
-                  onChange={handleChange}
-                />
-              </label>
-              <label>
-                <input
-                  className="inp1 text-black bg-[#FFFFFF] shadow-md "
-                  placeholder="Reciepent Key Skills"
-                  type="text"
-                  name="keySkills"
-                  value={formData.keySkills}
-                  onChange={handleChange}
-                />
-              </label>
-            </div>
-            <div className="row">
-              <label>
-                <input
-                  className="inp1 text-black bg-[#FFFFFF] shadow-md "
-                  placeholder="Projects"
-                  type="text"
-                  name="project"
-                  value={formData.project}
-                  onChange={handleChange}
-                />
-              </label>
-              <label>
-                <input
-                  className="inp1 text-black bg-[#FFFFFF] shadow-md "
-                  placeholder="Challenges Faced"
-                  type="text"
-                  name="challengesFaced"
-                  value={formData.challengesFaced}
-                  onChange={handleChange}
-                />
-              </label>
-            </div>
-            <div className="row">
-              <label>
-                <input
-                  className="inp1 text-black bg-[#FFFFFF] shadow-md "
-                  placeholder="Outcome /Achievements"
-                  type="text"
-                  name="outcomeAchievements"
-                  value={formData.outcomeAchievements}
-                  onChange={handleChange}
-                />
-              </label>
-              <label>
-                <input
-                  className="inp1 text-black bg-[#FFFFFF] shadow-md "
-                  placeholder="Token Of Gratitude"
-                  type="text"
-                  name="tokenOfGratitude"
-                  value={formData.tokenOfGratitude}
-                  onChange={handleChange}
-                />
-              </label>
-            </div>
-            <button
-              className="midBtn bg-gradient-to-r from-[#AA22FF] via-[#D989FF] to-[#51FFE0] mt-[3rem]"
-              type="Submit"
-            >
-              Generate LOA
-            </button>
-          </form>
-          {generatedArticle && (
-            <div className="chat bot bg-white max-w-[85rem] shadow-md ">
-              <div className="flex">
-                {/* <h2>Generated Article:</h2> */}
-                <img
-                  src={download}
-                  alt=""
-                  className="chatImg h-[3.3rem] w-[3.5rem]"
-                />
-                <p className="txt">{generatedArticle}</p>
-              </div>
-              <div className="mt-[1rem]">
-                <span className="flex ml-[5rem]">
-                  <div onClick={handlelikeClick}>
-                    {liked ? (
-                      <BiSolidLike className="text-green-500 inline-block h-[2.5rem] w-[2.5rem] cursor-pointer text-3xl" />
-                    ) : (
-                      <BiLike className="text-green-500 inline-block h-[2.5rem] w-[2.5rem] cursor-pointer text-3xl" />
-                    )}
-                  </div>
-                  <BiDislike
-                    className="inline-block h-[2.5rem] w-[2.5rem] text-red-500 cursor-pointer ml-2 text-3xl"
-                    onClick={() => handleDislikeClick()}
+      <div>
+        <div className="App ml-[-12rem]">
+          <div className="main">
+            <form onSubmit={handleSubmit}>
+              <div className="row">
+                <label>
+                  <input
+                    className="inp1 text-black bg-[#FFFFFF] shadow-md "
+                    placeholder="Recipient's Name"
+                    type="text"
+                    name="recipientName"
+                    value={formData.recipientName}
+                    onChange={handleChange}
                   />
-                </span>
+                </label>
+                <label>
+                  <input
+                    className="inp1 text-black bg-[#FFFFFF] shadow-md "
+                    placeholder="Recipient's Organization/University"
+                    type="text"
+                    name="recipientOrganization"
+                    value={formData.recipientOrganization}
+                    onChange={handleChange}
+                  />
+                </label>
               </div>
-            </div>
-          )}
+
+              <div className="row">
+                <label>
+                  <input
+                    className="inp1 text-black bg-[#FFFFFF] shadow-md "
+                    placeholder="Sender's Name"
+                    type="text"
+                    name="senderName"
+                    value={formData.senderName}
+                    onChange={handleChange}
+                  />
+                </label>
+                <label>
+                  <input
+                    className="inp1 text-black bg-[#FFFFFF] shadow-md "
+                    placeholder="Sender's Organization/Institution"
+                    type="text"
+                    name="senderOrganization"
+                    value={formData.senderOrganization}
+                    onChange={handleChange}
+                  />
+                </label>
+              </div>
+
+              <div className="row">
+                <label>
+                  <input
+                    className="inp1 text-black bg-[#FFFFFF] shadow-md "
+                    placeholder="Sender's Relationship with the Recipient"
+                    type="text"
+                    name="senderRelationship"
+                    value={formData.senderRelationship}
+                    onChange={handleChange}
+                  />
+                </label>
+                <label>
+                  <input
+                    className="inp1 text-black bg-[#FFFFFF] shadow-md "
+                    placeholder="Concerned Field of Work"
+                    type="text"
+                    name="concernedFieldOfWork"
+                    value={formData.concernedFieldOfWork}
+                    onChange={handleChange}
+                  />
+                </label>
+              </div>
+
+              <div className="row">
+                <label>
+                  <input
+                    className="inp1 text-black bg-[#FFFFFF] shadow-md "
+                    placeholder="Niche Domain (if any)"
+                    type="text"
+                    name="nicheDomain"
+                    value={formData.nicheDomain}
+                    onChange={handleChange}
+                  />
+                </label>
+                <label>
+                  <input
+                    className="inp1 text-black bg-[#FFFFFF] shadow-md "
+                    placeholder="Source of Knowledge"
+                    type="text"
+                    name="sourceOfKnowledge"
+                    value={formData.sourceOfKnowledge}
+                    onChange={handleChange}
+                  />
+                </label>
+              </div>
+
+              <div className="row">
+                <label>
+                  <input
+                    className="inp1 text-black bg-[#FFFFFF] shadow-md "
+                    placeholder="Previous Contributions"
+                    type="text"
+                    name="previousContributions"
+                    value={formData.previousContributions}
+                    onChange={handleChange}
+                  />
+                </label>
+                <label>
+                  <input
+                    className="inp1 text-black bg-[#FFFFFF] shadow-md "
+                    placeholder="Reciepent Role Description"
+                    type="text"
+                    name="recipientRoleDescription"
+                    value={formData.recipientRoleDescription}
+                    onChange={handleChange}
+                  />
+                </label>
+              </div>
+              <div className="row">
+                <label>
+                  <input
+                    className="inp1 text-black bg-[#FFFFFF] shadow-md "
+                    placeholder="Responsibilities Undertaken"
+                    type="text"
+                    name="responsibilitiesUndertaken"
+                    value={formData.responsibilitiesUndertaken}
+                    onChange={handleChange}
+                  />
+                </label>
+                <label>
+                  <input
+                    className="inp1 text-black bg-[#FFFFFF] shadow-md "
+                    placeholder="Reciepent Key Skills"
+                    type="text"
+                    name="keySkills"
+                    value={formData.keySkills}
+                    onChange={handleChange}
+                  />
+                </label>
+              </div>
+              <div className="row">
+                <label>
+                  <input
+                    className="inp1 text-black bg-[#FFFFFF] shadow-md "
+                    placeholder="Projects"
+                    type="text"
+                    name="project"
+                    value={formData.project}
+                    onChange={handleChange}
+                  />
+                </label>
+                <label>
+                  <input
+                    className="inp1 text-black bg-[#FFFFFF] shadow-md "
+                    placeholder="Challenges Faced"
+                    type="text"
+                    name="challengesFaced"
+                    value={formData.challengesFaced}
+                    onChange={handleChange}
+                  />
+                </label>
+              </div>
+              <div className="row">
+                <label>
+                  <input
+                    className="inp1 text-black bg-[#FFFFFF] shadow-md "
+                    placeholder="Outcome /Achievements"
+                    type="text"
+                    name="outcomeAchievements"
+                    value={formData.outcomeAchievements}
+                    onChange={handleChange}
+                  />
+                </label>
+                <label>
+                  <input
+                    className="inp1 text-black bg-[#FFFFFF] shadow-md "
+                    placeholder="Token Of Gratitude"
+                    type="text"
+                    name="tokenOfGratitude"
+                    value={formData.tokenOfGratitude}
+                    onChange={handleChange}
+                  />
+                </label>
+              </div>
+              <button
+                className="midBtn bg-gradient-to-r from-[#AA22FF] via-[#D989FF] to-[#51FFE0] mt-[3rem]"
+                type="Submit"
+              >
+                Generate LOA
+              </button>
+            </form>
+            {generatedArticle && (
+              <div className="chat bot bg-white max-w-[85rem] shadow-md ">
+                <div className="flex">
+                  {/* <h2>Generated Article:</h2> */}
+                  <img
+                    src={download}
+                    alt=""
+                    className="chatImg h-[3.3rem] w-[3.5rem]"
+                  />
+                  <p className="txt">{generatedArticle}</p>
+                </div>
+                <div className="mt-[1rem]">
+                  <span className="flex ml-[5rem]">
+                    <div onClick={handlelikeClick}>
+                      {liked ? (
+                        <BiSolidLike className="text-green-500 inline-block h-[2.5rem] w-[2.5rem] cursor-pointer text-3xl" />
+                      ) : (
+                        <BiLike className="text-green-500 inline-block h-[2.5rem] w-[2.5rem] cursor-pointer text-3xl" />
+                      )}
+                    </div>
+                    <BiDislike
+                      className="inline-block h-[2.5rem] w-[2.5rem] text-red-500 cursor-pointer ml-2 text-3xl"
+                      onClick={() => handleDislikeClick()}
+                    />
+                  </span>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
       </div>
       {isModalOpen && (

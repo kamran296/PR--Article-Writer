@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 
 import SidebarTail from "../../components/SidebarTail";
 import { BiLike, BiDislike, BiSolidLike } from "react-icons/bi";
-
+import Navbar from "../../components/Navbar";
 const Form = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -106,9 +106,14 @@ const Form = () => {
 
   return (
     <>
-      <SidebarTail />
       <div className="App">
-        <div className="main ml-[24rem]">
+        <div className="">
+          <Navbar />
+          <div className="mt-8">
+            <SidebarTail />
+          </div>
+        </div>
+        <div className="main ml-[24rem] mt-36">
           <div className="text-black text-4xl font-poppins pb-[4rem]">
             <p>Fill the areas to generate</p>
           </div>

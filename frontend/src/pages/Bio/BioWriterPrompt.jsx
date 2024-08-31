@@ -8,7 +8,7 @@ import userIcon from "./assets/user-icon.png";
 import gptImgLogo from "./assets/chatgptLogo.svg";
 import download from "./assets/download.png";
 import { Link } from "react-router-dom";
-
+import Navbar from "../../components/Navbar";
 import SidebarTail from "../../components/SidebarTail";
 import { BsSend } from "react-icons/bs";
 import { BiLike, BiDislike, BiSolidLike } from "react-icons/bi";
@@ -98,9 +98,15 @@ const LoaPrompt = () => {
   };
   return (
     <>
-      <SidebarTail />
+      {/* <SidebarTail /> */}
       <div>
         <div className="App">
+          <div className="">
+            <Navbar />
+            <div className="mt-8">
+              <SidebarTail />
+            </div>
+          </div>
           <div className="main ml-[25rem] mt-[10rem]">
             <div className="">
               <div className=" shadow-md  bg-[#FFFFFF] w-[90rem] h-[5rem] rounded-lg">

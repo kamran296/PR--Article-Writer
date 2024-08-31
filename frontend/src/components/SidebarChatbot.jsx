@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logoutUser } from "./../redux/userSlice";
 import { RxDashboard } from "react-icons/rx";
 
-const SidebarTail = () => {
+const SidebarChatbot = () => {
   const navigate = useNavigate();
   const [open, setOpen] = useState(true);
 
@@ -60,7 +60,7 @@ const SidebarTail = () => {
                     !open && "hidden"
                   }`}
                 >
-                  Article Writer
+                  Niche Writer
                 </span>
               </Link>
 
@@ -74,14 +74,8 @@ const SidebarTail = () => {
 
           <ul className="mt-2 flex-1">
             {[
-              { to: "/prd", text: "Article-Prompt" },
-              { to: "/article-form/", text: "Article-Form" },
-              { to: "/loa-prompt/", text: "LOA-Prompt" },
-              { to: "/loa-form/", text: "LOA-Form" },
-              { to: "/lor", text: "LOR-Prompt" },
-              { to: "/lor-form", text: "LOR-Form" },
-              { to: "/bio-writer-prompt/", text: "BioWriter-Prompt" },
-              { to: "/bio-writer/", text: "BioWriter-Form" },
+              { to: "/chatbot", text: "Internal Chatbot" },
+              { to: "/client", text: "Sales Chatbot" },
             ].map((item, index) => (
               <Link to={item.to} key={index}>
                 <li className="ml-2 mb-2 rounded hover:shadow hover:bg-white hover:text-primary py-2 pt-2 text-black flex items-center">
@@ -144,4 +138,4 @@ const SidebarTail = () => {
   );
 };
 
-export default SidebarTail;
+export default SidebarChatbot;

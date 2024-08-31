@@ -11,7 +11,7 @@ import LoaCritical from "./LoaCritical";
 import LoaResearch from "./LoaResearch";
 import LoaOriginal from "./LoaOriginal";
 import SidebarTail from "../../components/SidebarTail";
-
+import Navbar from "../../components/Navbar";
 const LoaForm = () => {
   const [activeTab, setActiveTab] = useState("1");
 
@@ -21,9 +21,14 @@ const LoaForm = () => {
 
   return (
     <>
-      <SidebarTail />
       <div className="App">
-        <div className="main ml-[25rem]">
+        <div className="">
+          <Navbar />
+          <div className="mt-8">
+            <SidebarTail />
+          </div>
+        </div>
+        <div className="main ml-[25rem] mt-36">
           <div className="border-b-2 border-gray-300 bg-white rounded-lg">
             <div className="flex justify-between">
               <button
