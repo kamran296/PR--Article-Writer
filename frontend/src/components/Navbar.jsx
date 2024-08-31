@@ -40,12 +40,12 @@ const Navbar = () => {
             Niche
           </li>
           </Link>
-          <Link to="">
+          <Link to="/chatbot">
           <li className="p-[1.75rem] border-b-2 text-[1.65rem]  border-blue-800 border-opacity-0 hover:border-opacity-100 hover:text-blue-800 duration-200 cursor-pointer">
             Chatbot
           </li>
           </Link>
-          <Link to=''>
+          <Link to="/dashboard">
           <li className="p-[1.75rem] border-b-2 text-[1.65rem]  border-blue-800 border-opacity-0 hover:border-opacity-100 hover:text-blue-800 duration-200 cursor-pointer">
             Dashboard
           </li>

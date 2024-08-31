@@ -5,15 +5,15 @@
       box-shadow: 0 0 #0000;
     }
     #CompanyLogo{
-        width: 58rem;
+        width: 93rem;
     }
     #Cards-Section{
         flex-direction: row;
-        width: 58rem;
+        width: 93rem;
         margin-left: 2rem;
     }
     #Profile{
-        width: 28rem;
+        width: 48rem;
         margin-right: 2rem;
     }
     #Navbar {
@@ -26,7 +26,7 @@
         margin-top: 12rem;
     }
     #Job-Title-2{
-        margin-top: 5rem;
+        margin-top: 15rem;
     }
     #FAQ{
         display: none;
