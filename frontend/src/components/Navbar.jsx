@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 const Navbar = () => {
   const data = useSelector((state) => state.user.user);
-  // console.log("navbar", data);
+  console.log("navbar", data);
   return (
     <>
       {/* component */}
@@ -52,14 +52,14 @@ const Navbar = () => {
         </div>
         <div className="flex justify-end w-[30%] items-center gap-x-5 px-2">
           <div className="font-semibold text-[1.65rem] text-gray-400">
-            {/* Hi, {data.user.displayName} */}
-            Hi Kamran Khot
+            Hi, {data.user.displayName}
+            {/* Hi Kamran Khot */}
           </div>
           <button className=" group">
             <img
               className=" mr-4 h-20 w-20 rounded-full"
-              // src={data.user.image}
-              src={profile}
+              src={data.user.image}
+              // src={profile}
               alt="profile-icon"
             />
             {/* Image */}

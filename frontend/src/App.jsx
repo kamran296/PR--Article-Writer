@@ -43,7 +43,7 @@ function App() {
       <Routes>
         <Route exact path="/login" element={<Login />} />
 
-        {/* {user && user.success ? ( */}
+        {user && user.success ? (
           <>
             <Route exact path="/prd" element={<Home />} />
             <Route exact path="/article-form" element={<Form />} />
@@ -65,8 +65,6 @@ function App() {
             <Route exact path="/niche" element={<Niche />} />
             <Route exact path="/client" element={<ClientChatbot />} />
             <Route exact path="/add-data" element={<AddData />} />
-            <Route exact path="/analysis" element={<ReaForm />} />
-            <Route exact path="/report" element={<ReportPage />} />
             <Route exact path="/rea-form" element={<LoginForm />} />
             <Route exact path="/rea-result" element={<ResultPage />} />
             <Route exact path="/" element={<Landing />} />
@@ -75,13 +73,13 @@ function App() {
 
 
 
-            {/* {user.user.isAdmin === "Admin" && (
+            {user.user.isAdmin === "Admin" && (
               <Route exact path="/dashboard" element={<Dashboard />} />
-            )} */}
+            )}
           </>
-        {/* ) : (
+         ) : (
           <Route path="*" element={<Login />} />
-        )} */}
+        )} 
       </Routes>
     </Router>
   );
