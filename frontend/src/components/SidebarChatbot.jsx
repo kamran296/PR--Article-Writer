@@ -60,7 +60,7 @@ const SidebarChatbot = () => {
                     !open && "hidden"
                   }`}
                 >
-                  Niche Writer
+                  Chatbots
                 </span>
               </Link>
 
