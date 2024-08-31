@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import SidebarTail from "./../../components/SidebarTail";
 import "./Dashboard.css";
-
+import Navbar from "../../components/Navbar";
 const Dashboard = () => {
   const [data, setData] = useState([]);
   const hostDevelopment =
@@ -98,8 +98,8 @@ const Dashboard = () => {
 
   return (
     <>
-      <SidebarTail />
       <div className="App">
+        <Navbar />
         <div>
           <div className="flex items-center w-screen justify-center min-h-screen">
             <div className="col-span-12">

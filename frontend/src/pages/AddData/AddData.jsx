@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import SidebarTail from "../../components/SidebarTail";
+import Navbar from "../../components/Navbar";
 
 const AddData = () => {
   const [formData, setFormData] = useState({
@@ -76,10 +77,15 @@ const AddData = () => {
 
   return (
     <>
-      <SidebarTail />
-
       <div className="h-screen ">
-        <div className="heading fixed  flex flex-col items-center justify-center mt-32 ml-[35%]">
+        <div>
+          <Navbar />
+          <div className="mt-8">
+            <SidebarTail />
+          </div>
+        </div>
+
+        <div className="heading fixed  flex flex-col items-center justify-center mt-32 ml-[25%]">
           <p className="text-3xl"> Add Data </p>
           <div className="form mt-12  w-[600px] h-[500px]">
             <form onSubmit={handleSubmit}>

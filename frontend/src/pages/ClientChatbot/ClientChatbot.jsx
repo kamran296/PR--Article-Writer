@@ -4,7 +4,8 @@ import { BsSend } from "react-icons/bs";
 import { BiLike, BiDislike, BiSolidLike } from "react-icons/bi";
 import { Navigate, useNavigate } from "react-router-dom";
 import { fetchUser } from "../../redux/userSlice";
-
+import SidebarChatbot from "../../components/SidebarChatbot";
+import Navbar from "../../components/Navbar";
 const ClientChatbot = () => {
   const [input, setInput] = useState("");
   const [chatHistory, setChatHistory] = useState([]);
@@ -115,10 +116,15 @@ const ClientChatbot = () => {
 
   return (
     <>
-      <SidebarTail />
       <div className="App">
+        <div className="">
+          <Navbar />
+          <div className="mt-8">
+            <SidebarChatbot />
+          </div>
+        </div>
         <div className="flex justify-between">
-          <div className="main mt-[10rem] mr-[4rem] ml-[24rem]">
+          <div className="main mt-[12rem] mr-[4rem] ml-[24rem]">
             <form
               onSubmit={handleSubmit}
               className="flex items-center justify-between"

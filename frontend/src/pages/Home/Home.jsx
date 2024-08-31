@@ -13,7 +13,7 @@ import SidebarTail from "../../components/SidebarTail";
 import Navbar from "../../components/Navbar";
 import { BsSend } from "react-icons/bs";
 import { BiLike, BiDislike, BiSolidLike } from "react-icons/bi";
-
+import SidebarPRD from "../../components/SidebarNiche";
 const Home = () => {
   const navigate = useNavigate();
 
@@ -99,12 +99,16 @@ const Home = () => {
   };
   return (
     <>
-      <SidebarTail />
-
-      <div>
-        <div className="App">
-          <div className="main ml-[25rem] mt-[8rem]">
-            <div className="bg-[#FFFFFF] shadow-md  w-[90rem] h-[5rem] rounded-lg inline-block">
+      <div className="h-screen">
+        <div className="">
+          <Navbar />
+          <div className="mt-8">
+            <SidebarTail />
+          </div>
+        </div>
+        <div className="App w-full h-full ">
+          <div className="main  mt-[14rem]">
+            <div className="bg-[#FFFFFF] shadow-md w-[40%] md:w-[90rem] h-[5rem] rounded-lg inline-block">
               <input
                 className="outline-none w-[84rem] h-[5rem] rounded-lg text-2xl pl-[1.5rem]"
                 type="text"

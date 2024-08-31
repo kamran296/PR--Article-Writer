@@ -10,6 +10,7 @@ import download from "./assets/download.png";
 import { Link } from "react-router-dom";
 // import SideBar from "../../components/SideBar";
 import SidebarTail from "../../components/SidebarTail";
+import Navbar from "../../components/Navbar";
 import { BsSend } from "react-icons/bs";
 import { BiLike, BiDislike, BiSolidLike } from "react-icons/bi";
 const LoaPrompt = () => {
@@ -97,8 +98,13 @@ const LoaPrompt = () => {
   };
   return (
     <>
-      <SidebarTail />
       <div>
+        <div className="">
+          <Navbar />
+          <div className="mt-8">
+            <SidebarTail />
+          </div>
+        </div>
         <div className="App">
           <div className="main ml-[25rem] mt-[10rem]">
             <div className="">

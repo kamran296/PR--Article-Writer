@@ -99,11 +99,15 @@ const LoaPrompt = () => {
   };
   return (
     <>
-      <SidebarTail />
-
       <div>
         <div className="App">
-          <div className="main ml-[25rem] mt-[8rem]">
+          <div className="">
+            <Navbar />
+            <div className="mt-8">
+              <SidebarTail />
+            </div>
+          </div>
+          <div className="main ml-[25rem] mt-36">
             <div className="bg-[#FFFFFF] shadow-md  w-[90rem] h-[5rem] rounded-lg inline-block">
               <input
                 className="outline-none w-[84rem] h-[5rem] rounded-lg text-2xl pl-[1.5rem]"
