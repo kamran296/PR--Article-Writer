@@ -12,15 +12,15 @@ job_location = sys.argv[2]
 
 
 # Set up Chrome options to run in headless mode
-chrome_options = Options()
-chrome_options.add_argument("--headless")
-chrome_options.add_argument("--disable-gpu")
-chrome_options.add_argument("--window-size=1920,1080")
-chrome_options.add_argument("--no-sandbox")
-chrome_options.add_argument("--disable-dev-shm-usage")
+# chrome_options = Options()
+# chrome_options.add_argument("--headless")
+# chrome_options.add_argument("--disable-gpu")
+# chrome_options.add_argument("--window-size=1920,1080")
+# chrome_options.add_argument("--no-sandbox")
+# chrome_options.add_argument("--disable-dev-shm-usage")
 
 # Initialize the Chrome WebDriver with the headless option
-driver = webdriver.Chrome(options=chrome_options)
+driver = webdriver.Chrome()
 
 # Navigate to the page containing the salary information
 driver.get('https://www.indeed.com/career/salaries')
