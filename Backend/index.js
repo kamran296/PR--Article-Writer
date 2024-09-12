@@ -55,13 +55,11 @@ mongoose
 app.use(cookieParser());
 app.use(express.json());
 
-
 const corsOptions = {
   origin: "https://www.internal.cachelabs.io", // Adjust this to match your frontend URL
   methods: ["GET", "POST", "DELETE"],
   credentials: true,
 };
-
 
 app.use(cors(corsOptions));
 
@@ -117,8 +115,8 @@ app.get("/*", function (req, res) {
 });
 
 const PORT = process.env.PORT || 8000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+app.listen(PORT, "127.0.0.1", () => {
+  console.log(`Server running at http://127.0.0.1:${PORT}/`);
 });
 
 // Function to start periodic checking

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import Navbar from './navbar';
 import { useNavigate } from 'react-router-dom';
-import Dropdown from './Dropdown'
 
 const LoginForm = () => {
 
@@ -16,94 +15,47 @@ const LoginForm = () => {
     const [baseSalary, setBaseSalary] = useState('');
     const [bonusSalary, setBonusSalary] = useState('');
     const [stocks, setStocks] = useState('');
-    // const [socCode, setsocCode] = useState('');
-    const [showAdditionalField, setShowAdditionalField] = useState(false);
-    const [code, setCode] = useState('');
-    const [stateValue, setStateValue] = useState('');
-    const [areaValue, setAreaValue] = useState('');
-    const [radioButtonChoice, setRadioButtonChoice] = useState(1);
+    const [socCode, setsocCode] = useState('');
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
       event.preventDefault();
 
-      const jobTitles = [jobTitle1, jobTitle2, jobTitle3];
-      const inputData = {
-        jobTitles,
-        location,
-        baseSalary,
-        bonusSalary,
-        stocks,
-        firstName,
-        lastName,
-        company,
-        code,
-      };
+        const jobTitles = [jobTitle1, jobTitle2, jobTitle3];
+        const inputData = { jobTitles, location, baseSalary, bonusSalary, stocks, firstName, lastName, company, socCode};
 
-      try {
-        // Fetching aggregated salary data for each job title
-        const results = await Promise.all(
-          jobTitles.map(async (jobTitle) => {
-            const response = await axios.post(
-              "http://localhost:5000/api/aggregator/get-aggregated-salary",
-              {
-                jobTitle,
-                location,
-              }
-            );
+        try {
+            const results = await Promise.all(jobTitles.map(async (jobTitle) => {
+                const response = await axios.post('http://localhost:5000/api/aggregator/get-aggregated-salary', {
+                    jobTitle,
+                    location,
+                });
 
             const parseSalary = (salary) => {
               const parsedSalary = parseInt(salary.replace(/[^\d]/g, ""), 10);
               return isNaN(parsedSalary) ? 0 : parsedSalary;
             };
 
-            return {
-              jobTitle,
-              highSalaries: {
-                salaryCom: parseSalary(
-                  response.data.salaryCom?.highSalary || "0"
-                ),
-                indeed: parseSalary(response.data.indeed?.highSalary || "0"),
-                talent: parseSalary(response.data.talent?.high || "0"),
-                monster: parseSalary(response.data.monster?.high || "0"),
-                levels: parseSalary(response.data.levels?.high || "0"),
-              },
-              midSalaries: {
-                salaryCom: parseSalary(
-                  response.data.salaryCom?.averageSalary || "0"
-                ),
-                indeed: parseSalary(response.data.indeed?.averageSalary || "0"),
-                talent: parseSalary(response.data.talent?.mid || "0"),
-                monster: parseSalary(response.data.monster?.average || "0"),
-                levels: parseSalary(response.data.levels?.medianSalary || "0"),
-              },
-            };
-          })
-        );
+                return {
+                    jobTitle,
+                    highSalaries: {
+                        salaryCom: parseSalary(response.data.salaryCom?.highSalary || '0'),
+                        indeed: parseSalary(response.data.indeed?.highSalary || '0'),
+                        talent: parseSalary(response.data.talent?.high || '0'),
+                    },
+                    midSalaries: {
+                        salaryCom: parseSalary(response.data.salaryCom?.averageSalary || '0'),
+                        indeed: parseSalary(response.data.indeed?.averageSalary || '0'),
+                        talent: parseSalary(response.data.talent?.mid || '0'),
+                    }
+                };
+            }));
 
-        // Fetching additional wage data if the additional fields are filled
-        let additionalResponse = null;
-        if (showAdditionalField) {
-          const res = await axios.post(
-            "http://localhost:5000/api/soc/getWageData",
-            {
-              code,
-              stateValue,
-              areaValue,
-              radioButtonChoice,
-            }
-          );
-          additionalResponse = res.data;
+            navigate('/rea-result', { state: { inputData, results } });
+        } catch (error) {
+            console.error('Error fetching salary data:', error);
         }
-
-        // Navigating to the output page with all the gathered data
-        navigate("/rea-result", {
-          state: { inputData, results, additionalResponse },
-        });
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
     };
 
   return (
@@ -153,13 +105,13 @@ const LoginForm = () => {
                   <label className="block text-gray-700 text-[1.65rem]  font-bold ml-2 mb-2">
                     Company
                   </label>
-                    <input
-                      className="w-full bg-gray-100 text-[1.65rem]  text-gray-900 p-[1.25rem] rounded-lg focus:outline-none focus:shadow-outline"
-                      type="text"
-                      placeholder="Company"
-                      value={company}
-                      onChange={(e) => setCompany(e.target.value)}
-                    />
+                  <input
+                    className="w-full bg-gray-100 text-[1.65rem]  text-gray-900 p-[1.25rem] rounded-lg focus:outline-none focus:shadow-outline"
+                    type="text"
+                    placeholder="Company"
+                    value={company}
+                    onChange={(e) => setCompany(e.target.value)}
+                  />
                 </div>
               </div>
 
@@ -211,7 +163,7 @@ const LoginForm = () => {
               </div>
               {/* Location */}
               <div className="grid grid-cols-1 gap-5 md:grid-cols-2 mt-[2rem]">
-              <div>
+                <div>
                   <label className="block text-gray-700 text-[1.65rem]  font-bold ml-2 mb-2">
                     Location
                   </label>
@@ -320,17 +272,15 @@ const LoginForm = () => {
                 focus:outline-none focus:shadow-outline"
                   onClick={handleSubmit}
                 >
-                  Generate 
+                  Generate
                 </button>
               </div>
             </div>
           </div>
         </div>
-
-        
       </div>
     </>
-  )
-}
+  );
+};
 
-export default LoginForm
+export default LoginForm;
