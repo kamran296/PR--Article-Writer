@@ -104,8 +104,13 @@ const ResultPage = () => {
     const highSalary2 = jobTitle2Response ? jobTitle2Response.averageHighSalary : 0;
     const highSalary3 = jobTitle3Response ? jobTitle3Response.averageHighSalary : 0;
 
-    const highSalaryString = additionalResponse.level4Yr.split('.')[0]; // Split at the decimal point and take the first part
-  const socSalary = parseInt(highSalaryString.replace(/[^\d]/g, ''), 10);
+
+    let highSalaryString = "";
+    if (!additionalResponse.level4Yr) {
+      highSalaryString = "$0";
+    }
+    highSalaryString = additionalResponse.level4Yr.split('.')[0]; // Split at the decimal point and take the first part
+    const socSalary = parseInt(highSalaryString.replace(/[^\d]/g, ''), 10);
 
     const handlePrint = () => {
         window.print();
