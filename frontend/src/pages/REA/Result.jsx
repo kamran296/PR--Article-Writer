@@ -366,7 +366,7 @@ const ResultPage = () => {
                   <table className="min-w-full bg-white border border-gray-200 shadow-md rounded-lg">
                     <thead className="bg-blue-100 text-blue-800">
                       <tr>
-                        <th className="px-12 text-center py-6 text-left text-[1.3rem] font-semibold">
+                        <th className="px-4 text-center py-6 text-left text-[1.3rem] font-semibold">
                           Wage Level
                         </th>
                         <th className="px-12 py-6 text-center text-left text-[1.3rem] font-semibold">
