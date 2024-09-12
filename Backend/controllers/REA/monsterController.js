@@ -53,7 +53,7 @@ const searchMonsterSalary = async (req, res) => {
         // const timestamp = new Date().toISOString().replace(/[:.]/g, '-'); // Format the timestamp
         // const screenshotPath = path.join(__dirname, `screenshot-${timestamp}.png`);
 
-        await page.screenshot({ path: screenshotPath});
+        // await page.screenshot({ path: screenshotPath});
 
         await browser.close();
 

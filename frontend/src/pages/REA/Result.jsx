@@ -109,8 +109,10 @@ const ResultPage = () => {
     if (!additionalResponse.level4Yr) {
       highSalaryString = "$0";
     }
-    highSalaryString = additionalResponse.level4Yr.split('.')[0]; // Split at the decimal point and take the first part
-    const socSalary = parseInt(highSalaryString.replace(/[^\d]/g, ''), 10);
+    if (additionalResponse !== null) {
+      const highSalaryString = additionalResponse.level4Yr.split('.')[0]; // Split at the decimal point and take the first part
+      const socSalary = parseInt(highSalaryString.replace(/[^\d]/g, ''), 10);
+  }
 
     const handlePrint = () => {
         window.print();
@@ -299,14 +301,16 @@ const ResultPage = () => {
                       {inputData.location}
                     </td>
                   </tr>
+                  {additionalResponse && (
                   <tr>
-                    <td className="text-[1.65rem] px-12 py-4 text-center font-semibold border-r border-gray-300">
+                    <td className="text-lg px-4 py-2 text-center font-semibold border-r border-gray-300">
                       SOC code
                     </td>
-                    <td className="text-[1.65rem] px-12 py-4 text-center">
-                    {inputData.code}
+                    <td className="text-lg px-4 py-2 text-center">
+                      {inputData.code}
                     </td>
                   </tr>
+                  )}
                 </tbody>
               </table>
             </div>
