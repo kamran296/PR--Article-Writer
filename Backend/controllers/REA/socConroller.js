@@ -23,10 +23,13 @@ exports.getWageData = async (req, res) => {
     // const extensionPath = pdfPath;
 
     const browser = await puppeteer.launch({
+        executablePath: '/usr/bin/google-chrome',
         headless: false, // Extensions are not supported in headless mode
         args: [
           `--disable-extensions-except=${extensionPath}`,
           `--load-extension=${extensionPath}`,
+          '--no-sandbox', // Disable sandboxing (necessary in many environments)
+          '--disable-setuid-sandbox',
         ],
       });
     const page = await browser.newPage();

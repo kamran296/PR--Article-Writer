@@ -2,6 +2,7 @@ const axios = require("axios");
 
 exports.getAggregatedSalary = async (req, res) => {
   const { jobTitle, location } = req.body;
+  
 
   if (!jobTitle || !location) {
     return res
@@ -11,37 +12,37 @@ exports.getAggregatedSalary = async (req, res) => {
 
   try {
     // Define the API calls
-    const api1 = axios.post(
+    const api1 = await axios.post(
       "https://www.internal.cachelabs.io/api/salary/salary",
       { jobTitle, location }
     );
-    const api2 = axios.post(
+    const api2 = await axios.post(
       "https://www.internal.cachelabs.io/api/indeed/get-salary-indeed",
       { jobRole: jobTitle, location }
     );
-    const api3 = axios.post(
+    const api3 = await axios.post(
       "https://www.internal.cachelabs.io/api/talent/search-salary-talent",
       { jobTitle, location }
     );
-    const api4 = axios.post('https://www.internal.cachelabs.io/api/monster/monster-search', { jobTitle, location });
-        const api5 = axios.post('https://www.internal.cachelabs.io/api/levels/search-Levels', { jobTitle, location });
+    // const api4 = await axios.post('https://www.internal.cachelabs.io/api/monster/monster-search', { jobTitle, location });
+        const api5 = await axios.post('https://www.internal.cachelabs.io/api/levels/search-Levels', { jobTitle, location });
 
     // Initialize responses and errors
     const results = {
-      salaryCom: null,
-      indeed: null,
-      talent: null,
-      monster: null,
-      levels: null,
+      salaryCom: [],
+      indeed: [],
+      talent: [],
+      // monster: [],
+      levels: [],
       errors: [],
     };
 
     // Execute API calls
-    const [response1, response2, response3,  response4, response5] = await Promise.allSettled([
+    const [response1, response2, response3, response5] = await Promise.allSettled([
       api1,
       api2,
       api3,
-      api4, 
+      // api4, 
       api5
     ]);
 
@@ -70,14 +71,14 @@ exports.getAggregatedSalary = async (req, res) => {
       });
     }
 
-    if (response4.status === "fulfilled") {
-      results.monster = response4.value.data.salaryData;
-    } else {
-      results.errors.push({
-        api: "Monster.com",
-        error: response4.reason.message,
-      });
-    }
+    // if (response4.status === "fulfilled") {
+    //   results.monster = response4.value.data.salaryData;
+    // } else {
+    //   results.errors.push({
+    //     api: "Monster.com",
+    //     error: response4.reason.message,
+    //   });
+    // }
 
   if (response5.status === "fulfilled") {
     results.levels = response5.value.data; // Added levelsFyi processing

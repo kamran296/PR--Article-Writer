@@ -3,7 +3,7 @@ const axios = require('axios');
 const puppeteer = require('puppeteer');
 const path = require('path');
 const dotenv = require("dotenv");
-dotenv.config({ path: "./config.env" });
+dotenv.config({ path: "../../config.env" });
 
 const CONSTANT_WEBSITE = 'www.monster.com/salary';
 const KEYWORD = 'salary';
