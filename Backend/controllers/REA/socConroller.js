@@ -14,7 +14,9 @@ exports.getWageData = async (req, res) => {
       : '#root > div > div.mega-container > div.column > form > fieldset:nth-child(5) > div > div:nth-child(2) > label';
 
   
-    const extensionPath = 'C:\\Users\\omkar\\OneDrive\\Desktop\\Git\\PR--Article-Writer\\Backend\\3.1.0_0';
+    // const extensionPath = 'C:\\Users\\omkar\\OneDrive\\Desktop\\Git\\PR--Article-Writer\\Backend\\3.1.0_0';
+
+    const extensionPath = '/home/ubuntu/apps/PR--Article-Writer/Backend/3.1.0_0';
 
 
     // const pdfPath = path.join(__dirname, `../../3.1.0_0/manifest.json`);
