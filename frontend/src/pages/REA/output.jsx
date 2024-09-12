@@ -14,7 +14,7 @@ import SourceLinks from './SourceLinks';
 const ReportPage = () => {
 
     const { state } = useLocation();
-    const { inputData, results } = state;
+    const { inputData, results, additionalResponse } = state;
 
     const [jobTitle1Response, setJobTitle1Response] = useState(null);
     const [jobTitle2Response, setJobTitle2Response] = useState(null);
@@ -41,16 +41,20 @@ const ReportPage = () => {
         };
 
         const mapResultsToResponse = (result) => {
-            const salaryComHigh = result.highSalaries.salaryCom;
-            const indeedHigh = result.highSalaries.indeed;
-            const talentHigh = result.highSalaries.talent;
+          const salaryComHigh = result.highSalaries.salaryCom;
+          const indeedHigh = result.highSalaries.indeed;
+          const talentHigh = result.highSalaries.talent;
+          const monsterHigh = result.highSalaries.monster;
+          const levelsHigh = result.highSalaries.levels;
 
-            const salaryComMid = result.midSalaries.salaryCom;
-            const indeedMid = result.midSalaries.indeed;
-            const talentMid = result.midSalaries.talent;
+          const salaryComMid = result.midSalaries.salaryCom;
+          const indeedMid = result.midSalaries.indeed;
+          const talentMid = result.midSalaries.talent;
+          const monsterMid = result.midSalaries.monster;
+          const levelsMid = result.midSalaries.levels;
 
-            const averageHighSalary = calculateAverage([salaryComHigh, indeedHigh, talentHigh]);
-            const averageMidSalary = calculateAverage([salaryComMid, indeedMid, talentMid]);
+          const averageHighSalary = calculateAverage([salaryComHigh, indeedHigh, talentHigh, monsterHigh, levelsHigh]);
+          const averageMidSalary = calculateAverage([salaryComMid, indeedMid, talentMid, monsterMid, levelsMid]);
 
             return {
                 jobTitle: result.jobTitle,
@@ -100,6 +104,9 @@ const ReportPage = () => {
     const highSalary1 = jobTitle1Response ? jobTitle1Response.averageHighSalary : 0;
     const highSalary2 = jobTitle2Response ? jobTitle2Response.averageHighSalary : 0;
     const highSalary3 = jobTitle3Response ? jobTitle3Response.averageHighSalary : 0;
+
+    const highSalaryString = additionalResponse.level4Yr.split('.')[0]; // Split at the decimal point and take the first part
+  const socSalary = parseInt(highSalaryString.replace(/[^\d]/g, ''), 10);
 
     const handlePrint = () => {
         window.print();
@@ -294,7 +301,7 @@ const ReportPage = () => {
                       SOC code
                     </td>
                     <td className="text-lg px-4 py-2 text-center">
-                      {inputData.socCode}
+                    {inputData.code}
                     </td>
                   </tr>
                 </tbody>
@@ -343,6 +350,124 @@ const ReportPage = () => {
             highSalary={highSalary3}
             jobTitle={inputData.jobTitles[2]}
           />
+        </div>
+
+        {/* SOC Code Component */}
+        <div className="flex flex-col justify-cente items-center mt-[1rem] ml-[5rem] bg-white shadow-lg rounded-lg w-[58rem] h-[28rem]">
+          <div className="mb-[1rem] mt-[1rem]">
+            <h2 className="text-lg font-semibold">Analysis Using SOC Code</h2>
+          </div>
+          <div className="flex">
+            <div className="w-[26rem] mt-[1rem] h-[14rem]">
+              <div className="">
+                <div
+                  className="align-middle inline-block min-w-full overflow-hidden bg-white shadow-dashboard px-8 pt-3 rounded-bl-lg rounded-br-lg"
+                  id="Table"
+                >
+                  <table className="min-w-full bg-white border border-gray-200 shadow-md rounded-lg">
+                    <thead className="bg-blue-100 text-blue-800">
+                      <tr>
+                        <th className="px-6 text-center py-3 text-left text-sm font-semibold">
+                          Wage Level
+                        </th>
+                        <th className="px-6 py-3 text-center text-left text-sm font-semibold">
+                          Hourly
+                        </th>
+                        <th className="px-6 py-3 text-center text-left text-sm font-semibold">
+                          Yearly
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-gray-900">
+                      <tr className="border-t border-gray-200">
+                        <td className="px-6 py-4">
+                          <div className="font-medium text-center text-blue-900">
+                            I
+                          </div>
+                        </td>
+                        <td className="px-6 py-4">
+                          {additionalResponse.level1Hr}
+                        </td>
+                        <td className="px-6 py-4 ">
+                          <div className="text-blue-600 font-semibold">
+                            {additionalResponse.level1Yr}
+                          </div>
+                        </td>
+                      </tr>
+                      <tr className="border-t border-gray-200">
+                        <td className="px-6 py-4">
+                          <div className="font-medium text-center text-blue-900">
+                            II
+                          </div>
+                        </td>
+                        <td className="px-6 py-4">
+                          {additionalResponse.level2Hr}
+                        </td>
+                        <td className="px-6 py-4 ">
+                          <div className="text-blue-600 font-semibold">
+                            {additionalResponse.level2Yr}
+                          </div>
+                        </td>
+                      </tr>
+                      <tr className="border-t border-gray-200">
+                        <td className="px-6 py-4">
+                          <div className="font-medium text-center text-blue-900">
+                            III
+                          </div>
+                        </td>
+                        <td className="px-6 py-4">
+                          {additionalResponse.level3Hr}
+                        </td>
+                        <td className="px-6 py-4 ">
+                          <div className="text-blue-600 font-semibold">
+                            {additionalResponse.level3Yr}
+                          </div>
+                        </td>
+                      </tr>
+                      <tr className="border-t border-gray-200">
+                        <td className="px-6 py-4">
+                          <div className="font-medium text-center text-blue-900">
+                            IV
+                          </div>
+                        </td>
+                        <td className="px-6 py-4">
+                          {additionalResponse.level4Hr}
+                        </td>
+                        <td className="px-6 py-4 ">
+                          <div className="text-blue-600 font-semibold">
+                            {additionalResponse.level4Yr}
+                          </div>
+                        </td>
+                      </tr>
+                      <tr className="border-t border-gray-200">
+                        <td className="px-6 py-4">
+                          <div className="font-medium text-center text-blue-900">
+                            Mean
+                          </div>
+                        </td>
+                        <td className="px-6 py-4">
+                          {additionalResponse.meanHr}
+                        </td>
+                        <td className="px-6 py-4 ">
+                          <div className="text-blue-600 font-semibold">
+                            {additionalResponse.meanYr}
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div className="flex justify-center h-[20rem] items-center w-[26rem] ml-[4rem]">
+              <InlineComparison
+                baseSalary={baseSalary}
+                bonus={bonusSalary}
+                stocks={stocksComponent}
+                highSalary={socSalary}
+              />
+            </div>
+          </div>
         </div>
 
         {/* Graph Section */}

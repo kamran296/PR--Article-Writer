@@ -23,6 +23,9 @@ const indeedRoutes = require('./router/REA/indeedRoutes');
 const salaryRoutes = require('./router/REA/salaryRoutes');
 const talentRoutes = require('./router/REA/talentRoutes');
 const aggregatorRoutes = require('./router/REA/aggregatorRoutes');
+const monsterRoutes = require('./router/REA/monsterRoutes');
+const levelsRoutes = require('./router/REA/levelsRoutes');
+const socRoutes = require('./router/REA/socRoutes');
 
 // Import your data models
 const LorData = require("./model/lorData");
@@ -94,6 +97,9 @@ app.use('/api/indeed', indeedRoutes);
 app.use('/api/salary', salaryRoutes);
 app.use('/api/talent', talentRoutes);
 app.use('/api/aggregator', aggregatorRoutes);
+app.use('/api/monster', monsterRoutes);
+app.use('/api/levels', levelsRoutes);
+app.use('/api/soc', socRoutes);
 // Static files
 const _dirname = path.dirname("");
 const buildPath = path.join(_dirname, "../frontend/dist");
