@@ -10,7 +10,7 @@ const Navbar = () => {
   return (
     <>
       {/* component */}
-      <header className="header fixed w-full  top-0 bg-white shadow-lg flex items-center justify-betwee px-[4rem] py-02 h-[8rem]">
+      <header className="header fixed w-full  top-0 bg-white shadow-lg flex items-center justify-between px-[4rem] py-02 h-[8rem]">
         {/* logo */}
         <img src={logo} className="w-[7%] m-[1rem]" />
         {/* navigation */}
