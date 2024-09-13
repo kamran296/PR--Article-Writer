@@ -34,7 +34,7 @@ const LoginForm = () => {
     try {
       // Fetching aggregated salary data for each job title
       const results = await Promise.all(jobTitles.map(async (jobTitle) => {
-          const response = await axios.post('http://127.0.0.1:5000/api/aggregator/get-aggregated-salary', {
+          const response = await axios.post('https://www.internal.cachelabs.io/api/aggregator/get-aggregated-salary', {
               jobTitle,
               location,
           });
