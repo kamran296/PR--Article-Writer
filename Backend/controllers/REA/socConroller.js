@@ -1,6 +1,7 @@
 const puppeteer = require('puppeteer-extra');
 const Stealth = require('puppeteer-extra-plugin-stealth');
-const path = require("path")
+const path = require("path");
+const Xvfb = require('xvfb');
 
 
 puppeteer.use(Stealth());
@@ -8,7 +9,17 @@ puppeteer.use(Stealth());
 exports.getWageData = async (req, res) => {
   const { code, stateValue, areaValue, radioButtonChoice } = req.body;
 
+  const xvfb = new Xvfb({
+    silent: true, // Hides Xvfb output
+    xvfb_args: ['-screen', '0', '1280x1024x24', '-ac'], // Screen size and depth
+  });
+
+    
   try {
+
+    // Start Xvfb
+    xvfb.startSync();
+
     const radioButtonSelector = radioButtonChoice === 1
       ? '#root > div > div > div.column > form > fieldset:nth-child(5) > div > div:nth-child(1) > label'
       : '#root > div > div.mega-container > div.column > form > fieldset:nth-child(5) > div > div:nth-child(2) > label';
@@ -179,6 +190,10 @@ await page.click(submitButtonSelector);
   } catch (error) {
     console.error('Error occurred:', error);
     res.status(500).json({ 'An error occurred while processing the request.' :error });
+  }finally {
+    // Stop the Xvfb process only if it's running
+    if (xvfb && xvfb.proc) {
+      xvfb.stopSync();
+    }
   }
-};
-// #root > div > div > div.column > form > div.bottom-form-container > div.submit-container > button.submit
+}
