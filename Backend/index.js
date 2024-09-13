@@ -55,8 +55,10 @@ mongoose
 app.use(cookieParser());
 app.use(express.json());
 
+// origin: "https://www.internal.cachelabs.io", // Adjust this to match your frontend URL
+
 const corsOptions = {
-  origin: "https://www.internal.cachelabs.io", // Adjust this to match your frontend URL
+  
   methods: ["GET", "POST", "DELETE"],
   credentials: true,
 };
