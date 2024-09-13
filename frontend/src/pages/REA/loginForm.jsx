@@ -17,11 +17,11 @@ const LoginForm = () => {
     const [bonusSalary, setBonusSalary] = useState('');
     const [stocks, setStocks] = useState('');
     // const [socCode, setsocCode] = useState('');
-    const [showAdditionalField, setShowAdditionalField] = useState(false);
-    const [code, setCode] = useState('');
-    const [stateValue, setStateValue] = useState('');
-    const [areaValue, setAreaValue] = useState('');
-    const [radioButtonChoice, setRadioButtonChoice] = useState(1);
+    // const [showAdditionalField, setShowAdditionalField] = useState(false);
+    // const [code, setCode] = useState('');
+    // const [stateValue, setStateValue] = useState('');
+    // const [areaValue, setAreaValue] = useState('');
+    // const [radioButtonChoice, setRadioButtonChoice] = useState(1);
 
   const navigate = useNavigate();
 
@@ -29,12 +29,12 @@ const LoginForm = () => {
     event.preventDefault();
 
     const jobTitles = [jobTitle1, jobTitle2, jobTitle3];
-    const inputData = { jobTitles, location, baseSalary, bonusSalary, stocks, firstName, lastName, company, code};
+    const inputData = { jobTitles, location, baseSalary, bonusSalary, stocks, firstName, lastName, company};
 
     try {
       // Fetching aggregated salary data for each job title
       const results = await Promise.all(jobTitles.map(async (jobTitle) => {
-          const response = await axios.post('https://www.internal.cachelabs.io/api/aggregator/get-aggregated-salary', {
+          const response = await axios.post('http://127.0.0.1:5000/api/aggregator/get-aggregated-salary', {
               jobTitle,
               location,
           });
@@ -64,19 +64,19 @@ const LoginForm = () => {
       }));
 
       // Fetching additional wage data if the additional fields are filled
-      let additionalResponse = null;
-      if (showAdditionalField) {
-          const res = await axios.post('https://www.internal.cachelabs.io/api/soc/getWageData', {
-              code,
-              stateValue,
-              areaValue,
-              radioButtonChoice,
-          });
-          additionalResponse = res.data;
-      }
+      // let additionalResponse = null;
+      // if (showAdditionalField) {
+      //     const res = await axios.post('https://www.internal.cachelabs.io/api/soc/getWageData', {
+      //         code,
+      //         stateValue,
+      //         areaValue,
+      //         radioButtonChoice,
+      //     });
+      //     additionalResponse = res.data;
+      // }
 
       // Navigating to the output page with all the gathered data
-      navigate('/rea-result', { state: { inputData, results, additionalResponse } });
+      navigate('/rea-result', { state: { inputData, results } });
   } catch (error) {
       console.error('Error fetching data:', error);
   }
@@ -263,7 +263,7 @@ const LoginForm = () => {
                 </div>
               </div>
 
-              <div className="flex items-center mt-[2rem] mb-2">
+              {/* <div className="flex items-center mt-[2rem] mb-2">
                 <input
                   type="checkbox"
                   checked={showAdditionalField}
@@ -273,9 +273,9 @@ const LoginForm = () => {
                 <label className="ml-2 text-[1.65rem] font-bold text-gray-900">
                   Include data from SOC Codes for Analysis
                 </label>
-              </div>
+              </div> */}
 
-              {showAdditionalField && (
+              {/* {showAdditionalField && (
                 <>
                   <Dropdown
                     stateValue={stateValue}
@@ -288,7 +288,7 @@ const LoginForm = () => {
                     setCode={setCode}
                   />
                 </>
-              )}
+              )} */}
 
               <div className="my-2 w-1/2 lg:w-1/4 mt-[3rem]">
                 <button
