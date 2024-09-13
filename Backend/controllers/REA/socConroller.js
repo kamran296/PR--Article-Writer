@@ -178,7 +178,7 @@ await page.click(submitButtonSelector);
     });
   } catch (error) {
     console.error('Error occurred:', error);
-    res.status(500).json({ error: 'An error occurred while processing the request.' });
+    res.status(500).json({ 'An error occurred while processing the request.' :error });
   }
 };
 // #root > div > div > div.column > form > div.bottom-form-container > div.submit-container > button.submit

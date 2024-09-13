@@ -5204,6 +5204,504 @@ const DynamicAreaSelect = ({ stateValue, setStateValue, radioButtonChoice, setRa
             { value: "Western Wyoming nonmetropolitan area", label: "Western Wyoming nonmetropolitan area" }
           ],
       },
+      TEXAS: {
+        1: [
+          {
+            "value": "ANDERSON - North Texas Region of Texas nonmetropolitan area",
+            "label": "ANDERSON - North Texas Region of Texas nonmetropolitan area"
+          },
+          {
+            "value": "ANDREWS - West Texas Region of Texas nonmetropolitan area",
+            "label": "ANDREWS - West Texas Region of Texas nonmetropolitan area"
+          },
+          {
+            "value": "ANGELINA - Big Thicket Region of Texas nonmetropolitan area",
+            "label": "ANGELINA - Big Thicket Region of Texas nonmetropolitan area"
+          },
+          {
+            "value": "ARANSAS - Corpus Christi, TX",
+            "label": "ARANSAS - Corpus Christi, TX"
+          },
+          {
+            "value": "ARCHER - Wichita Falls, TX",
+            "label": "ARCHER - Wichita Falls, TX"
+          },
+          {
+            "value": "ARMSTRONG - Amarillo, TX",
+            "label": "ARMSTRONG - Amarillo, TX"
+          },
+          {
+            "value": "ATASCOSA - San Antonio-New Braunfels, TX",
+            "label": "ATASCOSA - San Antonio-New Braunfels, TX"
+          },
+          {
+            "value": "AUSTIN - Houston-The Woodlands-Sugar Land, TX",
+            "label": "AUSTIN - Houston-The Woodlands-Sugar Land, TX"
+          },
+          {
+            "value": "BAILEY - West Texas Region of Texas nonmetropolitan area",
+            "label": "BAILEY - West Texas Region of Texas nonmetropolitan area"
+          },
+          {
+            "value": "BANDERA - San Antonio-New Braunfels, TX",
+            "label": "BANDERA - San Antonio-New Braunfels, TX"
+          },
+          {
+            "value": "BASTROP - Austin-Round Rock, TX",
+            "label": "BASTROP - Austin-Round Rock, TX"
+          },
+          {
+            "value": "BAYLOR - West Texas Region of Texas nonmetropolitan area",
+            "label": "BAYLOR - West Texas Region of Texas nonmetropolitan area"
+          },
+          {
+            "value": "BEE - Coastal Plains Region of Texas nonmetropolitan area",
+            "label": "BEE - Coastal Plains Region of Texas nonmetropolitan area"
+          },
+          {
+            "value": "BELL - Killeen-Temple, TX",
+            "label": "BELL - Killeen-Temple, TX"
+          },
+          {
+            "value": "BEXAR - San Antonio-New Braunfels, TX",
+            "label": "BEXAR - San Antonio-New Braunfels, TX"
+          },
+          {
+            "value": "BLANCO - Hill Country Region of Texas nonmetropolitan area",
+            "label": "BLANCO - Hill Country Region of Texas nonmetropolitan area"
+          },
+          {
+            "value": "BORDEN - West Texas Region of Texas nonmetropolitan area",
+            "label": "BORDEN - West Texas Region of Texas nonmetropolitan area"
+          },
+          {
+            "value": "BOSQUE - Hill Country Region of Texas nonmetropolitan area",
+            "label": "BOSQUE - Hill Country Region of Texas nonmetropolitan area"
+          },
+          {
+            "value": "BOWIE - Texarkana, TX-AR",
+            "label": "BOWIE - Texarkana, TX-AR"
+          },
+          {
+            "value": "BRAZORIA - Houston-The Woodlands-Sugar Land, TX",
+            "label": "BRAZORIA - Houston-The Woodlands-Sugar Land, TX"
+          },
+          {
+            "value": "BRAZOS - College Station-Bryan, TX",
+            "label": "BRAZOS - College Station-Bryan, TX"
+          },
+          {
+            "value": "BREWSTER - West Texas Region of Texas nonmetropolitan area",
+            "label": "BREWSTER - West Texas Region of Texas nonmetropolitan area"
+          },
+          {
+            "value": "BRISCOE - West Texas Region of Texas nonmetropolitan area",
+            "label": "BRISCOE - West Texas Region of Texas nonmetropolitan area"
+          },
+          {
+            "value": "BROOKS - Coastal Plains Region of Texas nonmetropolitan area",
+            "label": "BROOKS - Coastal Plains Region of Texas nonmetropolitan area"
+          },
+          {
+            "value": "BROWN - Hill Country Region of Texas nonmetropolitan area",
+            "label": "BROWN - Hill Country Region of Texas nonmetropolitan area"
+          },
+          {
+            "value": "BURLESON - College Station-Bryan, TX",
+            "label": "BURLESON - College Station-Bryan, TX"
+          },
+          {
+            "value": "BURNET - Hill Country Region of Texas nonmetropolitan area",
+            "label": "BURNET - Hill Country Region of Texas nonmetropolitan area"
+          },
+          {
+            "value": "CALDWELL - Austin-Round Rock, TX",
+            "label": "CALDWELL - Austin-Round Rock, TX"
+          },
+          {
+            "value": "CALHOUN - Coastal Plains Region of Texas nonmetropolitan area",
+            "label": "CALHOUN - Coastal Plains Region of Texas nonmetropolitan area"
+          },
+          {
+            "value": "CALLAHAN - Abilene, TX",
+            "label": "CALLAHAN - Abilene, TX"
+          },
+          {
+            "value": "CAMERON - Brownsville-Harlingen, TX",
+            "label": "CAMERON - Brownsville-Harlingen, TX"
+          },
+          {
+            "value": "CAMP - North Texas Region of Texas nonmetropolitan area",
+            "label": "CAMP - North Texas Region of Texas nonmetropolitan area"
+          },
+          {
+            "value": "CARSON - Amarillo, TX",
+            "label": "CARSON - Amarillo, TX"
+          },
+          {
+            "value": "CASS - North Texas Region of Texas nonmetropolitan area",
+            "label": "CASS - North Texas Region of Texas nonmetropolitan area"
+          },
+          {
+            "value": "CASTRO - West Texas Region of Texas nonmetropolitan area",
+            "label": "CASTRO - West Texas Region of Texas nonmetropolitan area"
+          },
+          {
+            "value": "CHAMBERS - Houston-The Woodlands-Sugar Land, TX",
+            "label": "CHAMBERS - Houston-The Woodlands-Sugar Land, TX"
+          },
+          {
+            "value": "CHEROKEE - North Texas Region of Texas nonmetropolitan area",
+            "label": "CHEROKEE - North Texas Region of Texas nonmetropolitan area"
+          },
+          {
+            "value": "CHILDRESS - West Texas Region of Texas nonmetropolitan area",
+            "label": "CHILDRESS - West Texas Region of Texas nonmetropolitan area"
+          },
+          {
+            "value": "CLAY - Wichita Falls, TX",
+            "label": "CLAY - Wichita Falls, TX"
+          },
+          {
+            "value": "COCHRAN - West Texas Region of Texas nonmetropolitan area",
+            "label": "COCHRAN - West Texas Region of Texas nonmetropolitan area"
+          },
+          {
+            "value": "COKE - Hill Country Region of Texas nonmetropolitan area",
+            "label": "COKE - Hill Country Region of Texas nonmetropolitan area"
+          },
+          {
+            "value": "COLEMAN - Hill Country Region of Texas nonmetropolitan area",
+            "label": "COLEMAN - Hill Country Region of Texas nonmetropolitan area"
+          },
+          {
+            "value": "COLLIN - Dallas-Fort Worth-Arlington, TX",
+            "label": "COLLIN - Dallas-Fort Worth-Arlington, TX"
+          },
+          {
+            "value": "COLLINGSWORTH - West Texas Region of Texas nonmetropolitan area",
+            "label": "COLLINGSWORTH - West Texas Region of Texas nonmetropolitan area"
+          },
+          {
+            "value": "COLORADO - Coastal Plains Region of Texas nonmetropolitan area",
+            "label": "COLORADO - Coastal Plains Region of Texas nonmetropolitan area"
+          },
+          {
+            "value": "COMAL - San Antonio-New Braunfels, TX",
+            "label": "COMAL - San Antonio-New Braunfels, TX"
+          },
+          {
+            "value": "COMANCHE - North Texas Region of Texas nonmetropolitan area",
+            "label": "COMANCHE - North Texas Region of Texas nonmetropolitan area"
+          },
+          {
+            "value": "CONCHO - Hill Country Region of Texas nonmetropolitan area",
+            "label": "CONCHO - Hill Country Region of Texas nonmetropolitan area"
+          },
+          {
+            "value": "COOKE - North Texas Region of Texas nonmetropolitan area",
+            "label": "COOKE - North Texas Region of Texas nonmetropolitan area"
+          },
+          {
+            "value": "CORYELL - Killeen-Temple, TX",
+            "label": "CORYELL - Killeen-Temple, TX"
+          },
+          {
+            "value": "COTTLE - West Texas Region of Texas nonmetropolitan area",
+            "label": "COTTLE - West Texas Region of Texas nonmetropolitan area"
+          },
+          {
+            "value": "CRANE - West Texas Region of Texas nonmetropolitan area",
+            "label": "CRANE - West Texas Region of Texas nonmetropolitan area"
+          },
+          {
+            "value": "CROCKETT - West Texas Region of Texas nonmetropolitan area",
+            "label": "CROCKETT - West Texas Region of Texas nonmetropolitan area"
+          },
+          {
+            "value": "CROSBY - Lubbock, TX",
+            "label": "CROSBY - Lubbock, TX"
+          },
+          {
+            "value": "CULBERSON - West Texas Region of Texas nonmetropolitan area",
+            "label": "CULBERSON - West Texas Region of Texas nonmetropolitan area"
+          },
+          {
+            "value": "DALLAM - West Texas Region of Texas nonmetropolitan area",
+            "label": "DALLAM - West Texas Region of Texas nonmetropolitan area"
+          },
+          {
+            "value": "DALLAS - Dallas-Fort Worth-Arlington, TX",
+            "label": "DALLAS - Dallas-Fort Worth-Arlington, TX"
+          },
+          {
+            "value": "DAWSON - West Texas Region of Texas nonmetropolitan area",
+            "label": "DAWSON - West Texas Region of Texas nonmetropolitan area"
+          },
+          {
+            "value": "DEAF SMITH - West Texas Region of Texas nonmetropolitan area",
+            "label": "DEAF SMITH - West Texas Region of Texas nonmetropolitan area"
+          },
+          {
+            "value": "DELTA - North Texas Region of Texas nonmetropolitan area",
+            "label": "DELTA - North Texas Region of Texas nonmetropolitan area"
+          },
+          {
+            "value": "DENTON - Dallas-Fort Worth-Arlington, TX",
+            "label": "DENTON - Dallas-Fort Worth-Arlington, TX"
+          },
+          {
+            "value": "DEWITT - Coastal Plains Region of Texas nonmetropolitan area",
+            "label": "DEWITT - Coastal Plains Region of Texas nonmetropolitan area"
+          },
+          {
+            "value": "DICKENS - West Texas Region of Texas nonmetropolitan area",
+            "label": "DICKENS - West Texas Region of Texas nonmetropolitan area"
+          },
+          {
+            "value": "DIMMIT - Border Region of Texas nonmetropolitan area",
+            "label": "DIMMIT - Border Region of Texas nonmetropolitan area"
+          },
+          {
+            "value": "DONLEY - West Texas Region of Texas nonmetropolitan area",
+            "label": "DONLEY - West Texas Region of Texas nonmetropolitan area"
+          },
+          {
+            "value": "DUVAL - Coastal Plains Region of Texas nonmetropolitan area",
+            "label": "DUVAL - Coastal Plains Region of Texas nonmetropolitan area"
+          },
+          {
+            "value": "EASTLAND - North Texas Region of Texas nonmetropolitan area",
+            "label": "EASTLAND - North Texas Region of Texas nonmetropolitan area"
+          },
+          {
+            "value": "ECTOR - Odessa, TX",
+            "label": "ECTOR - Odessa, TX"
+          },
+          {
+            "value": "EDWARDS - Border Region of Texas nonmetropolitan area",
+            "label": "EDWARDS - Border Region of Texas nonmetropolitan area"
+          },
+          {
+            "value": "EL PASO - El Paso, TX",
+            "label": "EL PASO - El Paso, TX"
+          },
+          {
+            "value": "ELLIS - Dallas-Fort Worth-Arlington, TX",
+            "label": "ELLIS - Dallas-Fort Worth-Arlington, TX"
+          },
+          {
+            "value": "GRAYSON - Sherman-Denison, TX",
+            "label": "GRAYSON - Sherman-Denison, TX"
+          },
+          {
+            "value": "GREGG - Longview, TX",
+            "label": "GREGG - Longview, TX"
+          },
+          {
+            "value": "GRIMES - Hill Country Region of Texas nonmetropolitan area",
+            "label": "GRIMES - Hill Country Region of Texas nonmetropolitan area"
+          },
+          {
+            "value": "GUADALUPE - San Antonio-New Braunfels, TX",
+            "label": "GUADALUPE - San Antonio-New Braunfels, TX"
+          },
+          {
+            "value": "HALE - West Texas Region of Texas nonmetropolitan area",
+            "label": "HALE - West Texas Region of Texas nonmetropolitan area"
+          },
+          {
+            "value": "HALL - West Texas Region of Texas nonmetropolitan area",
+            "label": "HALL - West Texas Region of Texas nonmetropolitan area"
+          },
+          {
+            "value": "HAMILTON - Hill Country Region of Texas nonmetropolitan area",
+            "label": "HAMILTON - Hill Country Region of Texas nonmetropolitan area"
+          },
+          {
+            "value": "HANSFORD - West Texas Region of Texas nonmetropolitan area",
+            "label": "HANSFORD - West Texas Region of Texas nonmetropolitan area"
+          },
+          {
+            "value": "HARDEMAN - West Texas Region of Texas nonmetropolitan area",
+            "label": "HARDEMAN - West Texas Region of Texas nonmetropolitan area"
+          },
+          {
+            "value": "HARDIN - Beaumont-Port Arthur, TX",
+            "label": "HARDIN - Beaumont-Port Arthur, TX"
+          },
+          {
+            "value": "HARRIS - Houston-The Woodlands-Sugar Land, TX",
+            "label": "HARRIS - Houston-The Woodlands-Sugar Land, TX"
+          },
+          {
+            "value": "HARRISON - North Texas Region of Texas nonmetropolitan area",
+            "label": "HARRISON - North Texas Region of Texas nonmetropolitan area"
+          },
+          {
+            "value": "HARTLEY - West Texas Region of Texas nonmetropolitan area",
+            "label": "HARTLEY - West Texas Region of Texas nonmetropolitan area"
+          },
+          {
+            "value": "HASKELL - West Texas Region of Texas nonmetropolitan area",
+            "label": "HASKELL - West Texas Region of Texas nonmetropolitan area"
+          },
+          {
+            "value": "HAYS - Austin-Round Rock, TX",
+            "label": "HAYS - Austin-Round Rock, TX"
+          },
+          {
+            "value": "HEMPHILL - West Texas Region of Texas nonmetropolitan area",
+            "label": "HEMPHILL - West Texas Region of Texas nonmetropolitan area"
+          },
+          {
+            "value": "HENDERSON - North Texas Region of Texas nonmetropolitan area",
+            "label": "HENDERSON - North Texas Region of Texas nonmetropolitan area"
+          },
+          {
+            "value": "HIDALGO - McAllen-Edinburg-Mission, TX",
+            "label": "HIDALGO - McAllen-Edinburg-Mission, TX"
+          },
+          {
+            "value": "HILL - Hill Country Region of Texas nonmetropolitan area",
+            "label": "HILL - Hill Country Region of Texas nonmetropolitan area"
+          },
+          {
+            "value": "HOCKLEY - West Texas Region of Texas nonmetropolitan area",
+            "label": "HOCKLEY - West Texas Region of Texas nonmetropolitan area"
+          },
+          {
+            "value": "HOOD - Dallas-Fort Worth-Arlington, TX",
+            "label": "HOOD - Dallas-Fort Worth-Arlington, TX"
+          }
+        ],
+        2: [
+          {
+            "value": "Abilene, TX",
+            "label": "Abilene, TX"
+          },
+          {
+            "value": "Amarillo, TX",
+            "label": "Amarillo, TX"
+          },
+          {
+            "value": "Austin-Round Rock, TX",
+            "label": "Austin-Round Rock, TX"
+          },
+          {
+            "value": "Beaumont-Port Arthur, TX",
+            "label": "Beaumont-Port Arthur, TX"
+          },
+          {
+            "value": "Big Thicket Region of Texas nonmetropolitan area",
+            "label": "Big Thicket Region of Texas nonmetropolitan area"
+          },
+          {
+            "value": "Border Region of Texas nonmetropolitan area",
+            "label": "Border Region of Texas nonmetropolitan area"
+          },
+          {
+            "value": "Brownsville-Harlingen, TX",
+            "label": "Brownsville-Harlingen, TX"
+          },
+          {
+            "value": "Coastal Plains Region of Texas nonmetropolitan area",
+            "label": "Coastal Plains Region of Texas nonmetropolitan area"
+          },
+          {
+            "value": "College Station-Bryan, TX",
+            "label": "College Station-Bryan, TX"
+          },
+          {
+            "value": "Corpus Christi, TX",
+            "label": "Corpus Christi, TX"
+          },
+          {
+            "value": "Dallas-Fort Worth-Arlington, TX",
+            "label": "Dallas-Fort Worth-Arlington, TX"
+          },
+          {
+            "value": "El Paso, TX",
+            "label": "El Paso, TX"
+          },
+          {
+            "value": "Hill Country Region of Texas nonmetropolitan area",
+            "label": "Hill Country Region of Texas nonmetropolitan area"
+          },
+          {
+            "value": "Houston-The Woodlands-Sugar Land, TX",
+            "label": "Houston-The Woodlands-Sugar Land, TX"
+          },
+          {
+            "value": "Killeen-Temple, TX",
+            "label": "Killeen-Temple, TX"
+          },
+          {
+            "value": "Laredo, TX",
+            "label": "Laredo, TX"
+          },
+          {
+            "value": "Longview, TX",
+            "label": "Longview, TX"
+          },
+          {
+            "value": "Lubbock, TX",
+            "label": "Lubbock, TX"
+          },
+          {
+            "value": "McAllen-Edinburg-Mission, TX",
+            "label": "McAllen-Edinburg-Mission, TX"
+          },
+          {
+            "value": "Midland, TX",
+            "label": "Midland, TX"
+          },
+          {
+            "value": "North Texas Region of Texas nonmetropolitan area",
+            "label": "North Texas Region of Texas nonmetropolitan area"
+          },
+          {
+            "value": "Odessa, TX",
+            "label": "Odessa, TX"
+          },
+          {
+            "value": "San Angelo, TX",
+            "label": "San Angelo, TX"
+          },
+          {
+            "value": "San Antonio-New Braunfels, TX",
+            "label": "San Antonio-New Braunfels, TX"
+          },
+          {
+            "value": "Sherman-Denison, TX",
+            "label": "Sherman-Denison, TX"
+          },
+          {
+            "value": "Texarkana, TX-AR",
+            "label": "Texarkana, TX-AR"
+          },
+          {
+            "value": "Tyler, TX",
+            "label": "Tyler, TX"
+          },
+          {
+            "value": "Victoria, TX",
+            "label": "Victoria, TX"
+          },
+          {
+            "value": "Waco, TX",
+            "label": "Waco, TX"
+          },
+          {
+            "value": "West Texas Region of Texas nonmetropolitan area",
+            "label": "West Texas Region of Texas nonmetropolitan area"
+          },
+          {
+            "value": "Wichita Falls, TX",
+            "label": "Wichita Falls, TX"
+          }
+        ],
+      },
   };
 
 //   const getAreaOptions = () => {
