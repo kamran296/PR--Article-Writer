@@ -21,10 +21,10 @@ exports.getAggregatedSalary = async (req, res) => {
 
   try {
     // Define each API call with error handling in individual .catch blocks
-    const api1 = axios
-      .post("https://www.internal.cachelabs.io/api/salary/salary", { jobTitle, location })
-      .then(response => results.salaryCom = response.data)
-      .catch(error => results.errors.push({ api: "Salary.com", error: error.message || "Unknown error" }));
+    // const api1 = axios
+    //   .post("https://www.internal.cachelabs.io/api/salary/salary", { jobTitle, location })
+    //   .then(response => results.salaryCom = response.data)
+    //   .catch(error => results.errors.push({ api: "Salary.com", error: error.message || "Unknown error" }));
 
     const api2 = axios
       .post("https://www.internal.cachelabs.io/api/indeed/get-salary-indeed", { jobRole: jobTitle, location })
@@ -42,7 +42,7 @@ exports.getAggregatedSalary = async (req, res) => {
       .catch(error => results.errors.push({ api: "Levels.fyi", error: error.message || "Unknown error" }));
 
     // Wait for all API calls to finish
-    await Promise.all([api1, api2, api3, api5]);
+    await Promise.all([ api2, api3, api5]);
 
     // Return the results, including any errors that occurred in specific APIs
     res.json(results);
