@@ -12,21 +12,21 @@ job_location = sys.argv[2]
 
 
 # Set up Chrome options to run in headless mode
-chrome_options = Options()
-chrome_options.add_argument('--no-sandbox')
-chrome_options.add_argument('--disable-dev-shm-usage')
-chrome_options.add_argument('--disable-gpu')
-chrome_options.add_argument('--remote-debugging-port=9222')  # Enable remote debugging
-chrome_options.add_argument('--window-size=1920,1080')
-chrome_options.add_argument('--disable-setuid-sandbox')
-chrome_options.add_argument('--disable-software-rasterizer')
-chrome_options.add_argument('--disable-extensions')
-chrome_options.binary_location = '/usr/bin/google-chrome'
+# chrome_options = Options()
+# chrome_options.add_argument('--no-sandbox')
+# chrome_options.add_argument('--disable-dev-shm-usage')
+# chrome_options.add_argument('--disable-gpu')
+# chrome_options.add_argument('--remote-debugging-port=9222')  # Enable remote debugging
+# chrome_options.add_argument('--window-size=1920,1080')
+# chrome_options.add_argument('--disable-setuid-sandbox')
+# chrome_options.add_argument('--disable-software-rasterizer')
+# chrome_options.add_argument('--disable-extensions')
+# chrome_options.binary_location = '/usr/bin/google-chrome'
 
-driver = webdriver.Chrome(options=chrome_options)
+# driver = webdriver.Chrome(options=chrome_options)
 
 # Initialize the Chrome WebDriver with the headless option
-# driver = webdriver.Chrome()
+driver = webdriver.Chrome()
 
 # Navigate to the page containing the salary information
 driver.get('https://www.indeed.com/career/salaries')
