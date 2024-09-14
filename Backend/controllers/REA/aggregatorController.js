@@ -27,7 +27,7 @@ exports.getAggregatedSalary = async (req, res) => {
         };
 
         // Execute API calls
-        const [ response2] = await Promise.allSettled([ api2, api3, api5]);
+        const [ response2] = await Promise.allSettled([ api2]);
 
         // Process each response
         // if (response1.status === 'fulfilled') {
