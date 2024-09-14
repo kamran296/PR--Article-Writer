@@ -39,7 +39,7 @@ exports.getAggregatedSalary = async (req, res) => {
         if (response2.status === 'fulfilled') {
             results.indeed = response2.value.data;
         } else {
-            results.errors.push({ api: 'Indeed', error: response2.reason.message });
+            results.errors.push({ api: 'Indeed', error: response2 });
         }
 
         // if (response3.status === 'fulfilled') {
