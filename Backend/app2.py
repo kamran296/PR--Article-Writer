@@ -12,15 +12,18 @@ job_location = sys.argv[2]
 
 
 # Set up Chrome options to run in headless mode
-# chrome_options = Options()
-# chrome_options.add_argument("--headless")
-# chrome_options.add_argument("--disable-gpu")
-# chrome_options.add_argument("--window-size=1920,1080")
-# chrome_options.add_argument("--no-sandbox")
-# chrome_options.add_argument("--disable-dev-shm-usage")
+chrome_options = Options()
+chrome_options.add_argument('--no-sandbox')
+chrome_options.add_argument('--disable-dev-shm-usage')
+chrome_options.add_argument('--disable-gpu')  # Optional: Disable GPU hardware acceleration if it's not needed
+chrome_options.add_argument('--start-maximized')  # Start maximized to avoid window sizing issues
+chrome_options.add_argument('--disable-infobars')
+chrome_options.add_argument('--disable-notifications')  # Disable pop-up notifications
+
+driver = webdriver.Chrome(options=chrome_options)
 
 # Initialize the Chrome WebDriver with the headless option
-driver = webdriver.Chrome()
+# driver = webdriver.Chrome()
 
 # Navigate to the page containing the salary information
 driver.get('https://www.indeed.com/career/salaries')
