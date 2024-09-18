@@ -1,60 +1,66 @@
-const puppeteer = require('puppeteer');
+const puppeteer = require("puppeteer");
 
 exports.getSalary = async (req, res) => {
-    const { jobTitle, location } = req.body;
-    
-    if (!jobTitle || !location) {
-        return res.status(400).json({ error: 'jobTitle and location are required parameters' });
-    }
+  const { jobTitle, location } = req.body;
 
-    try {
-        const browser = await puppeteer.launch({ headless: true });
-        const page = await browser.newPage();
+  if (!jobTitle || !location) {
+    return res
+      .status(400)
+      .json({ error: "jobTitle and location are required parameters" });
+  }
 
-        await page.goto('https://www.salary.com/');
+  try {
+    console.log("inside salary cont");
+    const browser = await puppeteer.launch({ headless: true });
+    const page = await browser.newPage();
 
-        // Type the job title and location into the search fields
-        await page.type('#trafficdrivertad-worth-jobtitle_input', jobTitle);
-        await page.type('#trafficdrivertad-worth-location_input', location);
+    await page.goto("https://www.salary.com/");
 
-        // Click the search button
-        await page.click('#sa_body_tool_search_btn');
+    // Type the job title and location into the search fields
+    await page.type("#trafficdrivertad-worth-jobtitle_input", jobTitle);
+    await page.type("#trafficdrivertad-worth-location_input", location);
 
-        // Wait for the results page to load and display the results
-        await page.waitForSelector('a.a-color.font-semibold.margin-right10');
+    // Click the search button
+    await page.click("#sa_body_tool_search_btn");
 
-        // Select the first result and navigate to it
-        const firstResultSelector = 'a.a-color.font-semibold.margin-right10';
-        const firstResultHref = await page.$eval(firstResultSelector, a => a.href);
+    // Wait for the results page to load and display the results
+    await page.waitForSelector("a.a-color.font-semibold.margin-right10");
 
-        await page.goto(firstResultHref);
+    // Select the first result and navigate to it
+    const firstResultSelector = "a.a-color.font-semibold.margin-right10";
+    const firstResultHref = await page.$eval(
+      firstResultSelector,
+      (a) => a.href
+    );
 
-        // Wait for the page to load the necessary elements
-        await page.waitForSelector('#top_salary_value');
+    await page.goto(firstResultHref);
 
-        // Extract salary data
-        const salaryData = await page.evaluate(() => {
-            const getSalaryTextById = (id) => {
-                const element = document.getElementById(id);
-                return element ? element.textContent.trim() : 'N/A';
-            };
+    // Wait for the page to load the necessary elements
+    await page.waitForSelector("#top_salary_value");
 
-            const website = 'Salary.com';
-            const lowSalary = getSalaryTextById('_26_888');
-            const highSalary = getSalaryTextById('_135_289');
-            const averageSalary = getSalaryTextById('top_salary_value');
+    // Extract salary data
+    const salaryData = await page.evaluate(() => {
+      const getSalaryTextById = (id) => {
+        const element = document.getElementById(id);
+        return element ? element.textContent.trim() : "N/A";
+      };
 
-            return { website, lowSalary, highSalary, averageSalary };
-        });
+      const website = "Salary.com";
+      const lowSalary = getSalaryTextById("_26_888");
+      const highSalary = getSalaryTextById("_135_289");
+      const averageSalary = getSalaryTextById("top_salary_value");
 
-        await browser.close();
+      return { website, lowSalary, highSalary, averageSalary };
+    });
 
-        // Send the extracted salary data as the response
-        return res.json(salaryData);
+    await browser.close();
 
-    } catch (error) {
-        console.error(error);
-        return res.status(500).json({ error: 'An error occurred while fetching salary data.' });
-    }
+    // Send the extracted salary data as the response
+    return res.json(salaryData);
+  } catch (error) {
+    console.error(error);
+    return res
+      .status(500)
+      .json({ error: "An error occurred while fetching salary data." });
+  }
 };
-
