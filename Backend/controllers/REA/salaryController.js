@@ -14,7 +14,7 @@ exports.getSalary = async (req, res) => {
     const browser = await puppeteer.launch({ headless: true });
     const page = await browser.newPage();
 
-    await page.goto("https://www.salary.com/");
+    await page.goto("https://www.salary.com/", { timeout: 100000 });
 
     // Type the job title and location into the search fields
     await page.type("#trafficdrivertad-worth-jobtitle_input", jobTitle);
@@ -61,6 +61,6 @@ exports.getSalary = async (req, res) => {
     console.error(error);
     return res
       .status(500)
-      .json({ error: "An error occurred while fetching salary data." });
+      .json({ error: "An error occurred while fetching salary data.", error });
   }
 };
