@@ -11,7 +11,10 @@ exports.getSalary = async (req, res) => {
 
   try {
     console.log("inside salary cont");
-    const browser = await puppeteer.launch({ headless: true });
+    const browser = await puppeteer.launch({
+      headless: true,
+      args: ["--no-sandbox", "--disable-setuid-sandbox"],
+    });
     const page = await browser.newPage();
 
     await page.goto("https://www.salary.com/", { timeout: 100000 });
