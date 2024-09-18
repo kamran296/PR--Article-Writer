@@ -11,6 +11,7 @@ exports.getAggregatedSalary = async (req, res) => {
 
   try {
     // Define the API calls
+    console.log("inside aggregrator");
     const api1 = axios.post(
       "https://www.internal.cachelabs.io/api/salary/salary",
       {
