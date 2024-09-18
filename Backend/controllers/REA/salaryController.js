@@ -17,7 +17,7 @@ exports.getSalary = async (req, res) => {
     });
     const page = await browser.newPage();
 
-    await page.goto("https://www.salary.com/", { timeout: 100000 });
+    await page.goto("https://www.salary.com/", { timeout: 900000 });
 
     // Type the job title and location into the search fields
     await page.type("#trafficdrivertad-worth-jobtitle_input", jobTitle);
