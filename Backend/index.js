@@ -26,6 +26,7 @@ const aggregatorRoutes = require('./router/REA/aggregatorRoutes');
 const monsterRoutes = require('./router/REA/monsterRoutes');
 const levelsRoutes = require('./router/REA/levelsRoutes');
 const socRoutes = require('./router/REA/socRoutes');
+const glassdoorRoutes = require('./router/REA/glassdoorRoutes');
 
 // Import your data models
 const LorData = require("./model/lorData");
@@ -55,10 +56,9 @@ mongoose
 app.use(cookieParser());
 app.use(express.json());
 
-// origin: "https://www.internal.cachelabs.io", // Adjust this to match your frontend URL
 
 const corsOptions = {
-  
+  origin: "https://www.internal.cachelabs.io", // Adjust this to match your frontend URL
   methods: ["GET", "POST", "DELETE"],
   credentials: true,
 };
@@ -100,6 +100,7 @@ app.use('/api/aggregator', aggregatorRoutes);
 app.use('/api/monster', monsterRoutes);
 app.use('/api/levels', levelsRoutes);
 app.use('/api/soc', socRoutes);
+app.use('/api/glassdoor', glassdoorRoutes);
 // Static files
 const _dirname = path.dirname("");
 const buildPath = path.join(_dirname, "../frontend/dist");

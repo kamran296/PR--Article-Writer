@@ -43,17 +43,19 @@ const ResultPage = () => {
           const salaryComHigh = result.highSalaries.salaryCom;
           const indeedHigh = result.highSalaries.indeed;
           const talentHigh = result.highSalaries.talent;
+          const glassdoorHigh = result.highSalaries.glassdoor;
           const monsterHigh = result.highSalaries.monster;
           const levelsHigh = result.highSalaries.levels;
 
           const salaryComMid = result.midSalaries.salaryCom;
           const indeedMid = result.midSalaries.indeed;
           const talentMid = result.midSalaries.talent;
+          const glassdoorMid = result.midSalaries.glassdoor;
           const monsterMid = result.midSalaries.monster;
           const levelsMid = result.midSalaries.levels;
 
-          const averageHighSalary = calculateAverage([salaryComHigh, indeedHigh, talentHigh, monsterHigh, levelsHigh]);
-          const averageMidSalary = calculateAverage([salaryComMid, indeedMid, talentMid, monsterMid, levelsMid]);
+          const averageHighSalary = calculateAverage([talentHigh, glassdoorHigh]);
+          const averageMidSalary = calculateAverage([talentMid, glassdoorMid]);
 
             return {
                 jobTitle: result.jobTitle,
@@ -745,10 +747,10 @@ if (!additionalResponse) {
                         return null;
                       })()}
 
-                    {jobTitle1Response.highSalaries.monster !== 0 &&
+                    {jobTitle1Response.highSalaries.glassdoor !== 0 &&
                       (() => {
                         const highSalary =
-                          jobTitle1Response.highSalaries.monster;
+                          jobTitle1Response.highSalaries.glassdoor;
                         const totalCompensation =
                           baseSalary + bonusSalary + stocksComponent;
                         let displaySalary = null;
@@ -770,15 +772,15 @@ if (!additionalResponse) {
                           return (
                             <tr className="border-t border-gray-200">
                               <td className="px-10 py-8">
-                                <div className="text-[1.5rem] font-medium text-blue-900">
-                                  monster.com for {inputData.jobTitles[0]} in{" "}
+                                <div className="text-[1.5rem] font-semibold text-blue-900">
+                                glassdoor.com for {inputData.jobTitles[0]} in{" "}
                                   {inputData.location}
                                 </div>
                               </td>
                               <td className="px-10 py-8">
                                 <div className="text-[1.5rem] text-blue-600 font-semibold">
                                   $
-                                  {jobTitle1Response.highSalaries.levels.toLocaleString()}
+                                  {jobTitle1Response.highSalaries.glassdoor.toLocaleString()}
                                 </div>
                               </td>
                               <td className="px-10 py-8">
@@ -996,10 +998,10 @@ if (!additionalResponse) {
                         return null;
                       })()}
 
-                    {jobTitle2Response.highSalaries.monster !== 0 &&
+                    {jobTitle2Response.highSalaries.glassdoor !== 0 &&
                       (() => {
                         const highSalary =
-                          jobTitle2Response.highSalaries.monster;
+                          jobTitle2Response.highSalaries.glassdoor;
                         const totalCompensation =
                           baseSalary + bonusSalary + stocksComponent;
                         let displaySalary = null;
@@ -1022,14 +1024,14 @@ if (!additionalResponse) {
                             <tr className="border-t border-gray-200">
                               <td className="px-10 py-8">
                                 <div className="text-[1.5rem] font-medium text-blue-900">
-                                  monster.com for {inputData.jobTitles[1]} in{" "}
+                                glassdoor.com for {inputData.jobTitles[1]} in{" "}
                                   {inputData.location}
                                 </div>
                               </td>
                               <td className="px-10 py-8">
                                 <div className="text-[1.5rem] text-blue-600 font-semibold">
                                   $
-                                  {jobTitle2Response.highSalaries.monster.toLocaleString()}
+                                  {jobTitle2Response.highSalaries.glassdoor.toLocaleString()}
                                 </div>
                               </td>
                               <td className="px-10 py-8">
@@ -1247,10 +1249,10 @@ if (!additionalResponse) {
                         return null;
                       })()}
 
-                    {jobTitle3Response.highSalaries.monster !== 0 &&
+                    {jobTitle3Response.highSalaries.glassdoor !== 0 &&
                       (() => {
                         const highSalary =
-                          jobTitle3Response.highSalaries.monster;
+                          jobTitle3Response.highSalaries.glassdoor;
                         const totalCompensation =
                           baseSalary + bonusSalary + stocksComponent;
                         let displaySalary = null;
@@ -1272,18 +1274,18 @@ if (!additionalResponse) {
                           return (
                             <tr className="border-t border-gray-200">
                               <td className="px-10 py-8">
-                                <div className="text-[1.5rem] font-medium text-blue-900">
-                                  monster.com for {inputData.jobTitles[2]} in{" "}
+                                <div className="text-[1.5rem] font-semibold text-blue-900">
+                                glassdoor.com for {inputData.jobTitles[2]} in{" "}
                                   {inputData.location}
                                 </div>
                               </td>
                               <td className="px-10 py-8">
                                 <div className="text-[1.5rem] text-blue-600 font-semibold">
                                   $
-                                  {jobTitle3Response.highSalaries.monster.toLocaleString()}
+                                  {jobTitle3Response.highSalaries.glassdoor.toLocaleString()}
                                 </div>
                               </td>
-                              <td className="px-10 py-8 text-center">
+                              <td className="px-10 py-8">
                                 Mr {inputData.firstName}'s Salary of $
                                 {displaySalary.toLocaleString()} exceeds his{" "}
                                 {inputData.jobTitles[2]} counterparts in{" "}

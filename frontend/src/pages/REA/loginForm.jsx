@@ -47,18 +47,20 @@ const LoginForm = () => {
           return {
               jobTitle,
               highSalaries: {
-                  salaryCom: parseSalary(response.data.salaryCom?.highSalary || '0'),
-                  indeed: parseSalary(response.data.indeed?.highSalary || '0'),
+                  // salaryCom: parseSalary(response.data.salaryCom?.highSalary || '0'),
+                  // indeed: parseSalary(response.data.indeed?.highSalary || '0'),
                   talent: parseSalary(response.data.talent?.high || '0'),
-                  monster: parseSalary(response.data.monster?.high || '0'),
-                  levels: parseSalary(response.data.levels?.high || '0'),
+                  glassdoor: response.data.glassdoor?.basePayMax ?? 0,
+                  // monster: parseSalary(response.data.monster?.high || '0'),
+                  // levels: parseSalary(response.data.levels?.high || '0'),
               },
               midSalaries: {
-                  salaryCom: parseSalary(response.data.salaryCom?.averageSalary || '0'),
-                  indeed: parseSalary(response.data.indeed?.averageSalary || '0'),
+                  // salaryCom: parseSalary(response.data.salaryCom?.averageSalary || '0'),
+                  // indeed: parseSalary(response.data.indeed?.averageSalary || '0'),
                   talent: parseSalary(response.data.talent?.mid || '0'),
-                  monster: parseSalary(response.data.monster?.average || '0'),
-                  levels: parseSalary(response.data.levels?.medianSalary || '0'),
+                  glassdoor: response.data.glassdoor?.basePayMin ?? 0,
+                  // monster: parseSalary(response.data.monster?.average || '0'),
+                  // levels: parseSalary(response.data.levels?.medianSalary || '0'),
               }
           };
       }));
