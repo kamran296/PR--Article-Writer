@@ -20,8 +20,6 @@ import LorForm from "./pages/LOR/LorForm";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import AddData from "./pages/AddData/AddData";
 import ClientChatbot from "./pages/ClientChatbot/ClientChatbot";
-import ReaForm from "./pages/REA/loginPage";
-import ReportPage from "./pages/REA/output";
 import LoginForm from "./pages/REA/loginForm";
 import ResultPage from "./pages/REA/Result";
 import Landing from "./pages/Landing/Landing";
