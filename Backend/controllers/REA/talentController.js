@@ -43,6 +43,7 @@ exports.getSalaryTalent = async (req, res) => {
         });
 
         res.json({ salaryValues });
+        console.log({ salaryValues });
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Something went wrong' });

@@ -110,12 +110,18 @@ const ResultPage = () => {
     let highSalaryString = "";
 let socSalary = 0; // Declare socSalary here so it's accessible
 
-if (!additionalResponse) {
-  highSalaryString = "$0";  // Default value
-} else if (additionalResponse !== null) {
-  highSalaryString = additionalResponse.level4Yr.split('.')[0]; // Get part before decimal
-  socSalary = parseInt(highSalaryString.replace(/[^\d]/g, ''), 10); // Extract number
-}
+// if (!additionalResponse) {
+//   highSalaryString = "$0";  // Default value
+// } else if (additionalResponse !== null) {
+//   highSalaryString = additionalResponse.level4Yr.split('.')[0]; // Get part before decimal
+//   socSalary = parseInt(highSalaryString.replace(/[^\d]/g, ''), 10); // Extract number
+// }
+
+const level1Hr = (additionalResponse.level1Salary / 2080).toFixed(2);
+const level2Hr = (additionalResponse.level2Salary / 2080).toFixed(2);
+const level3Hr = (additionalResponse.level3Salary / 2080).toFixed(2);
+const level4Hr = (additionalResponse.level4Salary / 2080).toFixed(2);
+const meanHr = (additionalResponse.averageSalary / 2080).toFixed(2);
 
     const handlePrint = () => {
         window.print();
@@ -318,7 +324,7 @@ if (!additionalResponse) {
                         SOC code
                       </td>
                       <td className="text-[1.65rem] px-12 py-4 text-center">
-                        {inputData.code}
+                        {inputData.socCode}
                       </td>
                     </tr>
                   )}
@@ -408,90 +414,90 @@ if (!additionalResponse) {
                               I
                             </div>
                           </td>
-                          <td className="px-10 py-8 text-[1.5rem]">
-                            {additionalResponse.level1Hr}
-                          </td>
-                          <td className="px-10 py-8 ">
-                            <div className="text-blue-600  font-semibold">
-                              {additionalResponse.level1Yr}
-                            </div>
-                          </td>
-                        </tr>
-                        <tr className="border-t border-gray-200">
-                          <td className="px-10 py-8">
-                            <div className="font-medium text-center text-blue-900">
-                              II
-                            </div>
-                          </td>
-                          <td className="px-10 py-8">
-                            {additionalResponse.level2Hr}
-                          </td>
-                          <td className="px-10 py-8 ">
-                            <div className="text-blue-600 font-semibold">
-                              {additionalResponse.level2Yr}
-                            </div>
-                          </td>
-                        </tr>
-                        <tr className="border-t border-gray-200">
-                          <td className="px-10 py-8">
-                            <div className="font-medium text-center text-blue-900">
-                              III
-                            </div>
-                          </td>
-                          <td className="px-10 py-8">
-                            {additionalResponse.level3Hr}
-                          </td>
-                          <td className="px-10 py-8 ">
-                            <div className="text-blue-600 font-semibold">
-                              {additionalResponse.level3Yr}
-                            </div>
-                          </td>
-                        </tr>
-                        <tr className="border-t border-gray-200">
-                          <td className="px-10 py-8">
-                            <div className="font-medium text-center text-blue-900">
-                              IV
-                            </div>
-                          </td>
-                          <td className="px-10 py-8">
-                            {additionalResponse.level4Hr}
-                          </td>
-                          <td className="px-10 py-8 ">
-                            <div className="text-blue-600 font-semibold">
-                              {additionalResponse.level4Yr}
-                            </div>
-                          </td>
-                        </tr>
-                        <tr className="border-t border-gray-200">
-                          <td className="px-10 py-8">
-                            <div className="font-medium text-center text-blue-900">
-                              Mean
-                            </div>
-                          </td>
-                          <td className="px-10 py-8">
-                            {additionalResponse.meanHr}
-                          </td>
-                          <td className="px-10 py-8 ">
-                            <div className="text-blue-600 font-semibold">
-                              {additionalResponse.meanYr}
-                            </div>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
+                        <td className="px-10 py-8">
+                          ${level1Hr}
+                        </td>
+                        <td className="px-10 py-8 ">
+                          <div className="text-blue-600 font-semibold">
+                            ${additionalResponse.level1Salary.toLocaleString()}
+                          </div>
+                        </td>
+                      </tr>
+                      <tr className="border-t border-gray-200">
+                        <td className="px-10 py-8">
+                          <div className="font-medium text-center text-blue-900">
+                            II
+                          </div>
+                        </td>
+                        <td className="px-10 py-8">
+                          ${level2Hr}
+                        </td>
+                        <td className="px-10 py-8 ">
+                          <div className="text-blue-600 font-semibold">
+                            ${additionalResponse.level2Salary.toLocaleString()}
+                          </div>
+                        </td>
+                      </tr>
+                      <tr className="border-t border-gray-200">
+                        <td className="px-10 py-8">
+                          <div className="font-medium text-center text-blue-900">
+                            III
+                          </div>
+                        </td>
+                        <td className="px-10 py-8">
+                          ${level3Hr}
+                        </td>
+                        <td className="px-10 py-8 ">
+                          <div className="text-blue-600 font-semibold">
+                            ${additionalResponse.level3Salary.toLocaleString()}
+                          </div>
+                        </td>
+                      </tr>
+                      <tr className="border-t border-gray-200">
+                        <td className="px-10 py-8">
+                          <div className="font-medium text-center text-blue-900">
+                            IV
+                          </div>
+                        </td>
+                        <td className="px-10 py-8">
+                          ${level4Hr}
+                        </td>
+                        <td className="px-10 py-8 ">
+                          <div className="text-blue-600 font-semibold">
+                            ${additionalResponse.level4Salary.toLocaleString()}
+                          </div>
+                        </td>
+                      </tr>
+                      <tr className="border-t border-gray-200">
+                        <td className="px-10 py-8">
+                          <div className="font-medium text-center text-blue-900">
+                            Mean
+                          </div>
+                        </td>
+                        <td className="px-10 py-8">
+                          ${meanHr}
+                        </td>
+                        <td className="px-10 py-8 ">
+                          <div className="text-blue-600 font-semibold">
+                            ${additionalResponse.averageSalary.toLocaleString()}
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
+            </div>
               <div className="flex justify-center h-[40rem] items-center w-[43rem] ml-[6rem]">
                 <InlineComparison
                   baseSalary={baseSalary}
                   bonus={bonusSalary}
                   stocks={stocksComponent}
-                  highSalary={socSalary}
-                />
-              </div>
+                highSalary={additionalResponse.level4Salary}
+              />
             </div>
           </div>
+        </div>
         )}
 
         {/* Graph Section */}
@@ -1023,7 +1029,7 @@ if (!additionalResponse) {
                           return (
                             <tr className="border-t border-gray-200">
                               <td className="px-10 py-8">
-                                <div className="text-[1.5rem] font-medium text-blue-900">
+                                <div className="text-[1.5rem] font-semibold text-blue-900">
                                 glassdoor.com for {inputData.jobTitles[1]} in{" "}
                                   {inputData.location}
                                 </div>

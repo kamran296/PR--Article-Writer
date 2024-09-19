@@ -1,9 +1,9 @@
+// routes/areaRoutes.js
 const express = require('express');
-const { getWageData } = require('../../controllers/REA/socConroller');
-
 const router = express.Router();
+const { getAreaCodeAndSalary } =  require('../../controllers/REA/socController');
 
-// Define the route and associate it with the controller method
-router.post('/getWageData', getWageData);
+// Define the route for /getAreaCode
+router.post('/socSalary', getAreaCodeAndSalary);
 
 module.exports = router;

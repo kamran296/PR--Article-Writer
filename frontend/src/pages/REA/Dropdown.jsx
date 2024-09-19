@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const DynamicAreaSelect = ({ stateValue, setStateValue, radioButtonChoice, setRadioButtonChoice, areaValue, setAreaValue, code, setCode }) => {
+const DynamicAreaSelect = ({ stateValue, setStateValue, radioButtonChoice, setRadioButtonChoice, areaValue, setAreaValue, socCode, setSocCode }) => {
   
 
   const formatAreaKey = (value) => value.replace(/\s+/g, '_').toUpperCase();
@@ -5724,9 +5724,9 @@ const getAreaOptions = () => {
 };
   
 
-  return (
-    <div>
-      {/* Select State Dropdown */}
+return (
+  <div>
+    {/* Select State Dropdown */}
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2 mt-[2rem]">
                     <div>
                       <label className="block text-gray-700 text-[1.65rem]  font-bold ml-2 mb-2">
@@ -5735,13 +5735,13 @@ const getAreaOptions = () => {
                       <input
                         className="w-full bg-gray-100 text-[1.65rem]  text-gray-900 p-[1.25rem] rounded-lg focus:outline-none focus:shadow-outline"
                         type="text"
-                        value={code}
-                        placeholder="SOC Code"
-                        onChange={(e) => setCode(e.target.value)}
-                        required
-                      />
-                    </div>
-      <div>
+                      value={socCode}
+                      placeholder="SOC Code"
+                      onChange={(e) => setSocCode(e.target.value)}
+                      required
+                    />
+                  </div>
+    <div>
         <label className="block text-gray-700 text-[1.65rem]  font-bold ml-2 mb-2">
           Select a State/Territory
         </label>
@@ -5813,40 +5813,40 @@ const getAreaOptions = () => {
           <option value="WISCONSIN">WISCONSIN</option>
           <option value="WYOMING">WYOMING</option>
 
-          {/* Add more state options */}
-        </select>
-      </div>
-      </div>
+        {/* Add more state options */}
+      </select>
+    </div>
+    </div>
 
-      {/* Radio Buttons for Area Type */}
-      <div className="grid grid-cols-1 gap-5 md:grid-cols-2 mt-5">
-        <div>
-          <label className="block text-gray-700 text-[1.65rem]  font-bold ml-2 mb-2">
-            Select Option:
-          </label>
-          <div className="flex items-center mb-2">
-            <input
-              type="radio"
-              value={1}
-              checked={radioButtonChoice === 1}
-              onChange={() => setRadioButtonChoice(1)}
-              className="form-radio text-[1.65rem] h-6 w-6 text-blue-600"
-            />
-            <span className="ml-2 text-[1.65rem] text-gray-900">County/Township</span>
-          </div>
-          <div className="flex items-center mb-2">
-            <input
-              type="radio"
-              value={2}
-              checked={radioButtonChoice === 2}
-              onChange={() => setRadioButtonChoice(2)}
-              className="form-radio h-6 w-6 text-blue-600"
-            />
-            <span className="ml-2 text-[1.65rem] text-gray-900">BLS areas</span>
-          </div>
+    {/* Radio Buttons for Area Type */}
+    <div className="grid grid-cols-1 gap-5 md:grid-cols-2 mt-5">
+      {/* <div>
+        <label className="block text-gray-700 font-bold ml-2 mb-2">
+          Select Option:
+        </label>
+        <div className="flex items-center mb-2">
+          <input
+            type="radio"
+            value={1}
+            checked={radioButtonChoice === 1}
+            onChange={() => setRadioButtonChoice(1)}
+            className="form-radio h-4 w-4 text-blue-600"
+          />
+          <span className="ml-2 text-gray-900">County/Township</span>
         </div>
+        <div className="flex items-center mb-2">
+          <input
+            type="radio"
+            value={2}
+            checked={radioButtonChoice === 2}
+            onChange={() => setRadioButtonChoice(2)}
+            className="form-radio h-4 w-4 text-blue-600"
+          />
+          <span className="ml-2 text-gray-900">BLS areas</span>
+        </div>
+      </div> */}
 
-        <div>
+      <div>
         <label className="block text-gray-700 text-[1.65rem]  font-bold ml-2 mb-2">
           Select an Area
         </label>
@@ -5865,12 +5865,12 @@ const getAreaOptions = () => {
         </select>
       </div>
 
-      </div>
-
-      {/* Select Area Dropdown */}
-      
     </div>
-  );
+
+    {/* Select Area Dropdown */}
+    
+  </div>
+);
 };
 
 export default DynamicAreaSelect;
