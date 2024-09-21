@@ -5736,7 +5736,7 @@ return (
                         className="w-full bg-gray-100 text-[1.65rem]  text-gray-900 p-[1.25rem] rounded-lg focus:outline-none focus:shadow-outline"
                         type="text"
                       value={socCode}
-                      placeholder="SOC Code"
+                      placeholder="ex: 25-1011"
                       onChange={(e) => setSocCode(e.target.value)}
                       required
                     />
