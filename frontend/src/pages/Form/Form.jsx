@@ -101,7 +101,7 @@ const Form = () => {
     setIsLoading(true);
     try {
       const response = await fetch(
-        "https://www.internal.cachelabs.io/api/v1/ArticelWriter/articleForm",
+        "https://www.internal.cachelabs.io/api/v1/ArticleWriter/articleForm",
         // "http://localhost:5000/api/v1/ArticleWriter/articleForm",
         {
           method: "POST",
