@@ -14,6 +14,19 @@ import Navbar from "../../components/Navbar";
 import { BsSend } from "react-icons/bs";
 import { BiLike, BiDislike, BiSolidLike } from "react-icons/bi";
 
+function DisplayTextWithLineBreaks({ text }) {
+  return (
+    <div>
+      {text.split("\n").map((line, index) => (
+        <React.Fragment key={index}>
+          {line}
+          <br />
+        </React.Fragment>
+      ))}
+    </div>
+  );
+}
+
 const LoaPrompt = () => {
   const navigate = useNavigate();
 
@@ -141,7 +154,8 @@ const LoaPrompt = () => {
                         src={download}
                         alt=""
                       />
-                      <p className="txt font-poppins">{generatedArticle}</p>
+                      {/* <p className="txt font-poppins">{generatedArticle}</p> */}
+                      <DisplayTextWithLineBreaks text={generatedArticle} />;
                     </div>
                     <div className="mt-[1rem]">
                       <span className="flex ml-[5rem]">

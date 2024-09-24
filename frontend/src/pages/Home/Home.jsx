@@ -8,12 +8,25 @@ import userIcon from "./assets/user-icon.png";
 import gptImgLogo from "./assets/chatgptLogo.svg";
 import download from "./assets/download.png";
 import { Link, useNavigate } from "react-router-dom";
-
 import SidebarTail from "../../components/SidebarTail";
 import Navbar from "../../components/Navbar";
 import { BsSend } from "react-icons/bs";
 import { BiLike, BiDislike, BiSolidLike } from "react-icons/bi";
 import SidebarPRD from "../../components/SidebarNiche";
+
+function DisplayTextWithLineBreaks({ text }) {
+  return (
+    <div>
+      {text.split("\n").map((line, index) => (
+        <React.Fragment key={index}>
+          {line}
+          <br />
+        </React.Fragment>
+      ))}
+    </div>
+  );
+}
+
 const Home = () => {
   const navigate = useNavigate();
 
@@ -141,7 +154,8 @@ const Home = () => {
                         src={download}
                         alt=""
                       />
-                      <p className="txt font-poppins">{generatedArticle}</p>
+                      {/* <p className="txt font-poppins">{generatedArticle}</p> */}
+                      <DisplayTextWithLineBreaks text={generatedArticle} />;
                     </div>
                     <div className="mt-[1rem]">
                       <span className="flex ml-[5rem]">

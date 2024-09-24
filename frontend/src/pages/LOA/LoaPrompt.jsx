@@ -13,6 +13,20 @@ import SidebarTail from "../../components/SidebarTail";
 import Navbar from "../../components/Navbar";
 import { BsSend } from "react-icons/bs";
 import { BiLike, BiDislike, BiSolidLike } from "react-icons/bi";
+
+function DisplayTextWithLineBreaks({ text }) {
+  return (
+    <div>
+      {text.split("\n").map((line, index) => (
+        <React.Fragment key={index}>
+          {line}
+          <br />
+        </React.Fragment>
+      ))}
+    </div>
+  );
+}
+
 const LoaPrompt = () => {
   const [formData, setFormData] = useState({
     prompt: "",
@@ -138,7 +152,8 @@ const LoaPrompt = () => {
                       src={download}
                       alt=""
                     />
-                    <p className="txt">{generatedArticle}</p>
+                    {/* <p className="txt">{generatedArticle}</p> */}
+                    <DisplayTextWithLineBreaks text={generatedArticle} />;
                   </div>
                   <div className="mt-[1rem]">
                     <span className="flex ml-[5rem]">

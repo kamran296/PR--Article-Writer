@@ -19,14 +19,14 @@ const nicheRouter = require("./router/nicheRouter");
 const allInfoRouter = require("./router/allinformation");
 const clientChatbotRouter = require("./router/clientChatbot ");
 const AllInformation = require("./model/allInformation");
-const indeedRoutes = require('./router/REA/indeedRoutes');
-const salaryRoutes = require('./router/REA/salaryRoutes');
-const talentRoutes = require('./router/REA/talentRoutes');
-const aggregatorRoutes = require('./router/REA/aggregatorRoutes');
-const monsterRoutes = require('./router/REA/monsterRoutes');
-const levelsRoutes = require('./router/REA/levelsRoutes');
-const socRoutes = require('./router/REA/socRoutes');
-const glassdoorRoutes = require('./router/REA/glassdoorRoutes');
+const indeedRoutes = require("./router/REA/indeedRoutes");
+const salaryRoutes = require("./router/REA/salaryRoutes");
+const talentRoutes = require("./router/REA/talentRoutes");
+const aggregatorRoutes = require("./router/REA/aggregatorRoutes");
+const monsterRoutes = require("./router/REA/monsterRoutes");
+const levelsRoutes = require("./router/REA/levelsRoutes");
+const socRoutes = require("./router/REA/socRoutes");
+const glassdoorRoutes = require("./router/REA/glassdoorRoutes");
 
 // Import your data models
 const LorData = require("./model/lorData");
@@ -56,14 +56,13 @@ mongoose
 app.use(cookieParser());
 app.use(express.json());
 
-
 const corsOptions = {
   origin: "https://www.internal.cachelabs.io", // Adjust this to match your frontend URL
   methods: ["GET", "POST", "DELETE"],
   credentials: true,
 };
 
-app.use(cors(corsOptions));
+app.use(cors());
 
 app.use(
   session({
@@ -93,14 +92,14 @@ app.use("/api/v1/lor", lorRouter);
 app.use("/api/v1/allInfo", allInfoRouter);
 app.use("/api/v1/niche", nicheRouter);
 app.use("/api/v1/client-chatbot", clientChatbotRouter);
-app.use('/api/indeed', indeedRoutes);
-app.use('/api/salary', salaryRoutes);
-app.use('/api/talent', talentRoutes);
-app.use('/api/aggregator', aggregatorRoutes);
-app.use('/api/monster', monsterRoutes);
-app.use('/api/levels', levelsRoutes);
-app.use('/api/soc', socRoutes);
-app.use('/api/glassdoor', glassdoorRoutes);
+app.use("/api/indeed", indeedRoutes);
+app.use("/api/salary", salaryRoutes);
+app.use("/api/talent", talentRoutes);
+app.use("/api/aggregator", aggregatorRoutes);
+app.use("/api/monster", monsterRoutes);
+app.use("/api/levels", levelsRoutes);
+app.use("/api/soc", socRoutes);
+app.use("/api/glassdoor", glassdoorRoutes);
 // Static files
 const _dirname = path.dirname("");
 const buildPath = path.join(_dirname, "../frontend/dist");

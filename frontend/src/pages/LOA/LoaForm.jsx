@@ -28,11 +28,11 @@ const LoaForm = () => {
             <SidebarTail />
           </div>
         </div>
-        <div className="main ml-[25rem] mt-36">
+        <div className="main flex items-center justify-center mt-36">
           <div className="border-b-2 border-gray-300 bg-white rounded-lg">
             <div className="flex justify-between">
               <button
-                className={`px-6 py-4 focus:outline-none ${
+                className={`px-6 py-4 focus:outline-none text-xl ${
                   activeTab === "1"
                     ? "bg-secondary text-white"
                     : "text-gray-600"
@@ -42,7 +42,7 @@ const LoaForm = () => {
                 Critical Role
               </button>
               <button
-                className={`px-6 py-4 focus:outline-none ${
+                className={`px-6 py-4 focus:outline-none text-xl ${
                   activeTab === "2"
                     ? "bg-secondary text-white"
                     : "text-gray-600"
@@ -52,7 +52,7 @@ const LoaForm = () => {
                 Research paper
               </button>
               <button
-                className={`px-6 py-4 focus:outline-none ${
+                className={`px-6 py-4 focus:outline-none text-xl ${
                   activeTab === "3"
                     ? "bg-secondary text-white"
                     : "text-gray-600"

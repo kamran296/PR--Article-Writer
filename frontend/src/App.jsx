@@ -67,17 +67,13 @@ function App() {
             <Route exact path="/rea-result" element={<ResultPage />} />
             <Route exact path="/" element={<Landing />} />
 
-
-
-
-
             {user.user.isAdmin === "Admin" && (
               <Route exact path="/dashboard" element={<Dashboard />} />
             )}
           </>
-         ) : (
+        ) : (
           <Route path="*" element={<Login />} />
-        )} 
+        )}
       </Routes>
     </Router>
   );

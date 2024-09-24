@@ -12,7 +12,7 @@ import { RxDashboard } from "react-icons/rx";
 
 const SidebarTail = () => {
   const navigate = useNavigate();
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.user);

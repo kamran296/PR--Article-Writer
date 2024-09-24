@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 const navbar = () => {
   const data = useSelector((state) => state.user.user);
-  console.log("navbar", data);
+  // console.log("navbar", data);
   return (
     <>
       {/* component */}
