@@ -57,8 +57,8 @@ const navbar = () => {
           <button className=" group">
             <img
               className=" mr-4 h-20 w-20 rounded-full"
-              src={data.user.image}
-              // src={Profile}
+              // src={data.user.image}
+              src={Profile}
               alt="profile-icon"
             />
             {/* Image */}

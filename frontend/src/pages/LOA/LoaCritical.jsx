@@ -147,16 +147,18 @@ const LoaCritical = ({ type }) => {
           <div className="left h-[700px] w-1/2 ">
             <form onSubmit={handleSubmit}>
               <div className={`${!generatedArticle ? "row " : ""}`}>
-                <label>
-                  <input
-                    className="w-[30rem] h-[4rem] rounded-lg p-2 text-2xl m-3 outline-none text-black bg-[#FFFFFF] shadow-md "
-                    placeholder="Recipient's Name"
-                    type="text"
-                    name="recipientName"
-                    value={formData.recipientName}
-                    onChange={handleChange}
-                  />
+                <label className="block text-gray-700 text-[1.65rem]  font-bold ml-2 mb-2">
+                  Recipient Name
                 </label>
+                <input
+                  className="w-[30rem] h-[4rem] rounded-lg p-2 text-2xl m-3 outline-none text-black bg-[#FFFFFF] shadow-md "
+                  placeholder="Recipient's Name"
+                  type="text"
+                  name="recipientName"
+                  value={formData.recipientName}
+                  onChange={handleChange}
+                />
+
                 <label>
                   <input
                     className="w-[30rem] h-[4rem] rounded-lg p-2 text-2xl m-3 outline-none text-black bg-[#FFFFFF] shadow-md"

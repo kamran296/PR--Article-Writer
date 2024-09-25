@@ -34,7 +34,7 @@ function App() {
       dispatch(fetchUser());
     }
   }, [userStatus, dispatch]);
-  console.log("App.jsx user:", user);
+  // console.log("App.jsx user:", user);
   // console.log("app.jsx user", memoizedUser);
   return (
     <Router>

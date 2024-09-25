@@ -147,8 +147,12 @@ const BioWriter = () => {
               <form onSubmit={handleSubmit}>
                 <div className="row">
                   <label>
+                    <p className="ml-4 text-[1.25rem] font-semibold mb-2 mt-4">
+                      Name
+                    </p>
+
                     <input
-                      className="w-[30rem] h-[4rem] rounded-lg p-2 text-2xl m-3 outline-none text-black bg-[#FFFFFF] shadow-md "
+                      className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 outline-none text-black bg-[#FFFFFF] shadow-md mb-4 "
                       placeholder="Name"
                       type="text"
                       name="bioName"
@@ -157,8 +161,12 @@ const BioWriter = () => {
                     />
                   </label>
                   <label>
-                    <input
-                      className="w-[30rem] h-[4rem] rounded-lg p-2 text-2xl m-3 outline-none text-black bg-[#FFFFFF] shadow-md "
+                    <p className="ml-4 text-[1.25rem] font-semibold mb-2 mt-4">
+                      Professional Experience
+                    </p>
+
+                    <textarea
+                      className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 outline-none text-black bg-[#FFFFFF] shadow-md mb-4 "
                       placeholder="Professional Experience"
                       type="text"
                       name="professionalExperience"
@@ -170,9 +178,12 @@ const BioWriter = () => {
 
                 <div className="row">
                   <label>
-                    <input
-                      className="w-[30rem] h-[4rem] rounded-lg p-2 text-2xl m-3 outline-none text-black bg-[#FFFFFF] shadow-md "
-                      placeholder="What skills, value do you bring to the table:"
+                    <p className="ml-4 text-[1.25rem] font-semibold mb-2 mt-4">
+                      Skills
+                    </p>
+                    <textarea
+                      className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 outline-none text-black bg-[#FFFFFF] shadow-md mb-4 "
+                      placeholder="Java, Python, React, etc.."
                       type="text"
                       name="skills"
                       value={formData.skills}
@@ -180,8 +191,11 @@ const BioWriter = () => {
                     />
                   </label>
                   <label>
-                    <input
-                      className="w-[30rem] h-[4rem] rounded-lg p-2 text-2xl m-3 outline-none text-black bg-[#FFFFFF] shadow-md "
+                    <p className="ml-4 text-[1.25rem] font-semibold mb-2 mt-4">
+                      Background
+                    </p>
+                    <textarea
+                      className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 outline-none text-black bg-[#FFFFFF] shadow-md mb-4 "
                       placeholder="Something about your background:"
                       type="text"
                       name="background"
@@ -193,8 +207,11 @@ const BioWriter = () => {
 
                 <div className="row">
                   <label>
-                    <input
-                      className="w-[30rem] h-[4rem] rounded-lg p-2 text-2xl m-3 outline-none text-black bg-[#FFFFFF] shadow-md"
+                    <p className="ml-4 text-[1.25rem] font-semibold mb-2 mt-4">
+                      Career Highlight
+                    </p>
+                    <textarea
+                      className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 outline-none text-black bg-[#FFFFFF] shadow-md mb-4"
                       placeholder="A Highlight from your career:"
                       type="text"
                       name="careerHighlight"
@@ -203,8 +220,11 @@ const BioWriter = () => {
                     />
                   </label>
                   <label>
-                    <input
-                      className="w-[30rem] h-[4rem] rounded-lg p-2 text-2xl m-3 outline-none text-black bg-[#FFFFFF] shadow-md "
+                    <p className="ml-4 text-[1.25rem] font-semibold mb-2 mt-4">
+                      Commitments
+                    </p>
+                    <textarea
+                      className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 outline-none text-black bg-[#FFFFFF] shadow-md mb-4 "
                       placeholder="What you commit to as a professional in your respective field of
                   work:"
                       type="text"
@@ -217,8 +237,11 @@ const BioWriter = () => {
 
                 <div className="row">
                   <label>
-                    <input
-                      className="w-[30rem] h-[4rem] rounded-lg p-2 text-2xl m-3 outline-none text-black bg-[#FFFFFF] shadow-md "
+                    <p className="ml-4 text-[1.25rem] font-semibold mb-2 mt-4">
+                      Proficiency
+                    </p>
+                    <textarea
+                      className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 outline-none text-black bg-[#FFFFFF] shadow-md mb-4 "
                       placeholder="Proficiency:"
                       type="text"
                       name="proficiency"
@@ -227,8 +250,11 @@ const BioWriter = () => {
                     />
                   </label>
                   <label>
-                    <input
-                      className="w-[30rem] h-[4rem] rounded-lg p-2 text-2xl m-3 outline-none text-black bg-[#FFFFFF] shadow-md "
+                    <p className="ml-4 text-[1.25rem] font-semibold mb-2 mt-4">
+                      Academic Excellence
+                    </p>
+                    <textarea
+                      className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 outline-none text-black bg-[#FFFFFF] shadow-md mb-4 "
                       placeholder="Academic Excellence:"
                       type="text"
                       name="academicExcellence"
@@ -240,8 +266,11 @@ const BioWriter = () => {
 
                 <div className="row">
                   <label>
-                    <input
-                      className="w-[30rem] h-[4rem] rounded-lg p-2 text-2xl m-3 outline-none text-black bg-[#FFFFFF] shadow-md "
+                    <p className="ml-4 text-[1.25rem] font-semibold mb-2 mt-4">
+                      Judging Opportunity
+                    </p>
+                    <textarea
+                      className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 outline-none text-black bg-[#FFFFFF] shadow-md mb-4 "
                       placeholder="Judging/Reviewing Opportunities Served:"
                       type="text"
                       name="judgingOpportunity"
@@ -250,8 +279,11 @@ const BioWriter = () => {
                     />
                   </label>
                   <label>
-                    <input
-                      className="w-[30rem] h-[4rem] rounded-lg p-2 text-2xl m-3 outline-none text-black bg-[#FFFFFF] shadow-md "
+                    <p className="ml-4 text-[1.25rem] font-semibold mb-2 mt-4">
+                      Press/Media Coverage
+                    </p>
+                    <textarea
+                      className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 outline-none text-black bg-[#FFFFFF] shadow-md mb-4 "
                       placeholder="Press/Media Coverage"
                       type="text"
                       name="pressOrMedia"
@@ -262,8 +294,11 @@ const BioWriter = () => {
                 </div>
                 <div className="row">
                   <label>
-                    <input
-                      className="w-[30rem] h-[4rem] rounded-lg p-2 text-2xl m-3 outline-none text-black bg-[#FFFFFF] shadow-md "
+                    <p className="ml-4 text-[1.25rem] font-semibold mb-2 mt-4">
+                      Vision
+                    </p>
+                    <textarea
+                      className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 outline-none text-black bg-[#FFFFFF] shadow-md mb-4 "
                       placeholder="Vision:"
                       type="text"
                       name="vision"
@@ -272,8 +307,11 @@ const BioWriter = () => {
                     />
                   </label>
                   <label>
-                    <input
-                      className="w-[30rem] h-[4rem] rounded-lg p-2 text-2xl m-3 outline-none text-black bg-[#FFFFFF] shadow-md "
+                    <p className="ml-4 text-[1.25rem] font-semibold mb-2 mt-4">
+                      Recognition/Awards
+                    </p>
+                    <textarea
+                      className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 outline-none text-black bg-[#FFFFFF] shadow-md mb-4 "
                       placeholder="Awards & Recognitions Conferred"
                       type="text"
                       name="recognitionOrAwards"
