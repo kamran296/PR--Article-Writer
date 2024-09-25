@@ -148,8 +148,9 @@ const LoaCritical = ({ type }) => {
             <form onSubmit={handleSubmit}>
               <div className={`${!generatedArticle ? "row " : ""}`}>
                 <label>
+                <p className="ml-4 mb-3  text-[1.25rem] font-semibold">Recipient's Name</p>
                   <input
-                    className="w-[30rem] h-[4rem] rounded-lg p-2 text-2xl m-3 outline-none text-black bg-[#FFFFFF] shadow-md "
+                    className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 mb-4  outline-none text-black bg-[#FFFFFF] shadow-md "
                     placeholder="Recipient's Name"
                     type="text"
                     name="recipientName"
@@ -158,8 +159,9 @@ const LoaCritical = ({ type }) => {
                   />
                 </label>
                 <label>
+                <p className="ml-4 mb-3  text-[1.25rem] font-semibold">Recipient's Organization/University</p>
                   <input
-                    className="w-[30rem] h-[4rem] rounded-lg p-2 text-2xl m-3 outline-none text-black bg-[#FFFFFF] shadow-md"
+                    className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 mb-4  outline-none text-black bg-[#FFFFFF] shadow-md"
                     placeholder="Recipient's Organization/University"
                     type="text"
                     name="recipientOrganization"
@@ -170,8 +172,9 @@ const LoaCritical = ({ type }) => {
               </div>
               <div className={`${!generatedArticle ? "row" : ""}`}>
                 <label>
+                <p className="ml-4 mb-3  text-[1.25rem] font-semibold">Sender's Name</p>
                   <input
-                    className="w-[30rem] h-[4rem] rounded-lg p-2 text-2xl m-3 outline-none text-black bg-[#FFFFFF] shadow-md"
+                    className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 mb-4  outline-none text-black bg-[#FFFFFF] shadow-md"
                     placeholder="Sender's Name"
                     type="text"
                     name="senderName"
@@ -180,8 +183,9 @@ const LoaCritical = ({ type }) => {
                   />
                 </label>
                 <label>
+                <p className="ml-4 mb-3  text-[1.25rem] font-semibold">Sender's Organization/Institution</p>
                   <input
-                    className="w-[30rem] h-[4rem] rounded-lg p-2 text-2xl m-3 outline-none text-black bg-[#FFFFFF] shadow-md "
+                    className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 mb-4  outline-none text-black bg-[#FFFFFF] shadow-md "
                     placeholder="Sender's Organization/Institution"
                     type="text"
                     name="senderOrganization"
@@ -192,8 +196,9 @@ const LoaCritical = ({ type }) => {
               </div>
               <div className={`${!generatedArticle ? "flex " : ""}`}>
                 <label>
+                <p className="ml-4 mb-3  text-[1.25rem] font-semibold">Sender's Relationship with the Recipient</p>
                   <textarea
-                    className="w-[30rem] h-[4rem] rounded-lg p-2 text-2xl m-3 outline-none text-black bg-[#FFFFFF] shadow-md"
+                    className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 mb-4  outline-none text-black bg-[#FFFFFF] shadow-md"
                     placeholder="Sender's Relationship with the Recipient"
                     type="text"
                     name="senderRelationship"
@@ -202,8 +207,9 @@ const LoaCritical = ({ type }) => {
                   />
                 </label>
                 <label>
+                <p className="ml-4 mb-3  text-[1.25rem] font-semibold">Concerned Field of Work</p>
                   <textarea
-                    className="w-[30rem] h-[4rem] rounded-lg p-2 text-2xl m-3 outline-none text-black bg-[#FFFFFF] shadow-md"
+                    className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 mb-4  outline-none text-black bg-[#FFFFFF] shadow-md"
                     placeholder="Concerned Field of Work"
                     type="text"
                     name="concernedFieldOfWork"
@@ -214,8 +220,9 @@ const LoaCritical = ({ type }) => {
               </div>
               <div className={`${!generatedArticle ? "row" : ""}`}>
                 <label>
+                <p className="ml-4 mb-3  text-[1.25rem] font-semibold">Niche Domain (if any)</p>
                   <textarea
-                    className="w-[30rem] h-[4rem] rounded-lg p-2 text-2xl m-3 outline-none text-black bg-[#FFFFFF] shadow-md"
+                    className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 mb-4  outline-none text-black bg-[#FFFFFF] shadow-md"
                     placeholder="Niche Domain (if any)"
                     type="text"
                     name="nicheDomain"
@@ -224,8 +231,9 @@ const LoaCritical = ({ type }) => {
                   />
                 </label>
                 <label>
+                <p className="ml-4 mb-3  text-[1.25rem] font-semibold">Source of Knowledge</p>
                   <textarea
-                    className="w-[30rem] h-[4rem] rounded-lg p-2 text-2xl m-3 outline-none text-black bg-[#FFFFFF] shadow-md "
+                    className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 mb-4  outline-none text-black bg-[#FFFFFF] shadow-md "
                     placeholder="Source of Knowledge"
                     type="text"
                     name="sourceOfKnowledge"
@@ -236,8 +244,9 @@ const LoaCritical = ({ type }) => {
               </div>
               <div className={`${!generatedArticle ? "row" : ""}`}>
                 <label>
+                <p className="ml-4 mb-3  text-[1.25rem] font-semibold">Previous Contributions</p>
                   <textarea
-                    className="w-[30rem] h-[4rem] rounded-lg p-2 text-2xl m-3 outline-none text-black bg-[#FFFFFF] shadow-md"
+                    className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 mb-4  outline-none text-black bg-[#FFFFFF] shadow-md"
                     placeholder="Previous Contributions"
                     type="text"
                     name="previousContributions"
@@ -246,8 +255,9 @@ const LoaCritical = ({ type }) => {
                   />
                 </label>
                 <label>
+                <p className="ml-4 mb-3  text-[1.25rem] font-semibold">Reciepent Role Description</p>
                   <textarea
-                    className="w-[30rem] h-[4rem] rounded-lg p-2 text-2xl m-3 outline-none text-black bg-[#FFFFFF] shadow-md"
+                    className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 mb-4  outline-none text-black bg-[#FFFFFF] shadow-md"
                     placeholder="Reciepent Role Description"
                     type="text"
                     name="recipientRoleDescription"
@@ -258,8 +268,9 @@ const LoaCritical = ({ type }) => {
               </div>
               <div className={`${!generatedArticle ? "row" : ""}`}>
                 <label>
+                <p className="ml-4 mb-3  text-[1.25rem] font-semibold">Responsibilities Undertaken</p>
                   <textarea
-                    className="w-[30rem] h-[4rem] rounded-lg p-2 text-2xl m-3 outline-none text-black bg-[#FFFFFF] shadow-md"
+                    className="w-[30rem]  h-[4rem] rounded-lg p-4 text-2xl mx-3 mb-4  outline-none text-black bg-[#FFFFFF] shadow-md"
                     placeholder="Responsibilities Undertaken"
                     type="text"
                     name="responsibilitiesUndertaken"
@@ -268,8 +279,9 @@ const LoaCritical = ({ type }) => {
                   />
                 </label>
                 <label>
+                <p className="ml-4 mb-3  text-[1.25rem] font-semibold">Reciepent Key Skills</p>
                   <textarea
-                    className="w-[30rem] h-[4rem] rounded-lg p-2 text-2xl m-3 outline-none text-black bg-[#FFFFFF] shadow-md"
+                    className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 mb-4  outline-none text-black bg-[#FFFFFF] shadow-md"
                     placeholder="Reciepent Key Skills"
                     type="text"
                     name="keySkills"
@@ -280,8 +292,9 @@ const LoaCritical = ({ type }) => {
               </div>
               <div className={`${!generatedArticle ? "row" : ""}`}>
                 <label>
+                <p className="ml-4 mb-3  text-[1.25rem] font-semibold">Projects</p>
                   <textarea
-                    className="w-[30rem] h-[4rem] rounded-lg p-2 text-2xl m-3 outline-none text-black bg-[#FFFFFF] shadow-md"
+                    className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 mb-4  outline-none text-black bg-[#FFFFFF] shadow-md"
                     placeholder="Projects"
                     type="text"
                     name="project"
@@ -290,8 +303,9 @@ const LoaCritical = ({ type }) => {
                   />
                 </label>
                 <label>
+                <p className="ml-4 mb-3  text-[1.25rem] font-semibold">Challenges Faced</p>
                   <textarea
-                    className="w-[30rem] h-[5rem] rounded-lg p-2 text-2xl m-3 outline-none text-black bg-[#FFFFFF] shadow-md "
+                    className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 mb-4  outline-none text-black bg-[#FFFFFF] shadow-md "
                     placeholder="Challenges Faced"
                     type="text"
                     name="challengesFaced"
@@ -302,8 +316,9 @@ const LoaCritical = ({ type }) => {
               </div>
               <div className={`${!generatedArticle ? "row" : ""}`}>
                 <label>
+                <p className="ml-4 mb-3  text-[1.25rem] font-semibold">Outcome / Achievements</p>
                   <input
-                    className="w-[30rem] h-[4rem] rounded-lg p-2 text-2xl m-3 outline-none text-black bg-[#FFFFFF] shadow-md "
+                    className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 mb-4  outline-none text-black bg-[#FFFFFF] shadow-md "
                     placeholder="Outcome /Achievements"
                     type="text"
                     name="outcomeAchievements"
@@ -312,8 +327,9 @@ const LoaCritical = ({ type }) => {
                   />
                 </label>
                 <label>
+                <p className="ml-4 mb-3  text-[1.25rem] font-semibold">Token Of Gratitude</p>
                   <input
-                    className="w-[30rem] h-[4rem] rounded-lg p-2 text-2xl m-3 outline-none text-black bg-[#FFFFFF] shadow-md"
+                    className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 mb-4  outline-none text-black bg-[#FFFFFF] shadow-md"
                     placeholder="Token Of Gratitude"
                     type="text"
                     name="tokenOfGratitude"
