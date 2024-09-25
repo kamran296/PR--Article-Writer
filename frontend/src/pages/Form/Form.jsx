@@ -138,7 +138,7 @@ const Form = () => {
   return (
     <>
       <Navbar />
-      <div className="main h-[90vh] flex flex-col items-start">
+      <div className="main h-[105vh] flex flex-col items-start">
         <div className="container flex flex-row items-start justify-start h-[90vh] w-full">
           <div className="left  -ml-40 -mt-16 w-[15%] h-full">
             <SidebarTail />
@@ -148,9 +148,12 @@ const Form = () => {
               <form onSubmit={handleSubmit}>
                 <div className="row">
                   <label>
+                    <p className="ml-4 text-[1.25rem] font-semibold mb-2 mt-4">
+                      Name
+                    </p>
                     <input
-                      className="w-[30rem] h-[4rem] rounded-lg p-2 text-2xl m-3 outline-none text-black shadow-md  bg-[#FFFFFF]"
-                      placeholder="Name"
+                      className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 outline-none text-black bg-[#FFFFFF] shadow-md mb-4"
+                      placeholder="Jhon Doe"
                       type="text"
                       name="name"
                       value={formData.name}
@@ -159,8 +162,11 @@ const Form = () => {
                   </label>
 
                   <label>
-                    <input
-                      className="w-[30rem] h-[4rem] rounded-lg p-2 text-2xl m-3 outline-none text-black bg-[#FFFFFF] shadow-md "
+                    <p className="ml-4 text-[1.25rem] font-semibold mb-2 mt-4">
+                      Expertise
+                    </p>
+                    <textarea
+                      className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 outline-none text-black bg-[#FFFFFF] shadow-md mb-4 "
                       placeholder="Expertise"
                       type="text"
                       name="expertise"
@@ -172,8 +178,11 @@ const Form = () => {
 
                 <div className="row">
                   <label>
-                    <input
-                      className="w-[30rem] h-[4rem] rounded-lg p-2 text-2xl m-3 outline-none text-black bg-[#FFFFFF] shadow-md "
+                    <p className="ml-4 text-[1.25rem] font-semibold mb-2 mt-4">
+                      Highest Degree
+                    </p>
+                    <textarea
+                      className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 outline-none text-black bg-[#FFFFFF] shadow-md mb-4 "
                       placeholder="Highest Degree"
                       type="text"
                       name="highestDegree"
@@ -183,8 +192,11 @@ const Form = () => {
                   </label>
 
                   <label>
-                    <input
-                      className="w-[30rem] h-[4rem] rounded-lg p-2 text-2xl m-3 outline-none text-black bg-[#FFFFFF] shadow-md "
+                    <p className="ml-4 text-[1.25rem] font-semibold mb-2 mt-4">
+                      Specialization
+                    </p>
+                    <textarea
+                      className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 outline-none text-black bg-[#FFFFFF] shadow-md mb-4 "
                       placeholder="Specialization"
                       type="text"
                       name="specialization"
@@ -196,8 +208,11 @@ const Form = () => {
 
                 <div className="row">
                   <label>
-                    <input
-                      className="w-[30rem] h-[4rem] rounded-lg p-2 text-2xl m-3 outline-none text-black bg-[#FFFFFF] shadow-md "
+                    <p className="ml-4 text-[1.25rem] font-semibold mb-2 mt-4">
+                      University
+                    </p>
+                    <textarea
+                      className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 outline-none text-black bg-[#FFFFFF] shadow-md mb-4 "
                       placeholder="University"
                       type="text"
                       name="university"
@@ -207,8 +222,11 @@ const Form = () => {
                   </label>
 
                   <label>
-                    <input
-                      className="w-[30rem] h-[4rem] rounded-lg p-2 text-2xl m-3 outline-none text-black bg-[#FFFFFF] shadow-md "
+                    <p className="ml-4 text-[1.25rem] font-semibold mb-2 mt-4">
+                      Job Title
+                    </p>
+                    <textarea
+                      className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 outline-none text-black bg-[#FFFFFF] shadow-md mb-4 "
                       placeholder="Job Title"
                       type="text"
                       name="jobTitle"
@@ -220,8 +238,11 @@ const Form = () => {
 
                 <div className="row">
                   <label>
-                    <input
-                      className="w-[30rem] h-[4rem] rounded-lg p-2 text-2xl m-3 outline-none text-black bg-[#FFFFFF] shadow-md "
+                    <p className="ml-4 text-[1.25rem] font-semibold mb-2 mt-4">
+                      Current Employer
+                    </p>
+                    <textarea
+                      className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 outline-none text-black bg-[#FFFFFF] shadow-md mb-4 "
                       placeholder="Current Employer"
                       type="text"
                       name="currentEmployer"
@@ -230,8 +251,11 @@ const Form = () => {
                     />
                   </label>
                   <label>
-                    <input
-                      className="w-[30rem] h-[4rem] rounded-lg p-2 text-2xl m-3 outline-none text-black bg-[#FFFFFF] shadow-md "
+                    <p className="ml-4 text-[1.25rem] font-semibold mb-2 mt-4">
+                      Experience
+                    </p>
+                    <textarea
+                      className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 outline-none text-black bg-[#FFFFFF] shadow-md mb-4 "
                       placeholder="Total Years of Experience"
                       type="text"
                       name="experience"
@@ -243,8 +267,11 @@ const Form = () => {
 
                 <div className="row">
                   <label>
-                    <input
-                      className="w-[30rem] h-[4rem] rounded-lg p-2 text-2xl m-3 outline-none text-black bg-[#FFFFFF] shadow-md "
+                    <p className="ml-4 text-[1.25rem] font-semibold mb-2 mt-4">
+                      Industry
+                    </p>
+                    <textarea
+                      className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 outline-none text-black bg-[#FFFFFF] shadow-md mb-4 "
                       placeholder="Industry"
                       type="text"
                       name="industry"
@@ -253,8 +280,11 @@ const Form = () => {
                     />
                   </label>
                   <label>
-                    <input
-                      className="w-[30rem] h-[4rem] rounded-lg p-2 text-2xl m-3 outline-none text-black bg-[#FFFFFF] shadow-md "
+                    <p className="ml-4 text-[1.25rem] font-semibold mb-2 mt-4">
+                      Achievements
+                    </p>
+                    <textarea
+                      className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 outline-none text-black bg-[#FFFFFF] shadow-md mb-4 "
                       placeholder="Achievements"
                       type="text"
                       name="achievements"
@@ -266,8 +296,11 @@ const Form = () => {
 
                 <div className="row">
                   <label>
-                    <input
-                      className="w-[30rem] h-[4rem] rounded-lg p-2 text-2xl m-3 outline-none text-black bg-[#FFFFFF] shadow-md "
+                    <p className="ml-4 text-[1.25rem] font-semibold mb-2 mt-4">
+                      Impact of work
+                    </p>
+                    <textarea
+                      className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 outline-none text-black bg-[#FFFFFF] shadow-md mb-4 "
                       placeholder="Impactful Work at Workplace"
                       type="text"
                       name="impact"
@@ -276,8 +309,11 @@ const Form = () => {
                     />
                   </label>
                   <label>
-                    <input
-                      className="w-[30rem] h-[4rem] rounded-lg p-2 text-2xl m-3 outline-none text-black bg-[#FFFFFF]  shadow-md "
+                    <p className="ml-4 text-[1.25rem] font-semibold mb-2 mt-4">
+                      Notable Project
+                    </p>
+                    <textarea
+                      className="w-[30rem] h-[4rem] rounded-lg p-4 mb-4 text-2xl mx-3 outline-none text-black bg-[#FFFFFF]  shadow-md "
                       placeholder="Notable Project"
                       type="text"
                       name="projects"
@@ -289,8 +325,11 @@ const Form = () => {
 
                 <div className="row">
                   <label>
-                    <input
-                      className="w-[30rem] h-[4rem] rounded-lg p-2 text-2xl m-3 outline-none text-black bg-[#FFFFFF] shadow-md "
+                    <p className="ml-4 text-[1.25rem] font-semibold mb-2 mt-4">
+                      Quantified Work
+                    </p>
+                    <textarea
+                      className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 outline-none text-black bg-[#FFFFFF] shadow-md mb-4 "
                       placeholder="Quantified Work"
                       type="text"
                       name="quantifiedWorks"
@@ -299,8 +338,11 @@ const Form = () => {
                     />
                   </label>
                   <label>
-                    <input
-                      className="w-[30rem] h-[4rem] rounded-lg p-2 text-2xl m-3 outline-none text-black bg-[#FFFFFF] shadow-md "
+                    <p className="ml-4 text-[1.25rem] font-semibold mb-2 mt-4">
+                      Challenges Overcome
+                    </p>
+                    <textarea
+                      className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 outline-none text-black bg-[#FFFFFF] shadow-md mb-4 "
                       placeholder="Challenges Overcome"
                       type="text"
                       name="challengesOvercome"
@@ -312,8 +354,11 @@ const Form = () => {
 
                 <div className="row">
                   <label>
-                    <input
-                      className="w-[30rem] h-[4rem] rounded-lg p-2 text-2xl m-3 outline-none text-black bg-[#FFFFFF] shadow-md "
+                    <p className="ml-4 text-[1.25rem] font-semibold mb-2 mt-4">
+                      Publications
+                    </p>
+                    <textarea
+                      className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 outline-none text-black bg-[#FFFFFF] shadow-md mb-4 "
                       placeholder="Publications"
                       type="text"
                       name="publications"
@@ -322,8 +367,11 @@ const Form = () => {
                     />
                   </label>
                   <label>
-                    <input
-                      className="w-[30rem] h-[4rem] rounded-lg p-2 text-2xl m-3 outline-none text-black bg-[#FFFFFF] shadow-md "
+                    <p className="ml-4 text-[1.25rem] font-semibold mb-2 mt-4">
+                      Industry Insights
+                    </p>
+                    <textarea
+                      className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 outline-none text-black bg-[#FFFFFF] shadow-md mb-4 "
                       placeholder="Industry Insights"
                       type="text"
                       name="industryInsight"

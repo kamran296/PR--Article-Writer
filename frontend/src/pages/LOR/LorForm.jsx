@@ -146,8 +146,11 @@ const LorForm = () => {
               <form onSubmit={handleSubmit}>
                 <div className="row flex">
                   <label>
+                    <p className="ml-4 text-[1.25rem] font-semibold mt-4">
+                      Recipient Name
+                    </p>
                     <input
-                      className="w-[30rem] h-[4rem] rounded-lg p-2 text-2xl m-3 outline-none text-black shadow-md  bg-[#FFFFFF]"
+                      className="w-[30rem] h-[4rem] mb-4 rounded-lg p-2 text-2xl mx-3 outline-none text-black shadow-md  bg-[#FFFFFF]"
                       placeholder="Recipient's Name"
                       type="text"
                       name="RecipientName"
@@ -157,8 +160,11 @@ const LorForm = () => {
                   </label>
 
                   <label>
+                    <p className="ml-4  text-[1.25rem] font-semibold mt-4">
+                      Recipient University
+                    </p>
                     <input
-                      className="w-[30rem] h-[4rem] rounded-lg p-2 text-2xl m-3 outline-none text-black bg-[#FFFFFF] shadow-md "
+                      className="w-[30rem] mb-4 h-[4rem] rounded-lg p-2 text-2xl mx-3 outline-none text-black bg-[#FFFFFF] shadow-md "
                       placeholder="Recipient's Organization/University"
                       type="text"
                       name="RecipientUniversity"
@@ -170,8 +176,11 @@ const LorForm = () => {
 
                 <div className="row">
                   <label>
+                    <p className="ml-4 text-[1.25rem] font-semibold mt-4">
+                      Recommender Name
+                    </p>
                     <input
-                      className="w-[30rem] h-[4rem] rounded-lg p-2 text-2xl m-3 outline-none text-black bg-[#FFFFFF] shadow-md "
+                      className="w-[30rem] mb-4 h-[4rem] rounded-lg p-2 text-2xl mx-3 outline-none text-black bg-[#FFFFFF] shadow-md "
                       placeholder="Recommender's Name"
                       type="text"
                       name="RecommenderName"
@@ -181,8 +190,11 @@ const LorForm = () => {
                   </label>
 
                   <label>
+                    <p className="ml-4 text-[1.25rem] font-semibold mt-4">
+                      Recommender Organization
+                    </p>
                     <input
-                      className="w-[30rem] h-[4rem] rounded-lg p-2 text-2xl m-3 outline-none text-black bg-[#FFFFFF] shadow-md "
+                      className="w-[30rem] mb-4 h-[4rem] rounded-lg p-2 text-2xl mx-3 outline-none text-black bg-[#FFFFFF] shadow-md "
                       placeholder="Recommender's Organization/Institution"
                       type="text"
                       name="RecommenderOrganization"
@@ -194,8 +206,11 @@ const LorForm = () => {
 
                 <div className="row">
                   <label>
-                    <input
-                      className="w-[30rem] h-[4rem] rounded-lg p-2 text-2xl m-3 outline-none text-black bg-[#FFFFFF] shadow-md "
+                    <p className="ml-4 text-[1.25rem] font-semibold mt-4">
+                      Domain
+                    </p>
+                    <textarea
+                      className="w-[30rem] mb-4 h-[4rem] rounded-lg p-2 text-2xl mx-3 outline-none text-black bg-[#FFFFFF] shadow-md "
                       placeholder="Domain and niche of work"
                       type="text"
                       name="Domain"
@@ -205,8 +220,11 @@ const LorForm = () => {
                   </label>
 
                   <label>
-                    <input
-                      className="w-[30rem] h-[4rem] rounded-lg p-2 text-2xl m-3 outline-none text-black bg-[#FFFFFF] shadow-md "
+                    <p className="ml-4 text-[1.25rem] font-semibold mt-4">
+                      Duration Of Relationship
+                    </p>
+                    <textarea
+                      className="w-[30rem] mb-4 h-[4rem] rounded-lg p-2 text-2xl mx-3 outline-none text-black bg-[#FFFFFF] shadow-md "
                       placeholder="Duration of Relationship with recommender"
                       type="text"
                       name="DurationOfRelationship"
@@ -218,8 +236,11 @@ const LorForm = () => {
 
                 <div className="row">
                   <label>
-                    <input
-                      className="w-[30rem] h-[4rem] rounded-lg p-2 text-2xl m-3 outline-none text-black bg-[#FFFFFF] shadow-md "
+                    <p className="ml-4 text-[1.25rem] font-semibold mt-4">
+                      Awards and Recognitions
+                    </p>
+                    <textarea
+                      className="w-[30rem] mb-4 h-[4rem] rounded-lg p-2 text-2xl mx-3 outline-none text-black bg-[#FFFFFF] shadow-md "
                       placeholder="Awards and Recognitions"
                       type="text"
                       name="Awards"
@@ -228,8 +249,11 @@ const LorForm = () => {
                     />
                   </label>
                   <label>
-                    <input
-                      className="w-[30rem] h-[4rem] rounded-lg p-2 text-2xl m-3 outline-none text-black bg-[#FFFFFF] shadow-md "
+                    <p className="ml-4 text-[1.25rem] font-semibold mt-4">
+                      Work Published
+                    </p>
+                    <textarea
+                      className="w-[30rem] mb-4 h-[4rem] rounded-lg p-2 text-2xl mx-3 outline-none text-black bg-[#FFFFFF] shadow-md "
                       placeholder="Work Published in media, journals"
                       type="text"
                       name="WorkPublished"
@@ -241,8 +265,11 @@ const LorForm = () => {
 
                 <div className="row">
                   <label>
-                    <input
-                      className="w-[30rem] h-[4rem] rounded-lg p-2 text-2xl m-3 outline-none text-black bg-[#FFFFFF] shadow-md "
+                    <p className="ml-4 text-[1.25rem] font-semibold mt-4">
+                      Significant Work
+                    </p>
+                    <textarea
+                      className="w-[30rem] mb-4 h-[4rem] rounded-lg p-2 text-2xl mx-3 outline-none text-black bg-[#FFFFFF] shadow-md "
                       placeholder="Significant and impactful work"
                       type="text"
                       name="SignificantWork"
@@ -251,8 +278,11 @@ const LorForm = () => {
                     />
                   </label>
                   <label>
-                    <input
-                      className="w-[30rem] h-[4rem] rounded-lg p-2 text-2xl m-3 outline-none text-black bg-[#FFFFFF] shadow-md "
+                    <p className="ml-4 text-[1.25rem] font-semibold mt-4">
+                      Skills
+                    </p>
+                    <textarea
+                      className="w-[30rem] mb-4 h-[4rem] rounded-lg p-2 text-2xl mx-3 outline-none text-black bg-[#FFFFFF] shadow-md "
                       placeholder="Specialized skills"
                       type="text"
                       name="skills"
@@ -264,8 +294,11 @@ const LorForm = () => {
 
                 <div className="row">
                   <label>
-                    <input
-                      className="w-[30rem] h-[4rem] rounded-lg p-2 text-2xl m-3 outline-none text-black bg-[#FFFFFF] shadow-md "
+                    <p className="ml-4 text-[1.25rem] font-semibold mt-4">
+                      Critical Role
+                    </p>
+                    <textarea
+                      className="w-[30rem] mb-4 h-[4rem] rounded-lg p-2 text-2xl mx-3 outline-none text-black bg-[#FFFFFF] shadow-md "
                       placeholder="Critical role"
                       type="text"
                       name="CriticalRole"
@@ -274,8 +307,11 @@ const LorForm = () => {
                     />
                   </label>
                   <label>
-                    <input
-                      className="w-[30rem] h-[4rem] rounded-lg p-2 text-2xl m-3 outline-none text-black bg-[#FFFFFF]  shadow-md "
+                    <p className="ml-4 text-[1.25rem] font-semibold mt-4">
+                      Recommender Information
+                    </p>
+                    <textarea
+                      className="w-[30rem] h-[4rem] rounded-lg p-2 text-2xl mx-3 outline-none text-black bg-[#FFFFFF]  shadow-md "
                       placeholder="Recommender's contact information"
                       type="text"
                       name="RecommenderInformation"

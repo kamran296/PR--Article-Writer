@@ -158,6 +158,15 @@ const LoaCritical = ({ type }) => {
                     onChange={handleChange}
                   />
                 </label>
+                <input
+                  className="w-[30rem] h-[4rem] rounded-lg p-2 text-2xl m-3 outline-none text-black bg-[#FFFFFF] shadow-md "
+                  placeholder="Recipient's Name"
+                  type="text"
+                  name="recipientName"
+                  value={formData.recipientName}
+                  onChange={handleChange}
+                />
+
                 <label>
                 <p className="ml-4 mb-3  text-[1.25rem] font-semibold">Recipient's Organization/University</p>
                   <input
