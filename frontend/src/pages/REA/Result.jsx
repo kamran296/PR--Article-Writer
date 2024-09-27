@@ -117,11 +117,19 @@ let socSalary = 0; // Declare socSalary here so it's accessible
 //   socSalary = parseInt(highSalaryString.replace(/[^\d]/g, ''), 10); // Extract number
 // }
 
-const level1Hr = (additionalResponse.level1Salary / 2080).toFixed(2);
-const level2Hr = (additionalResponse.level2Salary / 2080).toFixed(2);
-const level3Hr = (additionalResponse.level3Salary / 2080).toFixed(2);
-const level4Hr = (additionalResponse.level4Salary / 2080).toFixed(2);
-const meanHr = (additionalResponse.averageSalary / 2080).toFixed(2);
+const level1Hr = 0;
+const level2Hr = 0;
+const level3Hr = 0;
+const level4Hr = 0;
+const meanHr = 0;
+
+if(additionalResponse){
+   level1Hr = (additionalResponse.level1Salary / 2080).toFixed(2);
+   level2Hr = (additionalResponse.level2Salary / 2080).toFixed(2);
+   level3Hr = (additionalResponse.level3Salary / 2080).toFixed(2);
+   level4Hr = (additionalResponse.level4Salary / 2080).toFixed(2);
+   meanHr = (additionalResponse.averageSalary / 2080).toFixed(2);
+}
 
     const handlePrint = () => {
         window.print();
