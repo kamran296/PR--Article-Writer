@@ -12,21 +12,19 @@ exports.getAggregatedSalary = async (req, res) => {
         // const api1 = axios.post('http://localhost:5000/api/salary/salary', { jobTitle, location });
         
         const api3 = axios.post('https://www.internal.cachelabs.io/api/talent/search-salary-talent', { jobTitle, location });
-        const api4 = axios.post('https://www.internal.cachelabs.io/api/glassdoor/get-salary-glassdoor', { jobTitle });
-        const api2 = axios.post('https://www.internal.cachelabs.io/api/indeed/get-salary-indeed', { jobRole: jobTitle, location }); 
+        const api4 = axios.post('https://www.internal.cachelabs.io/api/glassdoor/get-salary-glassdoor', { jobTitle }); 
 
 
         // Initialize responses and errors
         const results = {
             // salaryCom: null,
-            indeed: null,
             talent: null,
             glassdoor: null,
             errors: [],
         };
 
         // Execute API calls
-        const [response2, response3,  response4] = await Promise.allSettled([api2, api3, api4]);
+        const [response3,  response4] = await Promise.allSettled([api3, api4]);
 
         // Process each response
         // if (response1.status === 'fulfilled') {
@@ -47,12 +45,6 @@ exports.getAggregatedSalary = async (req, res) => {
             results.glassdoor = response4.value.data; // Process Glassdoor response
         } else {
             results.errors.push({ api: 'Glassdoor', error: response4.reason.message });
-        }
-        
-        if (response2.status === 'fulfilled') {
-            results.indeed = response2.value.data;
-        } else {
-            results.errors.push({ api: 'Indeed', error: response2.reason.message });
         }
 
         // Return the results
