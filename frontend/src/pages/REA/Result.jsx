@@ -117,11 +117,11 @@ let socSalary = 0; // Declare socSalary here so it's accessible
 //   socSalary = parseInt(highSalaryString.replace(/[^\d]/g, ''), 10); // Extract number
 // }
 
-const level1Hr = 0;
-const level2Hr = 0;
-const level3Hr = 0;
-const level4Hr = 0;
-const meanHr = 0;
+let level1Hr = 0;
+let level2Hr = 0;
+let level3Hr = 0;
+let level4Hr = 0;
+let meanHr = 0;
 
 if(additionalResponse){
    level1Hr = (additionalResponse.level1Salary / 2080).toFixed(2);

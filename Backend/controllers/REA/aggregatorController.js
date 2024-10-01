@@ -10,7 +10,7 @@ exports.getAggregatedSalary = async (req, res) => {
     try {
         // Define the API calls
         // const api1 = axios.post('http://localhost:5000/api/salary/salary', { jobTitle, location });
-        // const api2 = axios.post('http://localhost:5000/api/indeed/get-salary-indeed', { jobRole: jobTitle, location });
+        const api2 = axios.post('https://www.internal.cachelabs.io/api/indeed/get-salary-indeed', { jobRole: jobTitle, location });
         const api3 = axios.post('https://www.internal.cachelabs.io/api/talent/search-salary-talent', { jobTitle, location });
         const api4 = axios.post('https://www.internal.cachelabs.io/api/glassdoor/get-salary-glassdoor', { jobTitle }); 
 
@@ -18,14 +18,14 @@ exports.getAggregatedSalary = async (req, res) => {
         // Initialize responses and errors
         const results = {
             // salaryCom: null,
-            // indeed: null,
+            indeed: null,
             talent: null,
             glassdoor: null,
             errors: [],
         };
 
         // Execute API calls
-        const [response3,  response4] = await Promise.allSettled([api3, api4]);
+        const [response2, response3,  response4] = await Promise.allSettled([api2, api3, api4]);
 
         // Process each response
         // if (response1.status === 'fulfilled') {
@@ -34,11 +34,11 @@ exports.getAggregatedSalary = async (req, res) => {
         //     results.errors.push({ api: 'Salary.com', error: response1.reason.message });
         // }
 
-        // if (response2.status === 'fulfilled') {
-        //     results.indeed = response2.value.data;
-        // } else {
-        //     results.errors.push({ api: 'Indeed', error: response2.reason.message });
-        // }
+        if (response2.status === 'fulfilled') {
+            results.indeed = response2.value.data;
+        } else {
+            results.errors.push({ api: 'Indeed', error: response2.reason.message });
+        }
 
         if (response3.status === 'fulfilled') {
             results.talent = response3.value.data.salaryValues;
