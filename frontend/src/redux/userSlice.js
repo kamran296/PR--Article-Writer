@@ -1,36 +1,62 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import CryptoJS from "crypto-js";
 
-// Decrypt function on the frontend using AES-256-CBC
 async function decryptData(encryptedData, secretKey) {
   // Split the encrypted data into IV and encrypted text
   const [iv, encryptedText] = encryptedData.split(":");
-  const ivBuffer = new Uint8Array(Buffer.from(iv, "hex"));
-  const encryptedBuffer = Buffer.from(encryptedText, "hex");
 
-  // Import the secret key (which must be the same as used in the backend)
-  const key = await window.crypto.subtle.importKey(
-    "raw",
-    new TextEncoder().encode(secretKey), // Convert secret key to bytes
-    { name: "AES-CBC" },
-    false,
-    ["decrypt"]
-  );
+  // Convert IV from hex to WordArray
+  const ivWordArray = CryptoJS.enc.Hex.parse(iv);
+  const encryptedWordArray = CryptoJS.enc.Hex.parse(encryptedText);
 
-  // Perform the decryption
+  // Perform decryption using the secret key
   try {
-    const decryptedBuffer = await window.crypto.subtle.decrypt(
-      { name: "AES-CBC", iv: ivBuffer },
-      key,
-      encryptedBuffer
+    const decrypted = CryptoJS.AES.decrypt(
+      { ciphertext: encryptedWordArray },
+      CryptoJS.enc.Utf8.parse(secretKey), // Convert the key to WordArray
+      { iv: ivWordArray }
     );
 
-    // Convert decrypted bytes to a string and return it
-    return new TextDecoder().decode(decryptedBuffer);
+    // Convert decrypted data to string
+    const decryptedText = decrypted.toString(CryptoJS.enc.Utf8);
+    return decryptedText;
   } catch (err) {
     console.error("Decryption failed:", err);
     return null;
   }
 }
+
+// // Decrypt function on the frontend using AES-256-CBC
+// async function decryptData(encryptedData, secretKey) {
+//   // Split the encrypted data into IV and encrypted text
+//   const [iv, encryptedText] = encryptedData.split(":");
+//   const ivBuffer = new Uint8Array(Buffer.from(iv, "hex"));
+//   const encryptedBuffer = Buffer.from(encryptedText, "hex");
+
+//   // Import the secret key (which must be the same as used in the backend)
+//   const key = await window.crypto.subtle.importKey(
+//     "raw",
+//     new TextEncoder().encode(secretKey), // Convert secret key to bytes
+//     { name: "AES-CBC" },
+//     false,
+//     ["decrypt"]
+//   );
+
+//   // Perform the decryption
+//   try {
+//     const decryptedBuffer = await window.crypto.subtle.decrypt(
+//       { name: "AES-CBC", iv: ivBuffer },
+//       key,
+//       encryptedBuffer
+//     );
+
+//     // Convert decrypted bytes to a string and return it
+//     return new TextDecoder().decode(decryptedBuffer);
+//   } catch (err) {
+//     console.error("Decryption failed:", err);
+//     return null;
+//   }
+// }
 
 // export const fetchUser = createAsyncThunk("user/fetchUser", async () => {
 //   const response = await fetch(
@@ -66,7 +92,12 @@ export const fetchUser = createAsyncThunk("user/fetchUser", async () => {
   const decryptedIsAdmin = await decryptData(encryptedIsAdmin, secretKey);
 
   // Return the user data with decrypted isAdmin field
-  return { ...data, user: { ...data.user, isAdmin: decryptedIsAdmin } };
+  const updatedData = {
+    ...data,
+    user: { ...data.user, isAdmin: decryptedIsAdmin },
+  };
+
+  return updatedData;
 });
 
 export const logoutUser = createAsyncThunk("user/logout", async () => {
