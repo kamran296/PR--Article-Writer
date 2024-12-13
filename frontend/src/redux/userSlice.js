@@ -110,19 +110,49 @@ export const fetchUser = createAsyncThunk("user/fetchUser", async () => {
   return updatedData;
 });
 
+// export const logoutUser = createAsyncThunk("user/logout", async () => {
+//   const response = await fetch(
+//     "https://www.internal.cachelabs.io/oauth/logout",
+//     {
+//       method: "GET",
+//     }
+//   );
+
+//   if (response.ok) {
+//     console.log("Logout failed", response);
+//   }
+
+//   // return response.json();
+// });
+
 export const logoutUser = createAsyncThunk("user/logout", async () => {
-  const response = await fetch(
-    "https://www.internal.cachelabs.io/oauth/logout",
-    {
-      method: "GET",
+  try {
+    const response = await fetch(
+      "https://www.internal.cachelabs.io/oauth/logout",
+      {
+        method: "GET",
+        credentials: "include", // Ensure cookies are included in the request
+      }
+    );
+
+    if (!response.ok) {
+      console.error("Logout failed:", response.statusText);
+      return;
     }
-  );
 
-  if (response.ok) {
-    console.log("Logout failed", response);
+    // Clear cookies
+    document.cookie.split(";").forEach((cookie) => {
+      const cookieName = cookie.split("=")[0].trim();
+      document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+    });
+
+    // Clear localStorage
+    localStorage.clear();
+
+    console.log("User successfully logged out");
+  } catch (error) {
+    console.error("Error during logout:", error);
   }
-
-  // return response.json();
 });
 
 const userSlice = createSlice({
