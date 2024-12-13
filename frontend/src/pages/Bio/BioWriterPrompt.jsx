@@ -44,8 +44,8 @@ const LoaPrompt = () => {
   };
 
   const sanitizeInput = (input) => {
-    // Remove characters like <, >, ', ", {, }, etc.
-    return input.replace(/[<>{}'"\/]/g, "");
+    if (!input) return ""; // Handle empty input safely
+    return input.replace(/[<>{}()[\]'";:\/\\|^&$]/g, ""); // Removes unwanted characters
   };
 
   const handleModalSubmit = async (e) => {
@@ -79,7 +79,7 @@ const LoaPrompt = () => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData({ ...formData, [name]: sanitizeInput(value) });
   };
 
   const handleEnter = (e) => {

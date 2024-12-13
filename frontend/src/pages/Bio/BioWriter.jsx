@@ -53,8 +53,8 @@ const BioWriter = () => {
   };
 
   const sanitizeInput = (input) => {
-    // Remove characters like <, >, ', ", {, }, etc.
-    return input.replace(/[<>{}'"\/]/g, "");
+    if (!input) return ""; // Handle empty input safely
+    return input.replace(/[<>{}()[\]'";:\/\\|^&$]/g, ""); // Removes unwanted characters
   };
 
   const handleModalSubmit = async (e) => {
@@ -89,18 +89,18 @@ const BioWriter = () => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: value,
+      [name]: sanitizeInput(value),
     });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Sanitize each input field in formData
-    const sanitizedFormData = Object.keys(formData).reduce((acc, key) => {
-      acc[key] = sanitizeInput(formData[key]);
-      return acc;
-    }, {});
+    // // Sanitize each input field in formData
+    // const sanitizedFormData = Object.keys(formData).reduce((acc, key) => {
+    //   acc[key] = sanitizeInput(formData[key]);
+    //   return acc;
+    // }, {});
     console.log(sanitizedFormData);
     console.log("Generating article");
     setGeneratedArticle(false);
@@ -114,7 +114,7 @@ const BioWriter = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(sanitizedFormData),
+          body: JSON.stringify(formData),
         }
       );
       const data = await response.json();
