@@ -20,6 +20,10 @@ const Chatbot = () => {
     }
     fetchUser();
   }, []);
+  const sanitizeInput = (input) => {
+    if (!input) return ""; // Handle empty input safely
+    return input.replace(/[<>{}()[\]'";:\/\\|^&$]/g, ""); // Removes unwanted characters
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -57,6 +61,7 @@ const Chatbot = () => {
 
   const handleModalSubmit = async (e) => {
     e.preventDefault();
+    const sanitizedCorrectAnswer = sanitizeInput(correctAnswer);
     try {
       console.log(input, 3232);
       const response = await fetch(
@@ -68,7 +73,7 @@ const Chatbot = () => {
           },
           body: JSON.stringify({
             question: chatHistory[currentChatIndex].question,
-            answer: correctAnswer,
+            answer: sanitizedCorrectAnswer,
           }),
         }
       );
@@ -124,7 +129,7 @@ const Chatbot = () => {
                 className="inp1 text-black bg-[#FFFFFF] shadow-md"
                 placeholder="Ask me anything!!"
                 value={input}
-                onChange={(e) => setInput(e.target.value)}
+                onChange={(e) => setInput(sanitizeInput(e.target.value))}
               />
               <button type="submit" className="ml-2 mb-[2rem] h-12 w-20">
                 <BsSend className="text-3xl rotate-45 flex text-gray-500" />

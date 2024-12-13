@@ -46,9 +46,14 @@ const Home = () => {
   const handlelikeClick = () => {
     setLiked(!liked);
   };
+  const sanitizeInput = (input) => {
+    if (!input) return ""; // Handle empty input safely
+    return input.replace(/[<>{}()[\]'";:\/\\|^&$]/g, ""); // Removes unwanted characters
+  };
 
   const handleModalSubmit = async (e) => {
     e.preventDefault();
+    const sanitizedAnswer = sanitizeInput(correctAnswer);
     try {
       const response = await fetch(
         "https://www.internal.cachelabs.io/api/v1/ArticleWriter/add-article",
@@ -59,7 +64,7 @@ const Home = () => {
           },
           body: JSON.stringify({
             question: formData.prompt,
-            answer: correctAnswer,
+            answer: sanitizedAnswer,
           }),
         }
       );
@@ -75,7 +80,7 @@ const Home = () => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData({ ...formData, [name]: sanitizeInput(value) });
   };
 
   const handleEnter = (e) => {

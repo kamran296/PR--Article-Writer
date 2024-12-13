@@ -21,6 +21,10 @@ const ClientChatbot = () => {
     // }
     fetchUser();
   }, []);
+  const sanitizeInput = (input) => {
+    if (!input) return ""; // Handle empty input safely
+    return input.replace(/[<>{}()[\]'";:\/\\|^&$]/g, ""); // Removes unwanted characters
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -135,7 +139,7 @@ const ClientChatbot = () => {
                 className="inp1 text-black bg-[#FFFFFF] shadow-md"
                 placeholder="Ask me anything!!"
                 value={input}
-                onChange={(e) => setInput(e.target.value)}
+                onChange={(e) => setInput(sanitizeInput(e.target.value))}
               />
               <button type="submit" className="ml-2 mb-[2rem] h-12 w-20">
                 <BsSend className="text-3xl rotate-45 flex text-gray-500" />
@@ -215,7 +219,9 @@ const ClientChatbot = () => {
                 className="w-full p-2 mb-4 border rounded"
                 rows="4"
                 value={correctAnswer}
-                onChange={(e) => setCorrectAnswer(e.target.value)}
+                onChange={(e) =>
+                  setCorrectAnswer(sanitizeInput(e.target.value))
+                }
                 placeholder="Enter the correct answer here"
               />
               <button

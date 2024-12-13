@@ -56,9 +56,14 @@ const LoaOriginal = ({ type }) => {
   const handlelikeClick = () => {
     setLiked(!liked);
   };
+  const sanitizeInput = (input) => {
+    if (!input) return ""; // Handle empty input safely
+    return input.replace(/[<>{}()[\]'";:\/\\|^&$]/g, ""); // Removes unwanted characters
+  };
 
   const handleModalSubmit = async (e) => {
     e.preventDefault();
+    const sanitizedAnswer = sanitizeInput(correctAnswer);
     try {
       const response = await fetch(
         // "http://localhost:5000/api/v1/loa/original-data",
@@ -70,7 +75,7 @@ const LoaOriginal = ({ type }) => {
           },
           body: JSON.stringify({
             question: formData.prompt,
-            answer: correctAnswer,
+            answer: sanitizedAnswer,
           }),
         }
       );
@@ -88,7 +93,7 @@ const LoaOriginal = ({ type }) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: value,
+      [name]: sanitizeInput(value),
     });
   };
 
@@ -145,7 +150,9 @@ const LoaOriginal = ({ type }) => {
             <form onSubmit={handleSubmit}>
               <div className={`${!generatedArticle ? "row" : ""}`}>
                 <label>
-<p className="ml-4 mb-3  text-[1.25rem] font-semibold">Recipient's Name</p>
+                  <p className="ml-4 mb-3  text-[1.25rem] font-semibold">
+                    Recipient's Name
+                  </p>
                   <input
                     className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 mb-4  outline-none text-black bg-[#FFFFFF] shadow-md"
                     placeholder="Recipient's Name"
@@ -156,7 +163,9 @@ const LoaOriginal = ({ type }) => {
                   />
                 </label>
                 <label>
-<p className="ml-4 mb-3  text-[1.25rem] font-semibold">Recipient's Organization/University</p>
+                  <p className="ml-4 mb-3  text-[1.25rem] font-semibold">
+                    Recipient's Organization/University
+                  </p>
 
                   <input
                     className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 mb-4  outline-none text-black bg-[#FFFFFF] shadow-md "
@@ -170,7 +179,9 @@ const LoaOriginal = ({ type }) => {
               </div>
               <div className={`${!generatedArticle ? "row" : ""}`}>
                 <label>
-<p className="ml-4 mb-3  text-[1.25rem] font-semibold">Sender's Name</p>
+                  <p className="ml-4 mb-3  text-[1.25rem] font-semibold">
+                    Sender's Name
+                  </p>
                   <input
                     className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 mb-4  outline-none text-black bg-[#FFFFFF] shadow-md"
                     placeholder="Sender's Name"
@@ -181,7 +192,9 @@ const LoaOriginal = ({ type }) => {
                   />
                 </label>
                 <label>
-<p className="ml-4 mb-3  text-[1.25rem] font-semibold">Sender's Organization/Institution</p>
+                  <p className="ml-4 mb-3  text-[1.25rem] font-semibold">
+                    Sender's Organization/Institution
+                  </p>
                   <input
                     className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 mb-4  outline-none text-black bg-[#FFFFFF] shadow-md"
                     placeholder="Sender's Organization/Institution"
@@ -194,7 +207,9 @@ const LoaOriginal = ({ type }) => {
               </div>
               <div className={`${!generatedArticle ? "row" : ""}`}>
                 <label>
-<p className="ml-4 mb-3  text-[1.25rem] font-semibold">Sender's Relationship with the Recipient</p>
+                  <p className="ml-4 mb-3  text-[1.25rem] font-semibold">
+                    Sender's Relationship with the Recipient
+                  </p>
                   <input
                     className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 mb-4  outline-none text-black bg-[#FFFFFF] shadow-md "
                     placeholder="Sender's Relationship with the Recipient"
@@ -205,7 +220,9 @@ const LoaOriginal = ({ type }) => {
                   />
                 </label>
                 <label>
-<p className="ml-4 mb-3  text-[1.25rem] font-semibold">Concerned Field of Work</p>
+                  <p className="ml-4 mb-3  text-[1.25rem] font-semibold">
+                    Concerned Field of Work
+                  </p>
                   <input
                     className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 mb-4  outline-none text-black bg-[#FFFFFF] shadow-md"
                     placeholder="Concerned Field of Work"
@@ -218,7 +235,9 @@ const LoaOriginal = ({ type }) => {
               </div>
               <div className={`${!generatedArticle ? "row" : ""}`}>
                 <label>
-<p className="ml-4 mb-3  text-[1.25rem] font-semibold">Niche Domain (if any)</p>
+                  <p className="ml-4 mb-3  text-[1.25rem] font-semibold">
+                    Niche Domain (if any)
+                  </p>
                   <input
                     className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 mb-4  outline-none text-black bg-[#FFFFFF] shadow-md "
                     placeholder="Niche Domain (if any)"
@@ -229,7 +248,9 @@ const LoaOriginal = ({ type }) => {
                   />
                 </label>
                 <label>
-<p className="ml-4 mb-3  text-[1.25rem] font-semibold">Source of Knowledge</p>
+                  <p className="ml-4 mb-3  text-[1.25rem] font-semibold">
+                    Source of Knowledge
+                  </p>
                   <input
                     className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 mb-4  outline-none text-black bg-[#FFFFFF] shadow-md"
                     placeholder="Source of Knowledge"
@@ -242,7 +263,9 @@ const LoaOriginal = ({ type }) => {
               </div>
               <div className={`${!generatedArticle ? "row" : ""}`}>
                 <label>
-<p className="ml-4 mb-3  text-[1.25rem] font-semibold">Previous Contributions</p>
+                  <p className="ml-4 mb-3  text-[1.25rem] font-semibold">
+                    Previous Contributions
+                  </p>
                   <input
                     className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 mb-4  outline-none text-black bg-[#FFFFFF] shadow-md"
                     placeholder="Previous Contributions"
@@ -253,7 +276,9 @@ const LoaOriginal = ({ type }) => {
                   />
                 </label>
                 <label>
-<p className="ml-4 mb-3  text-[1.25rem] font-semibold">Reciepent Role Description</p>
+                  <p className="ml-4 mb-3  text-[1.25rem] font-semibold">
+                    Reciepent Role Description
+                  </p>
                   <input
                     className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 mb-4  outline-none text-black bg-[#FFFFFF] shadow-md "
                     placeholder="Reciepent Role Description"
@@ -266,7 +291,9 @@ const LoaOriginal = ({ type }) => {
               </div>
               <div className={`${!generatedArticle ? "row" : ""}`}>
                 <label>
-<p className="ml-4 mb-3  text-[1.25rem] font-semibold">Responsibilities Undertaken</p>
+                  <p className="ml-4 mb-3  text-[1.25rem] font-semibold">
+                    Responsibilities Undertaken
+                  </p>
                   <input
                     className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 mb-4  outline-none text-black bg-[#FFFFFF] shadow-md"
                     placeholder="Responsibilities Undertaken"
@@ -277,7 +304,9 @@ const LoaOriginal = ({ type }) => {
                   />
                 </label>
                 <label>
-<p className="ml-4 mb-3  text-[1.25rem] font-semibold">Reciepent Key Skills</p>
+                  <p className="ml-4 mb-3  text-[1.25rem] font-semibold">
+                    Reciepent Key Skills
+                  </p>
                   <input
                     className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 mb-4  outline-none text-black bg-[#FFFFFF] shadow-md "
                     placeholder="Reciepent Key Skills"
@@ -290,7 +319,9 @@ const LoaOriginal = ({ type }) => {
               </div>
               <div className={`${!generatedArticle ? "row" : ""}`}>
                 <label>
-<p className="ml-4 mb-3  text-[1.25rem] font-semibold">Projects</p>
+                  <p className="ml-4 mb-3  text-[1.25rem] font-semibold">
+                    Projects
+                  </p>
                   <input
                     className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 mb-4  outline-none text-black bg-[#FFFFFF] shadow-md"
                     placeholder="Projects"
@@ -301,7 +332,9 @@ const LoaOriginal = ({ type }) => {
                   />
                 </label>
                 <label>
-<p className="ml-4 mb-3  text-[1.25rem] font-semibold">Challenges Faced</p>
+                  <p className="ml-4 mb-3  text-[1.25rem] font-semibold">
+                    Challenges Faced
+                  </p>
                   <input
                     className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 mb-4  outline-none text-black bg-[#FFFFFF] shadow-md"
                     placeholder="Challenges Faced"
@@ -314,7 +347,9 @@ const LoaOriginal = ({ type }) => {
               </div>
               <div className={`${!generatedArticle ? "row" : ""}`}>
                 <label>
-<p className="ml-4 mb-3  text-[1.25rem] font-semibold">Outcome /Achievements</p>
+                  <p className="ml-4 mb-3  text-[1.25rem] font-semibold">
+                    Outcome /Achievements
+                  </p>
                   <input
                     className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 mb-4  outline-none text-black bg-[#FFFFFF] shadow-md"
                     placeholder="Outcome /Achievements"
@@ -325,7 +360,9 @@ const LoaOriginal = ({ type }) => {
                   />
                 </label>
                 <label>
-<p className="ml-4 mb-3 text-[1.25rem] font-semibold">Token Of Gratitude</p>
+                  <p className="ml-4 mb-3 text-[1.25rem] font-semibold">
+                    Token Of Gratitude
+                  </p>
                   <input
                     className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 mb-4 outline-none text-black bg-[#FFFFFF] shadow-md"
                     placeholder="Token Of Gratitude"

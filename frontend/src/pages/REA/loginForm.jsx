@@ -1,88 +1,111 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import Navbar from './navbar';
-import { useNavigate } from 'react-router-dom';
-import Dropdown from './Dropdown'
+import React, { useState } from "react";
+import axios from "axios";
+import Navbar from "./navbar";
+import { useNavigate } from "react-router-dom";
+import Dropdown from "./Dropdown";
 
 const LoginForm = () => {
-
-    const [firstName, setfirstName] = useState('');
-    const [lastName, setlastName] = useState('');
-    const [company, setCompany] = useState('');
-    const [jobTitle1, setJobTitle1] = useState('');
-    const [jobTitle2, setJobTitle2] = useState('');
-    const [jobTitle3, setJobTitle3] = useState('');
-    const [location, setLocation] = useState('');
-    const [baseSalary, setBaseSalary] = useState('');
-    const [bonusSalary, setBonusSalary] = useState('');
-    const [stocks, setStocks] = useState('');
-    // const [socCode, setsocCode] = useState('');
-    const [showAdditionalField, setShowAdditionalField] = useState(false);
-    const [socCode, setSocCode] = useState('');
-    const [stateValue, setStateValue] = useState('');
-    const [areaValue, setAreaValue] = useState('');
-    const [radioButtonChoice, setRadioButtonChoice] = useState(1);
+  const [firstName, setfirstName] = useState("");
+  const [lastName, setlastName] = useState("");
+  const [company, setCompany] = useState("");
+  const [jobTitle1, setJobTitle1] = useState("");
+  const [jobTitle2, setJobTitle2] = useState("");
+  const [jobTitle3, setJobTitle3] = useState("");
+  const [location, setLocation] = useState("");
+  const [baseSalary, setBaseSalary] = useState("");
+  const [bonusSalary, setBonusSalary] = useState("");
+  const [stocks, setStocks] = useState("");
+  // const [socCode, setsocCode] = useState('');
+  const [showAdditionalField, setShowAdditionalField] = useState(false);
+  const [socCode, setSocCode] = useState("");
+  const [stateValue, setStateValue] = useState("");
+  const [areaValue, setAreaValue] = useState("");
+  const [radioButtonChoice, setRadioButtonChoice] = useState(1);
 
   const navigate = useNavigate();
+  const sanitizeInput = (input) => {
+    if (!input) return ""; // Handle empty input safely
+    return input.replace(/[<>{}()[\]'";:\/\\|^&$]/g, ""); // Removes unwanted characters
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     const jobTitles = [jobTitle1, jobTitle2, jobTitle3];
-    const inputData = {  jobTitles, location, baseSalary, bonusSalary, stocks, firstName, lastName, company, socCode};
+    const inputData = {
+      jobTitles,
+      location,
+      baseSalary,
+      bonusSalary,
+      stocks,
+      firstName,
+      lastName,
+      company,
+      socCode,
+    };
 
     try {
       // Fetching aggregated salary data for each job title
-      const results = await Promise.all(jobTitles.map(async (jobTitle) => {
-          const response = await axios.post('https://www.internal.cachelabs.io/api/aggregator/get-aggregated-salary', {
+      const results = await Promise.all(
+        jobTitles.map(async (jobTitle) => {
+          const response = await axios.post(
+            "https://www.internal.cachelabs.io/api/aggregator/get-aggregated-salary",
+            {
               jobTitle,
               location,
-          });
+            }
+          );
 
           const parseSalary = (salary) => {
-              const parsedSalary = parseInt(salary.replace(/[^\d]/g, ''), 10);
-              return isNaN(parsedSalary) ? 0 : parsedSalary;
+            const parsedSalary = parseInt(salary.replace(/[^\d]/g, ""), 10);
+            return isNaN(parsedSalary) ? 0 : parsedSalary;
           };
 
           return {
-              jobTitle,
-              highSalaries: {
-                  // salaryCom: parseSalary(response.data.salaryCom?.highSalary || '0'),
-                  // indeed: parseSalary(response.data.indeed?.highSalary || '0'),
-                  talent: parseSalary(response.data.talent?.high || '0'),
-                  glassdoor: response.data.glassdoor?.basePayMax ?? 0,
-                  // monster: parseSalary(response.data.monster?.high || '0'),
-                  // levels: parseSalary(response.data.levels?.high || '0'),
-              },
-              midSalaries: {
-                  // salaryCom: parseSalary(response.data.salaryCom?.averageSalary || '0'),
-                  // indeed: parseSalary(response.data.indeed?.averageSalary || '0'),
-                  talent: parseSalary(response.data.talent?.mid || '0'),
-                  glassdoor: response.data.glassdoor?.basePayMin ?? 0,
-                  // monster: parseSalary(response.data.monster?.average || '0'),
-                  // levels: parseSalary(response.data.levels?.medianSalary || '0'),
-              }
+            jobTitle,
+            highSalaries: {
+              // salaryCom: parseSalary(response.data.salaryCom?.highSalary || '0'),
+              // indeed: parseSalary(response.data.indeed?.highSalary || '0'),
+              talent: parseSalary(response.data.talent?.high || "0"),
+              glassdoor: response.data.glassdoor?.basePayMax ?? 0,
+              // monster: parseSalary(response.data.monster?.high || '0'),
+              // levels: parseSalary(response.data.levels?.high || '0'),
+            },
+            midSalaries: {
+              // salaryCom: parseSalary(response.data.salaryCom?.averageSalary || '0'),
+              // indeed: parseSalary(response.data.indeed?.averageSalary || '0'),
+              talent: parseSalary(response.data.talent?.mid || "0"),
+              glassdoor: response.data.glassdoor?.basePayMin ?? 0,
+              // monster: parseSalary(response.data.monster?.average || '0'),
+              // levels: parseSalary(response.data.levels?.medianSalary || '0'),
+            },
           };
-      }));
+        })
+      );
 
       // Fetching additional wage data if the additional fields are filled
       let additionalResponse = null;
       if (showAdditionalField) {
-        const response = await axios.post('https://www.internal.cachelabs.io/api/soc/socSalary', {
-              stateValue,
-              areaValue,
-              socCode,
-          });
-          additionalResponse = response.data;
-        }
-        console.log(additionalResponse);
+        const response = await axios.post(
+          "https://www.internal.cachelabs.io/api/soc/socSalary",
+          {
+            stateValue,
+            areaValue,
+            socCode,
+          }
+        );
+        additionalResponse = response.data;
+      }
+      console.log(additionalResponse);
 
       // Navigating to the output page with all the gathered data
-      navigate('/rea-result', { state: { inputData, results, additionalResponse } });
-  } catch (error) {
-      console.error('Error fetching data:', error);
-  }
-};
+      navigate("/rea-result", {
+        state: { inputData, results, additionalResponse },
+      });
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
 
   return (
     <>
@@ -110,7 +133,9 @@ const LoginForm = () => {
                     type="text"
                     placeholder="First Name"
                     value={firstName}
-                    onChange={(e) => setfirstName(e.target.value)}
+                    onChange={(e) =>
+                      setfirstName(sanitizeInput(e.target.value))
+                    }
                   />
                 </div>
                 {/* Last Name */}
@@ -123,7 +148,7 @@ const LoginForm = () => {
                     type="text"
                     placeholder="Last Name"
                     value={lastName}
-                    onChange={(e) => setlastName(e.target.value)}
+                    onChange={(e) => setlastName(sanitizeInput(e.target.value))}
                   />
                 </div>
                 {/* Company */}
@@ -136,7 +161,7 @@ const LoginForm = () => {
                     type="text"
                     placeholder="Company"
                     value={company}
-                    onChange={(e) => setCompany(e.target.value)}
+                    onChange={(e) => setCompany(sanitizeInput(e.target.value))}
                   />
                 </div>
               </div>
@@ -157,7 +182,9 @@ const LoginForm = () => {
                     type="text"
                     placeholder="Job Title"
                     value={jobTitle1}
-                    onChange={(e) => setJobTitle1(e.target.value)}
+                    onChange={(e) =>
+                      setJobTitle1(sanitizeInput(e.target.value))
+                    }
                   />
                 </div>
                 {/* Job title 2*/}
@@ -170,7 +197,9 @@ const LoginForm = () => {
                     type="text"
                     placeholder="Job Title"
                     value={jobTitle2}
-                    onChange={(e) => setJobTitle2(e.target.value)}
+                    onChange={(e) =>
+                      setJobTitle2(sanitizeInput(e.target.value))
+                    }
                   />
                 </div>
                 {/* Job title 3*/}
@@ -183,7 +212,9 @@ const LoginForm = () => {
                     type="text"
                     placeholder="Job Title"
                     value={jobTitle3}
-                    onChange={(e) => setJobTitle3(e.target.value)}
+                    onChange={(e) =>
+                      setJobTitle3(sanitizeInput(e.target.value))
+                    }
                   />
                 </div>
               </div>
@@ -198,11 +229,11 @@ const LoginForm = () => {
                     type="text"
                     placeholder="Location"
                     value={location}
-                    onChange={(e) => setLocation(e.target.value)}
+                    onChange={(e) => setLocation(sanitizeInput(e.target.value))}
                   />
                 </div>
                 {/* SOC Code */}
-                </div>
+              </div>
               <div className="flex mt-[2rem]">
                 <h1 className="font-bold text-[2rem]">
                   Salary Details <br />
@@ -223,7 +254,9 @@ const LoginForm = () => {
                       type="number"
                       placeholder="Base Salary"
                       value={baseSalary}
-                      onChange={(e) => setBaseSalary(e.target.value)}
+                      onChange={(e) =>
+                        setBaseSalary(sanitizeInput(e.target.value))
+                      }
                     />
                   </div>
                 </div>
@@ -241,7 +274,9 @@ const LoginForm = () => {
                       type="number"
                       placeholder="Bonus Salary"
                       value={bonusSalary}
-                      onChange={(e) => setBonusSalary(e.target.value)}
+                      onChange={(e) =>
+                        setBonusSalary(sanitizeInput(e.target.value))
+                      }
                     />
                   </div>
                 </div>
@@ -259,7 +294,7 @@ const LoginForm = () => {
                       type="number"
                       placeholder="Stocks"
                       value={stocks}
-                      onChange={(e) => setStocks(e.target.value)}
+                      onChange={(e) => setStocks(sanitizeInput(e.target.value))}
                     />
                   </div>
                 </div>

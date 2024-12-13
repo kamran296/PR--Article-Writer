@@ -101,7 +101,7 @@ const BioWriter = () => {
     //   acc[key] = sanitizeInput(formData[key]);
     //   return acc;
     // }, {});
-    console.log(sanitizedFormData);
+    // console.log(sanitizedFormData);
     console.log("Generating article");
     setGeneratedArticle(false);
     setIsLoading(true);

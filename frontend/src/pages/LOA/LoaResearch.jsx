@@ -47,7 +47,7 @@ const LoaResearch = ({ type }) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: value,
+      [name]: sanitizeInput(value),
     });
   };
 
@@ -64,8 +64,14 @@ const LoaResearch = ({ type }) => {
     setLiked(!liked);
   };
 
+  const sanitizeInput = (input) => {
+    if (!input) return ""; // Handle empty input safely
+    return input.replace(/[<>{}()[\]'";:\/\\|^&$]/g, ""); // Removes unwanted characters
+  };
+
   const handleModalSubmit = async (e) => {
     e.preventDefault();
+    const sanitizedAnswer = sanitizeInput(correctAnswer);
     try {
       const response = await fetch(
         // "http://localhost:5000/api/v1/loa/research-data",
@@ -77,7 +83,7 @@ const LoaResearch = ({ type }) => {
           },
           body: JSON.stringify({
             question: formData.prompt,
-            answer: correctAnswer,
+            answer: sanitizedAnswer,
           }),
         }
       );
@@ -144,7 +150,9 @@ const LoaResearch = ({ type }) => {
             <form onSubmit={handleSubmit}>
               <div className={`${!generatedArticle ? "row" : ""}`}>
                 <label>
-<p className="ml-4 mb-3 text-[1.25rem] font-semibold">Recipient's Name</p>
+                  <p className="ml-4 mb-3 text-[1.25rem] font-semibold">
+                    Recipient's Name
+                  </p>
                   <input
                     className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 mb-4 outline-none text-black bg-[#FFFFFF] shadow-md "
                     placeholder="Recipient's Name"
@@ -155,7 +163,9 @@ const LoaResearch = ({ type }) => {
                   />
                 </label>
                 <label>
-<p className="ml-4 mb-3 text-[1.25rem] font-semibold">Recipient's Organization/University</p>
+                  <p className="ml-4 mb-3 text-[1.25rem] font-semibold">
+                    Recipient's Organization/University
+                  </p>
                   <input
                     className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 mb-4 outline-none text-black bg-[#FFFFFF] shadow-md"
                     placeholder="Recipient's Organization/University"
@@ -168,7 +178,9 @@ const LoaResearch = ({ type }) => {
               </div>
               <div className={`${!generatedArticle ? "row" : ""}`}>
                 <label>
-<p className="ml-4 mb-3 text-[1.25rem] font-semibold">Sender's Name</p>
+                  <p className="ml-4 mb-3 text-[1.25rem] font-semibold">
+                    Sender's Name
+                  </p>
                   <input
                     className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 mb-4 outline-none text-black bg-[#FFFFFF] shadow-md"
                     placeholder="Sender's Name"
@@ -179,7 +191,9 @@ const LoaResearch = ({ type }) => {
                   />
                 </label>
                 <label>
-<p className="ml-4 mb-3 text-[1.25rem] font-semibold">Sender's Organization/Institution</p>
+                  <p className="ml-4 mb-3 text-[1.25rem] font-semibold">
+                    Sender's Organization/Institution
+                  </p>
                   <input
                     className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 mb-4 outline-none text-black bg-[#FFFFFF] shadow-md"
                     placeholder="Sender's Organization/Institution"
@@ -192,7 +206,9 @@ const LoaResearch = ({ type }) => {
               </div>
               <div className={`${!generatedArticle ? "row" : ""}`}>
                 <label>
-<p className="ml-4 mb-3 text-[1.25rem] font-semibold">Sender's Relationship with the Recipient</p>
+                  <p className="ml-4 mb-3 text-[1.25rem] font-semibold">
+                    Sender's Relationship with the Recipient
+                  </p>
                   <input
                     className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 mb-4 outline-none text-black bg-[#FFFFFF] shadow-md"
                     placeholder="Sender's Relationship with the Recipient"
@@ -203,7 +219,9 @@ const LoaResearch = ({ type }) => {
                   />
                 </label>
                 <label>
-<p className="ml-4 mb-3 text-[1.25rem] font-semibold">Concerned Field of Work</p>
+                  <p className="ml-4 mb-3 text-[1.25rem] font-semibold">
+                    Concerned Field of Work
+                  </p>
                   <input
                     className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 mb-4 outline-none text-black bg-[#FFFFFF] shadow-md "
                     placeholder="Concerned Field of Work"
@@ -216,7 +234,9 @@ const LoaResearch = ({ type }) => {
               </div>
               <div className={`${!generatedArticle ? "row" : ""}`}>
                 <label>
-<p className="ml-4 mb-3 text-[1.25rem] font-semibold">Niche Domain (if any)</p>
+                  <p className="ml-4 mb-3 text-[1.25rem] font-semibold">
+                    Niche Domain (if any)
+                  </p>
                   <input
                     className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 mb-4 outline-none text-black bg-[#FFFFFF] shadow-md"
                     placeholder="Niche Domain (if any)"
@@ -227,7 +247,9 @@ const LoaResearch = ({ type }) => {
                   />
                 </label>
                 <label>
-<p className="ml-4 mb-3 text-[1.25rem] font-semibold">Source of Knowledge</p>
+                  <p className="ml-4 mb-3 text-[1.25rem] font-semibold">
+                    Source of Knowledge
+                  </p>
                   <input
                     className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 mb-4 outline-none text-black bg-[#FFFFFF] shadow-md "
                     placeholder="Source of Knowledge"
@@ -240,7 +262,9 @@ const LoaResearch = ({ type }) => {
               </div>
               <div className={`${!generatedArticle ? "row" : ""}`}>
                 <label>
-<p className="ml-4 mb-3 text-[1.25rem] font-semibold">Previous Contributions</p>
+                  <p className="ml-4 mb-3 text-[1.25rem] font-semibold">
+                    Previous Contributions
+                  </p>
                   <input
                     className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 mb-4 outline-none text-black bg-[#FFFFFF] shadow-md"
                     placeholder="Previous Contributions"
@@ -251,7 +275,9 @@ const LoaResearch = ({ type }) => {
                   />
                 </label>
                 <label>
-<p className="ml-4 mb-3 text-[1.25rem] font-semibold">Title of paper</p>
+                  <p className="ml-4 mb-3 text-[1.25rem] font-semibold">
+                    Title of paper
+                  </p>
                   <input
                     className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 mb-4 outline-none text-black bg-[#FFFFFF] shadow-md"
                     placeholder="Title of paper"
@@ -264,7 +290,9 @@ const LoaResearch = ({ type }) => {
               </div>
               <div className={`${!generatedArticle ? "row" : ""}`}>
                 <label>
-<p className="ml-4 mb-3 text-[1.25rem] font-semibold">Aspect Of Paper</p>
+                  <p className="ml-4 mb-3 text-[1.25rem] font-semibold">
+                    Aspect Of Paper
+                  </p>
                   <input
                     className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 mb-4 outline-none text-black bg-[#FFFFFF] shadow-md "
                     placeholder="Aspect Of Paper"
@@ -275,7 +303,9 @@ const LoaResearch = ({ type }) => {
                   />
                 </label>
                 <label>
-<p className="ml-4 mb-3 text-[1.25rem] font-semibold">Novelty Of Work</p>
+                  <p className="ml-4 mb-3 text-[1.25rem] font-semibold">
+                    Novelty Of Work
+                  </p>
                   <input
                     className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 mb-4 outline-none text-black bg-[#FFFFFF] shadow-md "
                     placeholder="Novelty Of Work"
@@ -288,7 +318,9 @@ const LoaResearch = ({ type }) => {
               </div>
               <div className={`${!generatedArticle ? "row" : ""}`}>
                 <label>
-<p className="ml-4 mb-3 text-[1.25rem] font-semibold">Significance For Future Works</p>
+                  <p className="ml-4 mb-3 text-[1.25rem] font-semibold">
+                    Significance For Future Works
+                  </p>
                   <input
                     className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 mb-4 outline-none text-black bg-[#FFFFFF] shadow-md"
                     placeholder="Significance For Future Works"
@@ -299,7 +331,9 @@ const LoaResearch = ({ type }) => {
                   />
                 </label>
                 <label>
-<p className="ml-4 mb-3 text-[1.25rem] font-semibold">Takeaway From Paper</p>
+                  <p className="ml-4 mb-3 text-[1.25rem] font-semibold">
+                    Takeaway From Paper
+                  </p>
                   <input
                     className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 mb-4 outline-none text-black bg-[#FFFFFF] shadow-md"
                     placeholder="Takeaway From Paper"
@@ -312,7 +346,9 @@ const LoaResearch = ({ type }) => {
               </div>
               <div className={`${!generatedArticle ? "row" : ""}`}>
                 <label>
-<p className="ml-4 mb-3 text-[1.25rem] font-semibold">Detailed Description</p>
+                  <p className="ml-4 mb-3 text-[1.25rem] font-semibold">
+                    Detailed Description
+                  </p>
                   <input
                     className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 mb-4 outline-none text-black bg-[#FFFFFF] shadow-md"
                     placeholder="Detailed Description"
@@ -323,7 +359,9 @@ const LoaResearch = ({ type }) => {
                   />
                 </label>
                 <label>
-<p className="ml-4 mb-3 text-[1.25rem] font-semibold">Publication</p>
+                  <p className="ml-4 mb-3 text-[1.25rem] font-semibold">
+                    Publication
+                  </p>
                   <input
                     className="w-[30rem] h-[4rem] rounded-lg p-4 text-2xl mx-3 mb-4 outline-none text-black bg-[#FFFFFF] shadow-md "
                     placeholder="Publication"
