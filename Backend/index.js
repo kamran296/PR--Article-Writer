@@ -8,6 +8,7 @@ const cors = require("cors");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const axios = require("axios"); // Import axios for HTTP requests
+const rateLimit = require("express-rate-limit");
 
 const authRouter = require("./router/auth");
 const openaiRouter = require("./router/openaiRouter");
@@ -64,6 +65,17 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
+// Define rate limiter
+const apiLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 50, // Limit each IP to 100 requests per windowMs
+  message: {
+    error: "Too many requests from this IP. Please try again after 15 minutes.",
+  },
+});
+// Apply rate limiting to all API routes
+app.use("/api/", apiLimiter);
+
 app.use(
   session({
     secret: "1234wpskdm5678",
@@ -71,7 +83,7 @@ app.use(
     saveUninitialized: true,
     cookie: {
       httpOnly: true,
-      secure: false, // Set to true if using HTTPS
+      secure: true, // Set to true if using HTTPS
     },
   })
 );
