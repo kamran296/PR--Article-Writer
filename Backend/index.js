@@ -9,6 +9,8 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const axios = require("axios"); // Import axios for HTTP requests
 const rateLimit = require("express-rate-limit");
+const helmet = require("helmet");
+const hsts = require("hsts");
 
 const authRouter = require("./router/auth");
 const openaiRouter = require("./router/openaiRouter");
@@ -64,6 +66,13 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
+app.use(
+  hsts({
+    maxAge: 31536000, // 1 year in seconds
+    includeSubDomains: true, // Apply to subdomains
+    preload: true, // Allow inclusion in HSTS preload list
+  })
+);
 
 app.use(
   session({
@@ -72,7 +81,7 @@ app.use(
     saveUninitialized: true,
     cookie: {
       httpOnly: true,
-      secure: false, // Set to true if using HTTPS
+      secure: true, // Set to true if using HTTPS
     },
   })
 );
@@ -87,6 +96,10 @@ require("./passport");
 app.use("/oauth", authRouter);
 // Apply rate limiting to all API routes
 
+app.use(helmet());
+app.use(helmet.referrerPolicy({ policy: "no-referrer" }));
+app.use(helmet.noSniff());
+app.use(helmet.frameguard({ action: "sameorigin" }));
 // Define rate limiter
 const apiLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
@@ -97,6 +110,7 @@ const apiLimiter = rateLimit({
   keyGenerator: (req) => req.ip, // Default: uses IP address
 });
 app.use("/api/", apiLimiter);
+
 app.use("/api/v1/ArticleWriter", openaiRouter);
 app.use("/api/v1/chatbot", chatbotRouter);
 app.use("/api/v1/loa", loaRouter);
@@ -113,6 +127,7 @@ app.use("/api/monster", monsterRoutes);
 app.use("/api/levels", levelsRoutes);
 app.use("/api/soc", socRoutes);
 app.use("/api/glassdoor", glassdoorRoutes);
+
 // Static files
 const _dirname = path.dirname("");
 const buildPath = path.join(_dirname, "../frontend/dist");
