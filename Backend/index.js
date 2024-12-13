@@ -92,11 +92,10 @@ app.use(passport.session());
 // Ensure this file correctly sets up your Passport strategies
 require("./passport");
 
-// Apply rate limiting to all API routes
-app.use("/api/", apiLimiter);
-
 // Routes
 app.use("/oauth", authRouter);
+// Apply rate limiting to all API routes
+app.use("/api/", apiLimiter);
 app.use("/api/v1/ArticleWriter", openaiRouter);
 app.use("/api/v1/chatbot", chatbotRouter);
 app.use("/api/v1/loa", loaRouter);
