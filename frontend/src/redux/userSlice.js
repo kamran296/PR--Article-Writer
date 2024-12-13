@@ -2,24 +2,34 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import CryptoJS from "crypto-js";
 
 async function decryptData(encryptedData, secretKey) {
-  // Split the encrypted data into IV and encrypted text
-  const [iv, encryptedText] = encryptedData.split(":");
+  // Convert base64-encoded string to bytes
+  const encryptedDataBuffer = Uint8Array.from(atob(encryptedData), (c) =>
+    c.charCodeAt(0)
+  );
 
-  // Convert IV from hex to WordArray
-  const ivWordArray = CryptoJS.enc.Hex.parse(iv);
-  const encryptedWordArray = CryptoJS.enc.Hex.parse(encryptedText);
+  // Generate the IV from the encryptedDataBuffer (you need to extract the IV, assuming first 16 bytes are IV)
+  const iv = encryptedDataBuffer.slice(0, 16); // AES-CBC IV size is typically 16 bytes
+  const encryptedText = encryptedDataBuffer.slice(16); // The rest is the encrypted text
 
-  // Perform decryption using the secret key
+  // Import the secret key (which must be the same as used in the backend)
+  const key = await window.crypto.subtle.importKey(
+    "raw",
+    new TextEncoder().encode(secretKey), // Convert secret key to bytes
+    { name: "AES-CBC" },
+    false,
+    ["decrypt"]
+  );
+
+  // Perform the decryption
   try {
-    const decrypted = CryptoJS.AES.decrypt(
-      { ciphertext: encryptedWordArray },
-      CryptoJS.enc.Utf8.parse(secretKey), // Convert the key to WordArray
-      { iv: ivWordArray }
+    const decryptedBuffer = await window.crypto.subtle.decrypt(
+      { name: "AES-CBC", iv: iv },
+      key,
+      encryptedText
     );
 
-    // Convert decrypted data to string
-    const decryptedText = decrypted.toString(CryptoJS.enc.Utf8);
-    return decryptedText;
+    // Convert decrypted bytes to a string and return it
+    return new TextDecoder().decode(decryptedBuffer);
   } catch (err) {
     console.error("Decryption failed:", err);
     return null;
