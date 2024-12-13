@@ -65,15 +65,6 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-// Define rate limiter
-const apiLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 50, // Limit each IP to 100 requests per windowMs
-  message: {
-    error: "Too many requests from this IP. Please try again after 15 minutes.",
-  },
-});
-
 app.use(
   session({
     secret: "1234wpskdm5678",
@@ -95,7 +86,17 @@ require("./passport");
 // Routes
 app.use("/oauth", authRouter);
 // Apply rate limiting to all API routes
-// app.use("/api/", apiLimiter);
+
+// Define rate limiter
+const apiLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 50,
+  message: {
+    error: "Too many requests from this IP. Please try again after 15 minutes.",
+  },
+  keyGenerator: (req) => req.ip, // Default: uses IP address
+});
+app.use("/api/", apiLimiter);
 app.use("/api/v1/ArticleWriter", openaiRouter);
 app.use("/api/v1/chatbot", chatbotRouter);
 app.use("/api/v1/loa", loaRouter);
