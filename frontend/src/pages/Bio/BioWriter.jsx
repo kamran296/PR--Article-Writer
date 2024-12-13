@@ -52,8 +52,14 @@ const BioWriter = () => {
     setLiked(!liked);
   };
 
+  const sanitizeInput = (input) => {
+    // Remove characters like <, >, ', ", {, }, etc.
+    return input.replace(/[<>{}'"\/]/g, "");
+  };
+
   const handleModalSubmit = async (e) => {
     e.preventDefault();
+    const sanitizedCorrectAnswer = sanitizeInput(correctAnswer);
     try {
       const response = await fetch(
         // "http://localhost:5000/api/v1/bio/add-data",
@@ -65,7 +71,7 @@ const BioWriter = () => {
           },
           body: JSON.stringify({
             question: formData.prompt,
-            answer: correctAnswer,
+            answer: sanitizedCorrectAnswer,
           }),
         }
       );
@@ -89,7 +95,13 @@ const BioWriter = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
+
+    // Sanitize each input field in formData
+    const sanitizedFormData = Object.keys(formData).reduce((acc, key) => {
+      acc[key] = sanitizeInput(formData[key]);
+      return acc;
+    }, {});
+    console.log(sanitizedFormData);
     console.log("Generating article");
     setGeneratedArticle(false);
     setIsLoading(true);
@@ -102,7 +114,7 @@ const BioWriter = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(formData),
+          body: JSON.stringify(sanitizedFormData),
         }
       );
       const data = await response.json();

@@ -43,8 +43,15 @@ const LoaPrompt = () => {
     setLiked(!liked);
   };
 
+  const sanitizeInput = (input) => {
+    // Remove characters like <, >, ', ", {, }, etc.
+    return input.replace(/[<>{}'"\/]/g, "");
+  };
+
   const handleModalSubmit = async (e) => {
     e.preventDefault();
+    const sanitizedCorrectAnswer = sanitizeInput(correctAnswer);
+
     try {
       const response = await fetch(
         // "http://localhost:5000/api/v1/bio/add-data",
@@ -56,7 +63,7 @@ const LoaPrompt = () => {
           },
           body: JSON.stringify({
             question: formData.prompt,
-            answer: correctAnswer,
+            answer: sanitizedCorrectAnswer,
           }),
         }
       );
@@ -79,8 +86,14 @@ const LoaPrompt = () => {
     if (e.key == "Enter") generateArticle();
   };
 
-  const generateArticle = async () => {
+  const generateArticle = async (e) => {
+    e.preventDefault();
     console.log("Generating Article!!");
+    // Sanitize each input field in formData
+    const sanitizedFormData = Object.keys(formData).reduce((acc, key) => {
+      acc[key] = sanitizeInput(formData[key]);
+      return acc;
+    }, {});
     try {
       const response = await fetch(
         // "http://localhost:5000/api/v1/bio/bio-writer-prompt",
@@ -90,7 +103,7 @@ const LoaPrompt = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(formData),
+          body: JSON.stringify(sanitizedFormData),
         }
       );
 
