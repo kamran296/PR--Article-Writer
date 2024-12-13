@@ -73,8 +73,6 @@ const apiLimiter = rateLimit({
     error: "Too many requests from this IP. Please try again after 15 minutes.",
   },
 });
-// Apply rate limiting to all API routes
-app.use("/api/", apiLimiter);
 
 app.use(
   session({
@@ -93,6 +91,9 @@ app.use(passport.session());
 
 // Ensure this file correctly sets up your Passport strategies
 require("./passport");
+
+// Apply rate limiting to all API routes
+app.use("/api/", apiLimiter);
 
 // Routes
 app.use("/oauth", authRouter);
