@@ -1,5 +1,52 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
+// Decrypt function on the frontend using AES-256-CBC
+async function decryptData(encryptedData, secretKey) {
+  // Split the encrypted data into IV and encrypted text
+  const [iv, encryptedText] = encryptedData.split(":");
+  const ivBuffer = new Uint8Array(Buffer.from(iv, "hex"));
+  const encryptedBuffer = Buffer.from(encryptedText, "hex");
+
+  // Import the secret key (which must be the same as used in the backend)
+  const key = await window.crypto.subtle.importKey(
+    "raw",
+    new TextEncoder().encode(secretKey), // Convert secret key to bytes
+    { name: "AES-CBC" },
+    false,
+    ["decrypt"]
+  );
+
+  // Perform the decryption
+  try {
+    const decryptedBuffer = await window.crypto.subtle.decrypt(
+      { name: "AES-CBC", iv: ivBuffer },
+      key,
+      encryptedBuffer
+    );
+
+    // Convert decrypted bytes to a string and return it
+    return new TextDecoder().decode(decryptedBuffer);
+  } catch (err) {
+    console.error("Decryption failed:", err);
+    return null;
+  }
+}
+
+// export const fetchUser = createAsyncThunk("user/fetchUser", async () => {
+//   const response = await fetch(
+//     "https://www.internal.cachelabs.io/oauth/profile",
+//     {
+//       method: "GET",
+//       credentials: "include",
+//     }
+//   );
+//   const data = await response.json();
+//   return data;
+// });
+
+// Create an async thunk for logout
+
+// function with the decryption of the isAdmin value
 export const fetchUser = createAsyncThunk("user/fetchUser", async () => {
   const response = await fetch(
     "https://www.internal.cachelabs.io/oauth/profile",
@@ -8,11 +55,20 @@ export const fetchUser = createAsyncThunk("user/fetchUser", async () => {
       credentials: "include",
     }
   );
+
   const data = await response.json();
-  return data;
+
+  // Assuming you have the encrypted isAdmin value in data.user.isAdmin
+  const encryptedIsAdmin = data.user.isAdmin;
+
+  // Use the secret key to decrypt the isAdmin field
+  const secretKey = "internal-cache-labs@harsh1234567"; // Use the same secret key from the backend
+  const decryptedIsAdmin = await decryptData(encryptedIsAdmin, secretKey);
+
+  // Return the user data with decrypted isAdmin field
+  return { ...data, user: { ...data.user, isAdmin: decryptedIsAdmin } };
 });
 
-// Create an async thunk for logout
 export const logoutUser = createAsyncThunk("user/logout", async () => {
   const response = await fetch(
     "https://www.internal.cachelabs.io/oauth/logout",

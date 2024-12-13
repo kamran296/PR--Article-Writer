@@ -32,41 +32,17 @@ passport.use(
   )
 );
 
-// passport.serializeUser((user, done) => {
-//   // console.log("Serialize User:", user.id); // Logging for debugging
-//   done(null, user.id); // Save only the user ID in the session
-// });
-
-// passport.deserializeUser(async (id, done) => {
-//   // console.log("Deserialize User ID:", id); // Logging for debugging
-//   try {
-//     const user = await userdb.findById(id);
-//     // console.log("User Found:", user); // Logging for debugging
-//     done(null, user); // Fetch the full user object using the ID
-//   } catch (error) {
-//     done(error, null);
-//   }
-// });
-
-// demo2 of the upper two function with added isAdmin status
 passport.serializeUser((user, done) => {
-  // Include `isAdmin` along with `id` in the session
-  const sessionData = { id: user.id, isAdmin: user.isAdmin };
-  done(null, sessionData); // Save both `id` and `isAdmin` in the session
+  // console.log("Serialize User:", user.id); // Logging for debugging
+  done(null, user.id); // Save only the user ID in the session
 });
 
-passport.deserializeUser(async (sessionData, done) => {
-  // Destructure sessionData to retrieve id
-  const { id } = sessionData;
+passport.deserializeUser(async (id, done) => {
+  // console.log("Deserialize User ID:", id); // Logging for debugging
   try {
     const user = await userdb.findById(id);
-    if (user) {
-      // Add `isAdmin` back to the user object for further usage
-      user.isAdmin = sessionData.isAdmin;
-      done(null, user);
-    } else {
-      done(null, null);
-    }
+    // console.log("User Found:", user); // Logging for debugging
+    done(null, user); // Fetch the full user object using the ID
   } catch (error) {
     done(error, null);
   }
