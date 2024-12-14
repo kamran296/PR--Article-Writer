@@ -21,7 +21,13 @@ async function decryptData(encryptedData, secretKey) {
   );
 
   // Perform the decryption
+
   try {
+    if (!window.crypto || !window.crypto.subtle) {
+      alert(
+        "Your browser does not support the required encryption features. Please use a modern browser."
+      );
+    }
     const decryptedBuffer = await window.crypto.subtle.decrypt(
       { name: "AES-CBC", iv: iv },
       key,
