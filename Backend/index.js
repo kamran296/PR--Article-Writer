@@ -107,6 +107,12 @@ app.use("/oauth", authRouter);
 //   })
 // );
 
+app.use(
+  helmet({
+    contentSecurityPolicy: false, // Temporarily disable CSP
+  })
+);
+
 app.use(helmet.referrerPolicy({ policy: "no-referrer" }));
 app.use(helmet.noSniff());
 app.use(helmet.frameguard({ action: "sameorigin" }));
