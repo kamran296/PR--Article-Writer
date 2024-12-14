@@ -66,6 +66,7 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
+app.use(helmet());
 app.use(
   hsts({
     maxAge: 31536000, // 1 year in seconds
@@ -96,7 +97,6 @@ require("./passport");
 app.use("/oauth", authRouter);
 // Apply rate limiting to all API routes
 
-// app.use(helmet());
 // app.use(helmet.referrerPolicy({ policy: "no-referrer" }));
 // app.use(helmet.noSniff());
 // app.use(helmet.frameguard({ action: "sameorigin" }));
