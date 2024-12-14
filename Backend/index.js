@@ -97,15 +97,15 @@ require("./passport");
 app.use("/oauth", authRouter);
 // Apply rate limiting to all API routes
 
-app.use(
-  helmet.contentSecurityPolicy({
-    directives: {
-      defaultSrc: ["'self'"],
-      scriptSrc: ["'self'", "'unsafe-inline'"], // Allow inline scripts
-      styleSrc: ["'self'", "'unsafe-inline'"], // If inline styles are required
-    },
-  })
-);
+// app.use(
+//   helmet.contentSecurityPolicy({
+//     directives: {
+//       defaultSrc: ["'self'"],
+//       scriptSrc: ["'self'", "'unsafe-inline'"], // Allow inline scripts
+//       styleSrc: ["'self'", "'unsafe-inline'"], // If inline styles are required
+//     },
+//   })
+// );
 
 // app.use(helmet.referrerPolicy({ policy: "no-referrer" }));
 // app.use(helmet.noSniff());
