@@ -106,6 +106,7 @@ export const fetchUser = createAsyncThunk("user/fetchUser", async () => {
     ...data,
     user: { ...data.user, isAdmin: decryptedIsAdmin },
   };
+  console.log(updatedData, "data");
 
   return updatedData;
 });
