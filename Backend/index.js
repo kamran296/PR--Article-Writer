@@ -96,9 +96,9 @@ require("./passport");
 app.use("/oauth", authRouter);
 // Apply rate limiting to all API routes
 
-app.use(helmet());
-app.use(helmet.referrerPolicy({ policy: "no-referrer" }));
-app.use(helmet.noSniff());
+// app.use(helmet());
+// app.use(helmet.referrerPolicy({ policy: "no-referrer" }));
+// app.use(helmet.noSniff());
 // app.use(helmet.frameguard({ action: "sameorigin" }));
 // / Optionally, explicitly remove or mask the 'Server' header
 // app.disable("x-powered-by"); // Removes 'X-Powered-By' header
