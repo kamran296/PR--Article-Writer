@@ -67,13 +67,13 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 app.use(helmet());
-// app.use(
-//   hsts({
-//     maxAge: 31536000, // 1 year in seconds
-//     includeSubDomains: true, // Apply to subdomains
-//     preload: true, // Allow inclusion in HSTS preload list
-//   })
-// );
+app.use(
+  hsts({
+    maxAge: 31536000, // 1 year in seconds
+    includeSubDomains: true, // Apply to subdomains
+    preload: true, // Allow inclusion in HSTS preload list
+  })
+);
 
 app.use(
   session({
@@ -107,9 +107,9 @@ app.use("/oauth", authRouter);
 //   })
 // );
 
-// app.use(helmet.referrerPolicy({ policy: "no-referrer" }));
-// app.use(helmet.noSniff());
-// app.use(helmet.frameguard({ action: "sameorigin" }));
+app.use(helmet.referrerPolicy({ policy: "no-referrer" }));
+app.use(helmet.noSniff());
+app.use(helmet.frameguard({ action: "sameorigin" }));
 // / Optionally, explicitly remove or mask the 'Server' header
 // app.disable("x-powered-by"); // Removes 'X-Powered-By' header
 // app.use((req, res, next) => {
@@ -125,7 +125,7 @@ const apiLimiter = rateLimit({
   },
   keyGenerator: (req) => req.ip, // Default: uses IP address
 });
-// app.use("/api/", apiLimiter);
+app.use("/api/", apiLimiter);
 
 app.use("/api/v1/ArticleWriter", openaiRouter);
 app.use("/api/v1/chatbot", chatbotRouter);
