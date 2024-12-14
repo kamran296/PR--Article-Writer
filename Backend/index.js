@@ -102,10 +102,10 @@ app.use(helmet.noSniff());
 app.use(helmet.frameguard({ action: "sameorigin" }));
 // / Optionally, explicitly remove or mask the 'Server' header
 app.disable("x-powered-by"); // Removes 'X-Powered-By' header
-app.use((req, res, next) => {
-  res.removeHeader("Server"); // Removes the 'Server' header
-  next();
-});
+// app.use((req, res, next) => {
+//   res.removeHeader("Server"); // Removes the 'Server' header
+//   next();
+// });
 // Define rate limiter
 const apiLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
