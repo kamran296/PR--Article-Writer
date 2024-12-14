@@ -67,13 +67,13 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 app.use(helmet());
-app.use(
-  hsts({
-    maxAge: 31536000, // 1 year in seconds
-    includeSubDomains: true, // Apply to subdomains
-    preload: true, // Allow inclusion in HSTS preload list
-  })
-);
+// app.use(
+//   hsts({
+//     maxAge: 31536000, // 1 year in seconds
+//     includeSubDomains: true, // Apply to subdomains
+//     preload: true, // Allow inclusion in HSTS preload list
+//   })
+// );
 
 app.use(
   session({
