@@ -115,7 +115,7 @@ const apiLimiter = rateLimit({
   },
   keyGenerator: (req) => req.ip, // Default: uses IP address
 });
-app.use("/api/", apiLimiter);
+// app.use("/api/", apiLimiter);
 
 app.use("/api/v1/ArticleWriter", openaiRouter);
 app.use("/api/v1/chatbot", chatbotRouter);
