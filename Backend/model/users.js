@@ -41,8 +41,8 @@ const users = new mongoose.Schema(
     image: String,
     isAdmin: {
       type: String,
-      default: "member",
-      set: encrypt, // Encrypt the value before saving
+      default: "TealpI9ODeNqwU+16wxYh1nEvegpSGmGNpudWQu+U50=",
+      // Encrypt the value before saving
     },
   },
   { timestamps: true }
