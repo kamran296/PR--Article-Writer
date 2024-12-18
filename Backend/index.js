@@ -110,23 +110,23 @@ app.use(
 //   })
 // );
 
-app.use(
-  helmet({
-    contentSecurityPolicy: {
-      directives: {
-        scriptSrc: [
-          "'self'",
-          "'unsafe-inline'", // Temporarily allow inline scripts
-          "https://static.hotjar.com",
-          "https://script.hotjar.com",
-        ],
-        connectSrc: ["'self'", "https://*.hotjar.com", "wss://*.hotjar.com"],
-        imgSrc: ["'self'", "https://*.hotjar.com"],
-        frameSrc: ["'self'", "https://*.hotjar.com"],
-      },
-    },
-  })
-);
+// app.use(
+//   helmet({
+//     contentSecurityPolicy: {
+//       directives: {
+//         scriptSrc: [
+//           "'self'",
+//           "'unsafe-inline'", // Temporarily allow inline scripts
+//           "https://static.hotjar.com",
+//           "https://script.hotjar.com",
+//         ],
+//         connectSrc: ["'self'", "https://*.hotjar.com", "wss://*.hotjar.com"],
+//         imgSrc: ["'self'", "https://*.hotjar.com"],
+//         frameSrc: ["'self'", "https://*.hotjar.com"],
+//       },
+//     },
+//   })
+// );
 
 app.use(
   hsts({
