@@ -73,6 +73,7 @@ app.use(cors(corsOptions));
 app.use(helmet());
 app.use((req, res, next) => {
   res.locals.nonce = crypto.randomBytes(16).toString("base64");
+  console.log("Generated Nonce:", res.locals.nonce); // Debugging log
   next();
 });
 app.use(
@@ -84,7 +85,7 @@ app.use(
           "'self'",
           "https://static.hotjar.com",
           "https://script.hotjar.com",
-          (req, res) => `'nonce-${res.locals.nonce}'`, // Allow scripts with the correct nonce
+          (req, res) => `'nonce-${res.locals.nonce}'`, // Dynamic nonce
         ],
         connectSrc: ["'self'", "https://*.hotjar.com", "wss://*.hotjar.com"],
         imgSrc: ["'self'", "https://*.hotjar.com"],
