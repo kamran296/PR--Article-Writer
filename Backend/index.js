@@ -75,21 +75,35 @@ app.use((req, res, next) => {
   res.locals.nonce = crypto.randomBytes(16).toString("base64");
   next();
 });
-
 app.use(
   helmet({
     contentSecurityPolicy: {
       directives: {
         scriptSrc: [
           "'self'",
+          "'unsafe-inline'", // This allows inline scripts but reduces security
           "https://static.hotjar.com",
           "https://script.hotjar.com",
-          (req, res) => `'nonce-${res.locals.nonce}'`,
         ],
       },
     },
   })
 );
+
+// app.use(
+//   helmet({
+//     contentSecurityPolicy: {
+//       directives: {
+//         scriptSrc: [
+//           "'self'",
+//           "https://static.hotjar.com",
+//           "https://script.hotjar.com",
+//           (req, res) => `'nonce-${res.locals.nonce}'`,
+//         ],
+//       },
+//     },
+//   })
+// );
 
 app.use(
   hsts({
