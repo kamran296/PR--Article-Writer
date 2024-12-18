@@ -11,6 +11,7 @@ const axios = require("axios"); // Import axios for HTTP requests
 const rateLimit = require("express-rate-limit");
 const helmet = require("helmet");
 const hsts = require("hsts");
+const crypto = require("crypto");
 
 const authRouter = require("./router/auth");
 const openaiRouter = require("./router/openaiRouter");
