@@ -79,12 +79,16 @@ app.use(
   helmet({
     contentSecurityPolicy: {
       directives: {
+        defaultSrc: ["'self'"],
         scriptSrc: [
           "'self'",
-          "'unsafe-inline'", // This allows inline scripts but reduces security
           "https://static.hotjar.com",
           "https://script.hotjar.com",
+          (req, res) => `'nonce-${res.locals.nonce}'`, // Allow scripts with the correct nonce
         ],
+        connectSrc: ["'self'", "https://*.hotjar.com", "wss://*.hotjar.com"],
+        imgSrc: ["'self'", "https://*.hotjar.com"],
+        frameSrc: ["'self'", "https://*.hotjar.com"],
       },
     },
   })
