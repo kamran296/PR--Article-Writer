@@ -70,6 +70,26 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 app.use(helmet());
+app.use((req, res, next) => {
+  res.locals.nonce = crypto.randomBytes(16).toString("base64");
+  next();
+});
+
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        scriptSrc: [
+          "'self'",
+          "https://static.hotjar.com",
+          "https://script.hotjar.com",
+          (req, res) => `'nonce-${res.locals.nonce}'`,
+        ],
+      },
+    },
+  })
+);
+
 app.use(
   hsts({
     maxAge: 31536000, // 1 year in seconds
@@ -99,22 +119,6 @@ require("./passport");
 // Routes
 app.use("/oauth", authRouter);
 // Apply rate limiting to all API routes
-
-// app.use(
-//   helmet.contentSecurityPolicy({
-//     directives: {
-//       defaultSrc: ["'self'"],
-//       scriptSrc: ["'self'", "'unsafe-inline'"], // Allow inline scripts
-//       styleSrc: ["'self'", "'unsafe-inline'"], // If inline styles are required
-//     },
-//   })
-// );
-
-// app.use(
-//   helmet({
-//     contentSecurityPolicy: false, // Temporarily disable CSP
-//   })
-// );
 
 app.use(helmet.referrerPolicy({ policy: "no-referrer" }));
 app.use(helmet.noSniff());
