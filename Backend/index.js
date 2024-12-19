@@ -79,24 +79,24 @@ app.use((req, res, next) => {
   );
   next();
 });
-app.use(
-  helmet({
-    contentSecurityPolicy: {
-      directives: {
-        defaultSrc: ["'self'"],
-        scriptSrc: [
-          "'self'",
-          "https://static.hotjar.com",
-          "https://script.hotjar.com",
-          (req, res) => `'nonce-${res.locals.nonce}'`, // Dynamic nonce
-        ],
-        connectSrc: ["'self'", "https://*.hotjar.com", "wss://*.hotjar.com"],
-        imgSrc: ["'self'", "https://*.hotjar.com"],
-        frameSrc: ["'self'", "https://*.hotjar.com"],
-      },
-    },
-  })
-);
+// app.use(
+//   helmet({
+//     contentSecurityPolicy: {
+//       directives: {
+//         defaultSrc: ["'self'"],
+//         scriptSrc: [
+//           "'self'",
+//           "https://static.hotjar.com",
+//           "https://script.hotjar.com",
+//           (req, res) => `'nonce-${res.locals.nonce}'`, // Dynamic nonce
+//         ],
+//         connectSrc: ["'self'", "https://*.hotjar.com", "wss://*.hotjar.com"],
+//         imgSrc: ["'self'", "https://*.hotjar.com"],
+//         frameSrc: ["'self'", "https://*.hotjar.com"],
+//       },
+//     },
+//   })
+// );
 
 // app.use(
 //   helmet({
