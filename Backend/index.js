@@ -71,14 +71,14 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 app.use(helmet());
-app.use((req, res, next) => {
-  res.locals.nonce = crypto.randomBytes(16).toString("base64");
-  res.setHeader(
-    "Content-Security-Policy",
-    `script-src 'self' 'nonce-${res.locals.nonce}' https://static.hotjar.com https://script.hotjar.com`
-  );
-  next();
-});
+// app.use((req, res, next) => {
+//   res.locals.nonce = crypto.randomBytes(16).toString("base64");
+//   res.setHeader(
+//     "Content-Security-Policy",
+//     `script-src 'self' 'nonce-${res.locals.nonce}' https://static.hotjar.com https://script.hotjar.com`
+//   );
+//   next();
+// });
 // app.use(
 //   helmet({
 //     contentSecurityPolicy: {
