@@ -171,9 +171,14 @@ app.disable("x-powered-by"); // Removes 'X-Powered-By' header
 //   next();
 // });
 // Define rate limiter
+app.get("/", (req, res) => {
+  const nonce = crypto.randomBytes(16).toString("base64");
+  res.locals.nonce = nonce;
+  res.render("index", { nonce });
+});
 const apiLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 50,
+  max: 30,
   message: {
     error: "Too many requests from this IP. Please try again after 15 minutes.",
   },
