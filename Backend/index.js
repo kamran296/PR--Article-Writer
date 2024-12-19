@@ -70,7 +70,7 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-app.use(helmet());
+// app.use(helmet());
 // app.use((req, res, next) => {
 //   res.locals.nonce = crypto.randomBytes(16).toString("base64");
 //   res.setHeader(
@@ -161,9 +161,9 @@ require("./passport");
 app.use("/oauth", authRouter);
 // Apply rate limiting to all API routes
 
-app.use(helmet.referrerPolicy({ policy: "no-referrer" }));
-app.use(helmet.noSniff());
-app.use(helmet.frameguard({ action: "sameorigin" }));
+// app.use(helmet.referrerPolicy({ policy: "no-referrer" }));
+// app.use(helmet.noSniff());
+// app.use(helmet.frameguard({ action: "sameorigin" }));
 // / Optionally, explicitly remove or mask the 'Server' header
 app.disable("x-powered-by"); // Removes 'X-Powered-By' header
 // app.use((req, res, next) => {
