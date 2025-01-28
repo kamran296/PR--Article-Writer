@@ -172,15 +172,15 @@ app.disable("x-powered-by"); // Removes 'X-Powered-By' header
 // });
 // Define rate limiter
 
-const apiLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 30,
-  message: {
-    error: "Too many requests from this IP. Please try again after 15 minutes.",
-  },
-  keyGenerator: (req) => req.ip, // Default: uses IP address
-});
-app.use("/api/", apiLimiter);
+// const apiLimiter = rateLimit({
+//   windowMs: 15 * 60 * 1000, // 15 minutes
+//   max: 30,
+//   message: {
+//     error: "Too many requests from this IP. Please try again after 15 minutes.",
+//   },
+//   keyGenerator: (req) => req.ip, // Default: uses IP address
+// });
+// app.use("/api/", apiLimiter);
 
 app.use("/api/v1/ArticleWriter", openaiRouter);
 app.use("/api/v1/chatbot", chatbotRouter);
