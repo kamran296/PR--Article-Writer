@@ -13,8 +13,9 @@ import Niche from "./pages/Niche/Niche";
 import Login from "./components/Login";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUser } from "./redux/userSlice";
+import  Profile  from "./pages/profile"
 
-import axios from "axios";
+//import axios from "axios";
 import LorPrompt from "./pages/LOR/LorPrompt";
 import LorForm from "./pages/LOR/LorForm";
 import Dashboard from "./pages/Dashboard/Dashboard";
@@ -34,46 +35,32 @@ function App() {
       dispatch(fetchUser());
     }
   }, [userStatus, dispatch]);
+
   console.log("App.jsx user:", user);
-  // console.log("app.jsx user", memoizedUser);
+
   return (
     <Router>
       <Routes>
         <Route exact path="/login" element={<Login />} />
-
-        {user && user.success ? (
-          <>
-            <Route exact path="/prd" element={<Home />} />
-            <Route exact path="/article-form" element={<Form />} />
-            <Route exact path="/loa-prompt" element={<LoaPrompt />} />
-            <Route exact path="/loa-form" element={<LoaForm />} />
-            <Route exact path="/critical-role" element={<LoaCritical />} />
-            <Route exact path="/lor" element={<LorPrompt />} />
-            <Route exact path="/lor-form" element={<LorForm />} />
-            <Route exact path="/bio-writer" element={<BioWriter />} />
-
-            <Route
-              exact
-              path="/bio-writer-prompt"
-              element={<BioWriterPrompt />}
-            />
-
-            <Route exact path="/sidebar" element={<SidebarTail />} />
-            <Route exact path="/chatbot" element={<Chatbot />} />
-            <Route exact path="/niche" element={<Niche />} />
-            <Route exact path="/client" element={<ClientChatbot />} />
-            <Route exact path="/add-data" element={<AddData />} />
-            <Route exact path="/rea-form" element={<LoginForm />} />
-            <Route exact path="/rea-result" element={<ResultPage />} />
-            <Route exact path="/" element={<Landing />} />
-
-            {user.user.isAdmin === "Admin" && (
-              <Route exact path="/dashboard" element={<Dashboard />} />
-            )}
-          </>
-        ) : (
-          <Route path="*" element={<Login />} />
-        )}
+        <Route exact path="/prd" element={<Home />} />
+        <Route exact path="/article-form" element={<Form />} />
+        <Route exact path="/loa-prompt" element={<LoaPrompt />} />
+        <Route exact path="/loa-form" element={<LoaForm />} />
+        <Route exact path="/critical-role" element={<LoaCritical />} />
+        <Route exact path="/lor" element={<LorPrompt />} />
+        <Route exact path="/lor-form" element={<LorForm />} />
+        <Route exact path="/bio-writer" element={<BioWriter />} />
+        <Route exact path="/bio-writer-prompt" element={<BioWriterPrompt />} />
+        <Route exact path="/sidebar" element={<SidebarTail />} />
+        <Route exact path="/chatbot" element={<Chatbot />} />
+        <Route exact path="/niche" element={<Niche />} />
+        <Route exact path="/client" element={<ClientChatbot />} />
+        <Route exact path="/add-data" element={<AddData />} />
+        <Route exact path="/rea-form" element={<LoginForm />} />
+        <Route exact path="/rea-result" element={<ResultPage />} />
+        <Route exact path="/" element={<Landing />} />
+        <Route exact path="/dashboard" element={<Dashboard />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </Router>
   );
