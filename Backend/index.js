@@ -70,66 +70,6 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-// app.use(helmet());
-// app.use((req, res, next) => {
-//   res.locals.nonce = crypto.randomBytes(16).toString("base64");
-//   res.setHeader(
-//     "Content-Security-Policy",
-//     `script-src 'self' 'nonce-${res.locals.nonce}' https://static.hotjar.com https://script.hotjar.com`
-//   );
-//   next();
-// });
-// app.use(
-//   helmet({
-//     contentSecurityPolicy: {
-//       directives: {
-//         defaultSrc: ["'self'"],
-//         scriptSrc: [
-//           "'self'",
-//           "https://static.hotjar.com",
-//           "https://script.hotjar.com",
-//           (req, res) => `'nonce-${res.locals.nonce}'`, // Dynamic nonce
-//         ],
-//         connectSrc: ["'self'", "https://*.hotjar.com", "wss://*.hotjar.com"],
-//         imgSrc: ["'self'", "https://*.hotjar.com"],
-//         frameSrc: ["'self'", "https://*.hotjar.com"],
-//       },
-//     },
-//   })
-// );
-
-// app.use(
-//   helmet({
-//     contentSecurityPolicy: {
-//       directives: {
-//         scriptSrc: [
-//           "'self'",
-//           "https://static.hotjar.com",
-//           "https://script.hotjar.com",
-//           (req, res) => `'nonce-${res.locals.nonce}'`,
-//         ],
-//       },
-//     },
-//   })
-// );
-
-// app.use(
-//   helmet({
-//     contentSecurityPolicy: {
-//       directives: {
-//         scriptSrc: [
-//           "'self'",
-//           "'unsafe-inline'", // Temporarily allow inline scripts
-//           "https://static.hotjar.com",
-//           "https://script.hotjar.com",
-//         ],
-//         connectSrc: ["'self'", "https://*.hotjar.com", "wss://*.hotjar.com"],
-//         imgSrc: ["'self'", "https://*.hotjar.com"],
-//         frameSrc: ["'self'", "https://*.hotjar.com"],
-//       },
-//     },
-//   })
-// );
 
 app.use(
   hsts({
@@ -159,28 +99,7 @@ require("./passport");
 
 // Routes
 app.use("/oauth", authRouter);
-// Apply rate limiting to all API routes
-
-// app.use(helmet.referrerPolicy({ policy: "no-referrer" }));
-// app.use(helmet.noSniff());
-// app.use(helmet.frameguard({ action: "sameorigin" }));
-// / Optionally, explicitly remove or mask the 'Server' header
-app.disable("x-powered-by"); // Removes 'X-Powered-By' header
-// app.use((req, res, next) => {
-//   res.removeHeader("Server"); // Removes the 'Server' header
-//   next();
-// });
-// Define rate limiter
-
-// const apiLimiter = rateLimit({
-//   windowMs: 15 * 60 * 1000, // 15 minutes
-//   max: 30,
-//   message: {
-//     error: "Too many requests from this IP. Please try again after 15 minutes.",
-//   },
-//   keyGenerator: (req) => req.ip, // Default: uses IP address
-// });
-// app.use("/api/", apiLimiter);
+app.disable("x-powered-by"); 
 
 app.use("/api/v1/ArticleWriter", openaiRouter);
 app.use("/api/v1/chatbot", chatbotRouter);
@@ -198,6 +117,48 @@ app.use("/api/monster", monsterRoutes);
 app.use("/api/levels", levelsRoutes);
 app.use("/api/soc", socRoutes);
 app.use("/api/glassdoor", glassdoorRoutes);
+
+// Define a schema for the user profile
+const profileSchema = new mongoose.Schema({
+  userId: { type: String, unique: true },
+  role: String,
+  department: String,
+});
+
+const Profile = mongoose.model('Profile', profileSchema);
+
+// API endpoint to update profile
+app.post('/api/updateProfile', async (req, res) => {
+  const { userId, role, department } = req.body;
+  try {
+    let profile = await Profile.findOne({ userId });
+    if (!profile) {
+      profile = new Profile({ userId, role, department });
+    } else {
+      profile.role = role;
+      profile.department = department;
+    }
+    await profile.save();
+    res.status(200).send('Profile updated successfully');
+  } catch (error) {
+    res.status(500).send('Error updating profile');
+  }
+});
+
+// API endpoint to get profile
+app.get('/api/getProfile/:userId', async (req, res) => {
+  const { userId } = req.params;
+  try {
+    const profile = await Profile.findOne({ userId });
+    if (profile) {
+      res.status(200).json(profile);
+    } else {
+      res.status(404).send('Profile not found');
+    }
+  } catch (error) {
+    res.status(500).send('Error fetching profile');
+  }
+});
 
 // Static files
 const _dirname = path.dirname("");
