@@ -73,13 +73,13 @@ const Navbar = () => {
        {/* Profile Dropdown */}
        <div className="flex justify-end w-[30%] items-center gap-x-5 px-2">
           <div className="font-semibold text-[1.65rem] text-gray-400">
-          Hi, {data.user.displayName ? data.user.displayName : "user"}
+          Hi,
           </div>
           <div className="group relative">
             <button>
               <img
                 className="mr-4 h-20 w-20 rounded-full"
-                src={data.user.image ? data.user.image : profile}
+                src={profile}
                 alt="profile-icon"
               />
             </button>
