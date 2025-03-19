@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Navbar from "../pages/REA/navbar";
+import { useSelector } from "react-redux"; // Import useSelector
 
 const Profile = ({ userId }) => {
   const [role, setRole] = useState("");
   const [department, setDepartment] = useState("");
   const [isEditing, setIsEditing] = useState(false);
-  const [userName, setUserName] = useState("User"); // State to hold the user's name
+  const data = useSelector((state) => state.user.user); // Fetch user data from Redux store
 
   useEffect(() => {
     // Fetch profile data when the component mounts
@@ -15,7 +16,6 @@ const Profile = ({ userId }) => {
         const response = await axios.get(`http://localhost:5000/api/getProfile/${userId}`);
         setRole(response.data.role);
         setDepartment(response.data.department);
-        setUserName(response.data.user?.name || "User"); // Set the user's name
       } catch (error) {
         console.error("Error fetching profile:", error);
       }
