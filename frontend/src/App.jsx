@@ -20,33 +20,70 @@ import ResultPage from "./pages/REA/Result";
 import Landing from "./pages/Landing/Landing";
 import  Profile  from "./pages/profile"
 
+import axios from "axios";
+import LorPrompt from "./pages/LOR/LorPrompt";
+import LorForm from "./pages/LOR/LorForm";
+import Dashboard from "./pages/Dashboard/Dashboard";
+import AddData from "./pages/AddData/AddData";
+import ClientChatbot from "./pages/ClientChatbot/ClientChatbot";
+import LoginForm from "./pages/REA/loginForm";
+import ResultPage from "./pages/REA/Result";
+import Landing from "./pages/Landing/Landing";
+
 function App() {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user.user);
+  const userStatus = useSelector((state) => state.user.status);
+
+  useEffect(() => {
+    if (userStatus === "idle") {
+      dispatch(fetchUser());
+    }
+  }, [userStatus, dispatch]);
+  console.log("App.jsx user:", user);
+  // console.log("app.jsx user", memoizedUser);
   return (
     <Router>
       <Routes>
-        <Route exact path="/" element={<Landing />} />
-        <Route exact path="/prd" element={<Home />} />
-        <Route exact path="/article-form" element={<Form />} />
-        <Route exact path="/loa-prompt" element={<LoaPrompt />} />
-        <Route exact path="/loa-form" element={<LoaForm />} />
-        <Route exact path="/critical-role" element={<LoaCritical />} />
-        <Route exact path="/lor" element={<LorPrompt />} />
-        <Route exact path="/lor-form" element={<LorForm />} />
-        <Route exact path="/bio-writer" element={<BioWriter />} />
-        <Route exact path="/bio-writer-prompt" element={<BioWriterPrompt />} />
-        <Route exact path="/sidebar" element={<SidebarTail />} />
-        <Route exact path="/chatbot" element={<Chatbot />} />
-        <Route exact path="/niche" element={<Niche />} />
-        <Route exact path="/client" element={<ClientChatbot />} />
-        <Route exact path="/add-data" element={<AddData />} />
-        <Route exact path="/rea-form" element={<LoginForm />} />
-        <Route exact path="/rea-result" element={<ResultPage />} />
-        <Route exact path="/dashboard" element={<Dashboard />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route exact path="/login" element={<Login />} />
+
+        {user && user.success ? (
+          <>
+            <Route exact path="/prd" element={<Home />} />
+            <Route exact path="/article-form" element={<Form />} />
+            <Route exact path="/loa-prompt" element={<LoaPrompt />} />
+            <Route exact path="/loa-form" element={<LoaForm />} />
+            <Route exact path="/critical-role" element={<LoaCritical />} />
+            <Route exact path="/lor" element={<LorPrompt />} />
+            <Route exact path="/lor-form" element={<LorForm />} />
+            <Route exact path="/bio-writer" element={<BioWriter />} />
+
+            <Route
+              exact
+              path="/bio-writer-prompt"
+              element={<BioWriterPrompt />}
+            />
+
+            <Route exact path="/sidebar" element={<SidebarTail />} />
+            <Route exact path="/chatbot" element={<Chatbot />} />
+            <Route exact path="/niche" element={<Niche />} />
+            <Route exact path="/client" element={<ClientChatbot />} />
+            <Route exact path="/add-data" element={<AddData />} />
+            <Route exact path="/rea-form" element={<LoginForm />} />
+            <Route exact path="/rea-result" element={<ResultPage />} />
+            <Route exact path="/" element={<Landing />} />
+            <Route path="/profile" element={<Profile />} />
+
+            {user.user.isAdmin === "Admin" && (
+              <Route exact path="/dashboard" element={<Dashboard />} />
+            )}
+          </>
+        ) : (
+          <Route path="*" element={<Login />} />
+        )}
       </Routes>
     </Router>
   );
 }
 
 export default App;
-
