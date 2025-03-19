@@ -13,6 +13,7 @@ import Niche from "./pages/Niche/Niche";
 import Login from "./components/Login";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUser } from "./redux/userSlice";
+import  Profile  from "./pages/profile"
 
 import axios from "axios";
 import LorPrompt from "./pages/LOR/LorPrompt";
@@ -66,6 +67,7 @@ function App() {
             <Route exact path="/rea-form" element={<LoginForm />} />
             <Route exact path="/rea-result" element={<ResultPage />} />
             <Route exact path="/" element={<Landing />} />
+            <Route path="/profile" element={<Profile />} />
 
             {user.user.isAdmin === "Admin" && (
               <Route exact path="/dashboard" element={<Dashboard />} />

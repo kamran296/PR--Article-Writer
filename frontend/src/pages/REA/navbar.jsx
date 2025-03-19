@@ -1,11 +1,29 @@
 import React from "react";
 import Logo from "./assets/logoSGC.jpeg";
 import Profile from "./assets/profile.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 const navbar = () => {
   const data = useSelector((state) => state.user.user);
-  // console.log("navbar", data);
+  const navigate = useNavigate();
+
+  // Handle Profile Button Click
+  const handleProfileClick = () => {
+    navigate("/profile");
+  };
+
+  // Handle Settings Button Click
+  const handleSettingsClick = () => {
+    navigate("/settings");
+  };
+
+  // Handle Signout Button Click
+  const handleSignoutClick = () => {
+    // Add signout logic here
+    console.log("Signout clicked");
+    navigate("/login");
+  };
+  
   return (
     <>
       {/* component */}
@@ -49,35 +67,50 @@ const navbar = () => {
             </ul>
           </nav>
         </div>
-        <div className="flex justify-end w-[30%] items-center gap-x-5 px-2">
+          {/* Profile Dropdown */}
+          <div className="flex justify-end w-[30%] items-center gap-x-5 px-2">
           <div className="font-semibold text-[1.65rem] text-gray-400">
-            Hi, {data.user.displayName}
-            {/* Hi Kamran Khot */}
+          Hi, {data.user.displayName} 
           </div>
-          <button className=" group">
-            <img
-              className=" mr-4 h-20 w-20 rounded-full"
-              // src={data.user.image}
-              src={Profile}
-              alt="profile-icon"
-            />
-            {/* Image */}
-            <div className="z-10 bg-white hidden absolute rounded-lg shadow w-32 group-focus:block right-0">
-              <ul className=" text-xl text-black">
-                <li className="pt-2">
-                  <Link to="">Profile</Link>
+          <div className="group relative">
+            <button>
+              <img
+                className="mr-4 h-20 w-20 rounded-full"
+                src={Profile}
+                alt="profile-icon"
+              />
+            </button>
+            {/* Dropdown Menu */}
+            <div className="z-10 bg-white hidden absolute rounded-lg shadow w-32 group-hover:block right-0">
+              <ul className="text-xl text-black">
+                <li className="pt-2 hover:bg-gray-100 px-4 py-2">
+                  <button
+                    onClick={handleProfileClick}
+                    className="w-full text-left"
+                  >
+                    Profile
+                  </button>
                 </li>
-                <li className="pt-2">
-                  <Link to="">Setting</Link>
+                <li className="pt-2 hover:bg-gray-100 px-4 py-2">
+                  <button
+                    onClick={handleSettingsClick}
+                    className="w-full text-left"
+                  >
+                    Settings
+                  </button>
                 </li>
-                <li className="pt-2">
-                  <Link to="">Signout</Link>
+                <li className="pt-2 hover:bg-gray-100 px-4 py-2">
+                  <button
+                    onClick={handleSignoutClick}
+                    className="w-full text-left"
+                  >
+                    Signout
+                  </button>
                 </li>
               </ul>
             </div>
-          </button>
+          </div>
         </div>
-        {/* buttons -*/}
       </header>
     </>
   );

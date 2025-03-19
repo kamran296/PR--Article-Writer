@@ -2,11 +2,30 @@ import React, { useState, useEffect } from "react";
 import navbar from "./assets/navbar.png";
 import logo from "./assets/logoSGC.jpeg";
 import profile from "./assets/profile.png";
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 const Navbar = () => {
   const data = useSelector((state) => state.user.user);
-  // console.log("navbar", data);
+  const navigate = useNavigate();
+
+  // Handle Profile Button Click
+  const handleProfileClick = () => {
+    navigate("/profile");
+  };
+
+  // Handle Settings Button Click
+  const handleSettingsClick = () => {
+    navigate("/settings");
+  };
+
+  // Handle Signout Button Click
+  const handleSignoutClick = () => {
+    // Add signout logic here
+    console.log("Signout clicked");
+    navigate("/login");
+  };
+
+  
   return (
     <>
       {/* component */}
@@ -50,35 +69,51 @@ const Navbar = () => {
             </ul>
           </nav>
         </div>
-        <div className="flex justify-end w-[30%] items-center gap-x-5 px-2">
+        
+       {/* Profile Dropdown */}
+       <div className="flex justify-end w-[30%] items-center gap-x-5 px-2">
           <div className="font-semibold text-[1.65rem] text-gray-400">
-            Hi, {data.user.displayName ? data.user.displayName : "user"}
-            {/* Hi Kamran Khot */}
+          Hi, {data.user.displayName ? data.user.displayName : "user"}
           </div>
-          <button className=" group">
-            <img
-              className=" mr-4 h-20 w-20 rounded-full"
-              src={data.user.image ? data.user.image : profile}
-              // src={profile}
-              alt="profile-icon"
-            />
-            {/* Image */}
-            <div className="z-10 bg-white hidden absolute rounded-lg shadow w-32 group-focus:block right-0">
-              <ul className=" text-xl text-black">
-                <li className="pt-2">
-                  <Link to="">Profile</Link>
+          <div className="group relative">
+            <button>
+              <img
+                className="mr-4 h-20 w-20 rounded-full"
+                src={data.user.image ? data.user.image : profile}
+                alt="profile-icon"
+              />
+            </button>
+            {/* Dropdown Menu */}
+            <div className="z-10 bg-white hidden absolute rounded-lg shadow w-32 group-hover:block right-0">
+              <ul className="text-xl text-black">
+                <li className="pt-2 hover:bg-gray-100 px-4 py-2">
+                  <button
+                    onClick={handleProfileClick}
+                    className="w-full text-left"
+                  >
+                    Profile
+                  </button>
                 </li>
-                <li className="pt-2">
-                  <Link to="">Setting</Link>
+                <li className="pt-2 hover:bg-gray-100 px-4 py-2">
+                  <button
+                    onClick={handleSettingsClick}
+                    className="w-full text-left"
+                  >
+                    Settings
+                  </button>
                 </li>
-                <li className="pt-2">
-                  <Link to="">Signout</Link>
+                <li className="pt-2 hover:bg-gray-100 px-4 py-2">
+                  <button
+                    onClick={handleSignoutClick}
+                    className="w-full text-left"
+                  >
+                    Signout
+                  </button>
                 </li>
               </ul>
             </div>
-          </button>
+          </div>
         </div>
-        {/* buttons -*/}
       </header>
     </>
   );
