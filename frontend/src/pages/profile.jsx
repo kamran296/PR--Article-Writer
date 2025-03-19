@@ -54,7 +54,7 @@ const Profile = ({ userId }) => {
                 type="text"
                 id="name"
                 name="name"
-                value={"user"}
+                value={data.user.displayName ? data.user.displayName : "user"}
                 readOnly // Make the input read-only
                 className="mt-2 block w-full px-6 py-4 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 text-xl bg-gray-100"
               />
