@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Form from "./pages/Form/Form";
@@ -10,15 +10,10 @@ import BioWriterPrompt from "./pages/Bio/BioWriterPrompt";
 import SidebarTail from "./components/SidebarTail";
 import Chatbot from "./pages/Chatbot/Chatbot";
 import Niche from "./pages/Niche/Niche";
-import LorPrompt from "./pages/LOR/LorPrompt";
-import LorForm from "./pages/LOR/LorForm";
-import Dashboard from "./pages/Dashboard/Dashboard";
-import AddData from "./pages/AddData/AddData";
-import ClientChatbot from "./pages/ClientChatbot/ClientChatbot";
-import LoginForm from "./pages/REA/loginForm";
-import ResultPage from "./pages/REA/Result";
-import Landing from "./pages/Landing/Landing";
-import  Profile  from "./pages/profile"
+import Login from "./components/Login";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchUser } from "./redux/userSlice";
+import Profile from "./pages/profile"; // New import
 
 import axios from "axios";
 import LorPrompt from "./pages/LOR/LorPrompt";
@@ -72,7 +67,7 @@ function App() {
             <Route exact path="/rea-form" element={<LoginForm />} />
             <Route exact path="/rea-result" element={<ResultPage />} />
             <Route exact path="/" element={<Landing />} />
-            <Route path="/profile" element={<Profile />} />
+            <Route path="/profile" element={<Profile />} /> {/* New route */}
 
             {user.user.isAdmin === "Admin" && (
               <Route exact path="/dashboard" element={<Dashboard />} />
