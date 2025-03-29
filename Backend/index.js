@@ -44,7 +44,6 @@ const NicheData = require("./model/niche");
 const ClientChatbot = require("./model/clientChatbot");
 const app = express();
 
-
 const db = process.env.DB_PRODUCTION;
 mongoose
   .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -142,7 +141,7 @@ app.use(
 
 app.use(
   session({
-    secret: "1234wpskdm5678",
+    secret: process.env.session_secret,
     resave: false,
     saveUninitialized: true,
     cookie: {
@@ -207,10 +206,10 @@ const profileSchema = new mongoose.Schema({
   department: String,
 });
 
-const Profile = mongoose.model('Profile', profileSchema);
+const Profile = mongoose.model("Profile", profileSchema);
 
 // API endpoint to update profile
-app.post('/api/updateProfile', async (req, res) => {
+app.post("/api/updateProfile", async (req, res) => {
   const { userId, role, department } = req.body;
   try {
     let profile = await Profile.findOne({ userId });
@@ -221,27 +220,26 @@ app.post('/api/updateProfile', async (req, res) => {
       profile.department = department;
     }
     await profile.save();
-    res.status(200).send('Profile updated successfully');
+    res.status(200).send("Profile updated successfully");
   } catch (error) {
-    res.status(500).send('Error updating profile');
+    res.status(500).send("Error updating profile");
   }
 });
 
 // API endpoint to get profile
-app.get('/api/getProfile/:userId', async (req, res) => {
+app.get("/api/getProfile/:userId", async (req, res) => {
   const { userId } = req.params;
   try {
     const profile = await Profile.findOne({ userId });
     if (profile) {
       res.status(200).json(profile);
     } else {
-      res.status(404).send('Profile not found');
+      res.status(404).send("Profile not found");
     }
   } catch (error) {
-    res.status(500).send('Error fetching profile');
+    res.status(500).send("Error fetching profile");
   }
 });
-
 
 // Static files
 const _dirname = path.dirname("");
@@ -331,7 +329,7 @@ async function triggerFineTuning(modelName, currentLength) {
     let host = "";
 
     if (modelName === "articles") {
-      host = "https://www.internal.cachelabs.io/api/v1/lor/fine-tune";
+      host = "https://www.internal.cachelabs.io/api/v1/ArticleWriter/fine-tune";
     } else if (modelName === "biowriterdatas") {
       host = "https://www.internal.cachelabs.io/api/v1/bio/fine-tune";
     } else if (modelName === "loacriticals") {
