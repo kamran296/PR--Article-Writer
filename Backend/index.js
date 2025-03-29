@@ -44,7 +44,6 @@ const NicheData = require("./model/niche");
 const ClientChatbot = require("./model/clientChatbot");
 const app = express();
 
-
 const db = process.env.DB_PRODUCTION;
 mongoose
   .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -142,7 +141,7 @@ app.use(
 
 app.use(
   session({
-    secret: "1234wpskdm5678",
+    secret: process.env.session_secret,
     resave: false,
     saveUninitialized: true,
     cookie: {
