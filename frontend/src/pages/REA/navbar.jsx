@@ -70,7 +70,7 @@ const navbar = () => {
        {/* Profile Dropdown */}
               <div className="flex justify-end w-[30%] items-center gap-x-5 px-2">
                  <div className="font-semibold text-[1.65rem] text-gray-400">
-                 Hi, {data.user.displayName ? data.user.displayName : "user"} 
+                 Hi, {data.user.displayName ? data.user.displayName : "user"}
                  </div>
                  <div className="group relative">
                    <button>

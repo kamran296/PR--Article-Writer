@@ -37,7 +37,15 @@ const Home = () => {
   const [generatedArticle, setGeneratedArticle] = useState("");
   const [liked, setLiked] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [correctAnswer, setCorrectAnswer] = useState("");
+  // Updated feedback state to include text fields
+  const [feedback, setFeedback] = useState({
+    contentQualityFeedback: "",
+    grammarIssuesFeedback: "",
+    creativityFeedback: "",
+    relevanceFeedback: "",
+    additionalComments: "",
+  });
+  const [loading, setLoading] = useState(false);
 
   const handleDislikeClick = () => {
     setIsModalOpen(true);
@@ -46,17 +54,27 @@ const Home = () => {
   const handlelikeClick = () => {
     setLiked(!liked);
   };
+
   const sanitizeInput = (input) => {
     if (!input) return ""; // Handle empty input safely
     return input.replace(/[<>{}()[\]'";:\/\\|^&$]/g, ""); // Removes unwanted characters
   };
 
+  // Updated handleModalSubmit to work with the new feedback structure
   const handleModalSubmit = async (e) => {
     e.preventDefault();
-    const sanitizedAnswer = sanitizeInput(correctAnswer);
+    const sanitizedFeedback = {
+      contentQualityFeedback: sanitizeInput(feedback.contentQualityFeedback),
+      grammarIssuesFeedback: sanitizeInput(feedback.grammarIssuesFeedback),
+      creativityFeedback: sanitizeInput(feedback.creativityFeedback),
+      relevanceFeedback: sanitizeInput(feedback.relevanceFeedback),
+      additionalComments: sanitizeInput(feedback.additionalComments),
+    };
+
     try {
       const response = await fetch(
         "https://www.internal.cachelabs.io/api/v1/ArticleWriter/add-article",
+        //"http://localhost:5000/api/v1/ArticleWriter/add-article",
         {
           method: "POST",
           headers: {
@@ -64,7 +82,13 @@ const Home = () => {
           },
           body: JSON.stringify({
             question: formData.prompt,
-            answer: sanitizedAnswer,
+            feedback: {
+              contentQuality: sanitizedFeedback.contentQualityFeedback,
+              grammarIssues: sanitizedFeedback.grammarIssuesFeedback,
+              creativity: sanitizedFeedback.creativityFeedback,
+              relevance: sanitizedFeedback.relevanceFeedback,
+              additionalComments: sanitizedFeedback.additionalComments,
+            },
           }),
         }
       );
@@ -72,7 +96,14 @@ const Home = () => {
       console.log(data);
 
       setIsModalOpen(false);
-      setCorrectAnswer("");
+      // Reset feedback state with the new structure
+      setFeedback({
+        contentQualityFeedback: "",
+        grammarIssuesFeedback: "",
+        creativityFeedback: "",
+        relevanceFeedback: "",
+        additionalComments: "",
+      });
     } catch (error) {
       console.error("Error:", error);
     }
@@ -83,15 +114,26 @@ const Home = () => {
     setFormData({ ...formData, [name]: sanitizeInput(value) });
   };
 
+  // Updated handleFeedbackChange to work with the new feedback structure
+  const handleFeedbackChange = (e) => {
+    const { name, value } = e.target;
+    setFeedback((prevFeedback) => ({
+      ...prevFeedback,
+      [name]: value,
+    }));
+  };
+
   const handleEnter = (e) => {
     if (e.key == "Enter") generateArticle();
   };
 
   const generateArticle = async () => {
     console.log("Generating Article!!");
+    setLoading(true);
     try {
       const response = await fetch(
         "https://www.internal.cachelabs.io/api/v1/ArticleWriter/articlePrompt",
+        //"http://localhost:5000/api/v1/ArticleWriter/articlePrompt",
         {
           method: "POST",
           headers: {
@@ -113,8 +155,12 @@ const Home = () => {
       setGeneratedArticle(generatedArticleText);
     } catch (error) {
       console.error("Error:", error);
+    } finally {
+      setLoading(false);
     }
   };
+
+  // The rest of your component remains the same
   return (
     <>
       <div className="h-screen">
@@ -136,14 +182,22 @@ const Home = () => {
                 onChange={handleInputChange}
               />
               <button
-                className="text-xl text-secondary w-[6rem] h-[5rem]"
+                className={`text-xl text-secondary w-[6rem] h-[5rem] ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
                 onClick={generateArticle}
-              >
-                <BsSend className=" text-secondary w-[2rem] h-[2rem] rotate-45 text-3xl inline-block" />
+                disabled={loading}
+               >
+                <BsSend className="text-secondary w-[2rem] h-[2rem] rotate-45 text-3xl inline-block" />
               </button>
             </div>
 
-            {generatedArticle && (
+            {loading && (
+              <div className="flex justify-center items-center mt-8">
+                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+                <p className="ml-4 text-2xl">Generating Your Article...</p>
+              </div>
+            )}
+
+            {generatedArticle && !loading && (
               <div className="chats max-w-[90rem] ">
                 <div className="chat">
                   <img className="chatImg" src={userIcon} alt="" />
@@ -159,23 +213,55 @@ const Home = () => {
                         src={download}
                         alt=""
                       />
-                      {/* <p className="txt font-poppins">{generatedArticle}</p> */}
-                      <DisplayTextWithLineBreaks text={generatedArticle} />;
+                      <DisplayTextWithLineBreaks text={generatedArticle} />
                     </div>
                     <div className="mt-[1rem]">
-                      <span className="flex ml-[5rem]">
-                        <div onClick={handlelikeClick}>
-                          {liked ? (
-                            <BiSolidLike className="text-green-500 inline-block h-[2.5rem] w-[2.5rem] cursor-pointer text-3xl" />
-                          ) : (
-                            <BiLike className="text-green-500 inline-block h-[2.5rem] w-[2.5rem] cursor-pointer text-3xl" />
-                          )}
-                        </div>
-                        <BiDislike
-                          className="inline-block h-[2.5rem] w-[2.5rem] text-red-500 cursor-pointer ml-2 text-3xl"
-                          onClick={() => handleDislikeClick()}
-                        />
-                      </span>
+                    <span className="flex ml-[5rem] gap-4">
+  <button
+    onClick={() => {
+      handlelikeClick();
+      // Clear dislike selection when like is clicked
+      if (!liked) setIsModalOpen(false);
+    }}
+    disabled={isModalOpen && !liked}
+    className={`
+      relative px-6 py-2 rounded-full font-medium
+      border-2 ${isModalOpen && !liked ? 'border-gray-300' : 'border-green-500'}
+      transition-all duration-300 ease-in-out
+      overflow-hidden
+      before:content-[''] before:absolute before:inset-0 
+      ${isModalOpen && !liked ? 'before:bg-gray-100' : 'before:bg-green-500'}
+      before:scale-x-0 before:origin-left before:transition-transform before:duration-300 before:ease-in-out
+      ${liked ? 'before:scale-x-100 text-white' : `text-${isModalOpen && !liked ? 'gray-400' : 'green-500'}`}
+      ${!(isModalOpen && !liked) ? 'hover:before:scale-x-100 hover:text-white' : ''}
+      ${isModalOpen && !liked ? 'cursor-not-allowed' : 'cursor-pointer'}
+    `}
+  >
+    <span className="relative z-10">Do you like this article</span>
+  </button>
+  <button
+    onClick={() => {
+      handleDislikeClick();
+      // Clear like selection when dislike is clicked
+      if (!isModalOpen) setLiked(false);
+    }}
+    disabled={liked && !isModalOpen}
+    className={`
+      relative px-6 py-2 rounded-full font-medium
+      border-2 ${liked && !isModalOpen ? 'border-gray-300' : 'border-red-500'}
+      transition-all duration-300 ease-in-out
+      overflow-hidden
+      before:content-[''] before:absolute before:inset-0 
+      ${liked && !isModalOpen ? 'before:bg-gray-100' : 'before:bg-red-500'}
+      before:scale-x-0 before:origin-left before:transition-transform before:duration-300 before:ease-in-out
+      ${isModalOpen ? 'before:scale-x-100 text-white' : `text-${liked && !isModalOpen ? 'gray-400' : 'red-500'}`}
+      ${!(liked && !isModalOpen) ? 'hover:before:scale-x-100 hover:text-white' : ''}
+      ${liked && !isModalOpen ? 'cursor-not-allowed' : 'cursor-pointer'}
+    `}
+  >
+    <span className="relative z-10">Suggest some changes</span>
+  </button>
+</span>
                     </div>
                   </div>
                 </div>
@@ -187,31 +273,96 @@ const Home = () => {
 
       {isModalOpen && (
         <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center">
-          <div className="bg-white p-8 rounded-xl shadow-md w-[72rem]">
-            <h2 className="text-3xl font-bold mb-4">
-              Provide the correct answer
-            </h2>
+          <div className="bg-white p-8 rounded-xl shadow-md w-[72rem] max-h-[90vh] overflow-y-auto">
+            <h2 className="text-3xl font-bold mb-4">Provide Feedback</h2>
             <form onSubmit={handleModalSubmit}>
-              <textarea
-                className="w-full h-[35rem] text-xl p-2 mb-4 border rounded"
-                rows="4"
-                value={correctAnswer}
-                onChange={(e) => setCorrectAnswer(e.target.value)}
-                placeholder="Enter the correct answer here"
-              />
-              <button
-                type="submit"
-                className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-              >
-                Submit
-              </button>
-              <button
-                type="button"
-                className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 ml-2"
-                onClick={() => setIsModalOpen(false)}
-              >
-                Cancel
-              </button>
+              <div className="space-y-6">
+                {/* Content Quality Section */}
+                <div className="border-b pb-4">
+                  <h3 className="text-xl font-semibold mb-2">
+                    Is the content well-structured and useful?
+                  </h3>
+                  <textarea
+                    name="contentQualityFeedback"
+                    className="w-full h-24 text-lg p-2 border rounded"
+                    value={feedback.contentQualityFeedback}
+                    onChange={handleFeedbackChange}
+                    placeholder="Share your thoughts on the structure and usefulness of the content..."
+                  />
+                </div>
+
+                {/* Grammar Issues Section */}
+                <div className="border-b pb-4">
+                  <h3 className="text-xl font-semibold mb-2">
+                    Did you notice any spelling or grammatical mistakes?
+                  </h3>
+                  <textarea
+                    name="grammarIssuesFeedback"
+                    className="w-full h-24 text-lg p-2 border rounded"
+                    value={feedback.grammarIssuesFeedback}
+                    onChange={handleFeedbackChange}
+                    placeholder="List any grammar or spelling errors you found..."
+                  />
+                </div>
+
+                {/* Creativity Section */}
+                <div className="border-b pb-4">
+                  <h3 className="text-xl font-semibold mb-2">
+                    Does the content feel engaging or robotic?
+                  </h3>
+                  <textarea
+                    name="creativityFeedback"
+                    className="w-full h-24 text-lg p-2 border rounded"
+                    value={feedback.creativityFeedback}
+                    onChange={handleFeedbackChange}
+                    placeholder="Describe how engaging or original the content feels..."
+                  />
+                </div>
+
+                {/* Relevance Section */}
+                <div className="border-b pb-4">
+                  <h3 className="text-xl font-semibold mb-2">
+                    Is the content aligned with the topic?
+                  </h3>
+                  <textarea
+                    name="relevanceFeedback"
+                    className="w-full h-24 text-lg p-2 border rounded"
+                    value={feedback.relevanceFeedback}
+                    onChange={handleFeedbackChange}
+                    placeholder="Explain how well the content addresses the requested topic..."
+                  />
+                </div>
+
+                {/* General Comments Section */}
+                <div>
+                  <h3 className="text-xl font-semibold mb-2">
+                    Any other feedback or suggestions?
+                  </h3>
+                  <textarea
+                    className="w-full h-32 text-lg p-2 border rounded"
+                    name="additionalComments"
+                    value={feedback.additionalComments}
+                    onChange={handleFeedbackChange}
+                    placeholder="Share any other thoughts or suggestions for improvement..."
+                  />
+                </div>
+              </div>
+
+              <div className="mt-6 flex justify-end">
+                <button
+                  type="button"
+                  className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 mr-2"
+                  onClick={() => setIsModalOpen(false)}
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600"
+                >
+                  Submit Feedback
+                </button>
+              </div>
             </form>
           </div>
         </div>
