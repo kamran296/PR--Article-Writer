@@ -64,7 +64,8 @@ const corsOptions = {
   origin: [
     "https://www.internal.cachelabs.io",
     "https://internal.cachelabs.io",
-    "http://localhost:5173", //temporary cors added for copilot development usage 
+    "https://app.copilot.smartimmigrant.com"
+    //"http://localhost:5173", //temporary cors added for copilot development usage 
   ], // Adjust this to match your frontend URL
   methods: ["GET", "POST", "DELETE"],
   credentials: true,
